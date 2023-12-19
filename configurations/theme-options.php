@@ -1,0 +1,404 @@
+<?php
+// A Custom function for get an option
+if ( ! function_exists( 'clinic_get_option' ) ) {
+	function clinic_get_option( $option = '', $default = null ) {
+		$options = get_option( 'options' );
+
+		return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
+	}
+}
+
+// Control core classes for avoid errors
+if ( class_exists( 'CSF' ) ) {
+// Set a unique slug-like ID
+	$clinic_prefix   = 'options';
+	$clinic_my_theme = wp_get_theme();
+
+	// Create options
+	CSF::createOptions( $clinic_prefix, array(
+		'menu_title'          => esc_html__( 'Theme Options', 'clinic' ),
+		'menu_slug'           => 'theme-options',
+		'menu_position'       => 2,
+		'admin_bar_menu_icon' => 'dashicons-admin-generic',
+		'framework_title'     => $clinic_my_theme->get( 'Name' ) . ' ' . esc_html__( 'Options', 'clinic' ),
+		'footer_text'         => esc_html__( 'Thank you for using my theme', 'clinic' ),
+		'footer_after'        => '<pre>Contact me:<br />Zalo/Phone: 0975458209 - Skype: lathieuhiep - facebook: <a href="https://www.facebook.com/lathieuhiep" target="_blank">lathieuhiep</a></pre>',
+	) );
+
+	// Create a section general
+	CSF::createSection( $clinic_prefix, array(
+		'title'  => esc_html__( 'General', 'clinic' ),
+		'icon'   => 'fas fa-cog',
+		'fields' => array(
+			// favicon
+			array(
+				'id'      => 'opt_general_favicon',
+				'type'    => 'media',
+				'title'   => esc_html__( 'Upload Image Favicon', 'clinic' ),
+				'library' => 'image',
+				'url'     => false
+			),
+
+			// logo
+			array(
+				'id'      => 'opt_general_logo',
+				'type'    => 'media',
+				'title'   => esc_html__( 'Upload Image Logo', 'clinic' ),
+				'library' => 'image',
+				'url'     => false
+			),
+
+			// show loading
+			array(
+				'id'         => 'opt_general_loading',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'website loader', 'clinic' ),
+				'text_on'    => esc_html__( 'Yes', 'clinic' ),
+				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'text_width' => 80,
+				'default'    => false
+			),
+
+			array(
+				'id'         => 'opt_general_image_loading',
+				'type'       => 'media',
+				'title'      => esc_html__( 'Upload Image Loading', 'clinic' ),
+				'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
+				'dependency' => array( 'opt_general_loading', '==', 'true' ),
+				'url'        => false
+			),
+
+			// show back to top
+			array(
+				'id'         => 'opt_general_back_to_top',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Use Back To Top', 'clinic' ),
+				'text_on'    => esc_html__( 'Yes', 'clinic' ),
+				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'text_width' => 80,
+				'default'    => true
+			),
+		)
+	) );
+
+	//
+	// Create a section menu
+	CSF::createSection( $clinic_prefix, array(
+		'title'  => esc_html__( 'Menu', 'clinic' ),
+		'icon'   => 'fas fa-bars',
+		'fields' => array(
+			// Sticky menu
+			array(
+				'id'         => 'opt_menu_sticky',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Sticky menu', 'clinic' ),
+				'text_on'    => esc_html__( 'Yes', 'clinic' ),
+				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'text_width' => 80,
+				'default'    => true
+			),
+
+			// Show cart
+			array(
+				'id'         => 'opt_menu_cart',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Cart', 'clinic' ),
+				'text_on'    => esc_html__( 'Yes', 'clinic' ),
+				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'text_width' => 80,
+				'default'    => true
+			),
+		)
+	) );
+
+	//
+	// -> Create a section blog
+	CSF::createSection( $clinic_prefix, array(
+		'id'    => 'opt_post_section',
+		'icon'  => 'fas fa-blog',
+		'title' => esc_html__( 'Post', 'clinic' ),
+	) );
+
+	// Category Post
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_post_section',
+		'title'  => esc_html__( 'Category', 'clinic' ),
+		'description' => esc_html__( 'Use for archive, index, page search', 'clinic' ),
+		'fields' => array(
+			// Sidebar
+			array(
+				'id'      => 'opt_post_cat_sidebar_position',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
+				'options' => array(
+					'hide'  => esc_html__( 'Hide', 'clinic' ),
+					'left'  => esc_html__( 'Left', 'clinic' ),
+					'right' => esc_html__( 'Right', 'clinic' ),
+				),
+				'default' => 'right'
+			),
+
+			// Per Row
+			array(
+				'id'      => 'opt_post_cat_per_row',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Blog Per Row', 'clinic' ),
+				'options' => array(
+					'3' => esc_html__( '3 Column', 'clinic' ),
+					'4' => esc_html__( '4 Column', 'clinic' ),
+				),
+				'default' => '3'
+			),
+		)
+	) );
+
+	// Single Post
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_post_section',
+		'title'  => esc_html__( 'Single', 'clinic' ),
+		'fields' => array(
+			array(
+				'id'      => 'opt_post_single_sidebar_position',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
+				'options' => array(
+					'hide'  => esc_html__( 'Hide', 'clinic' ),
+					'left'  => esc_html__( 'Left', 'clinic' ),
+					'right' => esc_html__( 'Right', 'clinic' ),
+				),
+				'default' => 'right'
+			),
+
+			// Show related post
+			array(
+				'id'         => 'opt_post_single_related',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Show related post', 'clinic' ),
+				'text_on'    => esc_html__( 'Yes', 'clinic' ),
+				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'default'    => true,
+				'text_width' => 80
+			),
+
+			// Limit related post
+			array(
+				'id'      => 'opt_post_single_related_limit',
+				'type'    => 'number',
+				'title'   => esc_html__( 'Limit related post', 'clinic' ),
+				'default' => 3,
+			),
+		)
+	) );
+
+	//
+	// Create a section social network
+	CSF::createSection( $clinic_prefix, array(
+		'title'  => esc_html__( 'Social Network', 'clinic' ),
+		'icon'   => 'fab fa-hive',
+		'fields' => array(
+			array(
+				'id'      => 'opt_social_network',
+				'type'    => 'repeater',
+				'title'   => esc_html__( 'Social Network', 'clinic' ),
+				'fields'  => array(
+					array(
+						'id'      => 'icon',
+						'type'    => 'icon',
+						'title'   => esc_html__( 'Icon', 'clinic' ),
+						'default' => 'fab fa-facebook-f'
+					),
+
+					array(
+						'id'    => 'url',
+						'type'  => 'text',
+						'title' => esc_html__('URL', 'clinic'),
+						'default' => '#'
+					),
+				),
+				'default' => array(
+					array(
+						'icon' => 'fab fa-facebook-f',
+						'url' => '#',
+					),
+
+					array(
+						'icon' => 'fab fa-youtube',
+						'url' => '#',
+					),
+				)
+			),
+		)
+	) );
+
+	//
+	//  Create a section shop
+	CSF::createSection( $clinic_prefix, array(
+		'id'    => 'opt_shop_section',
+		'title'  => esc_html__( 'Shop', 'clinic' ),
+		'icon'   => 'fas fa-shopping-cart',
+	) );
+
+	// Category product
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_shop_section',
+		'title'  => esc_html__( 'Category', 'clinic' ),
+		'description' => esc_html__( 'Use for shop category and tag', 'clinic' ),
+		'fields' => array(
+			// Sidebar
+			array(
+				'id'      => 'opt_shop_cat_sidebar_position',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
+				'options' => array(
+					'hide'  => esc_html__( 'Hide', 'clinic' ),
+					'left'  => esc_html__( 'Left', 'clinic' ),
+					'right' => esc_html__( 'Right', 'clinic' ),
+				),
+				'default' => 'left'
+			),
+
+			// Limit
+			array(
+				'id'      => 'opt_shop_cat_limit',
+				'type'    => 'number',
+				'title'   => esc_html__( 'Limit Product', 'clinic' ),
+				'default' => 12,
+			),
+
+			// Per Row
+			array(
+				'id'      => 'opt_shop_cat_per_row',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Products Per Row', 'clinic' ),
+				'options' => array(
+					'3' => esc_html__( '3 Column', 'clinic' ),
+					'4' => esc_html__( '4 Column', 'clinic' ),
+					'5' => esc_html__( '5 Column', 'clinic' ),
+				),
+				'default' => '4'
+			),
+		)
+	) );
+
+	// Single product
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_shop_section',
+		'title'  => esc_html__( 'Single', 'clinic' ),
+		'description' => esc_html__( 'Use for single product', 'clinic' ),
+		'fields' => array(
+			// Sidebar
+			array(
+				'id'      => 'opt_shop_single_sidebar_position',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
+				'options' => array(
+					'hide'  => esc_html__( 'Hide', 'clinic' ),
+					'left'  => esc_html__( 'Left', 'clinic' ),
+					'right' => esc_html__( 'Right', 'clinic' ),
+				),
+				'default' => 'left'
+			)
+		)
+	) );
+
+	//
+	// -> Create a section footer
+	CSF::createSection( $clinic_prefix, array(
+		'id'    => 'opt_footer_section',
+		'icon'  => 'fas fa-stream',
+		'title' => esc_html__( 'Footer', 'clinic' ),
+	) );
+
+	// footer columns
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_footer_section',
+		'title'  => esc_html__( 'Columns Sidebar', 'clinic' ),
+		'fields' => array(
+			// select columns
+			array(
+				'id'      => 'opt_footer_columns',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Number of footer columns', 'clinic' ),
+				'options' => array(
+					'0' => esc_html__( 'Hide', 'clinic' ),
+					'1' => 1,
+					'2' => 2,
+					'3' => 3,
+					'4' => 4,
+				),
+				'default' => '4'
+			),
+
+			// column width 1
+			array(
+				'id'         => 'opt_footer_column_width_1',
+				'type'       => 'slider',
+				'title'      => esc_html__( 'Column width 1', 'clinic' ),
+				'default'    => 3,
+				'min'        => 1,
+				'max'        => 12,
+				'dependency' => array( 'opt_footer_columns', '!=', '0' )
+			),
+
+			// column width 2
+			array(
+				'id'         => 'opt_footer_column_width_2',
+				'type'       => 'slider',
+				'title'      => esc_html__( 'Column width 2', 'clinic' ),
+				'default'    => 3,
+				'min'        => 1,
+				'max'        => 12,
+				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1' )
+			),
+
+			// column width 3
+			array(
+				'id'         => 'opt_footer_column_width_3',
+				'type'       => 'slider',
+				'title'      => esc_html__( 'Column width 3', 'clinic' ),
+				'default'    => 3,
+				'min'        => 1,
+				'max'        => 12,
+				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
+			),
+
+			// column width 4
+			array(
+				'id'         => 'opt_footer_column_width_4',
+				'type'       => 'slider',
+				'title'      => esc_html__( 'Column width 4', 'clinic' ),
+				'default'    => 3,
+				'min'        => 1,
+				'max'        => 12,
+				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2,3' )
+			),
+		)
+	) );
+
+	// Copyright
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_footer_section',
+		'title'  => esc_html__( 'Copyright', 'clinic' ),
+		'fields' => array(
+			// show
+			array(
+				'id'         => 'opt_footer_copyright_show',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Show copyright', 'clinic' ),
+				'text_on'    => esc_html__( 'Yes', 'clinic' ),
+				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'text_width' => 80,
+				'default'    => true
+			),
+
+			// content
+			array(
+				'id'      => 'opt_footer_copyright_content',
+				'type'    => 'wp_editor',
+				'title'   => esc_html__( 'Content', 'clinic' ),
+				'media_buttons' => false,
+				'default' => esc_html__( 'Copyright &copy; DiepLK', 'clinic' )
+			),
+		)
+	) );
+}
