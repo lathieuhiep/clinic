@@ -1,26 +1,87 @@
 .global-header {
-  background-color: $color-white;
+  background-color: var(--color-white);
   box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.3);
+
+  .top-nav {
+    display: grid;
+    grid-column-gap: 5.8rem;
+    grid-template-columns: 35.6rem 1fr;
+    align-items: center;
+
+    .info {
+      display: grid;
+      grid-gap: 4.5rem;
+      grid-template-columns: auto 1fr;
+
+      &__item {
+        display: grid;
+        grid-gap: 11px;
+        grid-template-columns: 3.6rem 1fr;
+        align-items: center;
+
+        .left-box {
+          @include square(3.6rem, 50%);
+          @include flex-center();
+          background-color: var(--color-heading);
+        }
+
+        .right-box {
+          font-size: 1.6rem;
+
+          .heading {
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            color: var(--color-dim-gray);
+          }
+
+          .phone-list {
+            .item-phone {
+              position: relative;
+              display: inline-block;
+
+              ~ .item-phone {
+                margin-left: 1rem;
+
+                &:before {
+                  position: absolute;
+                  content: "-";
+                  top: 50%;
+                  left: -1rem;
+                  transform: translateY(-50%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-.site-navigation {
-  position: relative;
-  display: grid;
-  grid-gap: 2.4rem;
+.navbar-main {
+  height: 5rem;
+  background-color: var(--color-salem);
 
-  &__logo {
-    a {
-      display: inline-block;
-      line-height: 64px;
-      padding: 15px 0;
-    }
+  > div {
+    height: inherit;
   }
 
   &__menu {
+    height: inherit;
+
     > ul {
       > li {
+        height: inherit;
+
+        ~ li {
+          margin-left: 9.2rem;
+        }
+
         > a {
-          padding: 0 15px;
+          font-weight: 700;
+          font-size: 1.4rem;
+          color: var(--color-white);
+          padding: 0 3.4rem;
         }
       }
     }
@@ -35,6 +96,7 @@
         a {
           text-shadow: none;
           display: block;
+          font-family: var(--font-heading);
 
           &:hover {
             background-color: transparent;
@@ -56,8 +118,39 @@
 
         &.current-menu-item,
         &.current-menu-parent {
+          background-color: var(--color-cadmium-yellow);
+
           > a {
-            color: $color-hover;
+            color: var(--color-cadmium-green);
+          }
+        }
+
+        &.home-icon {
+          a {
+            @include flex-center();
+
+            &:before {
+              content: "";
+              float: left;
+              margin-right: .7rem;
+              @include square(3.2rem);
+            }
+          }
+
+          &:not(.current-menu-item) {
+            a {
+              &:before {
+                background-image: url("assets/images/home-icon.png");
+              }
+            }
+          }
+
+          &.current-menu-item {
+            a {
+              &:before {
+                background-image: url("assets/images/home-icon-active.png");
+              }
+            }
           }
         }
       }
@@ -66,14 +159,6 @@
     .sub-menu-toggle {
       font-size: 14px;
       cursor: pointer;
-
-      &:after {
-        content: "\f078";
-        display: inline-block;
-        font-family: $font-awesome;
-        font-style: normal;
-        font-weight: 900;
-      }
     }
 
     @media (min-width: 992px) and (max-width: 1400px) {
@@ -236,16 +321,6 @@
 
               a {
                 padding: 8px 0;
-
-                &:before {
-                  content: "\f111";
-                  display: inline-block;
-                  font-family: $font-awesome;
-                  font-style: normal;
-                  font-weight: 400;
-                  font-size: 10px;
-                  margin-right: 10px;
-                }
               }
 
               .sub-menu-toggle {
@@ -326,7 +401,7 @@
                 width: auto;
                 height: auto;
                 font-size: 35px;
-                color: $color-primary !important;
+                color: $color-body !important;
                 line-height: inherit;
                 background-color: transparent;
                 @include flex-center;

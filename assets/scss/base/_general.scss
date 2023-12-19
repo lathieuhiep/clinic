@@ -2,6 +2,28 @@
   outline: none !important;
 }
 
+:root {
+  --font-body: #{$font-body};
+  --font-size-body: #{$font-size-body};
+  --color-body: #{$color-body};
+  --background-body: #{$background-body};
+
+  --font-heading: #{$font-heading};
+  --color-heading: #{$color-heading};
+  --font-size-h1: #{$h1-font-size};
+  --font-size-h2: #{$h2-font-size};
+  --font-size-h3: #{$h3-font-size};
+  --font-size-h4: #{$h4-font-size};
+  --font-size-h5: #{$h5-font-size};
+  --font-size-h6: #{$h6-font-size};
+
+  --color-white: #{$color-white};
+  --color-dim-gray: #{$color-dim-gray};
+  --color-salem: #{$color-salem};
+  --color-cadmium-yellow: #{$color-cadmium-yellow};
+  --color-cadmium-green: #{$color-cadmium-green};
+}
+
 html {
   min-height: 100%;
   font-size: 62.5%;
@@ -15,6 +37,8 @@ body {
 }
 
 a {
+  font-family: inherit;
+  line-height: inherit;
   @include transition();
 }
 
@@ -57,7 +81,7 @@ pre {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color:$color-white;
+  background-color: var(--color-white);
   z-index: 99999;
 }
 
@@ -92,6 +116,10 @@ pre {
   }
 }
 
+.reset-list {
+  @include reset-list();
+}
+
 /* Social network */
 .social-network-item {
   display: inline-block;
@@ -103,66 +131,6 @@ pre {
 
   a {
     display: block;
-  }
-}
-
-/* owl carousel navigation */
-.owl-carousel {
-  .owl-nav {
-    text-align: center;
-    margin-top: 15px;
-
-    button {
-      &.owl-prev,
-      &.owl-next {
-        margin: 0 6px;
-        color: $color-primary;
-        font-size: 20px;
-        line-height: normal;
-        @include transition();
-
-        &:hover {
-          color: $color-hover;
-        }
-      }
-    }
-  }
-
-  .owl-dots {
-    margin-top: 30px;
-    @include flex-center;
-
-    .owl-dot {
-      display: inline-block;
-      margin: 0 5px;
-
-      span {
-        display: block;
-        width: 10px;
-        height: 10px;
-        background-color: #000000;
-        border-radius: 50%;
-        @include transition(all 0.2s ease-in-out);
-      }
-
-      &.active,
-      &:hover {
-        span {
-          background-color: $background-hover;
-        }
-      }
-    }
-  }
-}
-
-.custom-equal-height-owl {
-  .owl-stage {
-    display: flex;
-
-    .owl-item {
-      display: flex;
-      flex: 1 0 auto;
-    }
   }
 }
 

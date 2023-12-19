@@ -1,14 +1,16 @@
 <?php
 // Register Back-End script
 add_action('admin_enqueue_scripts', 'clinic_register_back_end_scripts');
-function clinic_register_back_end_scripts(){
+function clinic_register_back_end_scripts(): void
+{
 	/* Start Get CSS Admin */
 	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/css/admin.css' ) );
 }
 
 // Remove jquery migrate
 add_action( 'wp_default_scripts', 'clinic_remove_jquery_migrate' );
-function clinic_remove_jquery_migrate( $scripts ) {
+function clinic_remove_jquery_migrate( $scripts ): void
+{
 	if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
 		$script = $scripts->registered['jquery'];
 		if ( $script->deps ) {
@@ -19,7 +21,8 @@ function clinic_remove_jquery_migrate( $scripts ) {
 
 // Register Front-End Styles
 add_action('wp_enqueue_scripts', 'clinic_register_front_end');
-function clinic_register_front_end() {
+function clinic_register_front_end(): void
+{
 	// remove style gutenberg
 	wp_dequeue_style('wp-block-library');
 	wp_dequeue_style('wp-block-library-theme');
@@ -31,10 +34,10 @@ function clinic_register_front_end() {
 	/** Load css **/
 
 	// font google
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap', array(), null );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Roboto:ital,wght@0,400;0,900;1,700&display=swap', array(), null );
 
 	// bootstrap css
-	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.2.3' );
+	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.3.2' );
 
 	// style theme
 	wp_enqueue_style( 'clinic-style', get_stylesheet_uri(), array(), clinic_get_version_theme() );

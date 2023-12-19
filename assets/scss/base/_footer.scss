@@ -12,7 +12,7 @@
 
   &__bottom {
     padding: 10px 0;
-    color: $color-white;
-    background-color: $color-primary;
+    color: var(--color-white);
+    background-color: $color-body;
   }
 }

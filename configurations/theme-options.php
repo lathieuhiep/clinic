@@ -25,61 +25,107 @@ if ( class_exists( 'CSF' ) ) {
 		'footer_after'        => '<pre>Contact me:<br />Zalo/Phone: 0975458209 - Skype: lathieuhiep - facebook: <a href="https://www.facebook.com/lathieuhiep" target="_blank">lathieuhiep</a></pre>',
 	) );
 
-	// Create a section general
+    //
+	// -> Create a section general
 	CSF::createSection( $clinic_prefix, array(
+        'id'    => 'opt_general_section',
 		'title'  => esc_html__( 'General', 'clinic' ),
-		'icon'   => 'fas fa-cog',
-		'fields' => array(
-			// favicon
-			array(
-				'id'      => 'opt_general_favicon',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Upload Image Favicon', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
-
-			// logo
-			array(
-				'id'      => 'opt_general_logo',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Upload Image Logo', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
-
-			// show loading
-			array(
-				'id'         => 'opt_general_loading',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'website loader', 'clinic' ),
-				'text_on'    => esc_html__( 'Yes', 'clinic' ),
-				'text_off'   => esc_html__( 'No', 'clinic' ),
-				'text_width' => 80,
-				'default'    => false
-			),
-
-			array(
-				'id'         => 'opt_general_image_loading',
-				'type'       => 'media',
-				'title'      => esc_html__( 'Upload Image Loading', 'clinic' ),
-				'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
-				'dependency' => array( 'opt_general_loading', '==', 'true' ),
-				'url'        => false
-			),
-
-			// show back to top
-			array(
-				'id'         => 'opt_general_back_to_top',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'Use Back To Top', 'clinic' ),
-				'text_on'    => esc_html__( 'Yes', 'clinic' ),
-				'text_off'   => esc_html__( 'No', 'clinic' ),
-				'text_width' => 80,
-				'default'    => true
-			),
-		)
+		'icon'   => 'fas fa-cog'
 	) );
+
+    // Global
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Global', 'clinic' ),
+        'fields' => array(
+            // favicon
+            array(
+                'id'      => 'opt_general_favicon',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Upload Image Favicon', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
+            // logo
+            array(
+                'id'      => 'opt_general_logo',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Upload Image Logo', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
+            // show loading
+            array(
+                'id'         => 'opt_general_loading',
+                'type'       => 'switcher',
+                'title'      => esc_html__( 'website loader', 'clinic' ),
+                'text_on'    => esc_html__( 'Yes', 'clinic' ),
+                'text_off'   => esc_html__( 'No', 'clinic' ),
+                'text_width' => 80,
+                'default'    => false
+            ),
+
+            array(
+                'id'         => 'opt_general_image_loading',
+                'type'       => 'media',
+                'title'      => esc_html__( 'Upload Image Loading', 'clinic' ),
+                'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
+                'dependency' => array( 'opt_general_loading', '==', 'true' ),
+                'url'        => false
+            ),
+
+            // show back to top
+            array(
+                'id'         => 'opt_general_back_to_top',
+                'type'       => 'switcher',
+                'title'      => esc_html__( 'Use Back To Top', 'clinic' ),
+                'text_on'    => esc_html__( 'Yes', 'clinic' ),
+                'text_off'   => esc_html__( 'No', 'clinic' ),
+                'text_width' => 80,
+                'default'    => true
+            ),
+        )
+    ) );
+
+    // Contact
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Contact', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'      => 'opt_general_working_time',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
+                'default' => '7:30 - 20:00'
+            ),
+
+            array(
+                'id'        => 'opt_general_hotline',
+                'type'      => 'repeater',
+                'title'     => esc_html__('Hotline', 'clinic'),
+                'fields'    => array(
+                    array(
+                        'id'    => 'phone',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Điện thoại', 'clinic' ),
+                    ),
+                ),
+
+                'default'   => array(
+                    array(
+                        'phone' => '0888.888.115',
+                    ),
+
+                    array(
+                        'phone' => '024.888.11115',
+                    )
+                )
+            ),
+
+        )
+    ) );
 
 	//
 	// Create a section menu
