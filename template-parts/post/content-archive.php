@@ -1,4 +1,6 @@
 <?php
+get_template_part( 'components/inc', 'breadcrumbs' );
+
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
 $per_row = clinic_get_option('opt_post_cat_per_row', '2');
 

@@ -3,15 +3,9 @@ $show_related = clinic_get_option('opt_post_single_related', '1');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">
-    <?php if ( has_post_thumbnail() ) :?>
-        <div class="single-post-content__image">
-            <?php the_post_thumbnail('full'); ?>
-        </div>
-    <?php endif; ?>
-
-    <h2 class="single-post-content__title">
+    <h1 class="single-post-content__title">
 		<?php the_title(); ?>
-    </h2>
+    </h1>
 
 	<?php clinic_post_meta(); ?>
 

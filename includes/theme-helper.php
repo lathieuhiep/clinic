@@ -166,24 +166,38 @@ function clinic_post_meta(): void {
 	?>
 
 	<div class="post-meta">
-        <span class="post-meta__author">
-            <?php esc_html_e( 'Author:', 'clinic' ); ?>
+        <div class="post-meta__item">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="2.5" y="5" width="15" height="12.5" rx="2" stroke="#969C9F" stroke-width="2"/>
+                    <path d="M3.3335 9.16669H16.6668" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7.5 13.3333H12.5" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6.6665 2.5L6.6665 5.83333" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M13.3335 2.5L13.3335 5.83333" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
 
-            <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                <?php the_author(); ?>
-            </a>
-        </span>
+            <div class="content">
+	            <?php esc_html_e( 'Ngày đăng: ', 'clinic' ); the_date(); ?>
+            </div>
+        </div>
 
-		<span class="post-meta__date">
-            <?php esc_html_e( 'Post date: ', 'clinic' );
-            the_date(); ?>
-        </span>
+        <div class="post-meta__item">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16.4397 17.0392C16.0598 15.9761 15.2229 15.0366 14.0586 14.3665C12.8943 13.6965 11.4677 13.3333 10.0002 13.3333C8.5326 13.3333 7.10605 13.6965 5.94175 14.3665C4.77746 15.0366 3.94049 15.976 3.56066 17.0392" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="9.99984" cy="6.66665" r="3.33333" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
 
-		<span class="post-meta__comments">
-            <?php
-            comments_popup_link( '0 ' . esc_html__( 'Comment', 'clinic' ), '1 ' . esc_html__( 'Comment', 'clinic' ), '% ' . esc_html__( 'Comments', 'clinic' ) );
-            ?>
-        </span>
+            <div class="content">
+	            <?php esc_html_e( 'Tác giả:', 'clinic' ); ?>
+
+                <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+		            <?php the_author(); ?>
+                </a>
+            </div>
+        </div>
 	</div>
 
 	<?php
