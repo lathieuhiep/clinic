@@ -15,12 +15,16 @@ if ( $sidebar !== 'hide' ) {
         <div class="row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
                 <?php if ( have_posts() ) : ?>
-                    <div class="content-archive-post <?php echo esc_attr( $grid_col ); ?>">
+                    <div class="content-archive-post">
 		                <?php
 		                while ( have_posts() ) :
 			                the_post();
                         ?>
                             <div class="item">
+                                <div class="post-thumbnail">
+		                            <?php the_post_thumbnail('large'); ?>
+                                </div>
+
                                 <div class="item__content">
                                     <h2 class="post-title">
                                         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
@@ -34,12 +38,6 @@ if ( $sidebar !== 'hide' ) {
                                         </a>
                                     </h2>
 
-                                    <div class="post-thumbnail">
-						                <?php the_post_thumbnail('large'); ?>
-                                    </div>
-
-					                <?php clinic_post_meta(); ?>
-
                                     <div class="post-desc">
                                         <p>
 							                <?php
@@ -51,12 +49,12 @@ if ( $sidebar !== 'hide' ) {
 							                ?>
                                         </p>
 
-                                        <a href="<?php the_permalink(); ?>" class="text-read-more">
-							                <?php esc_html_e('Read more', 'clinic'); ?>
-                                        </a>
-
 						                <?php clinic_link_page(); ?>
                                     </div>
+
+                                    <a href="<?php the_permalink(); ?>" class="text-read-more">
+		                                <?php esc_html_e('Chi tiết', 'clinic'); ?> >
+                                    </a>
                                 </div>
                             </div>
 		                <?php

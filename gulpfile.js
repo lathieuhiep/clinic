@@ -72,14 +72,26 @@ function buildStylesElementor() {
     return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
         .pipe(sass().on('error', sass.logError))
         .pipe(minifyCss({
-            compatibility: 'ie8',
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}extension/elementor-addon/css/`))
+        .pipe(dest(`./extension/elementor-addon/css/`))
         .pipe(browserSync.stream());
 }
 exports.buildStylesElementor = buildStylesElementor;
+
+// Task build style post
+function buildStylesPost() {
+    return src(`${pathAssets}/scss/post-type/post/post.scss`)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathAssets}/css/post/`))
+        .pipe(browserSync.stream());
+}
+exports.buildStylesPost = buildStylesPost;
 
 // buildJSTheme
 function buildJSTheme() {
@@ -114,6 +126,11 @@ function watchTask() {
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
+
+    watch([
+        `${pathAssets}/scss/variables-site/*.scss`,
+        `${pathAssets}/scss/post-type/post/*.scss`
+    ], buildStylesPost)
 
     watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 

@@ -60,11 +60,11 @@ $nav-link-font-weight: 40;
 
 // scss-docs-start container-max-widths
 $container-max-widths: (
-        sm: 540px,
-        md: 720px,
-        lg: 960px,
-        xl: 1140px,
-        xxl: 1140px
+        sm: 100%,
+        md: 100%,
+        lg: 100%,
+        xl: 1024px,
+        xxl: 1024px
 ) !default;
 
 // Include remainder of required Bootstrap stylesheets
@@ -86,6 +86,7 @@ $container-max-widths: (
 @import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/close";
 @import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/offcanvas";
 
 // Helpers
 @import "../../node_modules/bootstrap/scss/helpers";

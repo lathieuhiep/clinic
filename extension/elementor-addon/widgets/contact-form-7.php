@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
+class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 
 	public function get_categories() {
 		return array( 'my-theme' );
@@ -32,18 +32,28 @@ class clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 			'content_section',
 			[
 				'label' => esc_html__( 'Contact Form', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'heading',
+			[
+				'label'       => esc_html__( 'Heading', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Heading', 'clinic' ),
+				'label_block' => true
 			]
 		);
 
 		$this->add_control(
 			'contact_form_list',
 			[
-				'label' => esc_html__('Select Form', 'clinic'),
-				'type' => Controls_Manager::SELECT,
+				'label'       => esc_html__( 'Select Form', 'clinic' ),
+				'type'        => Controls_Manager::SELECT,
 				'label_block' => true,
-				'options' => clinic_get_form_cf7(),
-				'default' => '0',
+				'options'     => clinic_get_form_cf7(),
+				'default'     => '0',
 			]
 		);
 
@@ -53,14 +63,21 @@ class clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		if ( !empty( $settings['contact_form_list'] ) ) :
-	?>
+		if ( ! empty( $settings['contact_form_list'] ) ) :
+			?>
 
-		<div class="element-contact-form-7">
-			<?php echo do_shortcode('[contact-form-7 id="' . $settings['contact_form_list'] . '" ]'); ?>
-		</div>
+            <div class="element-contact-form-7">
+                <?php if ( $settings['heading'] ) : ?>
+                    <h3 class="element-contact-form-7__heading text-center">
+		                <?php echo esc_html( $settings['heading'] ); ?>
+                    </h3>
+                <?php endif; ?>
 
-	<?php
+
+				<?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
+            </div>
+
+		<?php
 		endif;
 	}
 

@@ -1,59 +1,91 @@
 .global-header {
   background-color: var(--color-white);
-  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.3);
 
   .top-nav {
-    display: grid;
-    grid-column-gap: 5.8rem;
-    grid-template-columns: 35.6rem 1fr;
-    align-items: center;
-
-    .info {
+    .navbar-top-grid {
       display: grid;
-      grid-gap: 4.5rem;
-      grid-template-columns: auto 1fr;
+      grid-column-gap: 5.8rem;
+      grid-template-columns: 35.6rem 1fr;
+      align-items: center;
 
-      &__item {
+      .info {
         display: grid;
-        grid-gap: 11px;
-        grid-template-columns: 3.6rem 1fr;
-        align-items: center;
+        grid-gap: 4.5rem;
+        grid-template-columns: auto 1fr;
 
-        .left-box {
-          @include square(3.6rem, 50%);
-          @include flex-center();
-          background-color: var(--color-heading);
-        }
+        &__item {
+          display: grid;
+          grid-gap: 11px;
+          grid-template-columns: 3.6rem 1fr;
+          align-items: center;
 
-        .right-box {
-          font-size: 1.6rem;
-
-          .heading {
-            font-size: 1.4rem;
-            line-height: 1.6rem;
-            color: var(--color-dim-gray);
+          .left-box {
+            @include square(3.6rem, 50%);
+            @include flex-center();
+            background-color: var(--color-heading);
           }
 
-          .phone-list {
-            .item-phone {
-              position: relative;
-              display: inline-block;
+          .right-box {
+            font-size: 1.6rem;
 
-              ~ .item-phone {
-                margin-left: 1rem;
+            .heading {
+              font-size: 1.4rem;
+              line-height: 1.6rem;
+              color: var(--color-dim-gray);
+            }
 
-                &:before {
-                  position: absolute;
-                  content: "-";
-                  top: 50%;
-                  left: -1rem;
-                  transform: translateY(-50%);
+            .phone-list {
+              .item-phone {
+                position: relative;
+                display: inline-block;
+
+                ~ .item-phone {
+                  margin-left: 1rem;
+
+                  &:before {
+                    position: absolute;
+                    content: "-";
+                    top: 50%;
+                    left: -1rem;
+                    transform: translateY(-50%);
+                  }
                 }
               }
             }
           }
         }
       }
+    }
+  }
+
+  .contact-mobile {
+    padding: .6rem 1rem;
+
+    .grid-control {
+      display: grid;
+      grid-gap: .5rem;
+      grid-template-columns: 1fr auto;
+
+      .item-control {
+        .wpcf7-form-control-wrap {
+          margin: 0;
+        }
+
+        .wpcf7-form-control {
+          padding: 0 1rem;
+          font-size: 1.2rem;
+          line-height: 3rem;
+          min-height: 3rem;
+        }
+      }
+    }
+
+    .wpcf7-submit {
+      padding: 0 .5rem;
+      display: block;
+      width: 100%;
+      font-size: 1.2rem;
+      min-height: 3rem;
     }
   }
 }
@@ -74,7 +106,7 @@
         height: inherit;
 
         ~ li {
-          margin-left: 9.2rem;
+          margin-left: 6rem;
         }
 
         > a {
@@ -101,12 +133,6 @@
           &:hover {
             background-color: transparent;
             color: $color-hover;
-          }
-        }
-
-        &:last-child {
-          a {
-            padding-right: 0;
           }
         }
 
@@ -476,6 +502,156 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+
+.top-nav-mobile {
+  height: 4.7rem;
+  background-color: var(--color-salem);
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .grid-warp {
+    padding-right: 2rem;
+    display: grid;
+    grid-gap: 1.2rem;
+    grid-template-columns: 5.7rem 1fr 3.8rem;
+    align-items: center;
+
+    .item {
+
+    }
+
+    .hamburger {
+      height: inherit;
+
+      .btn {
+        border: none;
+        height: 100%;
+        width: 100%;
+        background-color: var(--color-cadmium-yellow);
+      }
+    }
+
+    .contact {
+      a {
+        @include square(3.8rem, 50%);
+        @include flex-center();
+        border: .3rem solid #5AE0DA ;
+        background-color: var(--color-white);
+
+        .icon {
+          -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+          -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+          -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+          -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+          animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+.offcanvas-menu-mobile {
+  z-index: 9999999;
+}
+
+@-moz-keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+@-webkit-keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+@-o-keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+@keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
   }
 }
 

@@ -1,5 +1,11 @@
 form {
   &.wpcf7-form {
+    position: relative;
+
+    br {
+      display: none;
+    }
+
     p {
       position: relative;
       margin: 0;
@@ -25,15 +31,21 @@ form {
 
       &.wpcf7-form-control-wrap {
         display: block;
-        margin-bottom: 15px;
+
+        ~ .wpcf7-form-control-wrap {
+          margin-top: .9rem;
+        }
+
 
         input,
         textarea {
           height: auto;
           width: 100%;
           display: block;
-          border: 1px solid #e9ebed;
-          background-color: #f8f8f8;
+          color: rgba(0, 0, 0, 0.30);
+          border: none;
+          border-radius: .5rem;
+          background-color: var(--color-platinum);
           padding: 4px 12px;
           color: #202020;
 
@@ -54,7 +66,23 @@ form {
       border: none;
       cursor: pointer;
       text-transform: uppercase;
-      background: $background-primary;
+      background: var(--color-sunset-orange);
+    }
+
+    .wpcf7-spinner {
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .wpcf7-not-valid-tip {
+      margin-top: .8rem;
+    }
+
+    .wpcf7-response-output {
+      margin: 1rem 0;
     }
   }
 }

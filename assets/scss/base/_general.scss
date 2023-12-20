@@ -10,6 +10,7 @@
 
   --font-heading: #{$font-heading};
   --color-heading: #{$color-heading};
+  --font-anton: #{$font-anton};
   --font-size-h1: #{$h1-font-size};
   --font-size-h2: #{$h2-font-size};
   --font-size-h3: #{$h3-font-size};
@@ -22,6 +23,8 @@
   --color-salem: #{$color-salem};
   --color-cadmium-yellow: #{$color-cadmium-yellow};
   --color-cadmium-green: #{$color-cadmium-green};
+  --color-sunset-orange: #{$color-sunset-orange};
+  --color-platinum: #{$color-platinum};
 }
 
 html {
@@ -36,7 +39,12 @@ body {
   @include flex-column;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.67;
+}
+
 a {
+  display: inline-block;
   font-family: inherit;
   line-height: inherit;
   @include transition();
@@ -120,6 +128,10 @@ pre {
   @include reset-list();
 }
 
+#wpadminbar {
+  z-index: 99;
+}
+
 /* Social network */
 .social-network-item {
   display: inline-block;
@@ -136,18 +148,17 @@ pre {
 
 /* Breadcrumbs */
 .breadcrumbs {
-  .breadcrumbs-col {
-    padding: 15px 0;
-    border-bottom: 1px solid $border-color;
-  }
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 0;
+  background-color: #D5ECDE;
 }
 
 /* Pagination */
 .pagination {
   display: block;
   float: none;
-  text-align: center;
-  margin-top: 50px;
+  margin-top: 3rem;
 }
 
 .page-numbers {
@@ -158,22 +169,24 @@ pre {
   li {
     display: inline-block;
 
+    ~ li {
+      margin-left: .6rem;
+    }
+
     span,
     a {
       display: block;
       cursor: pointer;
       border: 1px solid #ddd;
       padding: 5px 12px;
+      font-weight: 700;
       position: relative;
-      -webkit-border-radius: 2px;
-      -moz-border-radius: 2px;
-      border-radius: 2px;
     }
 
     span.current,
     a:hover {
-      background: $background-hover;
-      border-color: $background-hover;
+      background: #60AD80;
+      border-color: #60AD80;
       color: #ffffff;
     }
   }

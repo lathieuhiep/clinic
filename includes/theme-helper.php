@@ -106,8 +106,8 @@ function clinic_pagination(): void {
 	the_posts_pagination( array(
 		'type'               => 'list',
 		'mid_size'           => 2,
-		'prev_text'          => esc_html__( 'Previous', 'clinic' ),
-		'next_text'          => esc_html__( 'Next', 'clinic' ),
+		'prev_text'          => '<<',
+		'next_text'          => '>>',
 		'screen_reader_text' => '&nbsp;',
 	) );
 }
@@ -148,7 +148,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 			$class_position_sidebar = ' order-1';
 		endif;
 
-		$class_col_content = 'col-12 col-md-8 col-lg-9' . $class_position_sidebar;
+		$class_col_content = 'col-12 col-md-8' . $class_position_sidebar;
 	else:
 		$class_col_content = 'col-md-12';
 	endif;
@@ -158,7 +158,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 
 function clinic_col_sidebar(): string
 {
-	return 'col-12 col-md-4 col-lg-3';
+	return 'col-12 col-md-4';
 }
 
 // Post Meta
@@ -263,4 +263,15 @@ function clinic_get_social_url(): void {
 
         endforeach;
     endif;
+}
+
+function clinic_preg_replace_ony_number($string): string|null
+{
+    $number = '';
+
+    if (!empty( $string )) {
+        $number = preg_replace('/[^0-9]/', '', strip_tags( $string ) );
+    }
+
+    return $number;
 }
