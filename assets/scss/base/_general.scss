@@ -11,6 +11,7 @@
   --font-heading: #{$font-heading};
   --color-heading: #{$color-heading};
   --font-anton: #{$font-anton};
+  --font-beau-rivage: #{$font-beau-rivage};
   --font-size-h1: #{$h1-font-size};
   --font-size-h2: #{$h2-font-size};
   --font-size-h3: #{$h3-font-size};
@@ -138,6 +139,26 @@ pre {
 
 .f-family-heading {
   font-family: var(--font-heading);
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+.fs-16 {
+  font-size: 1.6rem;
+}
+
+.color-white {
+  color: var(--color-white);
+}
+
+.color-cadmium-yellow {
+  color: var(--color-cadmium-yellow);
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 /* Social network */

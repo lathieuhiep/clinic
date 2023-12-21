@@ -1,0 +1,27 @@
+.element-image-box-grid {
+  &__layout {
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    .item-content {
+      &__heading {
+        margin-bottom: 0;
+        font-size: 2.6rem;
+        font-family: var(--font-anton);
+        font-weight: 400;
+      }
+
+      &__sub-heading {
+        margin: 0;
+        font-family: var(--font-beau-rivage);
+        font-size: 3.6rem;
+        line-height: 4.8rem;
+      }
+
+      &__image-sub {
+        margin-bottom: 1.4rem;
+      }
+    }
+  }
+}
