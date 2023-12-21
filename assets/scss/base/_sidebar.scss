@@ -22,7 +22,7 @@
 
 section {
   &.widget {
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -197,8 +197,11 @@ section {
 
         .title {
           margin-bottom: 10px;
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           overflow: hidden;
+          font-weight: 400;
+          line-height: 1.8rem;
+          font-family: var(--font-body);
         }
 
         .meta {
@@ -292,6 +295,19 @@ section {
     > div,
     > ul {
       padding: 1.1rem .9rem 1.4rem;
+    }
+
+    &.widget_media_image {
+      text-align: center;
+      padding-bottom: 1.6rem;
+
+      .widget-title {
+        margin-bottom: 1.6rem;
+      }
+
+      img {
+
+      }
     }
 
     &.appointment-form-widget {

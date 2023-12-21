@@ -23,7 +23,7 @@ get_template_part( 'components/inc', 'breadcrumbs' );
 
             <?php
             if ( $sidebar !== 'hide' ) :
-	            get_sidebar();
+	            get_sidebar('post');
             endif;
             ?>
         </div>

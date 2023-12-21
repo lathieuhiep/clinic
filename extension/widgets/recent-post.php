@@ -15,7 +15,7 @@ class clinic_recent_post_widget extends WP_Widget {
 			'description' => esc_html__( 'A widget show post', 'clinic' ),
 		);
 
-		parent::__construct( 'recent-post-widget', 'My Theme: Recent Post', $widget_ops );
+		parent::__construct( 'recent-post-widget', 'My Theme: Bài viết mới nhất', $widget_ops );
 	}
 
 	/**
@@ -81,11 +81,6 @@ class clinic_recent_post_widget extends WP_Widget {
 									<?php the_title(); ?>
                                 </a>
                             </h4>
-
-                            <p class="meta">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-								<?php echo get_the_date(); ?>
-                            </p>
                         </div>
                     </div>
 				<?php

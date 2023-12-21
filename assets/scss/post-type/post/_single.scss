@@ -1,8 +1,11 @@
 .single-post-warp {
   padding-top: 1.4rem;
+  padding-bottom: 2.7rem;
 }
 
 .single-post-content {
+  margin-bottom: 15px;
+
   &__image,
   .page-links {
     margin-bottom: 30px;
@@ -10,14 +13,9 @@
 
   &__title {
     margin-bottom: 1.6rem;
-    font-size: 2.4rem;
     line-height: 3rem;
     text-transform: uppercase;
     color: #FC0000;
-  }
-
-  &__detail {
-    margin-bottom: 15px;
   }
 
   &__tax {
@@ -48,25 +46,48 @@
   }
 }
 
-.related-posts {
-  &__title {
-    position: relative;
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
+.single-contact-us {
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
 
-    &:after {
-      position: absolute;
-      content: "";
-      left: 0;
-      bottom: 0;
-      width: 30px;
-      height: 1px;
-      background-color: $background-hover;
+.related-posts {
+  &__top {
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-gap: .8rem;
+    grid-template-columns: 2.8rem 1fr;
+    align-items: center;
+
+    .icon {
+      text-align: center;
+      @include square(2.8rem, 50%);
+      background: #F00;
+    }
+
+    .title {
+      font-size: 2.4rem;
     }
   }
 
-  .item {
-    margin-bottom: 15px;
+  .grid-layout {
+    display: grid;
+    grid-gap: 1.6rem 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .related-post-item {
+    .post-image {
+      margin-bottom: 1rem;
+    }
+
+    .title-post {
+      font-size: 1.5rem;
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 2rem;
+    }
   }
 }

@@ -132,6 +132,14 @@ pre {
   z-index: 99;
 }
 
+.f-family-body {
+  font-family: var(--font-body);
+}
+
+.f-family-heading {
+  font-family: var(--font-heading);
+}
+
 /* Social network */
 .social-network-item {
   display: inline-block;

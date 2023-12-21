@@ -17,8 +17,7 @@ function clinic_widget_registration($name, $id, $description = ''): void {
 
 function clinic_multiple_widget_init(): void {
 	clinic_widget_registration( esc_html__('Sidebar Main', 'clinic'), 'sidebar-main' );
-	clinic_widget_registration( esc_html__('Sidebar Shop', 'clinic'), 'sidebar-wc', esc_html__('Display sidebar on page shop.', 'clinic') );
-	clinic_widget_registration( esc_html__('Sidebar Product', 'clinic'), 'sidebar-wc-product', esc_html__('Display sidebar on page single product.', 'clinic') );
+	clinic_widget_registration( esc_html__('Sidebar Post', 'clinic'), 'sidebar-post', esc_html__('Display sidebar on post.', 'clinic') );
 
 	clinic_widget_registration( esc_html__('Sidebar Footer Column 1', 'clinic'), 'sidebar-footer-column-1' );
 	clinic_widget_registration( esc_html__('Sidebar Footer Column 2', 'clinic'), 'sidebar-footer-column-2' );

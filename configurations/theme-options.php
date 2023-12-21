@@ -256,7 +256,7 @@ if ( class_exists( 'CSF' ) ) {
 				'id'      => 'opt_post_single_related_limit',
 				'type'    => 'number',
 				'title'   => esc_html__( 'Limit related post', 'clinic' ),
-				'default' => 3,
+				'default' => 6,
 			),
 		)
 	) );
