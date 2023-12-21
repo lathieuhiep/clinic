@@ -1,12 +1,11 @@
 <?php
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
 
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Widget_Base;
-
-if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
-}
 
 class Clinic_Elementor_Image_Box_List extends Widget_Base
 {
@@ -96,19 +95,19 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Danh sách', 'textdomain' ),
+				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => [
 					[
 						'name' => 'list_title',
-						'label' => esc_html__( 'Title', 'textdomain' ),
+						'label' => esc_html__( 'Title', 'clinic' ),
 						'type' => Controls_Manager::TEXT,
-						'default' => esc_html__( 'List Title' , 'textdomain' ),
+						'default' => esc_html__( 'List Title' , 'clinic' ),
 						'label_block' => true,
 					],
 					[
 						'name' => 'list_image',
-						'label' => esc_html__( 'Image', 'textdomain' ),
+						'label' => esc_html__( 'Image', 'clinic' ),
 						'type' => Controls_Manager::MEDIA,
 						'default' => [
 							'url' => Utils::get_placeholder_image_src(),
@@ -116,18 +115,18 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 					],
 					[
 						'name' => 'list_content',
-						'label' => esc_html__( 'Content', 'textdomain' ),
+						'label' => esc_html__( 'Content', 'clinic' ),
 						'type' => Controls_Manager::TEXTAREA,
-						'default' => esc_html__( 'List Content' , 'textdomain' ),
+						'default' => esc_html__( 'List Content' , 'clinic' ),
 						'label_block' => true,
 					],
 				],
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
+						'list_title' => esc_html__( 'Title #1', 'clinic' ),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
+						'list_title' => esc_html__( 'Title #2', 'clinic' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -151,7 +150,7 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 				'label' => esc_html__('Content Color', 'clinic'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-image-box-list__grid .item__content' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .element-image-box-list .item__content' => 'color: {{VALUE}};'
 				],
 			]
 		);
