@@ -407,8 +407,12 @@ section {
           }
         }
 
-        .cat-item {
+        li {
+          position: relative;
+
           a {
+            position: relative;
+            z-index: 1;
             color: var(--color-white);
           }
 
@@ -443,6 +447,21 @@ section {
                 .children {
                   padding-top: 0;
                 }
+              }
+            }
+          }
+
+          .icon-has-child-cate {
+            position: absolute;
+            top: .8rem;
+            right: 1.2rem;
+            @include transition();
+          }
+
+          > a {
+            &.active {
+              + .icon-has-child-cate {
+                transform: rotate(180deg);
               }
             }
           }

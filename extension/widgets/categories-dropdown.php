@@ -30,11 +30,15 @@ class clinic_categories_dropdown_widget extends WP_Widget {
         if ( ! empty( $instance['title'] ) ) {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
+
+		$parent_categories = get_categories( array( 'parent' => 0 ) );
     ?>
         <ul class="widget-warp">
-            <?php wp_list_categories(array(
-                    'title_li' => ''
-            )); ?>
+            <?php
+            foreach ($parent_categories as $parent_category) :
+                $this->get_child_categories( $parent_category );
+             endforeach;
+             ?>
         </ul>
     <?php
 
@@ -80,6 +84,46 @@ class clinic_categories_dropdown_widget extends WP_Widget {
         $instance['title'] = strip_tags( $new_instance['title'] );
 
         return $instance;
+    }
+
+    function get_child_categories($parent_category): void {
+	    $parent_category_id = $parent_category->term_id;
+	    $child_categories = get_categories( array( 'parent' => $parent_category_id ) );
+
+    if ( $child_categories ) :
+    ?>
+        <li class="cat-item cat-item-has-child">
+            <a class="cat-item__link cate-link-has-child" href="<?php echo esc_url( get_category_link( $parent_category_id ) ); ?>">
+		        <?php echo esc_html( $parent_category->name ); ?>
+            </a>
+
+            <div class="icon-has-child-cate">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="white"/>
+                </svg>
+            </div>
+
+            <ul class="children">
+		        <?php foreach ($child_categories as $child_category) : ?>
+                    <li class="cat-item">
+                        <a href="<?php echo esc_url( get_category_link( $child_category->term_id ) ); ?>">
+					        <?php echo esc_html( $child_category->name ); ?>
+                        </a>
+
+				        <?php $this->get_child_categories($child_category); ?>
+                    </li>
+		        <?php endforeach; ?>
+            </ul>
+        </li>
+
+    <?php else: ?>
+        <li class="cat-item">
+            <a class="cat-item__link" href="<?php echo esc_url( get_category_link( $parent_category_id ) ); ?>">
+		        <?php echo esc_html( $parent_category->name ); ?>
+            </a>
+        </li>
+    <?php
+        endif;
     }
 }
 

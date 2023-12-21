@@ -42,22 +42,37 @@
         /* btn mobile End */
 
         /* Start Gallery Single */
-        $( document ).general_owlCarousel_custom( '.site-post-slides' );
+        $( document ).general_owlCarousel_custom( '.site-post-slides' )
         /* End Gallery Single */
 
+        //
+        const cateLinkHasChildWidget = $('.categories-dropdown-widget .cate-link-has-child')
+
+        if ( cateLinkHasChildWidget.length ) {
+            cateLinkHasChildWidget.each(function () {
+                $(this).on('click', function (e) {
+                    e.preventDefault()
+
+                    $(this).toggleClass('active')
+                    $(this).closest( '.cat-item' ).siblings().find(cateLinkHasChildWidget).removeClass( 'active' )
+                    $(this).parent().children( '.children' ).slideToggle();
+                    $(this).parents( '.cat-item-has-child' ).siblings().find('.children').slideUp();
+                })
+            })
+        }
     });
 
     // loading
     $( window ).on( "load", function() {
 
-        $( '#site-loadding' ).remove();
+        $( '#site-loadding' ).remove()
 
     });
 
     // scroll event
     $( window ).scroll( function() {
 
-        if ( timer_clear ) clearTimeout(timer_clear);
+        if ( timer_clear ) clearTimeout(timer_clear)
 
         timer_clear = setTimeout( function() {
 
@@ -65,9 +80,9 @@
             let $scrollTop = $(this).scrollTop();
 
             if ( $scrollTop > 200 ) {
-                $('#back-top').addClass('active_top');
+                $('#back-top').addClass('active_top')
             }else {
-                $('#back-top').removeClass('active_top');
+                $('#back-top').removeClass('active_top')
             }
             /* End scroll back top */
 
@@ -78,7 +93,7 @@
     // function call owlCarousel
     $.fn.general_owlCarousel_custom = function ( class_item ) {
 
-        let class_item_owlCarousel   =   $( class_item );
+        let class_item_owlCarousel   =   $( class_item )
 
         if ( class_item_owlCarousel.length ) {
 
