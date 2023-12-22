@@ -182,6 +182,111 @@ pre {
   background-color: #D5ECDE;
 }
 
+/* owl carousel navigation */
+.owl-carousel {
+  .owl-nav {
+    text-align: center;
+    margin-top: 15px;
+
+    button {
+      &.owl-prev,
+      &.owl-next {
+        margin: 0 6px;
+        color: var(--color-body);
+        font-size: 20px;
+        line-height: normal;
+        @include transition();
+
+        &:hover {
+          color: $color-hover;
+        }
+      }
+    }
+  }
+
+  .owl-dots {
+    margin-top: 30px;
+    @include flex-center;
+
+    .owl-dot {
+      display: inline-block;
+      margin: 0 5px;
+
+      span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #000000;
+        border-radius: 50%;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &.active,
+      &:hover {
+        span {
+          background-color: $background-hover;
+        }
+      }
+    }
+  }
+}
+
+.custom-equal-height-owl {
+  .owl-stage {
+    display: flex;
+
+    .owl-item {
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  .breadcrumbs-col {
+    padding: 15px 0;
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+/* Pagination */
+.pagination {
+  display: block;
+  float: none;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.page-numbers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+
+    span,
+    a {
+      display: block;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      padding: 5px 12px;
+      position: relative;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+    }
+
+    span.current,
+    a:hover {
+      background: $background-hover;
+      border-color: $background-hover;
+      color: #ffffff;
+    }
+  }
+}
+
 /* Pagination */
 .pagination {
   display: block;

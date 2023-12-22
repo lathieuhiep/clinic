@@ -1,0 +1,38 @@
+.element-box-content-line {
+  &__grid {
+    margin: 0 0 6rem;
+    position: relative;
+    display: inline-grid;
+    grid-column-gap: 12.6rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    &:before {
+      position: absolute;
+      content: "";
+      left: 9rem;
+      right: 9rem;
+      top: 50%;
+      border-top: 2px dotted #14755D;
+      transform: translateY(-50%);
+    }
+
+    .item {
+      position: relative;
+
+      &__thumbnail {
+
+      }
+
+      &__title {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        font-size: 1.7rem;
+        font-weight: 500;
+        line-height: 2.2rem;
+        width: 15rem;
+        transform: translate(-50%, 16px);
+      }
+    }
+  }
+}

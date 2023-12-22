@@ -17,7 +17,7 @@
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', ElementCarouselSlider);
 
         /* Element carousel images */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-carousel-images.default', ElementCarouselSlider);
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-carousel-multiple-rows.default', ElementCarouselSlider);
     });
 
 })(jQuery);

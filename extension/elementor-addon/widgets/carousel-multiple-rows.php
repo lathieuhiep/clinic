@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -7,31 +8,36 @@ use Elementor\Controls_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
+class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
 
-	public function get_categories() {
+	public function get_categories(): array {
 		return array( 'my-theme' );
 	}
 
-	public function get_name() {
-		return 'clinic-carousel-images';
+	public function get_name(): string {
+		return 'clinic-carousel-multiple-rows';
 	}
 
-	public function get_title() {
-		return esc_html__( 'Carousel Images', 'clinic' );
+	public function get_title(): string {
+		return esc_html__( 'Carousel Multiple Rows', 'clinic' );
 	}
 
-	public function get_icon() {
+	public function get_icon(): string {
 		return 'eicon-slider-album';
 	}
 
-	protected function _register_controls() {
+	public function get_keywords(): array
+	{
+		return ['image', 'list', 'content', 'rows' ];
+	}
+
+	protected function _register_controls(): void {
 
 		// Section carousel images
 		$this->start_controls_section(
 			'section_carousel_images',
 			[
-				'label' => __( 'Carousel Images', 'clinic' ),
+				'label' => __( 'Carousel Multiple Rows', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -40,7 +46,7 @@ class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Name', 'clinic' ),
+				'label' => esc_html__( 'Title', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Title #1' , 'clinic' ),
 				'label_block' => true,
@@ -59,17 +65,12 @@ class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
 		);
 
 		$repeater->add_control(
-			'list_link',
+			'list_content',
 			[
-				'label' => esc_html__( 'Link', 'clinic' ),
-				'type' => Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'clinic' ),
-				'default' => [
-					'url' => '',
-					'is_external' => true,
-					'nofollow' => true,
-					'custom_attributes' => '',
-				],
+				'label' => esc_html__( 'Content', 'clinic' ),
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'List Content' , 'clinic' ),
+				'label_block' => true,
 			]
 		);
 
@@ -215,144 +216,63 @@ class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'margin_item',
+		$this->end_controls_section();
+
+		// Section title style
+		$this->start_controls_section(
+			'section_title_style',
 			[
-				'label'   => esc_html__( 'Space Between Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 20,
-				'min'     => 0,
-				'max'     => 100,
-				'step'    => 1,
+				'label' => __( 'Title', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'min_width_1200',
+			'title_color',
 			[
-				'label'     => esc_html__( 'Min Width 1200px', 'clinic' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
+				'label' => esc_html__( 'Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-carousel-multiple-rows .col-box .item__content .title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .element-carousel-multiple-rows .col-box .item__content .title',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Section content style
+		$this->start_controls_section(
+			'section_content_style',
+			[
+				'label' => __( 'Content', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'item',
+			'content_color',
 			[
-				'label'   => esc_html__( 'Number of Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 4,
-				'min'     => 1,
-				'max'     => 100,
-				'step'    => 1,
+				'label' => esc_html__( 'Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-carousel-multiple-rows .col-box .item__content .desc' => 'color: {{VALUE}}',
+				],
 			]
 		);
 
-		$this->add_control(
-			'min_width_992',
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
 			[
-				'label'     => esc_html__( 'Min Width 992px', 'clinic' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'item_992',
-			[
-				'label'   => esc_html__( 'Number of Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 2,
-				'min'     => 1,
-				'max'     => 100,
-				'step'    => 1,
-			]
-		);
-
-		$this->add_control(
-			'min_width_768',
-			[
-				'label'     => esc_html__( 'Min Width 768px', 'clinic' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'item_768',
-			[
-				'label'   => esc_html__( 'Number of Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 2,
-				'min'     => 1,
-				'max'     => 100,
-				'step'    => 1,
-			]
-		);
-
-		$this->add_control(
-			'min_width_568',
-			[
-				'label'     => esc_html__( 'Min Width 568px', 'clinic' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'item_568',
-			[
-				'label'   => esc_html__( 'Number of Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 2,
-				'min'     => 1,
-				'max'     => 100,
-				'step'    => 1,
-			]
-		);
-
-		$this->add_control(
-			'margin_item_568',
-			[
-				'label'   => esc_html__( 'Space Between Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 15,
-				'min'     => 0,
-				'max'     => 100,
-				'step'    => 1,
-			]
-		);
-
-		$this->add_control(
-			'max_width_567',
-			[
-				'label'     => esc_html__( 'Max Width 567px', 'clinic' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'item_567',
-			[
-				'label'   => esc_html__( 'Number of Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 1,
-				'min'     => 1,
-				'max'     => 100,
-				'step'    => 1,
-			]
-		);
-
-		$this->add_control(
-			'margin_item_567',
-			[
-				'label'   => esc_html__( 'Space Between Item', 'clinic' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 0,
-				'min'     => 0,
-				'max'     => 100,
-				'step'    => 1,
+				'name' => 'content_typography',
+				'selector' => '{{WRAPPER}} .element-carousel-multiple-rows .col-box .item__content .desc',
 			]
 		);
 
@@ -373,7 +293,7 @@ class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
 				'label' => esc_html__( 'Dots Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-carousel-images .owl-carousel .owl-dots .owl-dot span' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .element-carousel-multiple-rows .owl-carousel .owl-dots .owl-dot span' => 'background-color: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -392,7 +312,7 @@ class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
 				'label' => esc_html__( 'Dots Color Hover', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-carousel-images .owl-carousel .owl-dots .owl-dot.active span, {{WRAPPER}} .element-carousel-images .owl-carousel .owl-dots .owl-dot:hover span' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .element-carousel-multiple-rows .owl-carousel .owl-dots .owl-dot.active span, {{WRAPPER}} .element-carousel-multiple-rows .owl-carousel .owl-dots .owl-dot:hover span' => 'background-color: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -406,68 +326,59 @@ class clinic_Elementor_Addon_Carousel_Images extends Widget_Base {
 		);
 
 		$this->end_controls_section();
-
 	}
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
 		$data_settings_owl = [
-			'loop'       => ( 'yes' === $settings['loop'] ),
-			'nav'        => ( 'yes' === $settings['nav'] ),
-			'dots'       => ( 'yes' === $settings['dots'] ),
-			'margin'     => $settings['margin_item'],
-			'autoplay'   => ( 'yes' === $settings['autoplay'] ),
-			'responsive' => [
-				'0' => array(
-					'items'  => $settings['item_567'],
-					'margin' => $settings['margin_item_567']
-				),
-
-				'576' => array(
-					'items'  => $settings['item_568'],
-					'margin' => $settings['margin_item_568']
-				),
-
-				'768' => array(
-					'items' => $settings['item_768']
-				),
-
-				'992' => array(
-					'items' => $settings['item_992']
-				),
-
-				'1200' => array(
-					'items' => $settings['item']
-				),
-			],
+			'loop'     => ( 'yes' === $settings['loop'] ),
+			'nav'      => ( 'yes' === $settings['nav'] ),
+			'dots'     => ( 'yes' === $settings['dots'] ),
+			'autoplay' => ( 'yes' === $settings['autoplay'] ),
+			'items'    => 1
 		];
 		?>
 
-        <div class="element-carousel-images">
+        <div class="element-carousel-multiple-rows">
             <div class="custom-owl-carousel owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode( $data_settings_owl ) ; ?>'>
 				<?php
-				foreach ( $settings['list'] as $index => $item ) :
-					$image_id = $item['list_image']['id'];
-					$url = $item['list_link']['url'];
+                $i = 1;
+				$totalList = count($settings['list']);
+				$rows = 2;
 
+                foreach ( $settings['list'] as $item ) :
+					$image_id = $item['list_image']['id'];
+
+                    if ( $i == 1 || $i % $rows == 1 ) :
                 ?>
+                    <div class="col-box">
+                <?php endif; ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-	                    <?php
-                        echo wp_get_attachment_image( $image_id, 'full' );
+                        <div class="item__content">
+                            <h3 class="title">
+                                <?php echo esc_html($item['list_title']); ?>
+                            </h3>
 
-	                    if ( $url ) :
-	                        $link_key = 'link_' . $index;
-	                        $this->add_link_attributes( $link_key, $item['list_link'] );
-                        ?>
+                            <div class="desc">
+	                            <?php echo wpautop($item['list_content']); ?>
+                            </div>
+                        </div>
 
-                            <a class="item__link" <?php echo $this->get_render_attribute_string( $link_key ); ?>></a>
-
-						<?php endif; ?>
+                        <div class="item__thumbnail">
+                            <?php echo wp_get_attachment_image( $image_id, 'full' ); ?>
+                        </div>
                     </div>
 
-				<?php endforeach; ?>
+                <?php if ( $i == $totalList ||  $i % $rows == 0 ) : ?>
+                    </div>
+				<?php
+				    endif;
+
+	                $i++;
+				endforeach;
+                ?>
             </div>
         </div>
 

@@ -1,0 +1,30 @@
+.element-carousel-multiple-rows {
+  .col-box {
+    .item {
+      display: grid;
+      grid-gap: 3.4rem;
+      grid-template-columns: repeat(2, 1fr);
+
+      ~ .item {
+        margin-top: 5.7rem;
+      }
+
+      &:nth-child(odd) {
+        .item__content {
+          order: 2;
+        }
+
+        .item__thumbnail {
+          order: 1;
+        }
+      }
+
+      &__content {
+        .title {
+          font-size: 2rem;
+          font-family: var(--font-body);
+        }
+      }
+    }
+  }
+}

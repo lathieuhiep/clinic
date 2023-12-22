@@ -1,0 +1,18 @@
+.element-heading-between-line {
+  &__grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 10rem minmax(max-content, auto) 10rem;
+    align-items: center;
+    justify-content: center;
+
+    .line {
+      height: .15rem;
+      background-color: var(--color-heading);
+    }
+
+    .heading {
+      margin: 0;
+    }
+  }
+}
