@@ -21,8 +21,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slides.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-text.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-carousel.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
+
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/carousel-images.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-box.php' );
@@ -38,13 +37,17 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content-list.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-list-link.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-content-list.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/number-list-content.php' );
 
 	// register add on
 //	$widgets_manager->register( new \clinic_Elementor_Addon_Slides() );
 //	$widgets_manager->register( new \clinic_Elementor_Addon_About_Text() );
 //	$widgets_manager->register( new \clinic_Elementor_Addon_Post_Carousel() );
-//	$widgets_manager->register( new \clinic_Elementor_Addon_Post_Grid() );
-//	$widgets_manager->register( new \clinic_Elementor_Addon_Testimonial_Slider() );
+
+
 //	$widgets_manager->register( new \clinic_Elementor_Addon_Carousel_Images() );
 
 //	$widgets_manager->register( new \clinic_Elementor_Addon_Info_Box() );
@@ -60,6 +63,9 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content_List() );
 	$widgets_manager->register( new \Clinic_Elementor_Image_List_Link() );
 	$widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
+	$widgets_manager->register( new \Clinic_Elementor_Image_Content_List() );
+	$widgets_manager->register( new \clinic_Elementor_Addon_Testimonial_Slider() );
+	$widgets_manager->register( new \Clinic_Elementor_Number_List_Content() );
 }
 
 // Register scripts
@@ -68,7 +74,11 @@ function clinic_elementor_scripts(): void {
 	$clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
 	if ( $clinic_check_elementor == 'builder' ) {
+		wp_enqueue_style( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/owl-carousel/owl.carousel.min.css' ), array(), '2.3.4' );
+
         wp_enqueue_style( 'clinic-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/elementor-addon.min.css' ), array(), clinic_get_version_theme() );
+
+		wp_enqueue_script( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/owl-carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
 
 		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.js' ), array( 'jquery' ), '1.0.0', true );
 	}

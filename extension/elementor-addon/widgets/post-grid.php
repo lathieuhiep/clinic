@@ -8,7 +8,6 @@ if (!defined('ABSPATH')) exit;
 
 class clinic_Elementor_Addon_Post_Grid extends Widget_Base
 {
-
     public function get_categories()
     {
         return array('my-theme');
@@ -45,9 +44,8 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             'select_cat',
             [
                 'label' => esc_html__('Select Category', 'clinic'),
-                'type' => Controls_Manager::SELECT2,
+                'type' => Controls_Manager::SELECT,
                 'options' => clinic_check_get_cat('category'),
-                'multiple' => true,
                 'label_block' => true
             ]
         );
@@ -57,7 +55,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             [
                 'label' => esc_html__('Number of Posts', 'clinic'),
                 'type' => Controls_Manager::NUMBER,
-                'default' => 6,
+                'default' => 3,
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
@@ -339,32 +337,47 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
                                     </a>
                                 </div>
 
-                                <h2 class="item-post__title">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php the_title(); ?>
+                                <div class="item-post__box">
+                                    <h3 class="title">
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h3>
+
+                                    <?php if ($settings['show_excerpt'] == 'show') : ?>
+                                        <div class="content">
+                                            <p>
+                                                <?php
+                                                if (has_excerpt()) :
+                                                    echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
+                                                else:
+                                                    echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
+                                                endif;
+                                                ?>
+                                            </p>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <a class="read-more" href="<?php the_permalink(); ?>">
+                                        <?php esc_html_e('Xem thêm', 'clinic'); ?>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M18 12L8 12" stroke="#3C9159" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M21.6427 11.7856L18.2116 9.72696C17.6784 9.40703 17 9.79112 17 10.413V13.587C17 14.2089 17.6784 14.593 18.2116 14.273L21.6427 12.2144C21.8045 12.1173 21.8045 11.8827 21.6427 11.7856Z" fill="#3C9159"/>
+                                        </svg>
                                     </a>
-                                </h2>
-
-                                <?php if ($settings['show_excerpt'] == 'show') : ?>
-
-                                    <div class="item-post__content">
-                                        <p>
-                                            <?php
-                                            if (has_excerpt()) :
-                                                echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
-                                            else:
-                                                echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
-                                            endif;
-                                            ?>
-                                        </p>
-                                    </div>
-
-                                <?php endif; ?>
+                                </div>
                             </div>
                         </div>
 
                     <?php endwhile;
                     wp_reset_postdata(); ?>
+                </div>
+
+                <div class="action-box text-center">
+                    <a class="btn-link-cate" href="<?php echo esc_url(get_category_link($cat_post)); ?>">
+                        <?php esc_html_e('xem thêm bài viết', 'clinic'); ?>
+                    </a>
                 </div>
             </div>
 

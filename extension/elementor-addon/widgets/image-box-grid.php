@@ -145,6 +145,50 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 		);
 
 		$this->end_controls_section();
+
+        // Tab style
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Style', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'heading_color',
+			[
+				'label'     =>  esc_html__( 'Heading Color', 'clinic' ),
+				'type'      =>  Controls_Manager::COLOR,
+				'selectors' =>  [
+					'{{WRAPPER}} .element-image-box-grid__layout .item-content__heading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'sub_heading_color',
+			[
+				'label'     =>  esc_html__( 'Sub Heading Color', 'clinic' ),
+				'type'      =>  Controls_Manager::COLOR,
+				'selectors' =>  [
+					'{{WRAPPER}} .element-image-box-grid__layout .item-content__sub-heading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'desc_color',
+			[
+				'label'     =>  esc_html__( 'Description Color', 'clinic' ),
+				'type'      =>  Controls_Manager::COLOR,
+				'selectors' =>  [
+					'{{WRAPPER}} .element-image-box-grid__layout .item-content__desc' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**

@@ -107,8 +107,7 @@
                         autoplaySpeed: 800,
                         navSpeed: 800,
                         dotsSpeed: 800,
-                        autoHeight: false,
-                        navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+                        autoHeight: false
                     };
 
                     let config = $.extend( defaults, slider.data( 'settings-owl') );
