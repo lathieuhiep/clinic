@@ -183,16 +183,13 @@ section {
       &__list {
         .post {
           margin-bottom: 1.2rem;
-          @include grid-columns(12px, 110px 1fr);
+          display: grid;
+          grid-gap: 1.2rem;
+          grid-template-columns: 10rem 1fr;
 
           &:last-child {
             margin-bottom: 0;
           }
-        }
-
-        .image {
-          width: 110px;
-          flex: 0 0 auto;
         }
 
         .title {

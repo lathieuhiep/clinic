@@ -1,15 +1,14 @@
-.archive-post-warp {
-  padding-top: 2.3rem;
-}
-
 .content-archive-post {
   .item {
     display: grid;
     grid-gap: 1.3rem;
-    grid-template-columns: 23rem 1fr;
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px dashed #9B9B9B;
+
+    @media (min-width: 576px) {
+      grid-template-columns: 23rem 1fr;
+    }
 
     &__content {
       .post-title {

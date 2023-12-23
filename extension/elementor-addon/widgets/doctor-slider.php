@@ -158,17 +158,19 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                             </div>
 
                             <div class="info">
-                                <p class="position">
-                                    <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true) ); ?>
-                                </p>
+                                <div class="info__top">
+                                    <p class="position">
+		                                <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true) ); ?>
+                                    </p>
 
-                                <h3 class="name">
-	                                <?php the_title(); ?>
-                                </h3>
+                                    <h3 class="name">
+		                                <?php the_title(); ?>
+                                    </h3>
 
-		                        <p class="specialist">
-			                        <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true) ); ?>
-                                </p>
+                                    <p class="specialist">
+		                                <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true) ); ?>
+                                    </p>
+                                </div>
 
                                 <?php if ( $contentArr ) : ?>
                                     <ul class="reset-list content">

@@ -1,8 +1,22 @@
 .element-image-box-list {
   &__grid {
     display: grid;
-    grid-column-gap: 9.3rem;
-    grid-template-columns: repeat(4, 1fr);
+
+    @media (min-width: 1200px) {
+      grid-column-gap: 9.3rem;
+    }
+
+    @media (max-width: 1199px) {
+      grid-gap: 2.4rem;
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .item {
       &__thumbnail {

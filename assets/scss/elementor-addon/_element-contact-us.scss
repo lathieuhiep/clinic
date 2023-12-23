@@ -9,7 +9,14 @@
   &__list {
     display: grid;
     grid-gap: 2.8rem;
-    grid-template-columns: repeat(3, 1fr);
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .item {
       position: relative;

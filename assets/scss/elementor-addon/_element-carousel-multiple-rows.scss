@@ -3,20 +3,23 @@
     .item {
       display: grid;
       grid-gap: 3.4rem;
-      grid-template-columns: repeat(2, 1fr);
+
+      @media (min-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+
+        &:nth-child(odd) {
+          .item__content {
+            order: 2;
+          }
+
+          .item__thumbnail {
+            order: 1;
+          }
+        }
+      }
 
       ~ .item {
         margin-top: 5.7rem;
-      }
-
-      &:nth-child(odd) {
-        .item__content {
-          order: 2;
-        }
-
-        .item__thumbnail {
-          order: 1;
-        }
       }
 
       &__content {

@@ -52,13 +52,22 @@
     margin: 0 auto;
     display: grid;
     grid-gap: 1.3rem;
-    grid-template-columns: 38.4rem 1fr;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 38.4rem 1fr;
+    }
+
+    &__image {
+      @media (max-width: 767px) {
+        text-align: center;
+
+        img {
+          display: inline-block;
+        }
+      }
+    }
 
     &__content {
-      .box {
-
-      }
-
       .name {
         position: relative;
         margin-bottom: 2rem;
@@ -120,5 +129,4 @@
       }
     }
   }
-
 }

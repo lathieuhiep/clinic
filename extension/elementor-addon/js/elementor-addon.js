@@ -22,7 +22,27 @@
                     thumbItem: 5,
                     thumbMargin: 6,
                     controls: false,
-                    currentPagerPosition: 'left'
+                    currentPagerPosition: 'left',
+                    responsive : [
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                thumbItem: 4
+                            }
+                        },
+                        {
+                            breakpoint: 575,
+                            settings: {
+                                thumbItem: 3
+                            }
+                        },
+                        {
+                            breakpoint: 375,
+                            settings: {
+                                thumbItem: 2
+                            }
+                        }
+                    ]
                 })
 
                 $('.doctor-slider-button-prev').click(function () {
