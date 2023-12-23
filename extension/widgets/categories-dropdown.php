@@ -31,7 +31,10 @@ class clinic_categories_dropdown_widget extends WP_Widget {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
 
-		$parent_categories = get_categories( array( 'parent' => 0 ) );
+		$parent_categories = get_categories( array(
+                'parent' => 0,
+                'hide_empty' => true
+        ) );
     ?>
         <ul class="widget-warp">
             <?php
@@ -88,7 +91,10 @@ class clinic_categories_dropdown_widget extends WP_Widget {
 
     function get_child_categories($parent_category): void {
 	    $parent_category_id = $parent_category->term_id;
-	    $child_categories = get_categories( array( 'parent' => $parent_category_id ) );
+	    $child_categories = get_categories( array(
+                'parent' => $parent_category_id,
+                'hide_empty' => true,
+        ) );
 
     if ( $child_categories ) :
     ?>

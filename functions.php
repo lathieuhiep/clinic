@@ -69,13 +69,16 @@ require get_parent_theme_file_path( '/includes/theme-add-action.php' );
 
 // Required: CMB2
 if ( !class_exists('CMB2') ) {
-    require get_parent_theme_file_path( '/configurations/meta-box/cmb_post.php' );
+	require get_parent_theme_file_path( '/configurations/meta-box/cmb_doctor.php' );
 }
 
 // Required: Elementor
 if ( did_action( 'elementor/loaded' ) ) :
     require get_parent_theme_file_path( '/extension/elementor-addon/elementor-addon.php' );
 endif;
+
+// Require custom post type
+require get_parent_theme_file_path( '/extension/post-type/doctors.php' );
 
 // Require Register Sidebar
 require get_parent_theme_file_path( '/includes/register-sidebar.php' );

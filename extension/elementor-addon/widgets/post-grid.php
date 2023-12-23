@@ -8,28 +8,23 @@ if (!defined('ABSPATH')) exit;
 
 class clinic_Elementor_Addon_Post_Grid extends Widget_Base
 {
-    public function get_categories()
-    {
+    public function get_categories(): array {
         return array('my-theme');
     }
 
-    public function get_name()
-    {
+    public function get_name(): string {
         return 'clinic-post-grid';
     }
 
-    public function get_title()
-    {
+    public function get_title(): string {
         return esc_html__('Posts Grid', 'clinic');
     }
 
-    public function get_icon()
-    {
+    public function get_icon(): string {
         return 'eicon-gallery-grid';
     }
 
-    protected function register_controls()
-    {
+    protected function register_controls(): void {
 
         // Content query
         $this->start_controls_section(
@@ -293,9 +288,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
 
     }
 
-    protected function render()
-    {
-
+    protected function render(): void {
         $settings = $this->get_settings_for_display();
         $cat_post = $settings['select_cat'];
         $limit_post = $settings['limit'];

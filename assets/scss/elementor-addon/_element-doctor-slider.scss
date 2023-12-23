@@ -1,0 +1,118 @@
+.element-doctor-slider {
+  position: relative;
+
+  .item {
+    &__grid {
+      display: grid;
+
+      @media (min-width: 992px) {
+        grid-gap: 4rem;
+        grid-template-columns: 33.8rem 1fr;
+      }
+
+      .info {
+        .position {
+          margin-bottom: 1.6rem;
+          padding: .6rem 2.8rem .4rem;
+          display: inline-block;
+          color: var(--color-white);
+          text-transform: uppercase;
+          font-family: var(--font-heading);
+          font-weight: 700;
+          line-height: 1.8rem;
+          border-radius: 5rem;
+          background-color: var(--color-salem);
+        }
+
+        .name {
+          margin-bottom: 1rem;
+          color: #F00;
+          font-family: var(--font-body);
+          font-size: 2.4rem;
+          line-height: 2.4rem;
+          text-transform: uppercase;
+        }
+
+        .specialist {
+          margin-bottom: 2rem;
+          font-size: 1.9rem;
+          font-weight: 700;
+          line-height: 1.8rem;
+          font-family: var(--font-heading);
+          color: var(--color-heading);
+        }
+
+        .content {
+          margin-bottom: 3rem;
+
+          li {
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: 2.1rem 1fr;
+            border-bottom: .1rem dotted #000;
+
+            span {
+              @include flex-center-vert();
+            }
+
+            &:last-child {
+              border-bottom: 0;
+              margin-bottom: 0;
+              padding-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .lSSlideOuter {
+    .lSPager {
+      &.lSGallery {
+        margin-top: 3rem !important;
+
+        li {
+          text-align: center;
+
+          a {
+            display: inline-block;
+            overflow: hidden;
+            @include square(16rem, 50%);
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          &.active {
+            a {
+              box-shadow: 0 5px 4px rgba(0,0,0,.3);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .btn {
+    position: absolute;
+    padding: 0;
+    border: none;
+    background: transparent;
+    bottom: 8rem;
+
+    &.doctor-slider-button-prev {
+      left: 0;
+    }
+
+    &.doctor-slider-button-next {
+      right: 0;
+    }
+  }
+}
