@@ -302,73 +302,31 @@ if ( class_exists( 'CSF' ) ) {
 	) );
 
 	//
-	//  Create a section shop
+	//  Create a section chat with us
 	CSF::createSection( $clinic_prefix, array(
-		'id'    => 'opt_shop_section',
-		'title'  => esc_html__( 'Shop', 'clinic' ),
-		'icon'   => 'fas fa-shopping-cart',
-	) );
-
-	// Category product
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_shop_section',
-		'title'  => esc_html__( 'Category', 'clinic' ),
-		'description' => esc_html__( 'Use for shop category and tag', 'clinic' ),
+		'title'  => esc_html__( 'Chat với chúng tôi', 'clinic' ),
+		'icon'   => 'far fa-comments',
 		'fields' => array(
-			// Sidebar
 			array(
-				'id'      => 'opt_shop_cat_sidebar_position',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
-				'options' => array(
-					'hide'  => esc_html__( 'Hide', 'clinic' ),
-					'left'  => esc_html__( 'Left', 'clinic' ),
-					'right' => esc_html__( 'Right', 'clinic' ),
-				),
-				'default' => 'left'
+				'id'       => 'opt_chat_with_us_zalo',
+				'type'     => 'text',
+				'title'    => esc_html__('Link zalo', 'message'),
+				'default'  => '0888888115',
 			),
 
-			// Limit
 			array(
-				'id'      => 'opt_shop_cat_limit',
-				'type'    => 'number',
-				'title'   => esc_html__( 'Limit Product', 'clinic' ),
-				'default' => 12,
+				'id'       => 'opt_chat_with_us_message',
+				'type'     => 'text',
+				'title'    => esc_html__('Link message', 'message'),
+				'default'  => '#',
 			),
 
-			// Per Row
 			array(
-				'id'      => 'opt_shop_cat_per_row',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Products Per Row', 'clinic' ),
-				'options' => array(
-					'3' => esc_html__( '3 Column', 'clinic' ),
-					'4' => esc_html__( '4 Column', 'clinic' ),
-					'5' => esc_html__( '5 Column', 'clinic' ),
-				),
-				'default' => '4'
+				'id'       => 'opt_chat_with_us_phone',
+				'type'     => 'text',
+				'title'    => esc_html__('Phone', 'message'),
+				'default'  => '0888888115',
 			),
-		)
-	) );
-
-	// Single product
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_shop_section',
-		'title'  => esc_html__( 'Single', 'clinic' ),
-		'description' => esc_html__( 'Use for single product', 'clinic' ),
-		'fields' => array(
-			// Sidebar
-			array(
-				'id'      => 'opt_shop_single_sidebar_position',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
-				'options' => array(
-					'hide'  => esc_html__( 'Hide', 'clinic' ),
-					'left'  => esc_html__( 'Left', 'clinic' ),
-					'right' => esc_html__( 'Right', 'clinic' ),
-				),
-				'default' => 'left'
-			)
 		)
 	) );
 

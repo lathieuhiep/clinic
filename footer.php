@@ -1,8 +1,6 @@
 </div><!--End Sticky Footer-->
 
 <?php
-get_template_part('components/header/inc','menu-mobile');
-
 $opt_back_to_top = clinic_get_option( 'opt_general_back_to_top', '1' );
 
 get_template_part('components/inc','loading');
@@ -27,6 +25,8 @@ if ( !is_404() ) :
         ?>
     </footer>
 <?php
+	get_template_part('components/header/inc','menu-mobile');
+	get_template_part('components/inc','chat-with-us');
 endif;
 
 wp_footer();

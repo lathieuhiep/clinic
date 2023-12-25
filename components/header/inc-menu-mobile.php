@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-start offcanvas-menu-mobile" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="staticBackdropLabel">
+        <h5 class="offcanvas-title text-uppercase" id="staticBackdropLabel">
             <?php esc_html_e('Danh mục', 'clinic'); ?>
         </h5>
 
