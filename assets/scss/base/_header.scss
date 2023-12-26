@@ -1,6 +1,12 @@
 .global-header {
   background-color: var(--color-white);
 
+  &.active-sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
   .top-nav {
     .navbar-top-grid {
       display: grid;
@@ -522,10 +528,6 @@
     grid-template-columns: 5.7rem 1fr 3.8rem;
     align-items: center;
 
-    .item {
-
-    }
-
     .hamburger {
       height: inherit;
 
@@ -534,6 +536,37 @@
         height: 100%;
         width: 100%;
         background-color: var(--color-cadmium-yellow);
+      }
+    }
+
+    .logo {
+      position: relative;
+
+      &__image {
+        &.scroll-hidden-logo {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .hotline-on-mobile {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        display: block;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--color-white);
+        text-align: center;
+
+        &.scroll-show-phone {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
 
@@ -817,12 +850,6 @@
 }
 
 @media (min-width: 992px) {
-  .active-sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
   .admin-bar {
     .active-sticky-nav {
       top: 32px;
