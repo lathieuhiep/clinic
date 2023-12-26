@@ -67,6 +67,9 @@ foreach ( glob( get_parent_theme_file_path( '/extension/widgets/*.php' ) ) as $f
 // Required: theme add_action
 require get_parent_theme_file_path( '/includes/theme-add-action.php' );
 
+// Required: theme shortcode
+require get_parent_theme_file_path( '/includes/theme-shortcode.php' );
+
 // Required: CMB2
 if ( !class_exists('CMB2') ) {
 	require get_parent_theme_file_path( '/configurations/meta-box/cmb_doctor.php' );
