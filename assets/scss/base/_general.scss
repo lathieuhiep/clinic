@@ -353,18 +353,11 @@ pre {
 
 .chat-with-us {
   position: fixed;
+  right: 1.6rem;
+  bottom: 50%;
   z-index: 99;
   display: grid;
   grid-row-gap: 1.6rem;
   grid-template-columns: 5rem;
-
-  @media (min-width: 576px) {
-    right: 2.4rem;
-    bottom: 2.4rem;
-  }
-
-  @media (max-width: 575px) {
-    right: 1.2rem;
-    bottom: 1.6rem;
-  }
+  transform: translateY(-50%);
 }

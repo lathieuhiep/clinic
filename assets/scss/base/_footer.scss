@@ -80,3 +80,50 @@
     background: linear-gradient(180deg, #1E944B 0%, #137260 100%);
   }
 }
+
+.contact-us-mobile {
+  position: sticky;
+  bottom: 0;
+  text-align: start;
+  background-color: #00644A;
+
+  .grid-layout {
+    min-height: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .item {
+      padding: 0 .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:last-child {
+        border-left: .1px solid var(--color-white);
+      }
+
+      &__icon {
+        flex: 0 0 auto;
+
+        @media (min-width: 376px) {
+          margin-right: 1.2rem;
+        }
+
+        @media (max-width: 375px) {
+          margin-right: 1rem;
+        }
+
+        svg {
+          width: 3rem;
+        }
+      }
+
+      &__content {
+        a {
+          color: var(--color-white);
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
