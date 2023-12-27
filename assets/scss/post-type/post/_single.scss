@@ -5,6 +5,15 @@
 
 .single-post-content {
   margin-bottom: 15px;
+  font-size: 1.6rem;
+
+  &__detail {
+    p, span, a, ul li, ul ol {
+      @media (max-width: 767px) {
+        word-spacing: 0.05rem;
+      }
+    }
+  }
 
   &__image,
   .page-links {
