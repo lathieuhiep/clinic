@@ -154,14 +154,27 @@
     }
 
     .title {
-      font-size: 2.4rem;
+      @media (min-width: 992px) {
+        font-size: 2.4rem;
+      }
+
+      @media (max-width: 991px) {
+        font-size: 2rem;
+      }
     }
   }
 
   .grid-layout {
     display: grid;
     grid-gap: 1.6rem 1rem;
-    grid-template-columns: repeat(3, 1fr);
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 376px) and (max-width: 599px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .related-post-item {
@@ -170,6 +183,7 @@
     }
 
     .title-post {
+      margin: 0;
       font-size: 1.5rem;
       font-family: var(--font-body);
       font-weight: 400;

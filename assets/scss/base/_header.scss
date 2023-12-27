@@ -577,14 +577,6 @@
         @include flex-center();
         border: .3rem solid #5AE0DA ;
         background-color: var(--color-white);
-
-        .icon {
-          -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
-          -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
-          -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
-          -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
-          animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
-        }
       }
     }
   }
@@ -592,6 +584,14 @@
 
 .offcanvas-menu-mobile {
   z-index: 9999999;
+}
+
+.alo-circle-anim {
+  -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
 }
 
 @-moz-keyframes coccoc-alo-circle-img-anim {
