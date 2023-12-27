@@ -45,7 +45,7 @@
         $( document ).general_owlCarousel_custom( '.site-post-slides' )
         /* End Gallery Single */
 
-        //
+        // dropdown category widget
         const cateLinkHasChildWidget = $('.categories-dropdown-widget .cate-link-has-child')
 
         if ( cateLinkHasChildWidget.length ) {
@@ -59,6 +59,16 @@
                     $(this).parents( '.cat-item-has-child' ).siblings().find('.children').slideUp();
                 })
             })
+        }
+
+        //
+        const singlePostContentDetail = $('.single-post-content__detail')
+
+        if ( singlePostContentDetail.length ) {
+            const urlImageCate = singlePostContentDetail.data('url-image-cate')
+
+            // insert before image cate
+            $(`<div class="image-cate-box text-center mb-4"><img src="${urlImageCate}" alt=""></div>`).insertBefore(".title-has-icon:first");
         }
     });
 

@@ -75,49 +75,13 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
             ]
         );
 
-	    $this->add_control(
-		    'make_appointment_link',
-		    [
-			    'label' => esc_html__( 'Đặt Lịch Khám', 'clinic' ),
-			    'type' => Controls_Manager::URL,
-			    'options' => [ 'url', 'is_external', 'nofollow' ],
-			    'default' => [
-				    'url' => '',
-				    'is_external' => true,
-				    'nofollow' => true,
-			    ],
-			    'label_block' => true,
-		    ]
-	    );
-
-	    $this->add_control(
-		    'consulting_doctor_link',
-		    [
-			    'label' => esc_html__( 'Bác sĩ tư vấn', 'clinic' ),
-			    'type' => Controls_Manager::URL,
-			    'options' => [ 'url', 'is_external', 'nofollow' ],
-			    'default' => [
-				    'url' => '',
-				    'is_external' => true,
-				    'nofollow' => true,
-			    ],
-			    'label_block' => true,
-		    ]
-	    );
-
         $this->end_controls_section();
     }
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-
-	    if ( ! empty( $settings['make_appointment_link']['url'] ) ) {
-		    $this->add_link_attributes( 'make_appointment_link', $settings['make_appointment_link'] );
-	    }
-
-	    if ( ! empty( $settings['consulting_doctor_link']['url'] ) ) {
-		    $this->add_link_attributes( 'consulting_doctor_link', $settings['consulting_doctor_link'] );
-	    }
+	    $medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
+	    $link_chat = clinic_get_option( 'opt_general_chat_doctor' );
 
         $limit_post     =   $settings['limit'];
         $order_by_post  =   $settings['order_by'];
@@ -196,13 +160,23 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                 <?php endif; ?>
 
                                 <div class="action-box text-center">
-                                    <a class="action-box__booking" <?php echo $this->get_render_attribute_string( 'make_appointment_link' ); ?>>
+	                                <?php if ( $medical_appointment_form ) : ?>
+
+                                    <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dat-lich-kham.png' ) ) ?>" alt="">
                                     </a>
 
-                                    <a class="action-box__support" <?php echo $this->get_render_attribute_string( 'consulting_doctor_link' ); ?>>
+	                                <?php
+                                    endif;
+
+                                    if ( $link_chat && $link_chat['url'] ) :
+                                    ?>
+
+                                    <a class="action-box__support" href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
                                         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/bac-si-tu-van.png' ) ) ?>" alt="">
                                     </a>
+
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
