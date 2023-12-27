@@ -16,6 +16,14 @@ form {
           top: 8px;
         }
       }
+
+      + p {
+        margin: 1rem 0 0;
+      }
+
+      &:has(.wpcf7-submit) {
+        text-align: center;
+      }
     }
 
     label {

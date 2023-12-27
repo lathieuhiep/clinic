@@ -25,130 +25,148 @@ if ( class_exists( 'CSF' ) ) {
 		'footer_after'        => '<pre>Contact me:<br />Zalo/Phone: 0975458209 - Skype: lathieuhiep - facebook: <a href="https://www.facebook.com/lathieuhiep" target="_blank">lathieuhiep</a></pre>',
 	) );
 
-    //
+	//
 	// -> Create a section general
 	CSF::createSection( $clinic_prefix, array(
-        'id'    => 'opt_general_section',
-		'title'  => esc_html__('Cài đặt chung', 'clinic' ),
-		'icon'   => 'fas fa-cog'
+		'id'    => 'opt_general_section',
+		'title' => esc_html__( 'Cài đặt chung', 'clinic' ),
+		'icon'  => 'fas fa-cog'
 	) );
 
-    // Global
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Toàn cục', 'clinic' ),
-        'fields' => array(
-            // favicon
-            array(
-                'id'      => 'opt_general_favicon',
-                'type'    => 'media',
-                'title'   => esc_html__( 'Favicon', 'clinic' ),
-                'library' => 'image',
-                'url'     => false
-            ),
+	// Global
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_general_section',
+		'title'  => esc_html__( 'Toàn cục', 'clinic' ),
+		'fields' => array(
+			// favicon
+			array(
+				'id'      => 'opt_general_favicon',
+				'type'    => 'media',
+				'title'   => esc_html__( 'Favicon', 'clinic' ),
+				'library' => 'image',
+				'url'     => false
+			),
 
-            // logo
-            array(
-                'id'      => 'opt_general_logo',
-                'type'    => 'media',
-                'title'   => esc_html__( 'Logo', 'clinic' ),
-                'library' => 'image',
-                'url'     => false
-            ),
+			// logo
+			array(
+				'id'      => 'opt_general_logo',
+				'type'    => 'media',
+				'title'   => esc_html__( 'Logo', 'clinic' ),
+				'library' => 'image',
+				'url'     => false
+			),
 
-            // logo
-            array(
-                'id'      => 'opt_general_logo_mobile',
-                'type'    => 'media',
-                'title'   => esc_html__( 'Logo Mobile', 'clinic' ),
-                'library' => 'image',
-                'url'     => false
-            ),
+			// logo
+			array(
+				'id'      => 'opt_general_logo_mobile',
+				'type'    => 'media',
+				'title'   => esc_html__( 'Logo Mobile', 'clinic' ),
+				'library' => 'image',
+				'url'     => false
+			),
 
-            // show loading
-            array(
-                'id'         => 'opt_general_loading',
-                'type'       => 'switcher',
-                'title'      => esc_html__( 'Chờ tải trang', 'clinic' ),
-                'text_on'    => esc_html__( 'Có', 'clinic' ),
-                'text_off'   => esc_html__( 'Không', 'clinic' ),
-                'text_width' => 80,
-                'default'    => false
-            ),
+			// show loading
+			array(
+				'id'         => 'opt_general_loading',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Chờ tải trang', 'clinic' ),
+				'text_on'    => esc_html__( 'Có', 'clinic' ),
+				'text_off'   => esc_html__( 'Không', 'clinic' ),
+				'text_width' => 80,
+				'default'    => false
+			),
 
-            array(
-                'id'         => 'opt_general_image_loading',
-                'type'       => 'media',
-                'title'      => esc_html__( 'Image Loading', 'clinic' ),
-                'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
-                'dependency' => array( 'opt_general_loading', '==', 'true' ),
-                'url'        => false
-            ),
+			array(
+				'id'         => 'opt_general_image_loading',
+				'type'       => 'media',
+				'title'      => esc_html__( 'Image Loading', 'clinic' ),
+				'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
+				'dependency' => array( 'opt_general_loading', '==', 'true' ),
+				'url'        => false
+			),
 
-            // show back to top
-            array(
-                'id'         => 'opt_general_back_to_top',
-                'type'       => 'switcher',
-                'title'      => esc_html__( 'Quay về đầu trang', 'clinic' ),
-                'text_on'    => esc_html__( 'Có', 'clinic' ),
-                'text_off'   => esc_html__( 'Không', 'clinic' ),
-                'text_width' => 80,
-                'default'    => true
-            ),
-        )
-    ) );
+			// show back to top
+			array(
+				'id'         => 'opt_general_back_to_top',
+				'type'       => 'switcher',
+				'title'      => esc_html__( 'Quay về đầu trang', 'clinic' ),
+				'text_on'    => esc_html__( 'Có', 'clinic' ),
+				'text_off'   => esc_html__( 'Không', 'clinic' ),
+				'text_width' => 80,
+				'default'    => true
+			),
+		)
+	) );
 
-    // Contact
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'      => 'opt_general_working_time',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-                'default' => '7:30 - 20:00'
-            ),
+	// Contact
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_general_section',
+		'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
+		'fields' => array(
+			array(
+				'id'      => 'opt_general_working_time',
+				'type'    => 'text',
+				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
+				'default' => '7:30 - 20:00'
+			),
 
-            array(
-                'id'        => 'opt_general_hotline',
-                'type'      => 'repeater',
-                'title'     => esc_html__('Hotline', 'clinic'),
-                'fields'    => array(
-                    array(
-                        'id'    => 'phone',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Điện thoại', 'clinic' ),
-                    ),
-                ),
+			array(
+				'id'     => 'opt_general_hotline',
+				'type'   => 'repeater',
+				'title'  => esc_html__( 'Hotline Group', 'clinic' ),
+				'fields' => array(
+					array(
+						'id'    => 'phone',
+						'type'  => 'text',
+						'title' => esc_html__( 'Điện thoại', 'clinic' ),
+					),
+				),
 
-                'default'   => array(
-                    array(
-                        'phone' => '0888.888.115',
-                    ),
+				'default' => array(
+					array(
+						'phone' => '0888.888.115',
+					),
 
-                    array(
-                        'phone' => '024.888.11115',
-                    )
-                )
-            ),
+					array(
+						'phone' => '024.888.11115',
+					)
+				)
+			),
 
-            array(
-                'id'      => 'opt_general_hotline_mobile',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Hotline trên mobile', 'clinic' ),
-                'default' => '0888.888.115'
-            ),
+			array(
+				'id'      => 'opt_general_hotline_mobile',
+				'type'    => 'text',
+				'title'   => esc_html__( 'Hotline', 'clinic' ),
+				'default' => '0888.888.115'
+			),
 
-            array(
-                'id'          => 'opt_general_cf',
-                'type'        => 'select',
-                'title'       => 'Select',
-                'options'     => clinic_get_form_cf7(),
-            ),
+			array(
+				'id'      => 'opt_general_cf',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Form liên hệ', 'clinic' ),
+				'desc'    => esc_html__( 'Hiển thị ở header trên mobile', 'clinic' ),
+				'options' => clinic_get_form_cf7(),
+			),
 
-        )
-    ) );
+			array(
+				'id'      => 'opt_general_chat_doctor',
+				'type'    => 'link',
+				'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
+				'default' => array(
+					'url'    => '#',
+					'target' => '_blank'
+				),
+			),
+
+			array(
+				'id'      => 'opt_general_medical_appointment_form',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),
+				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
+				'options' => clinic_get_form_cf7(),
+			),
+		)
+	) );
 
 	//
 	// Create a section menu
@@ -161,17 +179,6 @@ if ( class_exists( 'CSF' ) ) {
 				'id'         => 'opt_menu_sticky',
 				'type'       => 'switcher',
 				'title'      => esc_html__( 'Sticky menu', 'clinic' ),
-				'text_on'    => esc_html__( 'Yes', 'clinic' ),
-				'text_off'   => esc_html__( 'No', 'clinic' ),
-				'text_width' => 80,
-				'default'    => true
-			),
-
-			// Show cart
-			array(
-				'id'         => 'opt_menu_cart',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'Cart', 'clinic' ),
 				'text_on'    => esc_html__( 'Yes', 'clinic' ),
 				'text_off'   => esc_html__( 'No', 'clinic' ),
 				'text_width' => 80,
@@ -190,10 +197,10 @@ if ( class_exists( 'CSF' ) ) {
 
 	// Category Post
 	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_post_section',
-		'title'  => esc_html__( 'Category', 'clinic' ),
+		'parent'      => 'opt_post_section',
+		'title'       => esc_html__( 'Category', 'clinic' ),
 		'description' => esc_html__( 'Use for archive, index, page search', 'clinic' ),
-		'fields' => array(
+		'fields'      => array(
 			// Sidebar
 			array(
 				'id'      => 'opt_post_cat_sidebar_position',
@@ -280,52 +287,23 @@ if ( class_exists( 'CSF' ) ) {
 					),
 
 					array(
-						'id'    => 'url',
-						'type'  => 'text',
-						'title' => esc_html__('URL', 'clinic'),
+						'id'      => 'url',
+						'type'    => 'text',
+						'title'   => esc_html__( 'URL', 'clinic' ),
 						'default' => '#'
 					),
 				),
 				'default' => array(
 					array(
 						'icon' => 'fab fa-facebook-f',
-						'url' => '#',
+						'url'  => '#',
 					),
 
 					array(
 						'icon' => 'fab fa-youtube',
-						'url' => '#',
+						'url'  => '#',
 					),
 				)
-			),
-		)
-	) );
-
-	//
-	//  Create a section chat with us
-	CSF::createSection( $clinic_prefix, array(
-		'title'  => esc_html__( 'Chat với chúng tôi', 'clinic' ),
-		'icon'   => 'far fa-comments',
-		'fields' => array(
-			array(
-				'id'       => 'opt_chat_with_us_zalo',
-				'type'     => 'text',
-				'title'    => esc_html__('Link zalo', 'message'),
-				'default'  => '0888888115',
-			),
-
-			array(
-				'id'       => 'opt_chat_with_us_message',
-				'type'     => 'text',
-				'title'    => esc_html__('Link message', 'message'),
-				'default'  => '#',
-			),
-
-			array(
-				'id'       => 'opt_chat_with_us_phone',
-				'type'     => 'text',
-				'title'    => esc_html__('Phone', 'message'),
-				'default'  => '0888888115',
 			),
 		)
 	) );
@@ -337,41 +315,6 @@ if ( class_exists( 'CSF' ) ) {
 		'icon'  => 'fas fa-stream',
 		'title' => esc_html__( 'Footer', 'clinic' ),
 	) );
-
-    // Copyright
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_footer_section',
-        'title'  => esc_html__( 'Liên hệ', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'      => 'opt_footer_contact_phone',
-                'type'    => 'text',
-                'title'   => esc_html__('Hotline', 'clinic'),
-                'default' => '0888.888.115'
-            ),
-
-            array(
-                'id'       => 'opt_footer_contact_book',
-                'type'     => 'link',
-                'title'    => esc_html__('Đặt hẹn khám bệnh', 'clinic'),
-                'default'  => array(
-                    'url'    => '#',
-                    'target' => '_blank'
-                ),
-            ),
-
-            array(
-                'id'       => 'opt_footer_contact_chat',
-                'type'     => 'link',
-                'title'    => esc_html__('Chat với bác sĩ', 'clinic'),
-                'default'  => array(
-                    'url'    => '#',
-                    'target' => '_blank'
-                ),
-            ),
-
-        )
-    ) );
 
 	// footer columns
 	CSF::createSection( $clinic_prefix, array(

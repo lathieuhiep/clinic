@@ -7,16 +7,6 @@
 
   form {
     &.wpcf7-form {
-      p {
-        ~ p {
-          margin-top: .8rem;
-        }
-
-        &:has(.wpcf7-submit) {
-          text-align: center;
-        }
-      }
-
       span {
         &.wpcf7-form-control-wrap {
           input,

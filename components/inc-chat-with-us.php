@@ -1,5 +1,5 @@
 <?php
-$call_phone = clinic_get_option('opt_chat_with_us_phone');
+$call_phone = clinic_get_option('opt_general_hotline_mobile');
 ?>
 
 <div class="chat-with-us d-lg-none">
@@ -8,4 +8,8 @@ $call_phone = clinic_get_option('opt_chat_with_us_phone');
             <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dien-thoai-icon.png' ) ) ?>" alt="phone">
         </a>
 	<?php endif; ?>
+</div>
+
+<div class="chat-link-box">
+
 </div>

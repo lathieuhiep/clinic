@@ -1,12 +1,14 @@
 <?php
-$phone = clinic_get_option('opt_footer_contact_phone');
-$link_book = clinic_get_option('opt_footer_contact_book');
-$link_chat = clinic_get_option('opt_footer_contact_chat');
+$phone = clinic_get_option('opt_general_hotline_mobile');
+$medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
+$link_chat = clinic_get_option('opt_general_chat_doctor');
 ?>
 
 <div class="contact-us-group">
     <div class="container-md">
         <div class="grid-layout text-uppercase">
+	        <?php if ( $phone ) : ?>
+
             <div class="item phone">
                 <div class="item__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37" fill="none">
@@ -20,6 +22,12 @@ $link_chat = clinic_get_option('opt_footer_contact_chat');
                     </a>
                 </div>
             </div>
+
+	        <?php
+            endif;
+
+            if ( $medical_appointment_form ) :
+            ?>
 
             <div class="item booking">
                 <div class="item__icon">
@@ -35,11 +43,18 @@ $link_chat = clinic_get_option('opt_footer_contact_chat');
                 </div>
 
                 <div class="item__content">
-                    <a href="<?php echo esc_url( $link_book['url'] ); ?>" target="<?php echo esc_attr($link_book['target']) ?>">
+                    <!-- Button trigger modal -->
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
 					    <?php esc_html_e('Hẹn Khám', 'clinic'); ?>
                     </a>
                 </div>
             </div>
+
+            <?php
+            endif;
+
+	        if ( $link_chat && $link_chat['url'] ) :
+            ?>
 
             <div class="item chat">
                 <div class="item__icon">
@@ -54,6 +69,31 @@ $link_chat = clinic_get_option('opt_footer_contact_chat');
                     </a>
                 </div>
             </div>
+
+            <?php endif; ?>
         </div>
     </div>
 </div>
+
+<?php if ( $medical_appointment_form ) : ?>
+
+<!-- Modal medical appointment -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">
+                    <?php esc_html_e('Đặt hẹn khám', 'clinic'); ?>
+                </h3>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <?php echo do_shortcode('[contact-form-7 id="' . $medical_appointment_form . '" ]'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>
