@@ -18,15 +18,12 @@ endif;
 if ( !is_404() ) :
 ?>
     <footer class="global-footer">
-        <?php
-        get_template_part( 'components/footer/inc','contact' );
-        get_template_part( 'components/footer/inc','column' );
-        ?>
+        <?php get_template_part( 'components/footer/inc','column' ); ?>
     </footer>
 <?php
 	get_template_part('components/header/inc','menu-mobile');
 	get_template_part('components/inc','chat-with-us');
-	get_template_part('components/inc','contact-us-mobile');
+	get_template_part('components/inc','contact-us');
 endif;
 
 wp_footer();
