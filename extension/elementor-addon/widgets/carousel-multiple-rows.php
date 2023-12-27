@@ -361,7 +361,7 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
                                 <?php echo esc_html($item['list_title']); ?>
                             </h3>
 
-                            <div class="desc">
+                            <div class="desc text-justify">
 	                            <?php echo wpautop($item['list_content']); ?>
                             </div>
                         </div>
