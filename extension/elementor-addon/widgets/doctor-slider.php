@@ -162,7 +162,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                 <div class="action-box text-center">
 	                                <?php if ( $medical_appointment_form ) : ?>
 
-                                    <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
                                         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dat-lich-kham.png' ) ) ?>" alt="">
                                     </a>
 

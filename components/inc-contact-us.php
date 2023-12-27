@@ -44,7 +44,7 @@ $link_chat = clinic_get_option('opt_general_chat_doctor');
 
                 <div class="item__content">
                     <!-- Button trigger modal -->
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
 					    <?php esc_html_e('Hẹn Khám', 'clinic'); ?>
                     </a>
                 </div>
@@ -78,11 +78,11 @@ $link_chat = clinic_get_option('opt_general_chat_doctor');
 <?php if ( $medical_appointment_form ) : ?>
 
 <!-- Modal medical appointment -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-appointment-form" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">
+                <h3 class="modal-title">
                     <?php esc_html_e('Đặt hẹn khám', 'clinic'); ?>
                 </h3>
 
