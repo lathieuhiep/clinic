@@ -1,6 +1,8 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
+use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -93,40 +95,49 @@ class Clinic_Elementor_Specialist extends Widget_Base
 			]
 		);
 
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'list_title', [
+				'label' => esc_html__( 'Title', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'list_image',
+			[
+				'label' => esc_html__( 'Image', 'clinic' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+        
+		$repeater->add_control(
+			'list_category',
+			[
+				'label' => esc_html__( 'Danh mục', 'clinic' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => clinic_check_get_cat('category')
+			]
+		);
+
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Danh sách', 'textdomain' ),
+				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => [
-					[
-						'name' => 'list_title',
-						'label' => esc_html__( 'Title', 'textdomain' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => esc_html__( 'List Title' , 'textdomain' ),
-						'label_block' => true,
-					],
-					[
-						'name' => 'list_image',
-						'label' => esc_html__( 'Image', 'textdomain' ),
-						'type' => Controls_Manager::MEDIA,
-						'default' => [
-							'url' => Utils::get_placeholder_image_src(),
-						],
-					],
-					[
-						'name' => 'list_category',
-						'label' => esc_html__( 'Danh mục', 'textdomain' ),
-						'type' => Controls_Manager::SELECT,
-						'options' => clinic_check_get_cat('category')
-					]
-				],
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
+						'list_title' => esc_html__( 'Title #1', 'clinic' ),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
+						'list_title' => esc_html__( 'Title #2', 'clinic' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -139,7 +150,7 @@ class Clinic_Elementor_Specialist extends Widget_Base
 		$this->start_controls_section(
 			'content_style',
 			[
-				'label' => esc_html__('Style', 'clinic'),
+				'label' => esc_html__('Title', 'clinic'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -147,11 +158,31 @@ class Clinic_Elementor_Specialist extends Widget_Base
 		$this->add_control(
 			'title_color',
 			[
-				'label' => esc_html__('Title Color', 'clinic'),
+				'label' => esc_html__('Color', 'clinic'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .element-specialist__grid .item .item__title' => 'color: {{VALUE}};'
 				],
+			]
+		);
+
+		$this->add_control(
+			'title_color_hover',
+			[
+				'label' => esc_html__('Color Hover', 'clinic'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-specialist__grid .item:hover .item__title' => 'color: {{VALUE}};'
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'label' => esc_html__( 'Typography', 'clinic' ),
+				'selector' => '{{WRAPPER}} .element-specialist__grid .item .item__title',
 			]
 		);
 
