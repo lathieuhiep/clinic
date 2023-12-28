@@ -100,5 +100,7 @@ add_action('wp_footer', 'clinic_add_script_footer');
 function clinic_add_script_footer(): void {
 	$add_script = clinic_get_option( 'opt_footer_add_javascript' );
 
-    echo $add_script;
+    if ( $add_script ) {
+	    echo $add_script;
+    }
 }
