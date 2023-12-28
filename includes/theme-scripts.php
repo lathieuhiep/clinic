@@ -44,7 +44,11 @@ function clinic_register_front_end(): void
 
 	// style post
 	if ( clinic_is_blog() ) {
-		wp_enqueue_style( 'post', get_theme_file_uri( '/assets/css/post/post.min.css' ), array(), clinic_get_version_theme() );
+		wp_enqueue_style( 'post', get_theme_file_uri( '/assets/css/post-type/post/archive.min.css' ), array(), clinic_get_version_theme() );
+	}
+
+	if (is_singular('post')) {
+		wp_enqueue_style( 'post', get_theme_file_uri( '/assets/css/post-type/post/single.min.css' ), array(), clinic_get_version_theme() );
 	}
 
 	// style page 404

@@ -79,18 +79,18 @@ function buildStylesElementor() {
 }
 exports.buildStylesElementor = buildStylesElementor;
 
-// Task build style post
-function buildStylesPost() {
-    return src(`${pathAssets}/scss/post-type/post/post.scss`)
+// Task build style custom post type
+function buildStylesCustomPostType() {
+    return src(`${pathAssets}/scss/post-type/*/**.scss`)
         .pipe(sass().on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/css/post/`))
+        .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesPost = buildStylesPost;
+exports.buildStylesCustomPostType = buildStylesCustomPostType;
 
 // buildJSTheme
 function buildJSTheme() {
@@ -128,8 +128,8 @@ function watchTask() {
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/post-type/post/*.scss`
-    ], buildStylesPost)
+        `${pathAssets}/scss/post-type/*/**.scss`
+    ], buildStylesCustomPostType)
 
     watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 
