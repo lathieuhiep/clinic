@@ -38,6 +38,18 @@ body {
   overflow-x: hidden;
   word-break: break-word;
   @include flex-column;
+
+  .lSSlideOuter {
+    .lSPager {
+      &.lSpg {
+        > li {
+          a {
+            @include square(1rem, 50%);
+          }
+        }
+      }
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -196,66 +208,6 @@ pre {
   margin-top: 1.5rem;
   padding: 1.5rem 0;
   background-color: #D5ECDE;
-}
-
-/* owl carousel navigation */
-.owl-carousel {
-  .owl-nav {
-    text-align: center;
-    margin-top: 15px;
-
-    button {
-      &.owl-prev,
-      &.owl-next {
-        margin: 0 6px;
-        color: var(--color-body);
-        font-size: 20px;
-        line-height: normal;
-        @include transition();
-
-        &:hover {
-          color: $color-hover;
-        }
-      }
-    }
-  }
-
-  .owl-dots {
-    margin-top: 30px;
-    @include flex-center;
-
-    .owl-dot {
-      display: inline-block;
-      margin: 0 5px;
-
-      span {
-        display: block;
-        width: 10px;
-        height: 10px;
-        background-color: #000000;
-        border-radius: 50%;
-        @include transition(all 0.2s ease-in-out);
-      }
-
-      &.active,
-      &:hover {
-        span {
-          background-color: $background-hover;
-        }
-      }
-    }
-  }
-}
-
-.custom-equal-height-owl {
-  .owl-stage {
-    display: flex;
-
-    .owl-item {
-      display: flex;
-      flex: 1 0 auto;
-    }
-  }
 }
 
 /* Pagination */

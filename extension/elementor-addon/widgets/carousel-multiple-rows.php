@@ -100,124 +100,6 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
 
 		$this->end_controls_section();
 
-		// Content additional options
-		$this->start_controls_section(
-			'content_additional_options',
-			[
-				'label' => __( 'Options', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'loop',
-			[
-				'type'          =>  Controls_Manager::SWITCHER,
-				'label'         =>  esc_html__('Loop Slider ?', 'clinic'),
-				'label_off'     =>  esc_html__('No', 'clinic'),
-				'label_on'      =>  esc_html__('Yes', 'clinic'),
-				'return_value'  =>  'yes',
-				'default'       =>  'yes',
-			]
-		);
-
-		$this->add_control(
-			'autoplay',
-			[
-				'label'         =>  esc_html__('Autoplay?', 'clinic'),
-				'type'          =>  Controls_Manager::SWITCHER,
-				'label_off'     =>  esc_html__('No', 'clinic'),
-				'label_on'      =>  esc_html__('Yes', 'clinic'),
-				'return_value'  =>  'yes',
-				'default'       =>  'no',
-			]
-		);
-
-		$this->add_control(
-			'nav',
-			[
-				'label'         =>  esc_html__('Nav Slider', 'clinic'),
-				'type'          =>  Controls_Manager::SWITCHER,
-				'label_on'      =>  esc_html__('Yes', 'clinic'),
-				'label_off'     =>  esc_html__('No', 'clinic'),
-				'return_value'  =>  'yes',
-				'default'       =>  'yes',
-			]
-		);
-
-		$this->add_control(
-			'dots',
-			[
-				'label'         =>  esc_html__('Dots Slider', 'clinic'),
-				'type'          =>  Controls_Manager::SWITCHER,
-				'label_on'      =>  esc_html__('Yes', 'clinic'),
-				'label_off'     =>  esc_html__('No', 'clinic'),
-				'return_value'  =>  'yes',
-				'default'       =>  'yes',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// Content additional options
-		$this->start_controls_section(
-			'content_additional_options',
-			[
-				'label' => esc_html__( 'Additional Options', 'clinic' ),
-				'tab'   => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'loop',
-			[
-				'type'         => Controls_Manager::SWITCHER,
-				'label'        => esc_html__( 'Loop Slider ?', 'clinic' ),
-				'label_off'    => esc_html__( 'No', 'clinic' ),
-				'label_on'     => esc_html__( 'Yes', 'clinic' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'autoplay',
-			[
-				'label'        => esc_html__( 'Autoplay?', 'clinic' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_off'    => esc_html__( 'No', 'clinic' ),
-				'label_on'     => esc_html__( 'Yes', 'clinic' ),
-				'return_value' => 'yes',
-				'default'      => 'no',
-			]
-		);
-
-		$this->add_control(
-			'nav',
-			[
-				'label'        => esc_html__( 'Nav Slider', 'clinic' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'clinic' ),
-				'label_off'    => esc_html__( 'No', 'clinic' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'dots',
-			[
-				'label'        => esc_html__( 'Dots Slider', 'clinic' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'clinic' ),
-				'label_off'    => esc_html__( 'No', 'clinic' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
-			]
-		);
-
-		$this->end_controls_section();
-
 		// Section title style
 		$this->start_controls_section(
 			'section_title_style',
@@ -280,9 +162,9 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
 
 		// Section style
 		$this->start_controls_section(
-			'section_style',
+			'dot_style',
 			[
-				'label' => __( 'Style', 'clinic' ),
+				'label' => __( 'Dots', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -290,18 +172,10 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
 		$this->add_control(
 			'dots_color',
 			[
-				'label' => esc_html__( 'Dots Color', 'clinic' ),
+				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-carousel-multiple-rows .owl-carousel .owl-dots .owl-dot span' => 'background-color: {{VALUE}};',
-				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'dots',
-							'value' => 'yes',
-						],
-					],
+					'{{WRAPPER}} .lSSlideOuter .lSPager.lSpg li a' => 'background-color: {{VALUE}};'
 				],
 			]
 		);
@@ -309,18 +183,10 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
 		$this->add_control(
 			'dots_color_hover',
 			[
-				'label' => esc_html__( 'Dots Color Hover', 'clinic' ),
+				'label' => esc_html__( 'Color Hover', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-carousel-multiple-rows .owl-carousel .owl-dots .owl-dot.active span, {{WRAPPER}} .element-carousel-multiple-rows .owl-carousel .owl-dots .owl-dot:hover span' => 'background-color: {{VALUE}};',
-				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'dots',
-							'value' => 'yes',
-						],
-					],
+					'{{WRAPPER}} .lSSlideOuter .lSPager.lSpg li.active a, {{WRAPPER}} .lSSlideOuter .lSPager.lSpg li:hover a' => 'background-color: {{VALUE}};'
 				],
 			]
 		);
@@ -328,20 +194,12 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
 		$this->end_controls_section();
 	}
 
-	protected function render() {
+	protected function render(): void {
 		$settings = $this->get_settings_for_display();
-
-		$data_settings_owl = [
-			'loop'     => ( 'yes' === $settings['loop'] ),
-			'nav'      => ( 'yes' === $settings['nav'] ),
-			'dots'     => ( 'yes' === $settings['dots'] ),
-			'autoplay' => ( 'yes' === $settings['autoplay'] ),
-			'items'    => 1
-		];
-		?>
+    ?>
 
         <div class="element-carousel-multiple-rows">
-            <div class="custom-owl-carousel owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode( $data_settings_owl ) ; ?>'>
+            <div class="element-carousel-multiple-rows__warp">
 				<?php
                 $i = 1;
 				$totalList = count($settings['list']);
@@ -382,6 +240,6 @@ class Clinic_Elementor_Carousel_Multiple_Rows extends Widget_Base {
             </div>
         </div>
 
-		<?php
+    <?php
 	}
 }

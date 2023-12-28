@@ -30,4 +30,12 @@
       }
     }
   }
+
+  .lSSlideOuter {
+    .lSPager {
+      &.lSpg {
+        margin-top: 3rem !important;
+      }
+    }
+  }
 }

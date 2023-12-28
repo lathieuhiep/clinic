@@ -1,12 +1,23 @@
 (function ($) {
-    /* Start Carousel slider */
-    let ElementCarouselSlider = function ($scope, $) {
-        let element_slides = $scope.find('.custom-owl-carousel')
+    // element testimonial slider
+    const elementTestimonialSlider = ($scope, $) => {
+        const slider = $scope.find('.element-testimonial-slider__warp')
 
-        $(document).general_owlCarousel_custom(element_slides)
-    };
+        if (slider.length) {
+            slider.each(function () {
+                $(this).lightSlider({
+                    item: 1,
+                    loop: true,
+                    pager: false,
+                    speed: 800,
+                    currentPagerPosition: 'left'
+                })
+            })
+        }
+    }
 
-    const ElementDoctorSlider = function ($scope, $) {
+    // element doctor slider
+    const elementDoctorSlider = function ($scope, $) {
         const elementDoctorSlider = $scope.find('.element-doctor-slider__gallery')
 
         if ( elementDoctorSlider.length ) {
@@ -56,21 +67,31 @@
         }
     }
 
+    // element multiple rows slider
+    const elementMultipleRowsSlider = function ($scope, $) {
+        const slider = $scope.find('.element-carousel-multiple-rows__warp')
+
+        if (slider.length) {
+            slider.each(function () {
+                $(this).lightSlider({
+                    item: 1,
+                    loop: true,
+                    controls: false,
+                    speed: 800,
+                    currentPagerPosition: 'left'
+                })
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
-        /* Element slider */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slides.default', ElementCarouselSlider);
-
-        /* Element post carousel */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-post-carousel.default', ElementCarouselSlider);
-
         /* Element testimonial slider */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', ElementCarouselSlider);
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', elementTestimonialSlider);
 
         /* Element carousel images */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-carousel-multiple-rows.default', ElementCarouselSlider);
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-carousel-multiple-rows.default', elementMultipleRowsSlider);
 
         /* Element doctor slider */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', ElementDoctorSlider);
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
     });
-
 })(jQuery);

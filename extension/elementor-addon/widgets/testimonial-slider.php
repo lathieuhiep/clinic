@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -98,34 +99,94 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
 
         $this->end_controls_section();
 
-        // Content additional options
-        $this->start_controls_section(
-            'options_section',
-            [
-                'label' => esc_html__( 'Options', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-	    $this->add_control(
-		    'info_color',
+	    // tab style name
+	    $this->start_controls_section(
+		    'style_name',
 		    [
-			    'label'     =>  esc_html__( 'Info Color', 'clinic' ),
-			    'type'      =>  Controls_Manager::COLOR,
-			    'selectors' =>  [
-				    '{{WRAPPER}} .element-testimonial-slider .item__content .info' => 'color: {{VALUE}}',
-			    ],
+			    'label' => esc_html__( 'Name', 'clinic' ),
+			    'tab' => Controls_Manager::TAB_STYLE,
 		    ]
 	    );
 
 	    $this->add_control(
-		    'desc_color',
+		    'name_color',
 		    [
-			    'label'     =>  esc_html__( 'Description Color', 'clinic' ),
+			    'label'     =>  esc_html__( 'Color', 'clinic' ),
 			    'type'      =>  Controls_Manager::COLOR,
 			    'selectors' =>  [
-				    '{{WRAPPER}} .element-testimonial-slider .item__content .desc' => 'color: {{VALUE}}',
+				    '{{WRAPPER}} .element-testimonial-slider .item .content .name' => 'color: {{VALUE}}',
 			    ],
+		    ]
+	    );
+
+	    $this->add_group_control(
+		    Group_Control_Typography::get_type(),
+		    [
+			    'name' => 'name_typography',
+			    'label' => esc_html__( 'Typography', 'clinic' ),
+			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .name',
+		    ]
+	    );
+
+	    $this->end_controls_section();
+
+        // tab style info
+	    $this->start_controls_section(
+		    'style_info',
+		    [
+			    'label' => esc_html__( 'Info', 'clinic' ),
+			    'tab' => Controls_Manager::TAB_STYLE,
+		    ]
+	    );
+
+	    $this->add_control(
+		    'info_color',
+		    [
+			    'label'     =>  esc_html__( 'Color', 'clinic' ),
+			    'type'      =>  Controls_Manager::COLOR,
+			    'selectors' =>  [
+				    '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .info' => 'color: {{VALUE}}',
+			    ],
+		    ]
+	    );
+
+	    $this->add_group_control(
+		    Group_Control_Typography::get_type(),
+		    [
+			    'name' => 'info_typography',
+			    'label' => esc_html__( 'Typography', 'clinic' ),
+			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .info',
+		    ]
+	    );
+
+	    $this->end_controls_section();
+
+        // tab style description
+        $this->start_controls_section(
+            'style_description',
+            [
+                'label' => esc_html__( 'Description', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+	    $this->add_control(
+		    'desc_color',
+		    [
+			    'label'     =>  esc_html__( 'Color', 'clinic' ),
+			    'type'      =>  Controls_Manager::COLOR,
+			    'selectors' =>  [
+				    '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .desc' => 'color: {{VALUE}}',
+			    ],
+		    ]
+	    );
+
+	    $this->add_group_control(
+		    Group_Control_Typography::get_type(),
+		    [
+			    'name' => 'desc_typography',
+			    'label' => esc_html__( 'Typography', 'clinic' ),
+			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .desc',
 		    ]
 	    );
 
@@ -135,46 +196,41 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-
-        $data_settings_owl = [
-            'loop' => true,
-            'nav' => true,
-            'dots' => false,
-            'items' => 1
-        ];
     ?>
 
         <div class="element-testimonial-slider">
-            <div class="custom-owl-carousel owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode( $data_settings_owl ) ; ?>'>
+            <div class="element-testimonial-slider__warp">
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
                 ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="item__image">
-                            <?php
-                            if ( $imageId ) :
-                                echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                            else:
-                            ?>
-                                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                            <?php endif; ?>
-                        </div>
+                        <div class="item__warp">
+                            <figure class="image">
+		                        <?php
+		                        if ( $imageId ) :
+			                        echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
+		                        else:
+                                ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
+		                        <?php endif; ?>
+                            </figure>
 
-                        <div class="item__content">
-                            <div class="box">
-                                <div class="name">
-		                            <?php echo esc_html( $item['list_title'] ); ?>
-                                </div>
-
-                                <div class="group-content">
-                                    <div class="info fw-bold">
-		                                <?php echo esc_html( $item['list_info'] ); ?>
+                            <div class="content">
+                                <div class="box">
+                                    <div class="name">
+				                        <?php echo esc_html( $item['list_title'] ); ?>
                                     </div>
 
-                                    <div class="desc">
-		                                <?php echo wp_kses_post( $item['list_description'] ) ?>
+                                    <div class="group-content">
+                                        <div class="info fw-bold">
+					                        <?php echo esc_html( $item['list_info'] ); ?>
+                                        </div>
+
+                                        <div class="desc">
+					                        <?php echo wp_kses_post( $item['list_description'] ) ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
