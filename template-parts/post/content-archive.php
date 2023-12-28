@@ -2,14 +2,7 @@
 get_template_part( 'components/inc', 'breadcrumbs' );
 
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
-$per_row = clinic_get_option('opt_post_cat_per_row', '2');
-
 $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
-
-$grid_col = 'grid-col-' . $per_row;
-if ( $sidebar !== 'hide' ) {
-    $grid_col = 'grid-sidebar-col-' . $per_row;
-}
 ?>
 
 <div class="site-container archive-post-warp">

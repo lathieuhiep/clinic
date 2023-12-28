@@ -213,20 +213,6 @@ if ( class_exists( 'CSF' ) ) {
 				),
 				'default' => 'right'
 			),
-
-			// Per Row
-			array(
-				'id'      => 'opt_post_cat_per_row',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Blog Per Row', 'clinic' ),
-				'options' => array(
-					'1' => esc_html__( '1 Column', 'clinic' ),
-					'2' => esc_html__( '2 Column', 'clinic' ),
-					'3' => esc_html__( '3 Column', 'clinic' ),
-					'4' => esc_html__( '4 Column', 'clinic' ),
-				),
-				'default' => '3'
-			),
 		)
 	) );
 
@@ -264,46 +250,6 @@ if ( class_exists( 'CSF' ) ) {
 				'type'    => 'number',
 				'title'   => esc_html__( 'Limit related post', 'clinic' ),
 				'default' => 6,
-			),
-		)
-	) );
-
-	//
-	// Create a section social network
-	CSF::createSection( $clinic_prefix, array(
-		'title'  => esc_html__( 'Social Network', 'clinic' ),
-		'icon'   => 'fab fa-hive',
-		'fields' => array(
-			array(
-				'id'      => 'opt_social_network',
-				'type'    => 'repeater',
-				'title'   => esc_html__( 'Social Network', 'clinic' ),
-				'fields'  => array(
-					array(
-						'id'      => 'icon',
-						'type'    => 'icon',
-						'title'   => esc_html__( 'Icon', 'clinic' ),
-						'default' => 'fab fa-facebook-f'
-					),
-
-					array(
-						'id'      => 'url',
-						'type'    => 'text',
-						'title'   => esc_html__( 'URL', 'clinic' ),
-						'default' => '#'
-					),
-				),
-				'default' => array(
-					array(
-						'icon' => 'fab fa-facebook-f',
-						'url'  => '#',
-					),
-
-					array(
-						'icon' => 'fab fa-youtube',
-						'url'  => '#',
-					),
-				)
 			),
 		)
 	) );
