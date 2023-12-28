@@ -43,11 +43,14 @@
     padding-left: 1rem;
     display: grid;
     grid-gap: 1.2rem;
-    grid-template-columns: auto 1fr;
     align-items: center;
     font-size: 1.2rem;
     line-height: 2.2rem;
     color: #969C9F;
+
+    @media (min-width: 576px) {
+      grid-template-columns: auto 1fr;
+    }
 
     a {
       color: #969C9F;
@@ -75,6 +78,11 @@
 
   @media (min-width: 376px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 375px) {
+    grid-template-columns: max-content;
+    justify-content: center;
   }
 
   .item {

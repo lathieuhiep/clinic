@@ -14,7 +14,7 @@ $hotline_mobile = clinic_get_option('opt_general_hotline_mobile');
             </div>
 
             <div class="item logo text-center">
-                <a class="d-block logo__image" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
+                <a class="logo__image" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
                     <?php
                     if ( ! empty( $logo_mobile['id'] ) ) :
                         echo wp_get_attachment_image( $logo_mobile['id'], 'full' );
