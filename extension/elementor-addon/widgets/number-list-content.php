@@ -1,6 +1,7 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -92,36 +93,43 @@ class Clinic_Elementor_Number_List_Content extends Widget_Base
 			]
 		);
 
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'list_title', [
+				'label' => esc_html__( 'Title', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'list_content', [
+				'label' => esc_html__( 'Content', 'clinic' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => esc_html__( 'List Content' , 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'list_background_color', [
+				'label' => esc_html__( 'Background Color Number', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}}.item' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .item__number' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'list',
 			[
 				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => [
-					[
-						'name' => 'list_title',
-						'label' => esc_html__( 'Title', 'clinic' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => esc_html__( 'List Title' , 'clinic' ),
-						'label_block' => true,
-					],
-					[
-						'name' => 'list_content',
-						'label' => esc_html__( 'Content', 'clinic' ),
-						'type' => Controls_Manager::TEXTAREA,
-						'default' => esc_html__( 'List Content' , 'clinic' ),
-						'label_block' => true,
-					],
-					[
-						'name' => 'list_background_color',
-						'label' => esc_html__( 'Background Color Number', 'clinic' ),
-						'type' => Controls_Manager::COLOR,
-						'selectors' => [
-							'{{WRAPPER}} {{CURRENT_ITEM}}.item' => 'border-color: {{VALUE}};',
-							'{{WRAPPER}} {{CURRENT_ITEM}} .item__number' => 'background-color: {{VALUE}};',
-						],
-					]
-				],
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'list_title' => esc_html__( 'Title #1', 'clinic' ),
