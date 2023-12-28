@@ -18,11 +18,6 @@ function clinic_add_elementor_widget_categories( $elements_manager ): void {
 add_action( 'elementor/widgets/register', 'clinic_register_widget_elementor_addon' );
 function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slides.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-text.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-box.php' );
-
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-grid.php' );
@@ -46,14 +41,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
 
 	// register add on
-//	$widgets_manager->register( new \clinic_Elementor_Addon_Slides() );
-//	$widgets_manager->register( new \clinic_Elementor_Addon_About_Text() );
-//	$widgets_manager->register( new \clinic_Elementor_Addon_Post_Carousel() );
-
-
-
-//	$widgets_manager->register( new \clinic_Elementor_Addon_Info_Box() );
-
 	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );
 	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Grid() );
