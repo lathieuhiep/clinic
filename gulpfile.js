@@ -55,40 +55,6 @@ function buildLibsBootstrapJS() {
 }
 exports.buildLibsBootstrapJS = buildLibsBootstrapJS
 
-
-/*
-Task build swiper
-* */
-
-// Task build style swiper
-function buildStylesSwiper() {
-    return src(`${pathNodeModule}/swiper/swiper-bundle.css`)
-        .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(minifyCss({
-            compatibility: 'ie8',
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/libs/swiper/`))
-        .pipe(browserSync.stream());
-}
-exports.buildStylesSwiper = buildStylesSwiper;
-
-// Task build js bootstrap
-function buildLibsSwiperJS() {
-    return src([
-        `${pathNodeModule}/swiper/swiper-bundle.js`
-    ], {allowEmpty: true})
-        .pipe(uglify())
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/libs/swiper/`))
-        .pipe(browserSync.stream());
-}
-exports.buildLibsSwiperJS = buildLibsSwiperJS
-
-
 // Task build style
 function buildStyles() {
     return src(`${pathAssets}/scss/style.scss`)
