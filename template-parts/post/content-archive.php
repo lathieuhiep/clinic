@@ -7,7 +7,13 @@ $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
 $term_image_url = '';
 if ( is_archive() || is_category() ) {
 	$category = get_queried_object();
-	$term_id = $category->term_id;
+    $category_parent_id = $category->category_parent;
+
+	if ( $category_parent_id != 0 ) {
+		$term_id = $category_parent_id;
+	} else {
+		$term_id = $category->term_id;
+	}
 
 	$term_image_url = get_term_meta( $term_id, 'term_banner_image', true );
 }
