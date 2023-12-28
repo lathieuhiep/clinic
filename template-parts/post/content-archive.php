@@ -3,7 +3,25 @@ get_template_part( 'components/inc', 'breadcrumbs' );
 
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
 $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
+
+$term_image_url = '';
+if ( is_archive() || is_category() ) {
+	$category = get_queried_object();
+	$term_id = $category->term_id;
+
+	$term_image_url = get_term_meta( $term_id, 'term_banner_image', true );
+}
 ?>
+
+<?php if ( $term_image_url ) : ?>
+    <div class="banner-cate">
+        <div class="container">
+            <div class="image-warp">
+                <img src="<?php echo esc_url( $term_image_url ); ?>" width="1920" height="500" alt="">
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <div class="site-container archive-post-warp">
     <div class="container">

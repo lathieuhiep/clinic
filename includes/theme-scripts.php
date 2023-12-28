@@ -4,7 +4,13 @@ add_action('admin_enqueue_scripts', 'clinic_register_back_end_scripts');
 function clinic_register_back_end_scripts(): void
 {
 	/* Start Get CSS Admin */
-	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/css/admin.css' ) );
+	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/admin/admin.css' ) );
+
+	if ( ! did_action( 'wp_enqueue_media' ) ) {
+		wp_enqueue_media();
+	}
+
+	wp_enqueue_script('admin-custom', get_theme_file_uri( '/assets/admin/admin.js' ), array(), "1.0", true);
 }
 
 // Remove jquery migrate
