@@ -471,7 +471,7 @@ section {
 
           > a {
             &.active {
-              + .icon-has-child-cate {
+              ~ .icon-has-child-cate {
                 transform: rotate(180deg);
               }
             }
