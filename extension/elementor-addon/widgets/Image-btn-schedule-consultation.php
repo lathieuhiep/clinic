@@ -60,7 +60,7 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'list', 'link', 'đặt hẹn', 'tư vấn' ];
+		return ['image', 'list', 'link'];
 	}
 
 	/**
