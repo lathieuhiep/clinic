@@ -1,6 +1,7 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -93,35 +94,42 @@ class Clinic_Elementor_Step_Image_Box extends Widget_Base
 			]
 		);
 
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'list_title', [
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'textdomain' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'list_image', [
+				'label' => esc_html__( 'Image', 'textdomain' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'list_content', [
+				'label' => esc_html__( 'Content', 'textdomain' ),
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'List Content' , 'textdomain' ),
+				'label_block' => true,
+			]
+		);
+
 		$this->add_control(
 			'list',
 			[
 				'label' => esc_html__( 'Danh sách', 'textdomain' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => [
-					[
-						'name' => 'list_title',
-						'label' => esc_html__( 'Title', 'textdomain' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => esc_html__( 'List Title' , 'textdomain' ),
-						'label_block' => true,
-					],
-					[
-						'name' => 'list_image',
-						'label' => esc_html__( 'Image', 'textdomain' ),
-						'type' => Controls_Manager::MEDIA,
-						'default' => [
-							'url' => Utils::get_placeholder_image_src(),
-						],
-					],
-					[
-						'name' => 'list_content',
-						'label' => esc_html__( 'Content', 'textdomain' ),
-						'type' => Controls_Manager::WYSIWYG,
-						'default' => esc_html__( 'List Content' , 'textdomain' ),
-						'label_block' => true,
-					],
-				],
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'list_title' => esc_html__( 'Title #1', 'textdomain' ),

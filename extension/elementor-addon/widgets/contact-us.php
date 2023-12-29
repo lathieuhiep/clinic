@@ -2,6 +2,7 @@
 
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
+use Elementor\Repeater;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -103,60 +104,73 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
 			]
 		);
 
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'list_title', [
+				'label' => esc_html__( 'Title', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'list_icon', [
+				'label' => esc_html__( 'Icons', 'clinic' ),
+				'type' => Controls_Manager::ICONS,
+			]
+		);
+
+		$repeater->add_control(
+			'list_content', [
+				'label' => esc_html__( 'Content', 'clinic' ),
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'List Content' , 'clinic' ),
+				'show_label' => false,
+			]
+		);
+
+		$repeater->add_control(
+			'list_background_color', [
+				'label' => esc_html__( 'Background Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .box' => 'background-color: {{VALUE}}'
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'list_color_content', [
+				'label' => esc_html__( 'Color Content', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .item__content' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'font_size_content', [
+				'label' => esc_html__( 'Font Size Content (px)', 'clinic' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 100,
+				'step' => 1,
+				'default' => 16,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .item__content' => 'font-size: {{VALUE}}px'
+				],
+			]
+		);
+
 		$this->add_control(
 			'contact_list',
 			[
 				'label' => esc_html__( 'Contact List', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => [
-					[
-						'name' => 'list_title',
-						'label' => esc_html__( 'Title', 'clinic' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => esc_html__( 'List Title' , 'clinic' ),
-						'label_block' => true,
-					],
-					[
-						'name' => 'list_icon',
-						'label' => esc_html__( 'Icons', 'clinic' ),
-						'type' => Controls_Manager::ICONS,
-					],
-					[
-						'name' => 'list_content',
-						'label' => esc_html__( 'Content', 'clinic' ),
-						'type' => Controls_Manager::WYSIWYG,
-						'default' => esc_html__( 'List Content' , 'clinic' ),
-						'show_label' => false,
-					],
-					[
-						'name' => 'list_background_color',
-						'label' => esc_html__( 'Background Color', 'clinic' ),
-						'type' => Controls_Manager::COLOR,
-						'selectors' => [
-							'{{WRAPPER}} {{CURRENT_ITEM}} .box' => 'background-color: {{VALUE}}'
-						],
-					],
-					[
-						'name' => 'list_color_content',
-						'label' => esc_html__( 'Color Content', 'clinic' ),
-						'type' => Controls_Manager::COLOR,
-						'selectors' => [
-							'{{WRAPPER}} {{CURRENT_ITEM}} .item__content' => 'color: {{VALUE}}'
-						],
-					],
-					[
-						'name' => 'font_size_content',
-						'label' => esc_html__( 'Font Size Content (px)', 'clinic' ),
-						'type' => Controls_Manager::NUMBER,
-						'min' => 5,
-						'max' => 100,
-						'step' => 5,
-						'default' => 16,
-						'selectors' => [
-							'{{WRAPPER}} {{CURRENT_ITEM}} .item__content' => 'font-size: {{VALUE}}px'
-						],
-					],
-				],
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
 						'list_title' => esc_html__( 'Title #1', 'clinic' ),

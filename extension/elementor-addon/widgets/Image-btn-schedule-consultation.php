@@ -1,7 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -9,7 +8,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
+class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 {
 
 	/**
@@ -22,7 +21,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-image-box-content-list';
+		return 'clinic-image-btn-schedule-consultation';
 	}
 
 	/**
@@ -35,7 +34,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Image Box Content List', 'clinic');
+		return esc_html__('Đặt hẹn và tư vấn', 'clinic');
 	}
 
 	/**
@@ -48,7 +47,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-gallery-grid';
+		return 'eicon-button';
 	}
 
 	/**
@@ -61,7 +60,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'list', 'box', 'content' ];
+		return ['image', 'list', 'link', 'đặt hẹn', 'tư vấn' ];
 	}
 
 	/**
@@ -94,51 +93,25 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 			]
 		);
 
-		$repeater = new Repeater();
-        
-		$repeater->add_control(
-			'list_title', [
-				'label' => esc_html__( 'Title', 'clinic' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'list_image', [
-				'label' => esc_html__( 'Image', 'clinic' ),
+		$this->add_control(
+			'image_button_schedule',
+			[
+				'label' => esc_html__( 'Ảnh link đặt lịch', 'textdomain' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
 			]
 		);
-        
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'type' => Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'List Content' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
 
 		$this->add_control(
-			'list',
+			'image_button_consultation',
 			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
+				'label' => esc_html__( 'Ảnh link bác sĩ tư vấn', 'textdomain' ),
+				'type' => Controls_Manager::MEDIA,
 				'default' => [
-					[
-						'list_title' => esc_html__( 'Title #1', 'clinic' ),
-					],
-					[
-						'list_title' => esc_html__( 'Title #2', 'clinic' ),
-					],
+					'url' => Utils::get_placeholder_image_src(),
 				],
-				'title_field' => '{{{ list_title }}}',
 			]
 		);
 
@@ -155,27 +128,26 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
+
+		$medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
+		$link_chat = clinic_get_option('opt_general_chat_doctor');
     ?>
-		<div class="element-image-box-content-list text-justify">
-			<div class="element-image-box-content-list__grid">
-				<?php foreach ( $settings['list'] as $item ) : ?>
-					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
-						</div>
+		<div class="element-schedule-consultation">
+            <div class="element-schedule-consultation__warp">
+	            <?php if ( $settings['image_button_schedule']['id'] && $medical_appointment_form ) : ?>
+                    <a class="item" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+			            <?php echo wp_get_attachment_image( $settings['image_button_schedule']['id'], 'large' ); ?>
+                    </a>
+	            <?php
+                endif;
 
-						<div class="item__content">
-							<h3 class="title f-family-body">
-								<?php echo esc_html( $item['list_title'] ); ?>
-							</h3>
-
-							<div class="desc fs-16 color-white">
-								<?php echo wpautop( $item['list_content'] ); ?>
-							</div>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
+                if ( $settings['image_button_consultation']['id'] && $link_chat && $link_chat['url'] ) :
+                ?>
+                    <a class="item" href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
+	                    <?php echo wp_get_attachment_image( $settings['image_button_consultation']['id'], 'large' ); ?>
+                    </a>
+                <?php endif; ?>
+            </div>
 		</div>
 		<?php
 	}

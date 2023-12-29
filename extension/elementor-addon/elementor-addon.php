@@ -27,7 +27,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-under-background.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-list.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content-list.php' );
-	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-list-link.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/Image-btn-schedule-consultation.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-content-list.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
@@ -50,7 +50,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Heading_Under_Background() );
 	$widgets_manager->register( new \Clinic_Elementor_Image_Box_List() );
 	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content_List() );
-	$widgets_manager->register( new \Clinic_Elementor_Image_List_Link() );
+	$widgets_manager->register( new \Clinic_Elementor_Image_Btn_Schedule_Consultation() );
 	$widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
 	$widgets_manager->register( new \Clinic_Elementor_Image_Content_List() );
 	$widgets_manager->register( new \clinic_Elementor_Addon_Testimonial_Slider() );
