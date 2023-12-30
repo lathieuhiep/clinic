@@ -38,7 +38,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
         $this->add_control(
             'select_cat',
             [
-                'label' => esc_html__('Select Category', 'clinic'),
+                'label' => esc_html__('Select Category Link', 'clinic'),
                 'type' => Controls_Manager::SELECT,
                 'options' => clinic_check_get_cat('category'),
                 'label_block' => true
@@ -301,7 +301,6 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             'posts_per_page' => $limit_post,
             'orderby' => $order_by_post,
             'order' => $order_post,
-            'cat' => $cat_post,
             'ignore_sticky_posts' => 1,
         );
 
@@ -367,11 +366,13 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
                     wp_reset_postdata(); ?>
                 </div>
 
-                <div class="action-box text-center">
-                    <a class="btn-link-cate" href="<?php echo esc_url(get_category_link($cat_post)); ?>">
-                        <?php esc_html_e('xem thêm bài viết', 'clinic'); ?>
-                    </a>
-                </div>
+                <?php if ( $cat_post ) : ?>
+                    <div class="action-box text-center">
+                        <a class="btn-link-cate" href="<?php echo esc_url(get_category_link($cat_post)); ?>">
+			                <?php esc_html_e('xem thêm bài viết', 'clinic'); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
 
         <?php
