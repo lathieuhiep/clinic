@@ -165,6 +165,13 @@ if ( class_exists( 'CSF' ) ) {
 				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
 				'options' => clinic_get_form_cf7(),
 			),
+
+            array(
+                'id'    => 'opt_general_link_map',
+                'type'  => 'text',
+                'title' => esc_html__( 'Chỉ đường', 'clinic' ),
+                'default' => 'https://www.google.com/maps/dir//180+Tr%E1%BA%A7n+Ph%C3%BA+Ph%C6%B0%E1%BB%9Bc+Ninh+H%E1%BA%A3i+Ch%C3%A2u+%C4%90%C3%A0+N%E1%BA%B5ng+550000/@16.0654672,108.2234849,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x31421832e656df21:0xa6ce7e8a4a6257c6'
+            ),
 		)
 	) );
 
