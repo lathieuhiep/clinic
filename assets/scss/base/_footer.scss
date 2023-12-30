@@ -1,16 +1,15 @@
 .global-footer {
   section {
     &.widget {
-      margin-bottom: 2.3rem;
+      .widget-title {
+        margin-bottom: 2rem;
+        font-size: 2.6rem;
+      }
 
       .textwidget {
         iframe {
           min-height: 38rem;
         }
-      }
-
-      .info-company-widget {
-        color: var(--color-white);
       }
 
       .open-hours-widget {
@@ -28,12 +27,53 @@
           }
         }
       }
+
+      &.widget_nav_menu {
+        ul {
+          li {
+            a {
+              position: relative;
+              display: inline-block;
+              font-weight: 700;
+              font-size: 2rem;
+              text-transform: uppercase;
+              color: var(--color-salem);
+
+              &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                bottom: 0;
+                width: 0;
+                height: .2rem;
+                background-color: var(--color-cadmium-green);
+                @include transition();
+              }
+            }
+
+            &:hover {
+              a {
+                color: var(--color-cadmium-green);
+
+                &:after {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
     }
+  }
+
+  .warp-footer {
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 0 1.2rem;
   }
 
   &__column {
     padding: 4rem 0 2rem;
-    background: linear-gradient(180deg, #1E944B 0%, #137260 100%);
   }
 }
 

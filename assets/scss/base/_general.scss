@@ -52,10 +52,6 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.67;
-}
-
 a {
   display: inline-block;
   font-family: inherit;
@@ -187,20 +183,6 @@ pre {
 
 .mb-24 {
   margin-bottom: 2.4rem;
-}
-
-/* Social network */
-.social-network-item {
-  display: inline-block;
-  margin-right: 5px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  a {
-    display: block;
-  }
 }
 
 /* Breadcrumbs */

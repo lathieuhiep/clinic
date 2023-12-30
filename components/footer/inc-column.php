@@ -5,7 +5,7 @@ if( is_active_sidebar( 'sidebar-footer-column-1' ) || is_active_sidebar( 'sideba
 
 ?>
     <div class="global-footer__column">
-        <div class="container">
+        <div class="warp-footer">
             <div class="row">
                 <?php
                 for( $i = 0; $i < $opt_number_columns; $i++ ):

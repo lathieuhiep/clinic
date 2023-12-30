@@ -254,6 +254,51 @@ if ( class_exists( 'CSF' ) ) {
 		)
 	) );
 
+    //
+    // Create a section social network
+    CSF::createSection( $clinic_prefix, array(
+        'title'  => esc_html__( 'Social Network', 'clinic' ),
+        'icon'   => 'fab fa-hive',
+        'fields' => array(
+            array(
+                'id'      => 'opt_social_network',
+                'type'    => 'repeater',
+                'title'   => esc_html__( 'Social Network', 'clinic' ),
+                'fields'  => array(
+                    array(
+                        'id'      => 'icon',
+                        'type'    => 'icon',
+                        'title'   => esc_html__( 'Icon', 'clinic' ),
+                        'default' => 'fab fa-facebook-f'
+                    ),
+
+                    array(
+                        'id'    => 'url',
+                        'type'  => 'text',
+                        'title' => esc_html__('URL', 'clinic'),
+                        'default' => '#'
+                    ),
+                ),
+                'default' => array(
+                    array(
+                        'icon' => 'fab fa-facebook-f',
+                        'url' => '#',
+                    ),
+
+                    array(
+                        'icon' => 'fab fa-twitter',
+                        'url' => '#',
+                    ),
+
+                    array(
+                        'icon' => 'fab fa-instagram',
+                        'url' => '#',
+                    ),
+                )
+            ),
+        )
+    ) );
+
 	//
 	// -> Create a section footer
 	CSF::createSection( $clinic_prefix, array(
