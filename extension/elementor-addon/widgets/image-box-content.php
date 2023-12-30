@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Image_Box_Grid extends Widget_Base
+class Clinic_Elementor_Image_Box_Content extends Widget_Base
 {
 
 	/**
@@ -21,7 +21,7 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-image-box-grid';
+		return 'clinic-image-box-content';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Image Box Grid', 'clinic');
+		return esc_html__('Image Box Content', 'clinic');
 	}
 
 	/**
@@ -60,7 +60,7 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'box' ];
+		return ['image', 'box', 'content' ];
 	}
 
 	/**
@@ -115,27 +115,6 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 		);
 
 		$this->add_control(
-			'sub_heading',
-			[
-				'label'       => esc_html__( 'Sub Heading', 'clinic' ),
-				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Heading', 'clinic' ),
-				'label_block' => true
-			]
-		);
-
-		$this->add_control(
-			'image_sub_heading',
-			[
-				'label' => esc_html__( 'Choose Image Sub Heading', 'textdomain' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		);
-
-		$this->add_control(
 			'desc',
 			[
 				'label'     =>  esc_html__( 'Description', 'clinic' ),
@@ -167,17 +146,6 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 		);
 
 		$this->add_control(
-			'sub_heading_color',
-			[
-				'label'     =>  esc_html__( 'Sub Heading Color', 'clinic' ),
-				'type'      =>  Controls_Manager::COLOR,
-				'selectors' =>  [
-					'{{WRAPPER}} .element-image-box-grid__layout .item-content__sub-heading' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
 			'desc_color',
 			[
 				'label'     =>  esc_html__( 'Description Color', 'clinic' ),
@@ -202,26 +170,16 @@ class Clinic_Elementor_Image_Box_Grid extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-image-box-grid text-justify">
-			<div class="element-image-box-grid__layout">
+		<div class="element-image-box-content text-justify">
+			<div class="element-image-box-content__warp">
 				<div class="item item-image">
 					<?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
 				</div>
 
 				<div class="item item-content">
-					<h2 class="item-content__heading text-center">
+					<h2 class="item-content__heading">
 						<?php echo esc_html($settings['heading']) ?>
 					</h2>
-
-					<p class="item-content__sub-heading text-center">
-						<?php echo esc_html($settings['sub_heading']) ?>
-					</p>
-
-					<?php if ( $settings['image_sub_heading']['id'] ) : ?>
-						<p class="item-content__image-sub text-center">
-							<?php echo wp_get_attachment_image( $settings['image_sub_heading']['id'], 'large' ); ?>
-						</p>
-					<?php endif; ?>
 
 					<div class="item-content__desc">
 						<?php echo wpautop($settings['desc']); ?>

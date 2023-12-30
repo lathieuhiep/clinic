@@ -1,0 +1,37 @@
+.element-image-box-content {
+  padding: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--color-cadmium-yellow);
+
+  &__warp {
+    padding: 2.4rem 1.6rem;
+    display: grid;
+    grid-gap: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--color-cadmium-green);
+
+    @media (min-width: 768px) {
+      grid-template-columns: 42.6rem 1fr;
+    }
+
+    .item-image {
+      img {
+        width: 100%;
+      }
+    }
+
+    .item-content {
+      &__heading {
+        font-size: 2.3rem;
+        color: var(--color-white);
+      }
+
+      &__desc {
+        font-size: 1.6rem;
+        color: var(--color-white);
+      }
+    }
+  }
+}
