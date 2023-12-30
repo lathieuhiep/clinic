@@ -16,7 +16,7 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/180tranphu/",
+        proxy: "localhost/namkhoa199/",
         open: 'local',
         cors: true,
         ghostMode: false
@@ -105,6 +105,39 @@ function buildJSTheme() {
 }
 exports.buildJSTheme = buildJSTheme
 
+// Task build fontawesome
+function buildFontawesomeStyle() {
+    return src([
+        './node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss',
+        './node_modules/@fortawesome/fontawesome-free/scss/brands.scss',
+        './node_modules/@fortawesome/fontawesome-free/scss/solid.scss',
+    ])
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(concatCss('fontawesome.css'))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(dest(`${pathAssets}/libs/fontawesome/css`))
+        .pipe(browserSync.stream())
+}
+
+function buildFontawesomeWebFonts() {
+    return src([
+        './node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf',
+        './node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2',
+        './node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf',
+        './node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2'
+    ])
+        .pipe(dest(`${pathAssets}/libs/fontawesome/webfonts`))
+        .pipe(browserSync.stream());
+}
+
+async function buildFontAwesome() {
+    await buildFontawesomeStyle()
+    await buildFontawesomeWebFonts()
+}
+exports.buildFontAwesome = buildFontAwesome
 
 // Task watch
 function watchTask() {

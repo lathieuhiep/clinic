@@ -23,13 +23,14 @@ function clinic_category_add_form_fields_callback(): void {
 
 // create meta key banner image and save
 add_action( 'create_term', 'clinic_custom_create_term_callback' );
-function clinic_custom_create_term_callback($term_id): void {
-	// add term meta data
-	add_term_meta(
-		$term_id,
-		'term_banner_image',
-		esc_url($_REQUEST['category_banner_image_url'])
-	);
+function clinic_custom_create_term_callback($term_id, $tt_id, $taxonomy): void {
+	if ( $taxonomy == 'category' ) {
+        add_term_meta(
+            $term_id,
+            'term_banner_image',
+            esc_url($_REQUEST['category_banner_image_url'])
+        );
+    }
 }
 
 // show banner image edit
@@ -78,19 +79,20 @@ function clinic_category_edit_form_fields_callback($ttObj, $taxonomy): void {
 }
 
 // change banner image when edit category
-add_action( 'edit_term', 'clinic_edit_term_callback' );
-function clinic_edit_term_callback($term_id): void {
-	$image = get_term_meta( $term_id, 'term_banner_image' );
-
-	if ( $image ) :
-		update_term_meta(
-			$term_id,
-			'term_banner_image',
-			esc_url( $_POST['category_banner_image_url']) );
-	else :
-		add_term_meta(
-			$term_id,
-			'term_banner_image',
-			esc_url( $_POST['category_banner_image_url']) );
-	endif;
+add_action( 'edit_term', 'clinic_edit_term_callback', 10, 3 );
+function clinic_edit_term_callback($term_id, $tt_id, $taxonomy): void {
+    if ( $taxonomy == 'category' ) {
+        $image = get_term_meta( $term_id, 'term_banner_image' );
+        if ( $image ) :
+            update_term_meta(
+                $term_id,
+                'term_banner_image',
+                esc_url( $_POST['category_banner_image_url']) );
+        else :
+            add_term_meta(
+                $term_id,
+                'term_banner_image',
+                esc_url( $_POST['category_banner_image_url']) );
+        endif;
+    }
 }

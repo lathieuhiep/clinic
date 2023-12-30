@@ -59,7 +59,7 @@ add_filter( 'walker_nav_menu_start_el', 'clinic_add_arrow',10,4);
 function clinic_add_arrow( $output, $item, $depth, $args ){
 	if('primary' == $args->theme_location && $depth >= 0 ){
 		if (in_array("menu-item-has-children", $item->classes)) {
-			$output .='<span class="sub-menu-toggle"></span>';
+			$output .='<span class="sub-menu-toggle"><i class="fa-solid fa-sort-down"></i></span>';
 		}
 	}
 

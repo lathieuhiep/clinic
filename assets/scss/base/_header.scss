@@ -1,5 +1,6 @@
 .global-header {
   background-color: var(--color-white);
+  box-shadow: 0 0 1rem 0 rgba(0,0,0,0.5);
 
   &.active-sticky-nav {
     position: sticky;
@@ -9,56 +10,28 @@
 
   .top-nav {
     .navbar-top-grid {
+      margin: 0 auto;
+      padding: 0 1.2rem;
+      max-width: 160rem;
+      width: 100%;
+      height: 8.4rem;
       display: grid;
-      grid-column-gap: 5.8rem;
-      grid-template-columns: 35.6rem 1fr;
+      grid-gap: 2.4rem;
+      grid-template-columns: 38rem 1fr auto;
       align-items: center;
+    }
 
-      .info {
-        display: grid;
-        grid-gap: 4.5rem;
-        grid-template-columns: auto 1fr;
+    .phone {
+      a {
+        padding: .6rem 1.6rem;
+        font-size: 1.8rem;
+        color: var(--color-white);
+        font-weight: 700;
+        border-radius: 5rem;
+        background-color: var(--color-sunset-orange);
 
-        &__item {
-          display: grid;
-          grid-gap: 11px;
-          grid-template-columns: 3.6rem 1fr;
-          align-items: center;
-
-          .left-box {
-            @include square(3.6rem, 50%);
-            @include flex-center();
-            background-color: var(--color-heading);
-          }
-
-          .right-box {
-            font-size: 1.6rem;
-
-            .heading {
-              font-size: 1.4rem;
-              line-height: 1.6rem;
-              color: var(--color-dim-gray);
-            }
-
-            .phone-list {
-              .item-phone {
-                position: relative;
-                display: inline-block;
-
-                ~ .item-phone {
-                  margin-left: 1rem;
-
-                  &:before {
-                    position: absolute;
-                    content: "-";
-                    top: 50%;
-                    left: -1rem;
-                    transform: translateY(-50%);
-                  }
-                }
-              }
-            }
-          }
+        i {
+          margin-right: .5rem;
         }
       }
     }
@@ -98,8 +71,7 @@
 }
 
 .navbar-main {
-  height: 5rem;
-  background-color: var(--color-salem);
+  height: 100%;
 
   > div {
     height: inherit;
@@ -113,14 +85,13 @@
         height: inherit;
 
         ~ li {
-          margin-left: 6rem;
+          margin-left: 3.2rem;
         }
 
         > a {
           font-weight: 700;
-          font-size: 1.4rem;
-          color: var(--color-white);
-          padding: 0 3.4rem;
+          font-size: 1.5rem;
+          color: var(--color-body);
         }
       }
     }
@@ -135,26 +106,29 @@
         a {
           text-shadow: none;
           display: block;
-          font-family: var(--font-heading);
 
           &:hover {
-            background-color: transparent;
             color: $color-hover;
           }
         }
 
         .sub-menu-toggle {
-          &:after {
-            @include transition();
+          margin-left: .6rem;
+          cursor: pointer;
+          font-size: 1.4rem;
+          line-height: 100%;
+
+          i {
+            width: 100%;
+            height: 100%;
+            transform: translateY(-.3rem);
           }
         }
 
         &.current-menu-item,
         &.current-menu-parent {
-          background-color: var(--color-cadmium-yellow);
-
           > a {
-            color: var(--color-cadmium-green);
+            color: var(--color-hover);
           }
         }
 
@@ -187,12 +161,15 @@
             }
           }
         }
-      }
-    }
 
-    .sub-menu-toggle {
-      font-size: 14px;
-      cursor: pointer;
+        ul {
+          li {
+            a {
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
     }
 
     @media (min-width: 992px) and (max-width: 1400px) {
@@ -250,7 +227,7 @@
             display: block !important;
             min-width: 160px;
             border-top: 1px solid $color-hover;
-            background-color: $border-color;
+            background-color: #f1f1f1;
             position: absolute;
             top: 120%;
             left: 0;
@@ -699,166 +676,6 @@
   }
   100% {
     transform: rotate(0) scale(1) skew(1deg)
-  }
-}
-
-#mega-menu-wrap-primary {
-  #mega-menu-primary {
-    > li {
-      &.mega-menu-item {
-        &:not(:last-child) {
-          @media (min-width: 1199px) {
-            margin-right: 6rem;
-          }
-        }
-      }
-
-      &.mega-menu-megamenu > {
-        ul {
-          &.mega-sub-menu {
-            li {
-              &.mega-menu-column {
-                > ul.mega-sub-menu {
-                  > li {
-                    &.mega-menu-item {
-                      li {
-                        &.mega-menu-item {
-                          > a {
-                            &.mega-menu-link {
-                              font-weight: 500;
-                            }
-
-                            &:hover {
-                              font-weight: 500 !important;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    li {
-      &.home-icon {
-        &.mega-menu-item {
-          a {
-            &.mega-menu-link {
-              &:before {
-                transform: translateY(21%);
-              }
-            }
-          }
-        }
-
-        a {
-          &.mega-menu-link {
-            &:hover {
-              &:before {
-                background-image: url("assets/images/home-icon-active.png") !important;
-              }
-            }
-          }
-        }
-      }
-
-      &.mega-menu-megamenu {
-        > ul {
-          &.mega-sub-menu {
-            @media (min-width: 992px) {
-              display: flex;
-              flex-wrap: wrap;
-            }
-
-            > li {
-              &.mega-menu-row {
-                .mega-menu-column {
-                  ~ .mega-menu-column {
-                    border-left: 1px solid #CDCCCC;
-                  }
-
-                  > ul {
-                    &.mega-sub-menu {
-                      > li {
-                        &.mega-menu-item {
-                          ~ .mega-menu-item {
-                            position: relative;
-                            margin-top: 1.6rem;
-                            padding-top: 1.6rem;
-
-                            &:before {
-                              display: block;
-                              position: absolute;
-                              content: "";
-                              left: 1.5rem;
-                              right: 1.5rem;
-                              top: 0;
-                              height: 1px;
-                              background-color: #CDCCCC;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-
-              &.mega-menu-item {
-                &.mega-menu-columns-4-of-12 {
-                  @media (min-width: 992px) {
-                    &:nth-child(3n+2),
-                    &:nth-child(3n+3) {
-                      border-left: 1px solid #CDCCCC;
-                    }
-
-                    &:nth-child(n+4) {
-                      > a {
-                        &.mega-menu-link {
-                          margin-top: .8rem;
-                          padding-top: 1.6rem;
-                          border-top: 1px solid #CDCCCC;
-                        }
-                      }
-                    }
-                  }
-                }
-
-                li {
-                  &.mega-menu-item {
-                    > a {
-                      &.mega-menu-link {
-                        position: relative;
-                        font-weight: 500;
-
-                        &:before {
-                          position: absolute;
-                          content: "";
-                          top: 50%;
-                          left: 0;
-                          @include square(.5rem, 50%);
-                          background-color: var(--color-salem);
-                          transform: translateY(-50%);
-                        }
-
-                        &:hover {
-                          font-weight: 500;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
   }
 }
 

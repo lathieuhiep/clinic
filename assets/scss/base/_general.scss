@@ -7,11 +7,10 @@
   --font-size-body: #{$font-size-body};
   --color-body: #{$color-body};
   --background-body: #{$background-body};
+  --font-icon: #{$font-icon};
 
   --font-heading: #{$font-heading};
   --color-heading: #{$color-heading};
-  --font-anton: #{$font-anton};
-  --font-beau-rivage: #{$font-beau-rivage};
   --font-size-h1: #{$h1-font-size};
   --font-size-h2: #{$h2-font-size};
   --font-size-h3: #{$h3-font-size};
@@ -19,6 +18,7 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
+  --color-hover: #{$color-hover};
   --color-white: #{$color-white};
   --color-dim-gray: #{$color-dim-gray};
   --color-salem: #{$color-salem};
