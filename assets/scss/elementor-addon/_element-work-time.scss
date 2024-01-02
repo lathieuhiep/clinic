@@ -1,0 +1,46 @@
+.element-work-time {
+  &__warp {
+    display: grid;
+    grid-gap: 2.4rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    .item {
+      position: relative;
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+
+      ~ .item {
+        &:before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: -1.2rem;
+          height: 10rem;
+          width: .2rem;
+          background-color: var(--color-white);
+        }
+      }
+
+      &__box {
+        display: grid;
+        grid-gap: 2.4rem;
+        grid-template-columns: 10.6rem 1fr;
+
+        .content {
+          .sub-title {
+            margin-bottom: 2rem;
+          }
+
+          .title {
+            color: var(--color-cadmium-yellow);
+          }
+        }
+      }
+
+      &__desc {
+        margin-top: 3rem;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
