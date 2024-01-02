@@ -309,3 +309,42 @@ pre {
 #LRMINIBar {
   bottom: 7rem !important;
 }
+
+.lSSlideCustom {
+  .lSSlideOuter {
+    min-height: 1px;
+
+    img {
+      width: 100%;
+    }
+
+    .lSAction {
+      a {
+        opacity: 1;
+        background-image: none;
+        @include flex-center();
+
+        &:before {
+          position: absolute;
+          font-weight: 900;
+          font-family: $font-icon;
+          font-size: 2.4rem;
+          line-height: 100%;
+          color: var(--color-red);
+        }
+
+        &.lSPrev {
+          &:before {
+            content: "\f053";
+          }
+        }
+
+        &.lSNext {
+          &:before {
+            content: "\f054";
+          }
+        }
+      }
+    }
+  }
+}
