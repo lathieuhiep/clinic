@@ -104,7 +104,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .element-post-grid .item-post__title a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .element-post-grid .item-post__box .title a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -116,7 +116,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .element-post-grid .item-post__title a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .element-post-grid .item-post__box .title a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -125,37 +125,81 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .element-post-grid .item-post .item-post__title',
+                'selector' => '{{WRAPPER}} .element-post-grid .item-post__box .title',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Style meta
+        $this->start_controls_section(
+            'style_meta',
+            [
+                'label' => esc_html__('Meta', 'clinic'),
+                'tab' => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->add_control(
-            'title_alignment',
+            'meta_color',
             [
-                'label' => esc_html__('Title Alignment', 'clinic'),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__('Left', 'clinic'),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__('Center', 'clinic'),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-                    'right' => [
-                        'title' => esc_html__('Right', 'clinic'),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-                    'justify' => [
-                        'title' => esc_html__('Justified', 'clinic'),
-                        'icon' => 'eicon-text-align-justify',
-                    ],
-                ],
-                'toggle' => true,
+                'label' => esc_html__('Color', 'clinic'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .element-post-grid .item-post .item-post__title' => 'text-align: {{VALUE}};',
-                ]
+                    '{{WRAPPER}} .element-post-grid .item-post__box .meta' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'meta_typography',
+                'selector' => '{{WRAPPER}} .element-post-grid .item-post__box .meta',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Style link
+        $this->start_controls_section(
+            'style_link',
+            [
+                'label' => esc_html__('Link', 'clinic'),
+                'tab' => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'link_color',
+            [
+                'label' => esc_html__('Color', 'clinic'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-post-grid .action-box .btn-link-cate' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'link_typography',
+                'selector' => '{{WRAPPER}} .element-post-grid .action-box .btn-link-cate',
+            ]
+        );
+
+        $this->add_control(
+            'background_link_color',
+            [
+                'label' => esc_html__('Background Color', 'clinic'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-post-grid .action-box .btn-link-cate' => 'background-color: {{VALUE}};',
+                ],
             ]
         );
 
