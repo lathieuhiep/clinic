@@ -156,25 +156,35 @@ class Clinic_Elementor_Step_Image_Box extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-step-image-box text-justify">
-			<div class="element-step-image-box__grid">
-				<?php foreach ( $settings['list'] as $item ) : ?>
+		<div class="element-step-image-box">
+			<div class="element-step-image-box__grid text-center">
+				<?php
+                $step = 1;
+                foreach ( $settings['list'] as $item ) :
+                ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
-						</div>
+                        <div class="item__step">
+                            <h3 class="txt m-0"><?php esc_html_e('Bước', 'clinic'); echo ' ' . esc_html( $step ); ?></h3>
+
+                            <div class="thumbnail">
+                                <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+                            </div>
+                        </div>
 
 						<div class="item__content">
-							<h3 class="title f-family-body fw-900 text-uppercase color-cadmium-yellow">
+							<h3 class="title">
 								<?php echo esc_html( $item['list_title'] ); ?>
 							</h3>
 
-							<div class="desc fs-16 color-white">
+							<div class="desc">
 								<?php echo wpautop( $item['list_content'] ); ?>
 							</div>
 						</div>
 					</div>
-				<?php endforeach; ?>
+				<?php
+                    $step++;
+                endforeach;
+                ?>
 			</div>
 		</div>
 		<?php

@@ -1,52 +1,89 @@
 .element-step-image-box {
   &__grid {
     display: grid;
+    grid-gap: 2.4rem;
     
     @media (min-width: 992px) {
-      grid-gap: 3rem 2rem;
       grid-template-columns: repeat(3, 1fr);
-    }
-    
-    @media (max-width: 991px) {
-      grid-gap: 2.4rem;
     }
     
     @media (min-width: 576px) and (max-width: 991px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    
-    @media (max-width: 575px) {
-
-    }
 
     .item {
       border-radius: .5rem;
-      background: #0D6920;
+      background:var(--color-white);
       overflow: hidden;
 
-      &__thumbnail {
-        img {
-          width: 100%;
+      &__step {
+        position: relative;
+        margin-bottom: 6rem;
+        padding: 1rem;
+        min-height: 12rem;
+        background-color: var(--color-salem);
+
+        .txt {
+          font-size: 2.9rem;
+          color: var(--color-white);
+        }
+
+        .thumbnail {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          height: 12.9rem;
+          transform: translateY(-50%);
+
+          img {
+            @include square(12.9rem, 50%);
+            object-fit: cover;
+          }
         }
       }
 
       &__content {
-        padding: 1.3rem 1.8rem 2.8rem;
+        padding: 1.5rem 1rem 2rem;
 
         .title {
           position: relative;
-          margin-bottom: 1.4rem;
-          padding-bottom: 1.3rem;
+          margin-bottom: 2rem;
           font-size: 2rem;
+          color: var(--color-salem);
+        }
 
-          &:after {
-            position: absolute;
-            content: "";
-            bottom: 0;
-            left: 0;
-            width: 10.1rem;
-            height: .2rem;
-            background-color: var(--color-white);
+        .desc {
+          font-size: 1.4rem;
+
+          ul {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+
+            li {
+              position: relative;
+              padding-left: 2.8rem;
+              text-align: left;
+              font-weight: 700;
+              font-size: 2rem;
+
+              ~ li {
+                margin-top: 1rem;
+              }
+
+              &:before {
+                position: absolute;
+                content: "\f14a";
+                top: -0.3rem;
+                left: 0;
+                font-weight: 900;
+                font-family: $font-icon;
+                color: var(--color-salem);
+                width: 2.4rem;
+                font-size: 2.4rem;
+              }
+            }
           }
         }
       }
