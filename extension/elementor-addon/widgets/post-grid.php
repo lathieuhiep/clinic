@@ -39,7 +39,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             'select_cat',
             [
                 'label' => esc_html__('Select Category Link', 'clinic'),
-                'type' => Controls_Manager::SELECT,
+                'type' => Controls_Manager::SELECT2,
                 'options' => clinic_check_get_cat('category'),
                 'label_block' => true
             ]
@@ -82,64 +82,6 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
                 'options' => [
                     'ASC' => esc_html__('Ascending', 'clinic'),
                     'DESC' => esc_html__('Descending', 'clinic'),
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Content layout
-        $this->start_controls_section(
-            'content_layout',
-            [
-                'label' => esc_html__('Layout Settings', 'clinic'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'column_number',
-            [
-                'label' => esc_html__('Column', 'clinic'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 3,
-                'options' => [
-                    1 => esc_html__('1 Column', 'clinic'),
-                    2 => esc_html__('2 Column', 'clinic'),
-                    3 => esc_html__('3 Column', 'clinic'),
-                    4 => esc_html__('4 Column', 'clinic'),
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'show_excerpt',
-            [
-                'label' => esc_html__('Show excerpt', 'clinic'),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'show' => [
-                        'title' => esc_html__('Yes', 'clinic'),
-                        'icon' => 'eicon-check',
-                    ],
-
-                    'hide' => [
-                        'title' => esc_html__('No', 'clinic'),
-                        'icon' => 'eicon-ban',
-                    ]
-                ],
-                'default' => 'show'
-            ]
-        );
-
-        $this->add_control(
-            'excerpt_length',
-            [
-                'label' => esc_html__('Excerpt Words', 'clinic'),
-                'type' => Controls_Manager::NUMBER,
-                'default' => '10',
-                'condition' => [
-                    'show_excerpt' => 'show',
                 ],
             ]
         );
@@ -218,74 +160,6 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
         );
 
         $this->end_controls_section();
-
-        // Style excerpt
-        $this->start_controls_section(
-            'style_excerpt',
-            [
-                'label' => esc_html__('Excerpt', 'clinic'),
-                'tab' => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'show_excerpt' => 'show',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'excerpt_color',
-            [
-                'label' => esc_html__('Color', 'clinic'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .element-post-grid .item-post .item-post__content p' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'excerpt_typography',
-                'selector' => '{{WRAPPER}} .element-post-grid .item-post .item-post__content p',
-            ]
-        );
-
-        $this->add_control(
-            'excerpt_alignment',
-            [
-                'label' => esc_html__('Excerpt Alignment', 'clinic'),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__('Left', 'clinic'),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-
-                    'center' => [
-                        'title' => esc_html__('Center', 'clinic'),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-
-                    'right' => [
-                        'title' => esc_html__('Right', 'clinic'),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-
-                    'justify' => [
-                        'title' => esc_html__('Justified', 'clinic'),
-                        'icon' => 'eicon-text-align-justify',
-                    ],
-                ],
-                'toggle' => true,
-                'selectors' => [
-                    '{{WRAPPER}} .element-post-grid .item-post .item-post__content p' => 'text-align: {{VALUE}};',
-                ]
-            ]
-        );
-
-        $this->end_controls_section();
-
     }
 
     protected function render(): void {
@@ -311,57 +185,35 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             ?>
 
             <div class="element-post-grid">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-<?php echo esc_attr( $settings['column_number'] ); ?>">
+                <div class="element-post-grid__warp">
                     <?php while ($query->have_posts()): $query->the_post(); ?>
-
-                        <div class="col">
-                            <div class="item-post">
-                                <div class="item-post__thumbnail">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php
-                                        if (has_post_thumbnail()) :
-                                            the_post_thumbnail('large');
-                                        else:
-                                            ?>
-                                            <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
-                                                 alt="<?php the_title(); ?>"/>
-                                        <?php endif; ?>
-                                    </a>
-                                </div>
-
-                                <div class="item-post__box">
-                                    <h3 class="title">
-                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </h3>
-
-                                    <?php if ($settings['show_excerpt'] == 'show') : ?>
-                                        <div class="content">
-                                            <p>
-                                                <?php
-                                                if (has_excerpt()) :
-                                                    echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
-                                                else:
-                                                    echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
-                                                endif;
-                                                ?>
-                                            </p>
-                                        </div>
+                        <div class="item-post">
+                            <div class="item-post__thumbnail">
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                    <?php
+                                    if (has_post_thumbnail()) :
+                                        the_post_thumbnail('large');
+                                    else:
+                                        ?>
+                                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
+                                             alt="<?php the_title(); ?>"/>
                                     <?php endif; ?>
+                                </a>
+                            </div>
 
-                                    <a class="read-more" href="<?php the_permalink(); ?>">
-                                        <?php esc_html_e('Xem thêm', 'clinic'); ?>
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M18 12L8 12" stroke="#3C9159" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M21.6427 11.7856L18.2116 9.72696C17.6784 9.40703 17 9.79112 17 10.413V13.587C17 14.2089 17.6784 14.593 18.2116 14.273L21.6427 12.2144C21.8045 12.1173 21.8045 11.8827 21.6427 11.7856Z" fill="#3C9159"/>
-                                        </svg>
+                            <div class="item-post__box">
+                                <h3 class="title">
+                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                        <?php the_title(); ?>
                                     </a>
+                                </h3>
+
+                                <div class="meta">
+                                    <span class="meta__author"><?php echo esc_html(get_the_author()) ?></span>
+                                    <span class="meta__date"><?php echo esc_html( get_the_date() ); ?></span>
                                 </div>
                             </div>
                         </div>
-
                     <?php endwhile;
                     wp_reset_postdata(); ?>
                 </div>
@@ -379,5 +231,4 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
 
         endif;
     }
-
 }
