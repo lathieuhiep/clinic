@@ -39,7 +39,7 @@ function clinic_create_doctor(): void {
         'has_archive'        => true,
         'hierarchical'       => true,
         'menu_position'      => 5,
-        'supports'           => array( 'title', 'thumbnail' ),
+        'supports'           => array( 'title', 'editor', 'thumbnail' ),
     );
 
     register_post_type('clinic_doctor', $args );

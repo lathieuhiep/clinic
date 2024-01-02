@@ -42,22 +42,14 @@
                 const thisSlider = $(this)
 
                 const slider = thisSlider.lightSlider({
-                    gallery: true,
-                    item: 1,
+                    item: 3,
                     loop: true,
-                    auto: false,
-                    speed: 800,
-                    thumbItem: 5,
-                    thumbMargin: 6,
+                    pager: false,
                     controls: false,
+                    speed: 800,
+                    slideMargin: 20,
                     currentPagerPosition: 'left',
                     responsive : [
-                        {
-                            breakpoint: 767,
-                            settings: {
-                                thumbItem: 4
-                            }
-                        },
                         {
                             breakpoint: 575,
                             settings: {

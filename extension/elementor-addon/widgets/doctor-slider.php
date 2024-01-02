@@ -81,7 +81,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 	    $medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
-	    $link_chat = clinic_get_option( 'opt_general_chat_doctor' );
 
         $limit_post     =   $settings['limit'];
         $order_by_post  =   $settings['order_by'];
@@ -106,16 +105,9 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                 <?php
                 while ( $query->have_posts() ):
                     $query->the_post();
-                    $avatar = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_avatar', true);
-	                $content = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_content', true);
-
-	                $contentArr = [];
-                    if ( $content ) {
-	                    $contentArr = array_filter(explode(PHP_EOL, $content));
-                    }
                 ?>
 
-                    <div class="item" data-thumb="<?php echo esc_url( $avatar ); ?>">
+                    <div class="item">
                         <div class="item__grid">
                             <div class="thumbnail">
                                 <?php the_post_thumbnail('large'); ?>
@@ -123,61 +115,26 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
                             <div class="info">
                                 <div class="info__top">
-                                    <p class="position">
+                                    <p class="position text-center">
 		                                <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true) ); ?>
                                     </p>
 
-                                    <h3 class="name">
+                                    <h3 class="name text-center text-uppercase">
 		                                <?php the_title(); ?>
                                     </h3>
 
-                                    <p class="specialist">
-		                                <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true) ); ?>
-                                    </p>
+                                    <div class="specialist">
+		                                <?php the_content(); ?>
+                                    </div>
                                 </div>
 
-                                <?php if ( $contentArr ) : ?>
-                                    <ul class="reset-list content">
-                                        <?php foreach ( $contentArr as $itemContent) : ?>
-                                        <li>
-                                            <i class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.45 2.61249C14.7785 2.61249 18.2875 6.12146 18.2875 10.45C18.2875 14.7785 14.7785 18.2875 10.45 18.2875C6.12147 18.2875 2.6125 14.7785 2.6125 10.45C2.6125 6.12146 6.12147 2.61249 10.45 2.61249Z" fill="url(#paint0_linear_47_72)"/>
-                                                    <path d="M15.0219 10.45H5.87813" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M10.45 5.87811V15.0219" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <defs>
-                                                        <linearGradient id="paint0_linear_47_72" x1="10.45" y1="2.61249" x2="10.45" y2="18.2875" gradientUnits="userSpaceOnUse">
-                                                            <stop stop-color="#FF0000"/>
-                                                            <stop offset="1" stop-color="#CA1212"/>
-                                                        </linearGradient>
-                                                    </defs>
-                                                </svg>
-                                            </i>
-                                            <span><?php echo esc_html( $itemContent ); ?></span>
-                                        </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
-
+                                <?php if ( $medical_appointment_form ) : ?>
                                 <div class="action-box text-center">
-	                                <?php if ( $medical_appointment_form ) : ?>
-
                                     <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dat-lich-kham.png' ) ) ?>" alt="">
+                                        <?php esc_html_e('ĐẶT LỊCH HẸN', 'clinic') ?>
                                     </a>
-
-	                                <?php
-                                    endif;
-
-                                    if ( $link_chat && $link_chat['url'] ) :
-                                    ?>
-
-                                    <a class="action-box__support" href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/bac-si-tu-van.png' ) ) ?>" alt="">
-                                    </a>
-
-                                    <?php endif; ?>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -186,17 +143,11 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
             </div>
 
             <button type="button" class="btn doctor-slider-button-prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 18L6 12L12 6" stroke="#222222"/>
-                    <path d="M18 18L12 12L18 6" stroke="#222222"/>
-                </svg>
+                <i class="fa-solid fa-chevron-left"></i>
             </button>
 
             <button type="button" class="btn doctor-slider-button-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                    <path d="M12 18.7538L18 12.5025L12 6.25128" stroke="#222222"/>
-                    <path d="M6 18.7538L12 12.5025L6 6.25128" stroke="#222222"/>
-                </svg>
+                <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
     <?php

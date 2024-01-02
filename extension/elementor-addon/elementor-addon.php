@@ -28,6 +28,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/appointment-consultation.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circle-box-image.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-grid-gallery.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
@@ -44,7 +45,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-content-grid.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/carousel-multiple-rows.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/box-content-line.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
+
 
 	// register add on
 	$widgets_manager->register( new \Clinic_Elementor_Addon_Slider() );
@@ -57,6 +58,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Appointment_Consultation() );
     $widgets_manager->register( new \Clinic_Elementor_Circle_Box_Image() );
     $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
+    $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Grid_Gallery() );
 //	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
@@ -73,7 +75,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Content_Grid() );
 //	$widgets_manager->register( new \Clinic_Elementor_Carousel_Multiple_Rows() );
 //	$widgets_manager->register( new \Clinic_Elementor_Box_Content_Line() );
-//	$widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
+
 }
 
 // Register scripts
