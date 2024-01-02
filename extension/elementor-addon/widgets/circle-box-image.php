@@ -116,6 +116,15 @@ class Clinic_Elementor_Circle_Box_Image extends Widget_Base
 			]
 		);
 
+        $repeater->add_control(
+            'list_content', [
+                'label' => esc_html__( 'Content', 'clinic' ),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__( 'List Content' , 'clinic' ),
+                'show_label' => false,
+            ]
+        );
+
 		$this->add_control(
 			'list',
 			[
@@ -211,12 +220,16 @@ class Clinic_Elementor_Circle_Box_Image extends Widget_Base
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium' ); ?>
 						</div>
 
-                        <h3 class="item__title f-family-body">
+                        <h3 class="item__title">
 							<?php echo esc_html( $item['list_title'] ); ?>
                         </h3>
+
+                        <div class="item__content">
+                            <?php echo esc_html( $item['list_content'] ); ?>
+                        </div>
 					</div>
 				<?php endforeach; ?>
 			</div>

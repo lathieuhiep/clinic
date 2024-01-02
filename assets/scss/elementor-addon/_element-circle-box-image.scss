@@ -3,9 +3,9 @@
 
   &__grid {
     display: grid;
+    grid-gap: 2.4rem;
 
     @media (min-width: 992px) {
-      grid-gap: 3.9rem 4.4rem;
       grid-template-columns: repeat(4, 1fr);
     }
 
@@ -28,14 +28,28 @@
 
       &__thumbnail {
         position: relative;
-        margin-bottom: 1.7rem;
+        margin-bottom: 2rem;
+        overflow: hidden;
+
+        &:before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: -75%;
+          z-index: 2;
+          display: block;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.6) 100%);
+          transform: skewX(-25deg);
+        }
 
         @media (min-width: 576px) {
-          @include square(18.2rem, 50%);
+          @include square(25rem, 50%);
         }
 
         @media (max-width: 575px) {
-          @include square(13.5rem, 50%);
+          @include square(20rem, 50%);
         }
 
         img {
@@ -47,16 +61,41 @@
       }
 
       &__title {
-        margin: 0;
+        margin: 0 0 2rem;
+        color: var(--color-cadmium-green);
 
         @media (min-width: 768px) {
-          font-size: 2rem;
+          font-size: 2.3rem;
         }
 
         @media (max-width: 767px) {
           font-size: 1.6rem;
         }
       }
+
+      &__content {
+        font-size: 1.6rem;
+      }
+
+      &:hover {
+        .item__thumbnail {
+          &:before {
+            -webkit-animation: shine .75s;
+            animation: shine .75s;
+          }
+        }
+      }
     }
+  }
+}
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
   }
 }
