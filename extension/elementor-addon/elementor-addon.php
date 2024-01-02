@@ -32,6 +32,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/number-counter.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/work-time.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-grid-gallery.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
@@ -65,6 +66,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Image_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Number_Counter() );
     $widgets_manager->register( new \Clinic_Elementor_Work_Time() );
+    $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Grid_Gallery() );
 //	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
@@ -73,7 +75,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Btn_Schedule_Consultation() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Content_List() );
-//	$widgets_manager->register( new \clinic_Elementor_Addon_Testimonial_Slider() );
+
 
 //	$widgets_manager->register( new \Clinic_Elementor_Number_List_Content() );
 //	$widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );

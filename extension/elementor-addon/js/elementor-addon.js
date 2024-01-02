@@ -23,11 +23,25 @@
         if (slider.length) {
             slider.each(function () {
                 $(this).lightSlider({
-                    item: 1,
+                    item: 3,
                     loop: true,
                     pager: false,
+                    controls: false,
                     speed: 800,
-                    currentPagerPosition: 'left'
+                    slideMargin: 20,
+                    currentPagerPosition: 'left',
+                    onSliderLoad: function (el) {
+                        let maxHeight = 0,
+                            container = $(el),
+                            children = container.children();
+                        children.each(function () {
+                            const childHeight = $(this).height();
+                            if (childHeight > maxHeight) {
+                                maxHeight = childHeight;
+                            }
+                        });
+                        container.height(maxHeight);
+                    },
                 })
             })
         }

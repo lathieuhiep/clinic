@@ -8,7 +8,7 @@ use Elementor\Controls_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
+class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
     public function get_categories(): array {
         return array( 'my-theme' );
     }
@@ -53,7 +53,7 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
             'list_title', [
                 'label' => esc_html__( 'Name', 'clinic' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Chị Ng.M.A' , 'clinic' ),
+                'default' => esc_html__( 'B.H.A 22 tuổi' , 'clinic' ),
                 'label_block' => true,
             ]
         );
@@ -63,7 +63,7 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
             [
                 'label'         =>  esc_html__( 'Info', 'clinic' ),
                 'type'          =>  Controls_Manager::TEXT,
-                'default'       =>  esc_html__('25 Tuổi, Hải Châu, Đà Nẵng'),
+                'default'       =>  esc_html__('Nhân viên kinh doanh'),
                 'label_block' => true,
             ]
         );
@@ -91,6 +91,9 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
                     ],
                     [
                         'list_title' => esc_html__( 'Title #2', 'clinic' ),
+                    ],
+                    [
+                        'list_title' => esc_html__( 'Title #3', 'clinic' ),
                     ],
                 ],
                 'title_field' => '{{{ list_title }}}',
@@ -198,7 +201,7 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
         $settings = $this->get_settings_for_display();
     ?>
 
-        <div class="element-testimonial-slider">
+        <div class="element-testimonial-slider lSSlideCustom">
             <div class="element-testimonial-slider__warp">
                 <?php
                 foreach ( $settings['list'] as $item ) :
@@ -206,8 +209,12 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
                 ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <div class="item__desc">
+                            <?php echo esc_html( $item['list_description'] ) ?>
+                        </div>
+
                         <div class="item__warp">
-                            <figure class="image">
+                            <div class="image">
 		                        <?php
 		                        if ( $imageId ) :
 			                        echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
@@ -215,23 +222,23 @@ class clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
                                 ?>
                                     <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
 		                        <?php endif; ?>
-                            </figure>
+                            </div>
 
                             <div class="content">
-                                <div class="box">
-                                    <div class="name">
-				                        <?php echo esc_html( $item['list_title'] ); ?>
-                                    </div>
+                                <h4 class="name">
+                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                </h4>
 
-                                    <div class="group-content">
-                                        <div class="info fw-bold">
-					                        <?php echo esc_html( $item['list_info'] ); ?>
-                                        </div>
+                                <p class="info">
+                                    <?php echo esc_html( $item['list_info'] ); ?>
+                                </p>
 
-                                        <div class="desc">
-					                        <?php echo wp_kses_post( $item['list_description'] ) ?>
-                                        </div>
-                                    </div>
+                                <div class="star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
                                 </div>
                             </div>
                         </div>

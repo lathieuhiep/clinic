@@ -1,103 +1,50 @@
 .element-testimonial-slider {
-  .item {
-    &__warp {
-      max-width: 82rem;
-      margin: 0 auto;
-      display: grid;
-      grid-gap: 1.3rem;
-
-      @media (min-width: 768px) {
-        grid-template-columns: 38.4rem 1fr;
-      }
-    }
-
-    .image {
-      @media (max-width: 767px) {
-        text-align: center;
-
-        img {
-          display: inline-block;
-        }
-      }
-    }
-
-    .content {
-      .name {
-        position: relative;
-        margin-bottom: 2rem;
-        padding-left: 2.2rem;
-        color: var(--color-cadmium-yellow);
-        font-weight: 700;
-
-        &:after {
-          position: absolute;
-          content: url("../images/frame-heart.png");
-          top: 0;
-          right: 0;
-        }
-
-        @media (min-width: 992px) {
-          font-size: 2.4rem;
-        }
-
-        @media (max-width: 991px) {
-          font-size: 2.2rem;
-        }
-      }
-
-      .group-content {
-        position: relative;
-        padding: 2.3rem 2.6rem;
-
-        &:before {
-          position: absolute;
-          content: url("../images/frame-left.png");
-          top: 0;
-          left: 0;
-        }
-
-        &:after {
-          position: absolute;
-          content: url("../images/frame-right.png");
-          right: 0;
-          bottom: 0;
-        }
-
-        .info {
-          margin-top: -3.2rem;
-          padding-left: 8.5rem;
-          padding-right: 3.5rem;
-          font-size: 1.6rem;
-        }
-
-        .desc {
-          padding-top: 2rem;
-          padding-bottom: 1.5rem;
-          text-align: justify;
-          line-height: 2.4rem;
-
-          @media (min-width: 992px) {
-            font-size: 1.8rem;
-          }
-        }
-      }
-    }
+  &__warp {
+    display: flex;
+    justify-content: flex-end;
   }
 
-  .lSAction {
-    a {
-      opacity: 1;
-      @include square(3.1rem, 50%);
-      overflow: hidden;
-      background-repeat: no-repeat;
-      background-position: center;
+  .item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
-      &.lSPrev {
-        background-image: url("../images/owl-prev.png");
+    &__desc {
+      position: relative;
+      padding: 2.4rem 1.2rem;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      border-radius: 3rem;
+      background-color: var(--color-white);
+      flex: 1;
+
+      &:after {
+        position: absolute;
+        content: "";
+        bottom: -66px;
+        left: 35%;
+        border-top: 80px solid var(--color-white);
+        border-right: 42px solid transparent;
+        transform: translateX(-50%) rotate(25deg);
+      }
+    }
+
+    &__warp {
+      padding-top: 8rem;
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: 9rem 1fr;
+
+      .image {
+        @include square(9rem, 50%);
+        overflow: hidden;
+        border: .3rem solid var(--color-white);
       }
 
-      &.lSNext {
-        background-image: url("../images/owl-next.png");
+      .star {
+        i {
+          color: var(--color-cadmium-yellow);
+        }
       }
     }
   }
