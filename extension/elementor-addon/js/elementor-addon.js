@@ -128,6 +128,54 @@
         }
     }
 
+    // element number counter
+    const elementNumberCounter = ($scope, $) => {
+        const numberCounter = $scope.find('.element-number-counter')
+        let start = 0
+
+        $( window ).scroll(function () {
+            if ( numberCounter.length) {
+                numberCounter.each(function () {
+
+                    const thisNumberCounter = $(this)
+
+                    const oTop = thisNumberCounter.find('.element-number-counter__warp').offset().top - window.innerHeight;
+
+                    if ( start === 0 && $(window).scrollTop() > oTop ) {
+                        const itemNumberCounter = thisNumberCounter.find('.content .number')
+
+                        itemNumberCounter.each(function () {
+                            const thisItemNumber = $(this)
+                            const countTo = thisItemNumber.attr('data-number');
+
+                            $({ countNum: thisItemNumber.text() }).animate(
+                                {
+                                    countNum: countTo
+                                },
+                                {
+                                    duration: 850,
+                                    easing: "swing",
+                                    step: function () {
+                                        thisItemNumber.text(
+                                            Math.ceil(this.countNum)
+                                        );
+                                    },
+                                    complete: function () {
+                                        thisItemNumber.text(
+                                            Math.ceil(this.countNum)
+                                        );
+                                    }
+                                }
+                            )
+                        })
+
+                        start = 1;
+                    }
+                })
+            }
+        })
+    }
+
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -143,5 +191,8 @@
 
         /* Element image slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-image-slider.default', elementGallerySlider);
+
+        /* Element number count */
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-number-counter.default', elementNumberCounter);
     });
 })(jQuery);

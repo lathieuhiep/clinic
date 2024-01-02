@@ -30,6 +30,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-slider.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/number-counter.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-grid-gallery.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
@@ -61,6 +62,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
     $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Image_Slider() );
+    $widgets_manager->register( new \Clinic_Elementor_Number_Counter() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Grid_Gallery() );
 //	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
