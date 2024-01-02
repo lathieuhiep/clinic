@@ -25,6 +25,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/specialist.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-line-under.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/appointment-consultation.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-grid-gallery.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
@@ -50,7 +51,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content() );
 	$widgets_manager->register( new \Clinic_Elementor_Specialist() );
 	$widgets_manager->register( new \Clinic_Elementor_Heading_Line_Under() );
-    $widgets_manager->register( new \clinic_Elementor_Addon_Post_Grid() );
+    $widgets_manager->register( new \Clinic_Elementor_Addon_Post_Grid() );
+    $widgets_manager->register( new \Clinic_Elementor_Appointment_Consultation() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Grid_Gallery() );
 //	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );

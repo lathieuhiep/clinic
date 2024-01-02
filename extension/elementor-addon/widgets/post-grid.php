@@ -6,7 +6,7 @@ use Elementor\Controls_Manager;
 
 if (!defined('ABSPATH')) exit;
 
-class clinic_Elementor_Addon_Post_Grid extends Widget_Base
+class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
 {
     public function get_categories(): array {
         return array('my-theme');
