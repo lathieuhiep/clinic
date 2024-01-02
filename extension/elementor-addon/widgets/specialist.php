@@ -146,48 +146,6 @@ class Clinic_Elementor_Specialist extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-		// style content
-		$this->start_controls_section(
-			'content_style',
-			[
-				'label' => esc_html__('Title', 'clinic'),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'title_color',
-			[
-				'label' => esc_html__('Color', 'clinic'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-specialist__grid .item .item__title' => 'color: {{VALUE}};'
-				],
-			]
-		);
-
-		$this->add_control(
-			'title_color_hover',
-			[
-				'label' => esc_html__('Color Hover', 'clinic'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-specialist__grid .item:hover .item__title' => 'color: {{VALUE}};'
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'title_typography',
-				'label' => esc_html__( 'Typography', 'clinic' ),
-				'selector' => '{{WRAPPER}} .element-specialist__grid .item .item__title',
-			]
-		);
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -211,15 +169,11 @@ class Clinic_Elementor_Specialist extends Widget_Base
 						if ( $category_link ) :
 					?>
 					<div class="item">
-						<a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
-
-						<div class="item__image">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
-						</div>
-
-						<h4 class="item__title">
-							<?php echo esc_html( $item['list_title'] ) ?>
-						</h4>
+						<figure class="item__image">
+                            <a class="d-block" href="<?php echo esc_url( $category_link ); ?>">
+                                <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+                            </a>
+						</figure>
 					</div>
 					<?php
 						endif;

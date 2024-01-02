@@ -42,7 +42,7 @@ $hotline = clinic_get_option('opt_general_hotline_mobile');
         <?php if ( $hotline ) : ?>
             <div class="phone">
                 <a class="d-block" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($hotline)); ?>">
-                    <i class="fa-solid fa-phone-volume"></i>
+                    <i class="fa-solid fa-phone-volume alo-circle-anim"></i>
                     <span><?php echo esc_html( $hotline ); ?></span>
                 </a>
             </div>

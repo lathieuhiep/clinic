@@ -16,22 +16,52 @@
       width: 100%;
       height: 8.4rem;
       display: grid;
-      grid-gap: 2.4rem;
-      grid-template-columns: 38rem 1fr auto;
       align-items: center;
+
+      @media (min-width: 1400px) {
+        grid-gap: 2.4rem;
+        grid-template-columns: 38rem 1fr auto;
+      }
+
+      @media (min-width: 992px) and (max-width: 1399px) {
+        grid-gap: 1.2rem;
+        grid-template-columns: 22rem 1fr auto;
+      }
     }
 
     .phone {
       a {
-        padding: .6rem 1.6rem;
-        font-size: 1.8rem;
         color: var(--color-white);
         font-weight: 700;
-        border-radius: 5rem;
         background-color: var(--color-sunset-orange);
 
+        @media (min-width: 1400px) {
+          font-size: 1.8rem;
+        }
+
+        @media (min-width: 1200px) {
+          padding: .6rem 1.6rem;
+          border-radius: 5rem;
+        }
+
+        @media (min-width: 992px) and (max-width: 1399px) {
+          font-size: 1.6rem;
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+          @include square(3.8rem, 50%);
+          text-align: center;
+          line-height: 3.8rem;
+
+          span {
+            display: none;
+          }
+        }
+
         i {
-          margin-right: .5rem;
+          @media (min-width: 1200px) {
+            margin-right: .5rem;
+          }
         }
       }
     }
@@ -85,13 +115,30 @@
         height: inherit;
 
         ~ li {
-          margin-left: 3.2rem;
+          @media (min-width: 1400px) {
+            margin-left: 3.2rem;
+          }
+
+          @media (min-width: 992px) and (max-width: 1399px) {
+            margin-left: 1.6rem;
+          }
         }
 
         > a {
           font-weight: 700;
-          font-size: 1.5rem;
           color: var(--color-body);
+
+          @media (min-width: 1400px) {
+            font-size: 1.5rem;
+          }
+
+          @media (min-width: 1200px) and (max-width: 1399px) {
+            font-size: 1.4rem;
+          }
+
+          @media (min-width: 992px) and (max-width: 1199px) {
+            font-size: 1.2rem;
+          }
         }
       }
     }
@@ -121,7 +168,14 @@
           i {
             width: 100%;
             height: 100%;
-            transform: translateY(-.3rem);
+
+            @media (min-width: 1200px) {
+              transform: translateY(-.3rem);
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+              transform: translateY(-.4rem);
+            }
           }
         }
 
