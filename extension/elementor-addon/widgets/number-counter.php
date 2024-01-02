@@ -92,20 +92,20 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
 
         // tab style name
         $this->start_controls_section(
-            'style_name',
+            'style_title',
             [
-                'label' => esc_html__( 'Name', 'clinic' ),
+                'label' => esc_html__( 'Title', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
-            'name_color',
+            'title_color',
             [
                 'label'     =>  esc_html__( 'Color', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-testimonial-slider .item .content .name' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-number-counter__warp .item .content__title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -113,30 +113,30 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'name_typography',
+                'name' => 'title_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .name',
+                'selector' => '{{WRAPPER}} .element-number-counter__warp .item .content__title',
             ]
         );
 
         $this->end_controls_section();
 
-        // tab style info
+        // tab style number
         $this->start_controls_section(
-            'style_info',
+            'style_number',
             [
-                'label' => esc_html__( 'Info', 'clinic' ),
+                'label' => esc_html__( 'Number', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
-            'info_color',
+            'number_color',
             [
                 'label'     =>  esc_html__( 'Color', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .info' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-number-counter__warp .item .content__left' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -144,45 +144,13 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'info_typography',
+                'name' => 'number_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .info',
+                'selector' => '{{WRAPPER}} .element-number-counter__warp .item .content__left',
             ]
         );
 
         $this->end_controls_section();
-
-        // tab style description
-        $this->start_controls_section(
-            'style_description',
-            [
-                'label' => esc_html__( 'Description', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'desc_color',
-            [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .desc' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'desc_typography',
-                'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .desc',
-            ]
-        );
-
-        $this->end_controls_section();
-
     }
 
     protected function render(): void {
