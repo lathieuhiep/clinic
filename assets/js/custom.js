@@ -48,21 +48,6 @@
                 $('#back-top').removeClass('active_top')
             }
             /* End scroll back top */
-
-            // scroll show or hide phone header on mobile
-            const topNavMobile = $('.top-nav-mobile')
-
-            if ( topNavMobile.length ) {
-                const heightHeaderOnMobile = topNavMobile.closest('.global-header').innerHeight()
-
-                if ( $scrollTop >= heightHeaderOnMobile ) {
-                    topNavMobile.find('.item .logo__image').addClass('scroll-hidden-logo')
-                    topNavMobile.find('.item .hotline-on-mobile').addClass('scroll-show-phone')
-                } else {
-                    topNavMobile.find('.item .logo__image').removeClass('scroll-hidden-logo')
-                    topNavMobile.find('.item .hotline-on-mobile').removeClass('scroll-show-phone')
-                }
-            }
         }, 100 );
 
     })

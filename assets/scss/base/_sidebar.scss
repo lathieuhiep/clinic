@@ -171,9 +171,16 @@ section {
       .social-network-item {
         text-align: center;
         font-size: 2.4rem;
-        @include square(5rem);
         border-radius: .8rem;
         background-color: var(--color-cadmium-green);
+
+        @media (min-width: 992px) {
+          @include square(5rem);
+        }
+
+        @media (max-width: 991px) {
+          @include square(4rem);
+        }
 
         &:has(i.fa-facebook) {
           background-color: #3b5998;
@@ -269,8 +276,14 @@ section {
         }
 
         &__content {
-          font-size: 2.2rem;
-          line-height: 3rem;
+          @media (min-width: 992px) {
+            font-size: 2.2rem;
+            line-height: 3rem;
+          }
+
+          @media (max-width: 991px) {
+            font-size: 1.8rem;
+          }
         }
 
         @media (max-width: 991px) {

@@ -65,6 +65,15 @@ if ( class_exists( 'CSF' ) ) {
 				'url'     => false
 			),
 
+            // image contact mobile
+            array(
+                'id'      => 'opt_general_image_contact_mobile',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Image Contact Mobile', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
 			// show loading
 			array(
 				'id'         => 'opt_general_loading',
@@ -335,48 +344,148 @@ if ( class_exists( 'CSF' ) ) {
 			),
 
 			// column width 1
-			array(
-				'id'         => 'opt_footer_column_width_1',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 1', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', '!=', '0' )
-			),
+            array(
+                'id'        => 'opt_footer_column_width_1',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 1', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', '!=', '0' )
+            ),
 
 			// column width 2
-			array(
-				'id'         => 'opt_footer_column_width_2',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 2', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1' )
-			),
+            array(
+                'id'        => 'opt_footer_column_width_2',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 2', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', 'not-any', '0,1' )
+            ),
 
 			// column width 3
-			array(
-				'id'         => 'opt_footer_column_width_3',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 3', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
-			),
+            array(
+                'id'        => 'opt_footer_column_width_3',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 3', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
+            ),
 
 			// column width 4
-			array(
-				'id'         => 'opt_footer_column_width_4',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 4', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2,3' )
-			),
+            array(
+                'id'        => 'opt_footer_column_width_4',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 3', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 2,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2,3' )
+            ),
 		)
 	) );
 

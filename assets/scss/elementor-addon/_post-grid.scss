@@ -3,27 +3,49 @@
     display: grid;
     grid-gap: 2.4rem;
 
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 576px) and (max-width: 992px) {
+    @media (min-width: 480px) and (max-width: 767px) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .item-post {
-    padding: 1.4rem 2rem;
     border-radius: .4rem;
     border: 1px solid #222222;
+
+    @media (min-width: 576px) {
+      padding: 1.4rem 2rem;
+    }
+
+    @media (max-width: 575px) {
+      padding: 1.4rem;
+    }
 
     &__thumbnail {
       margin-bottom: 2rem;
 
       a {
         display: block;
-        height: 25rem;
         overflow: hidden;
+
+        @media (min-width: 992px) {
+          height: 25rem;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+          height: 15rem;
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+          height: 25rem;
+        }
+
+        @media (min-width: 480px) and (max-width: 575px) {
+          height: 15rem;
+        }
       }
 
       img {
@@ -35,7 +57,13 @@
 
     &__box {
       .title {
-        font-size: 1.8rem;
+        @media (min-width: 768px) {
+          font-size: 1.8rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 1.5rem;
+        }
       }
 
       .meta {

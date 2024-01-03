@@ -22,7 +22,9 @@
 
         if (slider.length) {
             slider.each(function () {
-                $(this).lightSlider({
+                const thisSlider = $(this)
+
+                thisSlider.lightSlider({
                     item: 3,
                     loop: true,
                     pager: false,
@@ -30,16 +32,32 @@
                     speed: 800,
                     slideMargin: 20,
                     currentPagerPosition: 'left',
+                    responsive : [
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                item: 2
+                            }
+                        },
+                        {
+                            breakpoint: 575,
+                            settings: {
+                                item: 1
+                            }
+                        }
+                    ],
                     onSliderLoad: function (el) {
                         let maxHeight = 0,
                             container = $(el),
                             children = container.children();
+
                         children.each(function () {
                             const childHeight = $(this).height();
                             if (childHeight > maxHeight) {
                                 maxHeight = childHeight;
                             }
                         });
+
                         container.height(maxHeight);
                     },
                 })
@@ -65,18 +83,30 @@
                     currentPagerPosition: 'left',
                     responsive : [
                         {
-                            breakpoint: 575,
+                            breakpoint: 767,
                             settings: {
-                                thumbItem: 3
+                                item: 2
                             }
                         },
                         {
-                            breakpoint: 375,
+                            breakpoint: 575,
                             settings: {
-                                thumbItem: 2
+                                item: 1
                             }
                         }
-                    ]
+                    ],
+                    onSliderLoad: function (el) {
+                        let maxHeight = 0,
+                            container = $(el),
+                            children = container.children();
+                        children.each(function () {
+                            const childHeight = $(this).height();
+                            if (childHeight > maxHeight) {
+                                maxHeight = childHeight;
+                            }
+                        });
+                        container.height(maxHeight);
+                    },
                 })
 
                 $('.doctor-slider-button-prev').click(function () {
@@ -125,18 +155,18 @@
                     currentPagerPosition: 'left',
                     responsive : [
                         {
-                            breakpoint: 575,
+                            breakpoint: 767,
                             settings: {
-                                thumbItem: 3
+                                item: 2
                             }
                         },
                         {
                             breakpoint: 375,
                             settings: {
-                                thumbItem: 2
+                                item: 1
                             }
                         }
-                    ]
+                    ],
                 })
             })
         }

@@ -3,7 +3,14 @@
     &.widget {
       .widget-title {
         margin-bottom: 2rem;
-        font-size: 2.6rem;
+
+        @media (min-width: 992px) {
+          font-size: 2.6rem;
+        }
+
+        @media (max-width: 991px) {
+          font-size: 2rem;
+        }
       }
 
       .textwidget {
@@ -35,9 +42,16 @@
               position: relative;
               display: inline-block;
               font-weight: 700;
-              font-size: 2rem;
               text-transform: uppercase;
               color: var(--color-salem);
+
+              @media (min-width: 992px) {
+                font-size: 2rem;
+              }
+
+              @media (max-width: 992px) {
+                font-size: 1.6rem;
+              }
 
               &:after {
                 position: absolute;
@@ -70,6 +84,14 @@
     max-width: 160rem;
     margin: 0 auto;
     padding: 0 1.2rem;
+
+    .row {
+      @media (max-width: 991px) {
+        > div {
+          margin-bottom: 2.4rem;
+        }
+      }
+    }
   }
 
   &__column {

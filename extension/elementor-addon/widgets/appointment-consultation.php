@@ -185,7 +185,7 @@ class Clinic_Elementor_Appointment_Consultation extends Widget_Base
     ?>
         <div class="element-appointment-consultation">
             <div class="element-appointment-consultation__warp">
-                <div class="thumbnail">
+                <div class="thumbnail d-none d-lg-block">
                     <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/tu-van-dat-hen.png' ) ) ?>" alt="" width="100" height="97" />
                 </div>
 
