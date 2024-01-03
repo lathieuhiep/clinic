@@ -48,6 +48,11 @@ function clinic_register_front_end(): void
 	// bootstrap css
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.3.2' );
 
+    // light slider css
+    if ( is_singular('post') ) {
+        wp_enqueue_style( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/css/lightslider.min.css' ), array(), '1.1.3' );
+    }
+
 	// style theme
 	wp_enqueue_style( 'clinic-style', get_stylesheet_uri(), array(), clinic_get_version_theme() );
 
@@ -69,6 +74,11 @@ function clinic_register_front_end(): void
 
 	// bootstrap js
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.bundle.min.js' ), array('jquery'), '5.2.3', true );
+
+    // light slider js
+    if ( is_singular('post') ) {
+        wp_enqueue_script( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/js/lightslider.min.js' ), array( 'jquery' ), '1.1.3', true );
+    }
 
 	// comment reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

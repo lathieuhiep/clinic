@@ -64,9 +64,6 @@ foreach ( glob( get_parent_theme_file_path( '/extension/widgets/*.php' ) ) as $f
 	require $file_widgets;
 }
 
-// Required: theme term meta banner category
-require get_parent_theme_file_path( '/includes/theme-term-meta-banner-category.php' );
-
 // Required: theme add_action
 require get_parent_theme_file_path( '/includes/theme-add-action.php' );
 

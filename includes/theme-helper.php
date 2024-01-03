@@ -168,17 +168,21 @@ function clinic_post_meta(): void {
 	<div class="post-meta">
         <div class="post-meta__item">
             <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <rect x="2.5" y="5" width="15" height="12.5" rx="2" stroke="#969C9F" stroke-width="2"/>
-                    <path d="M3.3335 9.16669H16.6668" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M7.5 13.3333H12.5" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M6.6665 2.5L6.6665 5.83333" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M13.3335 2.5L13.3335 5.83333" stroke="#969C9F" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <i class="fa-regular fa-circle-user"></i>
             </div>
 
             <div class="content">
-	            <?php esc_html_e( 'Ngày đăng: ', 'clinic' ); the_date(); ?>
+                <?php the_author(); ?>
+            </div>
+        </div>
+
+        <div class="post-meta__item">
+            <div class="icon">
+                <i class="fa-solid fa-calendar"></i>
+            </div>
+
+            <div class="content">
+	            <?php the_date(); ?>
             </div>
         </div>
 	</div>

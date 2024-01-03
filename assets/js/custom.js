@@ -24,8 +24,8 @@
         // handle dropdown category widget
         handleDropdownCategoryWidget()
 
-        // handle dropdown category widget
-        handleAddCategoryImageContentPost()
+        // handle slider manin
+        handleSliderMain()
     })
 
     // loading
@@ -118,15 +118,20 @@
         }
     }
 
-    // handle add category image content post
-    const handleAddCategoryImageContentPost = () => {
-        const singlePostContentDetail = $('.single-post-content__detail')
+    // handle slider main
+    const handleSliderMain = () => {
+        const sliderMain = $('.slider-main__warp')
 
-        if ( singlePostContentDetail.length ) {
-            const urlImageCate = singlePostContentDetail.data('url-image-cate')
-
-            // insert before image cate
-            $(`<div class="image-cate-box text-center mb-4"><img src="${urlImageCate}" alt=""></div>`).insertBefore(".title-has-icon:first");
+        if ( sliderMain.length ) {
+            sliderMain.each(function () {
+                $(this).lightSlider({
+                    item: 1,
+                    loop: true,
+                    pager: false,
+                    speed: 800,
+                    currentPagerPosition: 'left'
+                })
+            })
         }
     }
 

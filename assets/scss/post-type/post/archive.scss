@@ -3,31 +3,63 @@
 .content-archive-post {
   .item {
     display: grid;
-    grid-gap: 1.3rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px dashed #9B9B9B;
+    grid-gap: 2.4rem 3rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #e9e9e9;
 
     @media (min-width: 576px) {
-      grid-template-columns: 23rem 1fr;
+      grid-template-columns: 30rem 1fr;
     }
 
     &__content {
+      .post-categories {
+        margin: 0 0 .6rem;
+        padding: 0;
+        list-style: none;
+
+        li {
+          position: relative;
+          display: inline-block;
+          text-transform: uppercase;
+          font-size: 1.4rem;
+          font-weight: 500;
+
+          ~ li {
+            &:before {
+              content: "/";
+              margin-left: .2rem;
+              margin-right: .5rem;
+            }
+          }
+
+          a {
+            display: inline-block;
+            color: var(--color-salem);
+
+            &:hover {
+              color: var(--color-hover);
+            }
+          }
+        }
+      }
+
       .post-title {
         margin-bottom: .5rem;
-        font-size: 1.6rem;
-        line-height: 2.2rem;
-        font-family: var(--font-body);
+        font-size: 2.2rem;
 
         a {
           color: var(--color-heading);
+
+          &:hover {
+            color: var(--color-salem);
+          }
         }
       }
 
       .post-desc {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: #030303;
-        line-height: 2.2rem;
 
         ul {
           li {
