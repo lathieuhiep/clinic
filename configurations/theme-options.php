@@ -168,6 +168,13 @@ if ( class_exists( 'CSF' ) ) {
             ),
 
             array(
+                'id'      => 'opt_general_chat_messenger',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Messenger', 'clinic' ),
+                'default' => '#',
+            ),
+
+            array(
                 'id'      => 'opt_general_medical_appointment_form',
                 'type'    => 'select',
                 'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),

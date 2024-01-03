@@ -5,7 +5,7 @@ $link_chat = clinic_get_option('opt_general_chat_doctor');
 $link_map = clinic_get_option('opt_general_link_map');
 ?>
 
-<div class="contact-us-group">
+<div class="contact-us-group d-none d-lg-block">
     <div class="container">
         <div class="grid-layout text-uppercase">
 	        <?php if ( $phone ) : ?>
