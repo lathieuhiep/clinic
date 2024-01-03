@@ -94,6 +94,22 @@ class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'heading_margin',
+            [
+                'label' => esc_html__( 'Margin', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7__heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // style form

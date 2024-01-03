@@ -117,7 +117,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 			    'label'     =>  esc_html__( 'Color', 'clinic' ),
 			    'type'      =>  Controls_Manager::COLOR,
 			    'selectors' =>  [
-				    '{{WRAPPER}} .element-testimonial-slider .item .content .name' => 'color: {{VALUE}}',
+				    '{{WRAPPER}} .element-testimonial-slider .item__warp .name' => 'color: {{VALUE}}',
 			    ],
 		    ]
 	    );
@@ -127,7 +127,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 		    [
 			    'name' => 'name_typography',
 			    'label' => esc_html__( 'Typography', 'clinic' ),
-			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .name',
+			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item__warp .name',
 		    ]
 	    );
 
@@ -148,7 +148,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 			    'label'     =>  esc_html__( 'Color', 'clinic' ),
 			    'type'      =>  Controls_Manager::COLOR,
 			    'selectors' =>  [
-				    '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .info' => 'color: {{VALUE}}',
+				    '{{WRAPPER}} .element-testimonial-slider .item__warp .info' => 'color: {{VALUE}}',
 			    ],
 		    ]
 	    );
@@ -158,7 +158,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 		    [
 			    'name' => 'info_typography',
 			    'label' => esc_html__( 'Typography', 'clinic' ),
-			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .info',
+			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item__warp .info',
 		    ]
 	    );
 
@@ -179,7 +179,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 			    'label'     =>  esc_html__( 'Color', 'clinic' ),
 			    'type'      =>  Controls_Manager::COLOR,
 			    'selectors' =>  [
-				    '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .desc' => 'color: {{VALUE}}',
+				    '{{WRAPPER}} .element-testimonial-slider .item__desc' => 'color: {{VALUE}}',
 			    ],
 		    ]
 	    );
@@ -189,9 +189,21 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 		    [
 			    'name' => 'desc_typography',
 			    'label' => esc_html__( 'Typography', 'clinic' ),
-			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item .content .group-content .desc',
+			    'selector' => '{{WRAPPER}} .element-testimonial-slider .item__desc',
 		    ]
 	    );
+
+        $this->add_control(
+            'desc_background_color',
+            [
+                'label'     =>  esc_html__( 'Background Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item__desc' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .element-testimonial-slider .item__desc:after' => 'border-top-color: {{VALUE}}',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 

@@ -30,7 +30,7 @@
     }
 
     &__warp {
-      padding-top: 8rem;
+      padding-top: 6.5rem;
       display: grid;
       grid-gap: 2.4rem;
       grid-template-columns: 9rem 1fr;
@@ -39,6 +39,11 @@
         @include square(9rem, 50%);
         overflow: hidden;
         border: .3rem solid var(--color-white);
+      }
+
+      .name,
+      .info {
+        margin-bottom: .5rem;
       }
 
       .star {
