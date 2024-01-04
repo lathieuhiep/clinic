@@ -673,7 +673,14 @@
         }
 
         ul {
+          margin-top: .6rem;
           display: none;
+
+          li {
+            ~ li {
+              margin-top: .8rem;
+            }
+          }
         }
       }
     }

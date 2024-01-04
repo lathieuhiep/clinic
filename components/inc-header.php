@@ -6,8 +6,6 @@
 
     get_template_part('components/header/inc','top-nav-mobile');
 
-//    get_template_part('components/header/inc','menu');
-
     get_template_part('components/header/inc','contact-mobile');
     ?>
 </header>

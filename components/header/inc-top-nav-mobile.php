@@ -15,7 +15,7 @@ $image_contact_mobile = clinic_get_option('opt_general_image_contact_mobile');
             <div class="item logo text-center">
                 <a class="logo__image" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
                     <?php
-                    if ( ! empty( $logo_mobile['id'] ) ) :
+                    if ( !empty( $logo_mobile['id'] ) ) :
                         echo wp_get_attachment_image( $logo_mobile['id'], 'full' );
                     else :
                     ?>
@@ -25,7 +25,7 @@ $image_contact_mobile = clinic_get_option('opt_general_image_contact_mobile');
             </div>
 
             <div class="item hotline">
-                <?php if ( $hotline_mobile && $image_contact_mobile['id'] ) : ?>
+                <?php if ( $hotline_mobile && !empty(  $image_contact_mobile['id'] ) ) : ?>
                     <a href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number($hotline_mobile) ); ?>">
                         <?php echo wp_get_attachment_image( $image_contact_mobile['id'], 'medium_large' ); ?>
                     </a>

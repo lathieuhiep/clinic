@@ -3,7 +3,7 @@ get_header();
 
 // get option theme
 $sidebar = clinic_get_option('opt_post_single_sidebar_position', 'right');
-$class_col_content = clinic_col_use_sidebar( $sidebar, 'sidebar-main' );
+$class_col_content = clinic_col_use_sidebar( $sidebar, 'sidebar-post' );
 
 // include slider main
 get_template_part( 'components/inc', 'slider' );

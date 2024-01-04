@@ -113,36 +113,6 @@ if ( class_exists( 'CSF' ) ) {
         'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
         'fields' => array(
             array(
-                'id'      => 'opt_general_working_time',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-                'default' => '7:30 - 20:00'
-            ),
-
-            array(
-                'id'     => 'opt_general_hotline',
-                'type'   => 'repeater',
-                'title'  => esc_html__( 'Hotline Group', 'clinic' ),
-                'fields' => array(
-                    array(
-                        'id'    => 'phone',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Điện thoại', 'clinic' ),
-                    ),
-                ),
-
-                'default' => array(
-                    array(
-                        'phone' => '0888.888.115',
-                    ),
-
-                    array(
-                        'phone' => '024.888.11115',
-                    )
-                )
-            ),
-
-            array(
                 'id'      => 'opt_general_hotline_mobile',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Hotline', 'clinic' ),
