@@ -24,8 +24,15 @@ $note = clinic_get_option('opt_post_single_note');
 		clinic_link_page();
 		?>
     </div>
+</div>
 
-    <?php if ( !empty( $contact ) ) : ?>
+<?php
+if ( $show_related == '1' ) :
+    get_template_part( 'template-parts/post/inc','related-post' );
+endif;
+
+if ( !empty( $contact ) ) :
+?>
 
     <div class="contact-info">
         <div class="contact-info__thumbnail">
@@ -47,20 +54,15 @@ $note = clinic_get_option('opt_post_single_note');
         </div>
     </div>
 
-    <?php endif; ?>
+<?php endif; ?>
 
-    <?php if ( !empty( $note ) ) : ?>
+<?php if ( !empty( $note ) ) : ?>
 
     <div class="note-box text-center">
         <?php echo wpautop( $note ); ?>
     </div>
 
-    <?php endif; ?>
-</div>
+<?php endif; ?>
 
 <?php
 get_template_part( 'components/inc','comment-form' );
-
-if ( $show_related == '1' ) :
-    get_template_part( 'template-parts/post/inc','related-post' );
-endif;

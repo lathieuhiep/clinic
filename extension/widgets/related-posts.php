@@ -79,6 +79,10 @@ class clinic_related_posts_widget extends WP_Widget {
 									<?php the_title(); ?>
 								</a>
 							</h4>
+
+                            <p class="date">
+                                <?php echo esc_html( get_the_date() ); ?>
+                            </p>
 						</div>
 					</div>
 				<?php
