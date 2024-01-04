@@ -7,6 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Required: Theme Helper
 require get_parent_theme_file_path( '/includes/theme-helper.php' );
 
+// Required: Theme Get Options
+require get_parent_theme_file_path( '/includes/theme-get-options.php' );
+
 // Setup Theme
 add_action( 'after_setup_theme', 'clinic_setup' );
 function clinic_setup(): void {

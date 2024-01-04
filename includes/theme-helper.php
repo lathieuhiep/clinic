@@ -192,14 +192,12 @@ function clinic_post_meta(): void {
 
 // Link Pages
 function clinic_link_page(): void {
-
 	wp_link_pages( array(
 		'before'      => '<div class="page-links">' . esc_html__( 'Pages:', 'clinic' ),
 		'after'       => '</div>',
 		'link_before' => '<span class="page-number">',
 		'link_after'  => '</span>',
 	) );
-
 }
 
 // Get Category Check Box

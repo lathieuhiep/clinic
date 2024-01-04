@@ -129,8 +129,8 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 
-		$medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
-		$link_chat = clinic_get_option('opt_general_chat_doctor');
+		$medical_appointment_form = clinic_get_opt_medical_appointment();
+		$link_chat = clinic_get_opt_link_chat_doctor();
     ?>
 		<div class="element-schedule-consultation">
             <div class="element-schedule-consultation__warp">

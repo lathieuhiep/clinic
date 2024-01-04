@@ -295,20 +295,31 @@ pre {
 .chat-with-us {
   position: fixed;
   right: 1.6rem;
-  bottom: 50%;
   z-index: 99;
   display: grid;
-  grid-row-gap: 1.6rem;
+  grid-row-gap: 1.2rem;
   grid-template-columns: 5rem;
-  transform: translateY(-50%);
+  align-items: center;
+
+  @media (min-width: 992px) {
+    bottom: 8rem;
+  }
+
+  @media (max-width: 991px) {
+    bottom: 10rem;
+  }
+
+  .link {
+    text-align: center;
+    font-size: 1.8rem;
+  }
 
   &__phone {
-    @include square(5rem, 50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.3rem solid #5AE0DA;
-    background-color: var(--color-white);
+    margin: 0 auto;
+    color: var(--color-white);
+    line-height: 3.8rem;
+    @include square(3.8rem, 50%);
+    background-color: var(--color-salem);
   }
 }
 

@@ -224,7 +224,8 @@
         ul {
           li {
             a {
-              font-size: 1.4rem;
+              font-size: 1.5rem;
+              font-weight: 500;
             }
           }
         }
@@ -283,6 +284,7 @@
       ul {
         li {
           .sub-menu {
+            padding: .8rem 1rem;
             display: block !important;
             min-width: 160px;
             border-top: 1px solid $color-hover;
@@ -296,8 +298,11 @@
             @include transition();
 
             li {
-              padding: 6px 8px;
               display: flex;
+
+              ~ li {
+                margin-top: .5rem;
+              }
 
               a {
                 white-space: nowrap;

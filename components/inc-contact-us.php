@@ -1,7 +1,7 @@
 <?php
-$phone = clinic_get_option('opt_general_hotline_mobile');
-$medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
-$link_chat = clinic_get_option('opt_general_chat_doctor');
+$phone = clinic_get_opt_hotline();
+$medical_appointment_form = clinic_get_opt_medical_appointment();
+$link_chat = clinic_get_opt_link_chat_doctor();
 $link_map = clinic_get_option('opt_general_link_map');
 ?>
 

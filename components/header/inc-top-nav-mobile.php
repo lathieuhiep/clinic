@@ -1,6 +1,6 @@
 <?php
 $logo_mobile = clinic_get_option( 'opt_general_logo_mobile' );
-$hotline_mobile = clinic_get_option('opt_general_hotline_mobile');
+$hotline_mobile = clinic_get_opt_hotline();
 $image_contact_mobile = clinic_get_option('opt_general_image_contact_mobile');
 ?>
 <div class="top-nav-mobile d-lg-none">

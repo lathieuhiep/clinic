@@ -80,7 +80,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-	    $medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
+	    $medical_appointment_form = clinic_get_opt_medical_appointment();
 
         $limit_post     =   $settings['limit'];
         $order_by_post  =   $settings['order_by'];

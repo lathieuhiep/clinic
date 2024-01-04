@@ -1,6 +1,6 @@
 <?php
-$phone     = clinic_get_option( 'opt_general_hotline_mobile' );
-$link_chat = clinic_get_option( 'opt_general_chat_doctor' );
+$phone     = clinic_get_opt_hotline();
+$link_chat = clinic_get_opt_link_chat_doctor();
 ?>
 <div class="single-contact-us <?php echo esc_attr( $args['class'] ?? '' ); ?>">
 	<a class="item phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>">
