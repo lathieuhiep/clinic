@@ -121,8 +121,9 @@ class Clinic_Elementor_Specialist extends Widget_Base
 			'list_category',
 			[
 				'label' => esc_html__( 'Danh mục', 'clinic' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => clinic_check_get_cat('category')
+				'type' => Controls_Manager::SELECT2,
+				'label_block' => true,
+				'options' => clinic_check_get_cat('category'),
 			]
 		);
 

@@ -39,7 +39,7 @@ class clinic_Elementor_Addon_Post_Grid extends Widget_Base
             'select_cat',
             [
                 'label' => esc_html__('Select Category Link', 'clinic'),
-                'type' => Controls_Manager::SELECT,
+                'type' => Controls_Manager::SELECT2,
                 'options' => clinic_check_get_cat('category'),
                 'label_block' => true
             ]
