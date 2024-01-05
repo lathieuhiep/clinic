@@ -50,7 +50,7 @@ class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 			'contact_form_list',
 			[
 				'label'       => esc_html__( 'Select Form', 'clinic' ),
-				'type'        => Controls_Manager::SELECT,
+				'type'        => Controls_Manager::SELECT2,
 				'label_block' => true,
 				'options'     => clinic_get_form_cf7(),
 				'default'     => '0',
