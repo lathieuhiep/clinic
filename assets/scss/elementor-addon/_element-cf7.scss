@@ -2,7 +2,7 @@
   &__heading {
     font-size: 1.8rem;
     font-weight: 900;
-    font-family: var(--font-body);
+    font-family: var(--body-font-family);
   }
 
   form {
@@ -15,7 +15,7 @@
             font-size: 1.4rem;
             font-weight: 400;
             color: #909090;
-            font-family: var(--font-heading);
+            font-family: var(--heading-font-family);
             border: 1px solid #CCC;
             background: #EAF1F1;
           }

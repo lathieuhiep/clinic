@@ -12,7 +12,7 @@
           display: inline-block;
           color: var(--color-white);
           text-transform: uppercase;
-          font-family: var(--font-heading);
+          font-family: var(--heading-font-family);
           font-weight: 700;
           line-height: 1.8rem;
           border-radius: 5rem;
@@ -23,7 +23,7 @@
           margin-bottom: 1rem;
           color: #F00;
           line-height: 2.4rem;
-          font-family: var(--font-body);
+          font-family: var(--body-font-family);
           text-transform: uppercase;
         }
 
@@ -31,8 +31,8 @@
           margin-bottom: 2rem;
           font-weight: 700;
           line-height: 1.8rem;
-          font-family: var(--font-heading);
-          color: var(--color-heading);
+          font-family: var(--heading-font-family);
+          color: var(--heading-color);
         }
 
         .content {

@@ -16,19 +16,13 @@
       .post-title {
         margin-bottom: .5rem;
         font-size: 1.6rem;
-        line-height: 2.2rem;
-        font-family: var(--font-body);
 
         a {
-          color: var(--color-heading);
+          color: var(--heading-color);
         }
       }
 
       .post-desc {
-        font-size: 1.4rem;
-        color: #030303;
-        line-height: 2.2rem;
-
         ul {
           li {
             margin-bottom: 10px;
@@ -73,7 +67,7 @@
         background: #60AD80;
 
         &:hover {
-          color: var(--color-body);
+          color: var(--body-color);
           background-color: var(--color-cadmium-yellow);
         }
       }

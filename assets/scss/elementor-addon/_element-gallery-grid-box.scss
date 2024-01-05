@@ -33,7 +33,7 @@
 
       &__title {
         margin-bottom: 0;
-        font-family: var(--font-body);
+        font-family: var(--body-font-family);
 
         @media (min-width: 768px) {
           font-size: 2rem;

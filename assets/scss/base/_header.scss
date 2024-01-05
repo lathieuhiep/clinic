@@ -28,7 +28,7 @@
           .left-box {
             @include square(3.6rem, 50%);
             @include flex-center();
-            background-color: var(--color-heading);
+            background-color: var(--heading-color);
           }
 
           .right-box {
@@ -37,7 +37,6 @@
             .heading {
               font-size: 1.4rem;
               line-height: 1.6rem;
-              color: var(--color-dim-gray);
             }
 
             .phone-list {
@@ -135,7 +134,7 @@
         a {
           text-shadow: none;
           display: block;
-          font-family: var(--font-heading);
+          font-family: var(--heading-font-family);
 
           &:hover {
             background-color: transparent;
@@ -435,7 +434,7 @@
                 width: auto;
                 height: auto;
                 font-size: 35px;
-                color: $color-body !important;
+                color: $body-color !important;
                 line-height: inherit;
                 background-color: transparent;
                 @include flex-center;

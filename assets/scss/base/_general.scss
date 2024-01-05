@@ -3,15 +3,13 @@
 }
 
 :root {
-  --font-body: #{$font-body};
+  --body-font-family: #{$body-font-family};
   --font-size-body: #{$font-size-body};
-  --color-body: #{$color-body};
+  --body-color: #{$body-color};
   --background-body: #{$background-body};
 
-  --font-heading: #{$font-heading};
-  --color-heading: #{$color-heading};
-  --font-anton: #{$font-anton};
-  --font-beau-rivage: #{$font-beau-rivage};
+  --heading-font-family: #{$heading-font-family};
+  --heading-color: #{$heading-color};
   --font-size-h1: #{$h1-font-size};
   --font-size-h2: #{$h2-font-size};
   --font-size-h3: #{$h3-font-size};
@@ -20,12 +18,10 @@
   --font-size-h6: #{$h6-font-size};
 
   --color-white: #{$color-white};
-  --color-dim-gray: #{$color-dim-gray};
   --color-salem: #{$color-salem};
   --color-cadmium-yellow: #{$color-cadmium-yellow};
   --color-cadmium-green: #{$color-cadmium-green};
   --color-sunset-orange: #{$color-sunset-orange};
-  --color-platinum: #{$color-platinum};
 }
 
 html {
@@ -52,12 +48,7 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.67;
-}
-
 a {
-  display: inline-block;
   font-family: inherit;
   line-height: inherit;
   @include transition();
@@ -146,11 +137,11 @@ pre {
 }
 
 .f-family-body {
-  font-family: var(--font-body);
+  font-family: var(--body-font-family);
 }
 
 .f-family-heading {
-  font-family: var(--font-heading);
+  font-family: var(--heading-font-family);
 }
 
 .fw-900 {

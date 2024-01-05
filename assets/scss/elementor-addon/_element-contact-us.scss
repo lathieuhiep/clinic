@@ -3,7 +3,7 @@
     margin-bottom: 1.8rem;
     font-size: 1.8rem;
     font-weight: 900;
-    font-family: var(--font-body);
+    font-family: var(--body-font-family);
   }
 
   &__list {
@@ -51,7 +51,7 @@
 
       &__content {
         text-align: center;
-        font-family: var(--font-heading);
+        font-family: var(--heading-font-family);
         font-weight: 700;
         line-height: 2rem;
       }
