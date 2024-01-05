@@ -30,3 +30,31 @@ function clinic_shortcode_contactus(): false|string {
 	ob_end_clean();
 	return $content;
 }
+
+// short code text zoom in zoom out
+add_shortcode('text_zoom_in_zoom_out' , 'clinic_text_zoom_in_zoom_out');
+function clinic_text_zoom_in_zoom_out($args, $content = null): false|string
+{
+    ob_start();
+
+    $text_align = $args['text_align'] ?? 'center';
+    $font_weight = $args['font_weight'] ?? 'bold';
+    $link = $args['link'] ?? '';
+    $target = $args['target'] ?? '_blank';
+?>
+    <p class="text-zoom-in-zoom-out text-<?php echo esc_attr( $text_align ); ?> fw-<?php echo esc_attr( $font_weight ); ?>">
+        <?php if ($link) : ?>
+
+        <a class="txt-content d-inline-block zoom-in-zoom-out" href="<?php echo esc_attr($link); ?>" target="<?php echo esc_attr($target); ?>"><?php echo esc_html( $content ); ?></a>
+
+        <?php else: ?>
+
+        <span class="txt-content d-inline-block zoom-in-zoom-out"><?php echo esc_html( $content ); ?></span>
+
+        <?php endif; ?>
+    </p>
+<?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
+}

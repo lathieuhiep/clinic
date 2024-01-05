@@ -81,6 +81,11 @@
       }
     }
 
+    .c {
+      display: inline-block;
+      animation: zoom-in-zoom-out 2s ease-out infinite;
+    }
+
     blockquote {
       margin-bottom: 2rem;
       padding: 1.2rem;
