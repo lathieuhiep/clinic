@@ -1,5 +1,5 @@
 <?php
-$call_phone = clinic_get_option('opt_general_hotline_mobile');
+$call_phone = clinic_get_opt_hotline();
 ?>
 
 <div class="chat-with-us d-lg-none">

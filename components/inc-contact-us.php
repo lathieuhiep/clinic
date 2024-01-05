@@ -1,7 +1,7 @@
 <?php
-$phone = clinic_get_option('opt_general_hotline_mobile');
-$medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
-$link_chat = clinic_get_option('opt_general_chat_doctor');
+$phone = clinic_get_opt_hotline();
+$medical_appointment_form = clinic_get_opt_medical_appointment();
+$link_chat = clinic_get_opt_link_chat_doctor();
 ?>
 
 <div class="contact-us-group">
@@ -53,7 +53,7 @@ $link_chat = clinic_get_option('opt_general_chat_doctor');
             <?php
             endif;
 
-	        if ( $link_chat && $link_chat['url'] ) :
+	        if ( $link_chat ) :
             ?>
 
             <div class="item chat">
@@ -64,7 +64,7 @@ $link_chat = clinic_get_option('opt_general_chat_doctor');
                 </div>
 
                 <div class="item__content">
-                    <a href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
+                    <a href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
 					    <?php esc_html_e('Gặp Bác Sĩ', 'clinic'); ?>
                     </a>
                 </div>

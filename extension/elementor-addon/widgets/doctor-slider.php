@@ -80,8 +80,8 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-	    $medical_appointment_form = clinic_get_option('opt_general_medical_appointment_form');
-	    $link_chat = clinic_get_option( 'opt_general_chat_doctor' );
+	    $medical_appointment_form = clinic_get_opt_medical_appointment();
+	    $link_chat = clinic_get_opt_link_chat_doctor();
 
         $limit_post     =   $settings['limit'];
         $order_by_post  =   $settings['order_by'];
@@ -169,10 +169,10 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 	                                <?php
                                     endif;
 
-                                    if ( $link_chat && $link_chat['url'] ) :
+                                    if ( $link_chat ) :
                                     ?>
 
-                                    <a class="action-box__support" href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
+                                    <a class="action-box__support" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
                                         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/bac-si-tu-van.png' ) ) ?>" alt="">
                                     </a>
 

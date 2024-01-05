@@ -150,12 +150,9 @@ if ( class_exists( 'CSF' ) ) {
 
 			array(
 				'id'      => 'opt_general_chat_doctor',
-				'type'    => 'link',
+				'type'    => 'text',
 				'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
-				'default' => array(
-					'url'    => '#',
-					'target' => '_blank'
-				),
+				'default' => '#',
 			),
 
 			array(
