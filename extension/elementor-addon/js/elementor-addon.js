@@ -1,4 +1,21 @@
 (function ($) {
+    // element slider
+    const elementSlider = ($scope, $) => {
+        const slider = $scope.find('.element-slider__warp')
+
+        if (slider.length) {
+            slider.each(function () {
+                $(this).lightSlider({
+                    item: 1,
+                    loop: true,
+                    pager: false,
+                    speed: 800,
+                    currentPagerPosition: 'left'
+                })
+            })
+        }
+    }
+
     // element testimonial slider
     const elementTestimonialSlider = ($scope, $) => {
         const slider = $scope.find('.element-testimonial-slider__warp')
@@ -85,6 +102,9 @@
     }
 
     $(window).on('elementor/frontend/init', function () {
+        /* Element slider */
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
+
         /* Element testimonial slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', elementTestimonialSlider);
 

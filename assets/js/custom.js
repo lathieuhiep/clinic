@@ -23,6 +23,9 @@
 
         // handle dropdown category widget
         handleDropdownCategoryWidget()
+
+        // handle slider manin
+        handleSliderMain()
     })
 
     // loading
@@ -125,6 +128,23 @@
                     $(this).closest( '.cat-item' ).siblings().find(cateLinkHasChildWidget).removeClass( 'active' )
                     $(this).parent().children( '.children' ).slideToggle()
                     $(this).parents( '.cat-item-has-child' ).siblings().find('.children').slideUp();
+                })
+            })
+        }
+    }
+
+    // handle slider main
+    const handleSliderMain = () => {
+        const sliderMain = $('.slider-main__warp')
+
+        if ( sliderMain.length ) {
+            sliderMain.each(function () {
+                $(this).lightSlider({
+                    item: 1,
+                    loop: true,
+                    pager: false,
+                    speed: 800,
+                    currentPagerPosition: 'left'
                 })
             })
         }

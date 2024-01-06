@@ -17,6 +17,8 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
+  --secondary-color: #{$secondary-color};
+  --tertiary-color: #{$tertiary-color};
   --color-white: #{$color-white};
   --color-salem: #{$color-salem};
   --color-cadmium-yellow: #{$color-cadmium-yellow};
@@ -196,7 +198,6 @@ pre {
 
 /* Breadcrumbs */
 .breadcrumbs {
-  margin-top: 1.5rem;
   padding: 1.5rem 0;
   background-color: #D5ECDE;
 }

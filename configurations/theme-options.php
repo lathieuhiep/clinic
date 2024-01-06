@@ -103,6 +103,13 @@ if ( class_exists( 'CSF' ) ) {
 		'parent' => 'opt_general_section',
 		'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
 		'fields' => array(
+            array(
+                'id'      => 'opt_general_address',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
+                'default' => esc_html__('180 Đường Trần Phú, Phước Ninh, Hải Châu, Đà Nẵng', 'clinic')
+            ),
+
 			array(
 				'id'      => 'opt_general_working_time',
 				'type'    => 'text',
@@ -111,7 +118,7 @@ if ( class_exists( 'CSF' ) ) {
 			),
 
 			array(
-				'id'     => 'opt_general_hotline',
+				'id'     => 'opt_general_hotline_group',
 				'type'   => 'repeater',
 				'title'  => esc_html__( 'Hotline Group', 'clinic' ),
 				'fields' => array(
@@ -134,7 +141,7 @@ if ( class_exists( 'CSF' ) ) {
 			),
 
 			array(
-				'id'      => 'opt_general_hotline_mobile',
+				'id'      => 'opt_general_hotline',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Hotline', 'clinic' ),
 				'default' => '0888.888.115'
@@ -162,8 +169,28 @@ if ( class_exists( 'CSF' ) ) {
 				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
 				'options' => clinic_get_form_cf7(),
 			),
+
+            array(
+                'id'      => 'opt_general_chat_messenger',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Link messenger', 'clinic' ),
+                'default' => 'https://m.me/dakhoaqtdanang',
+            ),
 		)
 	) );
+
+    // Slider
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Slider', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'    => 'opt_general_slider',
+                'type'  => 'gallery',
+                'title' => esc_html__( 'Slider', 'clinic' ),
+            ),
+        )
+    ) );
 
 	//
 	// Create a section menu
@@ -260,70 +287,170 @@ if ( class_exists( 'CSF' ) ) {
 	) );
 
 	// footer columns
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_footer_section',
-		'title'  => esc_html__( 'Columns Sidebar', 'clinic' ),
-		'fields' => array(
-			// select columns
-			array(
-				'id'      => 'opt_footer_columns',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Number of footer columns', 'clinic' ),
-				'options' => array(
-					'0' => esc_html__( 'Hide', 'clinic' ),
-					'1' => 1,
-					'2' => 2,
-					'3' => 3,
-					'4' => 4,
-				),
-				'default' => '4'
-			),
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_footer_section',
+        'title'  => esc_html__( 'Columns Sidebar', 'clinic' ),
+        'fields' => array(
+            // select columns
+            array(
+                'id'      => 'opt_footer_columns',
+                'type'    => 'select',
+                'title'   => esc_html__( 'Number of footer columns', 'clinic' ),
+                'options' => array(
+                    '0' => esc_html__( 'Hide', 'clinic' ),
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                ),
+                'default' => '4'
+            ),
 
-			// column width 1
-			array(
-				'id'         => 'opt_footer_column_width_1',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 1', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', '!=', '0' )
-			),
+            // column width 1
+            array(
+                'id'        => 'opt_footer_column_width_1',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 1', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 12,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
 
-			// column width 2
-			array(
-				'id'         => 'opt_footer_column_width_2',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 2', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1' )
-			),
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 6,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
 
-			// column width 3
-			array(
-				'id'         => 'opt_footer_column_width_3',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 3', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
-			),
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', '!=', '0' )
+            ),
 
-			// column width 4
-			array(
-				'id'         => 'opt_footer_column_width_4',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 4', 'clinic' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2,3' )
-			),
-		)
-	) );
+            // column width 2
+            array(
+                'id'        => 'opt_footer_column_width_2',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 2', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 12,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 6,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', 'not-any', '0,1' )
+            ),
+
+            // column width 3
+            array(
+                'id'        => 'opt_footer_column_width_3',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 3', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 12,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 6,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
+            ),
+
+            // column width 4
+            array(
+                'id'        => 'opt_footer_column_width_4',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Column width 3', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 12,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 6,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+                'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2,3' )
+            ),
+        )
+    ) );
 
 	// add javascript
 	CSF::createSection( $clinic_prefix, array(

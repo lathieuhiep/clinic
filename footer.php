@@ -16,6 +16,7 @@ if ( $opt_back_to_top == '1' ) :
 endif;
 
 if ( !is_404() ) :
+    get_template_part('components/inc','contact-us');
 ?>
     <footer class="global-footer">
         <?php get_template_part( 'components/footer/inc','column' ); ?>
@@ -23,7 +24,6 @@ if ( !is_404() ) :
 <?php
 	get_template_part('components/header/inc','menu-mobile');
 	get_template_part('components/inc','chat-with-us');
-	get_template_part('components/inc','contact-us');
 endif;
 
 wp_footer();
