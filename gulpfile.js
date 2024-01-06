@@ -30,14 +30,12 @@ Task build Bootstrap
 // Task build style bootstrap
 function buildStylesBootstrap() {
     return src(`${pathAssets}/scss/bootstrap.scss`)
-        .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(minifyCss({
             compatibility: 'ie8',
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(sourcemaps.write())
         .pipe(dest(`${pathAssets}/libs/bootstrap/`))
         .pipe(browserSync.stream());
 }
@@ -56,24 +54,36 @@ function buildLibsBootstrapJS() {
 exports.buildLibsBootstrapJS = buildLibsBootstrapJS
 
 // Task build style
-function buildStyles() {
-    return src(`${pathAssets}/scss/style.scss`)
+function buildStylesTheme() {
+    return src(`${pathAssets}/scss/style-theme.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(sourcemaps.write())
-        .pipe(dest('./'))
-        .pipe(browserSync.stream());
-}
-exports.buildStyles = buildStyles;
-
-// Task build style elementor
-function buildStylesElementor() {
-    return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
-        .pipe(sass().on('error', sass.logError))
+        .pipe(dest(`${pathAssets}/css/`))
+        .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`${pathAssets}/css/`))
+        .pipe(browserSync.stream());
+}
+exports.buildStylesTheme = buildStylesTheme;
+
+// Task build style elementor
+function buildStylesElementor() {
+    return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`./extension/elementor-addon/css/`))
+        .pipe(sourcemaps.init())
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
         .pipe(dest(`./extension/elementor-addon/css/`))
         .pipe(browserSync.stream());
 }
@@ -82,11 +92,16 @@ exports.buildStylesElementor = buildStylesElementor;
 // Task build style custom post type
 function buildStylesCustomPostType() {
     return src(`${pathAssets}/scss/post-type/*/**.scss`)
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`${pathAssets}/css/post-type/`))
+        .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
         .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(browserSync.stream());
 }
@@ -119,7 +134,7 @@ function watchTask() {
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/base/*.scss`,
         `${pathAssets}/scss/style.scss`,
-    ], buildStyles)
+    ], buildStylesTheme)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
