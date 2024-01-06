@@ -23,9 +23,6 @@
 
         // handle dropdown category widget
         handleDropdownCategoryWidget()
-
-        // handle dropdown category widget
-        handleAddCategoryImageContentPost()
     })
 
     // loading
@@ -132,17 +129,4 @@
             })
         }
     }
-
-    // handle add category image content post
-    const handleAddCategoryImageContentPost = () => {
-        const singlePostContentDetail = $('.single-post-content__detail')
-
-        if ( singlePostContentDetail.length ) {
-            const urlImageCate = singlePostContentDetail.data('url-image-cate')
-
-            // insert before image cate
-            $(`<div class="image-cate-box text-center mb-4"><img src="${urlImageCate}" alt=""></div>`).insertBefore(".title-has-icon:first");
-        }
-    }
-
 } )( jQuery );

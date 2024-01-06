@@ -16,8 +16,8 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/180tranphu/",
-        open: 'local',
+        proxy: "localhost/dakhoaquocte180tranphu",
+        open: false,
         cors: true,
         ghostMode: false
     })
@@ -134,8 +134,9 @@ function watchTask() {
     watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 
     watch([
+        './*.php',
         './**/*.php',
-        './assets/images/*.{png,jpg,jpeg,gif}'
+        './assets/images/*/**.{png,jpg,jpeg,gif}'
     ], browserSync.reload);
 }
 exports.watchTask = watchTask
