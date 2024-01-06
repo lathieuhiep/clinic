@@ -46,7 +46,7 @@ function clinic_register_front_end(): void
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.3.2' );
 
 	// style theme
-	wp_enqueue_style( 'clinic-style', get_stylesheet_uri(), array(), clinic_get_version_theme() );
+	wp_enqueue_style( 'clinic-style', get_theme_file_uri( '/assets/css/style-theme.min.css' ), array(), clinic_get_version_theme() );
 
 	// style post
 	if ( clinic_is_blog() ) {
