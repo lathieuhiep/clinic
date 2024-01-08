@@ -590,22 +590,17 @@
     }
 
     li {
-      &.home-icon {
-        &.mega-menu-item {
+      &.mega-menu-item {
+        &.home-icon {
           a {
             &.mega-menu-link {
               &:before {
-                transform: translateY(21%);
-              }
-            }
-          }
-        }
-
-        a {
-          &.mega-menu-link {
-            &:hover {
-              &:before {
-                background-image: url("assets/images/home-icon-active.png") !important;
+                content: "\e906";
+                float: left;
+                font-family: $font-icon;
+                font-size: 2rem;
+                margin-right: .5rem;
+                transform: translateY(-2px);
               }
             }
           }
