@@ -249,7 +249,15 @@ class Clinic_Elementor_Category_List extends Widget_Base
 						<a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
 
 						<div class="item__image">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large' ); ?>
+							<?php
+                            echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large', '', array(
+	                            'class' => 'image-main'
+                            ) );
+
+							echo wp_get_attachment_image( $item['list_image_hover']['id'], 'medium_large', '', array(
+                                    'class' => 'image-change'
+                            ) );
+                            ?>
 						</div>
 
 						<h4 class="item__title m-0 text-uppercase text-center">

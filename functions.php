@@ -83,9 +83,6 @@ if ( did_action( 'elementor/loaded' ) ) :
     require get_parent_theme_file_path( '/extension/elementor-addon/elementor-addon.php' );
 endif;
 
-// Require custom post type
-require get_parent_theme_file_path( '/extension/post-type/doctors.php' );
-
 // Require Register Sidebar
 require get_parent_theme_file_path( '/includes/register-sidebar.php' );
 
