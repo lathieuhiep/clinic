@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Image_Content_Grid extends Widget_Base
+class Clinic_Elementor_Our_Commitment extends Widget_Base
 {
 
 	/**
@@ -23,7 +23,7 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-image-content-grid';
+		return 'clinic-our-commitment';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Image Content Grid', 'clinic');
+		return esc_html__('Our Commitment', 'clinic');
 	}
 
 	/**
@@ -61,7 +61,7 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'list', 'content', 'grid'];
+		return ['image', 'content', 'grid', 'our'];
 	}
 
 	/**
@@ -153,6 +153,36 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 
 		$this->end_controls_section();
 
+		// style title
+		$this->start_controls_section(
+			'style_title_section',
+			[
+				'label' => esc_html__( 'Title', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'list_title_color',
+			[
+				'label' => esc_html__( 'Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-our-commitment__warp .item__title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'list_title_typography',
+				'selector' => '{{WRAPPER}} .element-our-commitment__warp .item__title',
+			]
+		);
+
+		$this->end_controls_section();
+
 		// style content
 		$this->start_controls_section(
 			'style_content_section',
@@ -168,7 +198,7 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-image-content-grid__box .item__content' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-our-commitment__warp .item__content' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -177,7 +207,7 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'list_content_typography',
-				'selector' => '{{WRAPPER}} .element-image-content-grid__box .item__content',
+				'selector' => '{{WRAPPER}} .element-our-commitment__warp .item__content',
 			]
 		);
 
@@ -195,13 +225,17 @@ class Clinic_Elementor_Image_Content_Grid extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-image-content-grid">
-			<div class="element-image-content-grid__box">
+		<div class="element-our-commitment">
+			<div class="element-our-commitment__warp">
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail text-center">
+						<div class="item__thumbnail">
 							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
 						</div>
+
+                        <h4 class="item__title text-center">
+                            <?php echo esc_html($item['list_title']); ?>
+                        </h4>
 
 						<div class="item__content text-justify">
 							<?php echo wpautop( $item['list_content'] ); ?>

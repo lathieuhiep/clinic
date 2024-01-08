@@ -158,23 +158,37 @@ class Clinic_Elementor_Step_Image_Box extends Widget_Base
 		?>
 		<div class="element-step-image-box text-justify">
 			<div class="element-step-image-box__grid">
-				<?php foreach ( $settings['list'] as $item ) : ?>
+				<?php
+                $step = 1;
+                foreach ( $settings['list'] as $item ) :
+                ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
-						</div>
+                        <div class="item__step text-center">
+                            <p class="txt">
+                                <span><?php esc_html_e('Bước', 'clinic'); echo ' '. esc_html($step); ?></span>
+                            </p>
+                        </div>
 
-						<div class="item__content">
-							<h3 class="title f-family-body fw-900 text-uppercase color-cadmium-yellow">
-								<?php echo esc_html( $item['list_title'] ); ?>
-							</h3>
+                        <div class="item__box">
+                            <div class="thumbnail">
+		                        <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+                            </div>
 
-							<div class="desc fs-16 color-white">
-								<?php echo wpautop( $item['list_content'] ); ?>
-							</div>
-						</div>
+                            <div class="content text-center">
+                                <h3 class="title f-family-body fw-900 text-uppercase">
+			                        <?php echo esc_html( $item['list_title'] ); ?>
+                                </h3>
+
+                                <div class="desc fs-16">
+			                        <?php echo wpautop( $item['list_content'] ); ?>
+                                </div>
+                            </div>
+                        </div>
 					</div>
-				<?php endforeach; ?>
+				<?php
+                $step++;
+                endforeach;
+                ?>
 			</div>
 		</div>
 		<?php
