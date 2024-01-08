@@ -318,3 +318,63 @@ pre {
 #LRMINIBar {
   bottom: 7rem !important;
 }
+
+/* owl carousel navigation */
+.owl-carousel {
+  .owl-nav {
+    text-align: center;
+    margin-top: 15px;
+
+    button {
+      &.owl-prev,
+      &.owl-next {
+        margin: 0 6px;
+        color: var(--color-salem);
+        font-size: 20px;
+        line-height: normal;
+        @include transition();
+
+        &:hover {
+          color: $color-hover;
+        }
+      }
+    }
+  }
+
+  .owl-dots {
+    margin-top: 1.8rem;
+    @include flex-center;
+
+    .owl-dot {
+      display: inline-block;
+      margin: 0 5px;
+
+      span {
+        display: block;
+        width: 1.2rem;
+        height: 1.2rem;
+        background-color: #ddd;
+        border-radius: 50%;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &.active,
+      &:hover {
+        span {
+          background-color: var(--color-salem);
+        }
+      }
+    }
+  }
+}
+
+.custom-equal-height-owl {
+  .owl-stage {
+    display: flex;
+
+    .owl-item {
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+}

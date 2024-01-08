@@ -139,12 +139,13 @@
 
         if ( sliderMain.length ) {
             sliderMain.each(function () {
-                $(this).lightSlider({
-                    item: 1,
+                $(this).owlCarousel({
+                    items: 1,
                     loop: true,
-                    pager: false,
-                    speed: 800,
-                    currentPagerPosition: 'left'
+                    dots: false,
+                    autoplay: true,
+                    autoplaySpeed: 800,
+                    dragEndSpeed: 800
                 })
             })
         }

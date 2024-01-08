@@ -21,6 +21,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-content.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
 
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
@@ -42,12 +43,13 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-content-grid.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/carousel-multiple-rows.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/box-content-line.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
+
 
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Category_List() );
     $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Content() );
+	$widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
 
 
 //	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );
@@ -68,7 +70,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Content_Grid() );
 //	$widgets_manager->register( new \Clinic_Elementor_Carousel_Multiple_Rows() );
 //	$widgets_manager->register( new \Clinic_Elementor_Box_Content_Line() );
-//	$widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
+
 }
 
 // Register scripts
@@ -78,12 +80,12 @@ function clinic_elementor_scripts(): void {
 
 	if ( $clinic_check_elementor == 'builder' ) {
 		// style
-		wp_enqueue_style( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/css/lightslider.min.css' ), array(), '1.1.3' );
+		wp_enqueue_style( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/OwlCarousel/owl.carousel.min.css' ), array(), '2.3.4' );
 
         wp_enqueue_style( 'clinic-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/elementor-addon.min.css' ), array(), clinic_get_version_theme() );
 
 		// script
-		wp_enqueue_script( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/js/lightslider.min.js' ), array( 'jquery' ), '1.1.3', true );
+		wp_enqueue_script( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/OwlCarousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
 
 		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.js' ), array( 'jquery' ), '1.0.0', true );
 	}

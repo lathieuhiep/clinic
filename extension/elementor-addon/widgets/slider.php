@@ -68,7 +68,7 @@ class Clinic_Elementor_Slider extends Widget_Base {
 
         <div class="element-slider">
             <?php if ( !empty( $gallery_ids ) ) : ?>
-                <div class="element-slider__warp">
+                <div class="element-slider__warp owl-carousel owl-theme">
                     <?php foreach ( $gallery_ids as $gallery_item_id ): ?>
                         <div class="item">
                             <?php echo wp_get_attachment_image( $gallery_item_id, 'full' ); ?>
