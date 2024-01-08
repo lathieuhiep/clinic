@@ -34,7 +34,7 @@
 
       &__content {
         padding: 3rem 2.4rem;
-        background-color: var(--tertiary-color);
+        background-color: var(--clinic-tertiary-color);
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -50,7 +50,7 @@
         .position {
           margin-bottom: .8rem;
           font-size: 1.7rem;
-          color: var(--secondary-color);
+          color: var(--clinic-secondary-color);
           font-weight: 500;
         }
 
@@ -76,7 +76,7 @@
 
             &.btn-support {
               color: var(--color-salem);
-              background-color: var(--secondary-color);
+              background-color: var(--clinic-secondary-color);
             }
 
             &.btn-booking {

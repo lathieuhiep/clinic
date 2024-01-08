@@ -165,11 +165,11 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 						</div>
 
 						<div class="item__content">
-							<h3 class="title f-family-body">
+							<h3 class="title text-uppercase">
 								<?php echo esc_html( $item['list_title'] ); ?>
 							</h3>
 
-							<div class="desc fs-16 color-white">
+							<div class="desc">
 								<?php echo wpautop( $item['list_content'] ); ?>
 							</div>
 						</div>

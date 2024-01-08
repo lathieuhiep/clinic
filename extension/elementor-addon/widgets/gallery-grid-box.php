@@ -107,18 +107,9 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		);
 
 		$repeater->add_control(
-			'list_title', [
-				'label' => esc_html__( 'Title', 'textdomain' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'textdomain' ),
-				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'list_sub_title', [
-				'label' => esc_html__( 'Sub Title', 'textdomain' ),
-				'type' => Controls_Manager::TEXT,
+			'list_content', [
+				'label' => esc_html__( 'Nội dung', 'textdomain' ),
+				'type' => Controls_Manager::TEXTAREA,
 				'default' => esc_html__( 'List Title' , 'textdomain' ),
 				'label_block' => true,
 			]
@@ -164,13 +155,9 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 				           <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
                        </div>
 
-                        <h3 class="item__title text-uppercase">
-                            <?php echo esc_html( $item['list_title'] ); ?>
-                        </h3>
-
-                        <p class="item__sub-title">
-		                    <?php echo esc_html( $item['list_sub_title'] ); ?>
-                        </p>
+                        <div class="item__content">
+                            <?php echo wpautop( $item['list_content'] ); ?>
+                        </div>
                     </div>
 	            <?php endforeach; ?>
             </div>

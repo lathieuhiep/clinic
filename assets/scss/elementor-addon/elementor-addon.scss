@@ -4,10 +4,16 @@
 @import "element-category-list";
 
 // element gallery grid content
-@import "element-gallery-grid-content.scss";
+@import "element-gallery-grid-content";
 
 // element doctor slider
 @import "element-doctor-slider";
+
+// element gallery grid box
+@import "element-gallery-grid-box";
+
+// element image box content list
+@import "element-image-box-content-list";
 
 //@import "element-cf7";
 //@import "element-contact-us";
@@ -17,7 +23,7 @@
 
 //@import "element-heading-under-background";
 //@import "element-image-box-list";
-//@import "element_image-box-content-list";
+
 //@import "element-schedule-consultation";
 //@import "element-step-image-box";
 //@import "element-image-content-list";
