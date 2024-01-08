@@ -23,12 +23,22 @@
 
         if (slider.length) {
             slider.each(function () {
-                $(this).lightSlider({
-                    item: 1,
-                    loop: true,
-                    pager: false,
-                    speed: 800,
-                    currentPagerPosition: 'left'
+                slider.owlCarousel({
+                    loop: false,
+                    margin: 50,
+                    dotsSpeed: 800,
+                    dragEndSpeed: 800,
+                    responsive:{
+                        0:{
+                            items: 1
+                        },
+                        576:{
+                            items: 2
+                        },
+                        992:{
+                            items: 3
+                        }
+                    }
                 })
             })
         }
