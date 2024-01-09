@@ -1,0 +1,16 @@
+.element-btn-medical-register {
+  &__warp {
+    .btn-action {
+      display: inline-block;
+      padding: 1.4rem 2rem;
+      min-width: 23.5rem;
+      color: var(--color-white);
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 5rem;
+      background: linear-gradient(180deg, #208B45 0%, #00FF58 100%);
+    }
+  }
+}

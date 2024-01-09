@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
+class Clinic_Elementor_Btn_Medical_Register extends Widget_Base
 {
 
 	/**
@@ -21,7 +21,7 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-image-btn-schedule-consultation';
+		return 'clinic-btn-medical-register';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Đặt hẹn và tư vấn', 'clinic');
+		return esc_html__('Button đăng kí khám', 'clinic');
 	}
 
 	/**
@@ -60,7 +60,7 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'list', 'link'];
+		return ['button'];
 	}
 
 	/**
@@ -94,24 +94,11 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 		);
 
 		$this->add_control(
-			'image_button_schedule',
-			[
-				'label' => esc_html__( 'Ảnh link đặt lịch', 'textdomain' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		);
-
-		$this->add_control(
-			'image_button_consultation',
-			[
-				'label' => esc_html__( 'Ảnh link bác sĩ tư vấn', 'textdomain' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
+			'text', [
+				'label' => esc_html__( 'Nôi dụng', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Đăng ký ngay' , 'clinic' ),
+				'label_block' => true,
 			]
 		);
 
@@ -130,23 +117,14 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		$medical_appointment_form = clinic_get_opt_medical_appointment();
-		$link_chat = clinic_get_opt_link_chat_doctor();
     ?>
-		<div class="element-schedule-consultation">
-            <div class="element-schedule-consultation__warp">
-	            <?php if ( $settings['image_button_schedule']['id'] && $medical_appointment_form ) : ?>
-                    <a class="item" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-			            <?php echo wp_get_attachment_image( $settings['image_button_schedule']['id'], 'large' ); ?>
+		<div class="element-btn-medical-register">
+            <div class="element-btn-medical-register__warp">
+	            <?php if ( $medical_appointment_form ) : ?>
+                    <a class="btn-action" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+			            <?php echo esc_html( $settings['text'] ); ?>
                     </a>
-	            <?php
-                endif;
-
-                if ( $settings['image_button_consultation']['id'] && $link_chat ) :
-                ?>
-                    <a class="item" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-	                    <?php echo wp_get_attachment_image( $settings['image_button_consultation']['id'], 'large' ); ?>
-                    </a>
-                <?php endif; ?>
+	            <?php endif; ?>
             </div>
 		</div>
 		<?php
