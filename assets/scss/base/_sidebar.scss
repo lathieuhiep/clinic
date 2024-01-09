@@ -29,8 +29,10 @@ section {
     }
 
     .widget-title {
-      font-size: 1.8rem;
-      line-height: 3rem;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      font-weight: 900;
+      font-family: var(--body-font-family);
     }
 
     ul {
@@ -291,18 +293,18 @@ section {
   }
 
   .widget {
-    border-radius: .5rem .5rem 0 0;
+    border-radius: .5rem;
     border: 1px solid var(--heading-color);
     background: #FFF;
     overflow: hidden;
 
     .widget-title {
       margin: 0;
-      padding: .9rem;
+      padding: 1.7rem 1.2rem 1.2rem;
       text-align: center;
       text-transform: uppercase;
       color: var(--color-white);
-      background: linear-gradient(180deg, #3BB966 0%, #208B45 100%);
+      background: linear-gradient(180deg, #208B45 0%, #1FD75E 100%);
     }
 
     > div,
@@ -390,13 +392,10 @@ section {
     }
 
     &.categories-dropdown-widget {
-      border-radius: .5rem;
-      border: transparent;
-      background: #53A776;
+      background: #F7F7F7;
 
       .widget-title {
         border-bottom: 1px solid var(--color-white);
-        background: transparent;
       }
 
       .widget-warp {
@@ -404,19 +403,22 @@ section {
 
         > li {
           margin: 0;
+          padding: 0 .8rem;
 
           > a {
-            padding: .8rem 2.4rem;
+            padding: .8rem 0;
             font-size: 1.6rem;
             font-weight: 700;
           }
 
           ~ li {
-            border-top: 1px dashed var(--color-white);
+             > a {
+              border-top: 1px dashed var(--color-salem);
+            }
           }
 
           > ul {
-            border-top: 1px dashed var(--color-white);
+            border-top: 1px dashed var(--color-salem);
           }
         }
 
@@ -426,7 +428,13 @@ section {
           a {
             position: relative;
             z-index: 1;
-            color: var(--color-white);
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: 400;
+
+            &:hover {
+              color: var(--color-salem);
+            }
           }
 
           ul {
@@ -437,13 +445,12 @@ section {
 
               > li {
                 margin-bottom: 0;
-                padding: 0 1.2rem 0 2.4rem;
+                padding: 0;
 
                 > a {
                   position: relative;
                   padding-left: 1.6rem;
                   font-size: 1.4rem;
-                  font-weight: 500;
                   line-height: 3rem;
 
                   &:before {
@@ -452,7 +459,7 @@ section {
                     top: 50%;
                     left: 0;
                     @include square(.5rem, 50%);
-                    background-color: var(--color-white);
+                    background-color: #000;
                     transform: translateY(-50%);
                   }
                 }
@@ -469,6 +476,12 @@ section {
             top: .8rem;
             right: 1.2rem;
             @include transition();
+
+            svg {
+              path {
+                fill: #000;
+              }
+            }
           }
 
           > a {

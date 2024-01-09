@@ -34,10 +34,9 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/more-information.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/safety-principles.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/btn-medical-register.php' );
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/equipment.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-grid-gallery.php' );
 
@@ -70,10 +69,10 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_More_Information() );
 	$widgets_manager->register( new \Clinic_Elementor_Safety_Principles() );
 	$widgets_manager->register( new \Clinic_Elementor_Btn_Medical_Register() );
+	$widgets_manager->register( new \Clinic_Elementor_Equipment() );
+	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );
+	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 
-
-//	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );
-//	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Grid_Gallery() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Heading_Under_Background() );

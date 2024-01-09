@@ -9,23 +9,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 
-	public function get_categories() {
+	public function get_categories(): array {
 		return array( 'my-theme' );
 	}
 
-	public function get_name() {
+	public function get_name(): string {
 		return 'clinic-contact-form-7';
 	}
 
-	public function get_title() {
+	public function get_title(): string {
 		return esc_html__( 'Contact Form 7', 'clinic' );
 	}
 
-	public function get_icon() {
+	public function get_icon(): string {
 		return 'eicon-form-horizontal';
 	}
 
-	protected function register_controls() {
+	protected function register_controls(): void {
 
 		// Content section
 		$this->start_controls_section(

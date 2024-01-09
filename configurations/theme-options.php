@@ -275,6 +275,13 @@ if ( class_exists( 'CSF' ) ) {
 				'title'   => esc_html__( 'Limit related post', 'clinic' ),
 				'default' => 6,
 			),
+
+			array(
+				'id'      => 'opt_post_single_contact_form',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Form liên hệ', 'clinic' ),
+				'options' => clinic_get_form_cf7(),
+			),
 		)
 	) );
 
