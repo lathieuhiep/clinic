@@ -31,6 +31,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-between-line.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/medical-examination-space.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/more-information.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/safety-principles.php' );
 
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
@@ -66,6 +68,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_About() );
 	$widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
 	$widgets_manager->register( new \Clinic_Elementor_Medical_Examination_Space() );
+	$widgets_manager->register( new \Clinic_Elementor_More_Information() );
+	$widgets_manager->register( new \Clinic_Elementor_Safety_Principles() );
 
 
 //	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );

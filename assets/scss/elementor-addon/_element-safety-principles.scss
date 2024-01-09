@@ -1,0 +1,43 @@
+.element-safety-principles {
+  &__warp {
+    display: grid;
+    grid-gap: 2.4rem 1.2rem;
+    grid-template-columns: 1fr 50rem 1fr;
+
+    .item-group {
+      .repeater-item {
+        display: grid;
+        grid-gap: 1rem;
+        align-items: end;
+        line-height: 2.9rem;
+
+        ~ .repeater-item {
+          margin-top: 6.2rem;
+        }
+      }
+
+      .title {
+        margin: 0;
+        font-size: 1.6rem;
+        color: #000;
+      }
+
+      .number {
+        font-size: 2.5rem;
+        color: #FCAE19;
+      }
+
+      &.item-left {
+        .repeater-item {
+          grid-template-columns: 1fr auto;
+        }
+      }
+
+      &.item-right {
+        .repeater-item {
+          grid-template-columns: auto 1fr;
+        }
+      }
+    }
+  }
+}

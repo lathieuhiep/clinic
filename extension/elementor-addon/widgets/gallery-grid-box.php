@@ -98,7 +98,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
 		$repeater->add_control(
 			'list_image', [
-				'label' => esc_html__( 'Image', 'textdomain' ),
+				'label' => esc_html__( 'Image', 'clinic' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -108,9 +108,9 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
 		$repeater->add_control(
 			'list_content', [
-				'label' => esc_html__( 'Nội dung', 'textdomain' ),
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'List Title' , 'textdomain' ),
+				'default' => esc_html__( 'List Title' , 'clinic' ),
 				'label_block' => true,
 			]
 		);
@@ -118,15 +118,15 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Danh sách', 'textdomain' ),
+				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
+						'list_title' => esc_html__( 'Title #1', 'clinic' ),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
+						'list_title' => esc_html__( 'Title #2', 'clinic' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
