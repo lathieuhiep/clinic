@@ -8,7 +8,7 @@ use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
-class Clinic_Elementor_Image_Box_List extends Widget_Base
+class Clinic_Elementor_Medical_Examination_Space extends Widget_Base
 {
 
 	/**
@@ -21,7 +21,7 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-image-box-list';
+		return 'clinic-medical-examination-space';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Image Box List', 'clinic');
+		return esc_html__('Không gian khám bệnh', 'clinic');
 	}
 
 	/**
@@ -97,9 +97,9 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Title', 'clinic' ),
+				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'clinic' ),
+				'default' => esc_html__( 'Tiêu đề' , 'clinic' ),
 				'label_block' => true,
 			]
 		);
@@ -114,52 +114,21 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 			]
 		);
 
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'type' => Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'List Content' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
-
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
+				'label' => esc_html__( 'Danh sách không gian', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => esc_html__( 'Title #1', 'clinic' ),
+						'list_title' => esc_html__( 'Tiêu đề #1', 'clinic' ),
 					],
 					[
-						'list_title' => esc_html__( 'Title #2', 'clinic' ),
+						'list_title' => esc_html__( 'Tiêu đề #2', 'clinic' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style content
-		$this->start_controls_section(
-			'content_style',
-			[
-				'label' => esc_html__('Style', 'clinic'),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'content_color',
-			[
-				'label' => esc_html__('Content Color', 'clinic'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-image-box-list .item__content' => 'color: {{VALUE}};'
-				],
 			]
 		);
 
@@ -177,17 +146,17 @@ class Clinic_Elementor_Image_Box_List extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-image-box-list text-justify">
-			<div class="element-image-box-list__grid text-center">
+		<div class="element-medical-examination-space">
+			<div class="element-medical-examination-space__warp">
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 						<div class="item__thumbnail">
 							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
 						</div>
 
-						<div class="item__content">
-							<?php echo wpautop( $item['list_content'] ); ?>
-						</div>
+						<p class="item__title text-center">
+							<?php echo esc_html( $item['list_title'] ); ?>
+						</p>
 					</div>
 				<?php endforeach; ?>
 			</div>
