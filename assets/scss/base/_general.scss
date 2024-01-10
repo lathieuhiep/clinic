@@ -298,20 +298,18 @@ pre {
 .chat-with-us {
   position: fixed;
   right: 1.6rem;
-  bottom: 50%;
   z-index: 99;
   display: grid;
-  grid-row-gap: 1.6rem;
+  grid-row-gap: 1.2rem;
   grid-template-columns: 5rem;
-  transform: translateY(-50%);
+  align-items: center;
 
-  &__phone {
-    @include square(5rem, 50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.3rem solid #5AE0DA;
-    background-color: var(--color-white);
+  @media (min-width: 992px) {
+    bottom: 5.5rem;
+  }
+
+  @media (max-width: 991px) {
+    bottom: 10rem;
   }
 }
 
@@ -375,6 +373,18 @@ pre {
     .owl-item {
       display: flex;
       flex: 1 0 auto;
+    }
+  }
+}
+
+.modal-appointment-form {
+  .wpcf7-form {
+    .wpcf7-form-control-wrap {
+      input,
+      textarea {
+        color: #000;
+        background-color: #e6e6e6;
+      }
     }
   }
 }

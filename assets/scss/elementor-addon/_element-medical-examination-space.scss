@@ -1,19 +1,24 @@
 .element-medical-examination-space {
   &__warp {
     display: grid;
-    grid-gap: 2.3rem 2.1rem;
 
     @media (min-width: 992px) {
+      grid-gap: 2.3rem 2.1rem;
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: 460px) and (max-width: 991px) {
+      grid-gap: 1.2rem;
       grid-template-columns: repeat(2, 1fr);
     }
 
     .item {
       padding: 1.2rem 1.8rem 2.5rem;
       background-color: #00AA50;
+
+      @media (max-width: 991px) {
+        padding-bottom: 2rem;
+      }
 
       &__thumbnail {
         margin-bottom: 2.3rem;
@@ -29,6 +34,10 @@
         color: var(--color-white);
         font-weight: 700;
         text-transform: uppercase;
+
+        @media (max-width: 767px) {
+          font-size: 1.6rem;
+        }
       }
     }
   }

@@ -59,13 +59,17 @@
                     dragEndSpeed: 800,
                     responsive:{
                         0:{
-                            items: 1
+                            items: 1,
+                            autoHeight:true,
+                            margin: 0
                         },
                         576:{
-                            items: 2
+                            items: 2,
+                            margin: 12
                         },
-                        992:{
-                            items: 3
+                        768:{
+                            items: 3,
+                            margin: 12
                         }
                     }
                 })

@@ -45,41 +45,69 @@
   }
 
   .contact-mobile {
-    padding: .6rem 1rem;
+    padding: .8rem 1.2rem;
+    background-color: var(--color-white);
 
-    .grid-control {
+    .wpcf7-form {
       display: grid;
-      grid-gap: .5rem;
+      grid-gap: 1.2rem;
       grid-template-columns: 1fr auto;
 
-      .item-control {
-        .wpcf7-form-control-wrap {
-          margin: 0;
-        }
+      p {
+        margin: 0;
+      }
 
-        .wpcf7-form-control {
-          padding: 0 1rem;
-          font-size: 1.2rem;
-          line-height: 3rem;
-          min-height: 3rem;
+      .wpcf7-form-control-wrap {
+        height: 100%;
+
+        .wpcf7-not-valid-tip {
+          font-size: 1.5rem;
         }
       }
-    }
 
-    .wpcf7-submit {
-      padding: 0 1rem;
-      display: block;
-      width: 100%;
-      font-size: 1.2rem;
-      min-height: 3rem;
-      line-height: 100%;
+      .wpcf7-form-control {
+        padding: .8rem 1.2rem;
+        font-size: 1.2rem;
+        color: rgba(0, 0, 0, 0.30);
+        background-color: #E6E6E6;
+
+        &.wpcf7-submit {
+          min-width: 8rem;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: var(--color-white);
+          background-color: #FE5B58;
+        }
+      }
+
+      .wpcf7-response-output {
+        margin: 0;
+      }
     }
   }
 }
 
 .navbar-main {
+  position: relative;
   height: 7.8rem;
   background-color: var(--color-white);
+
+  &:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--clinic-tertiary-color);
+
+    @media (min-width: 1200px) {
+      width: calc((100% - 120rem) / 2);
+    }
+
+    @media (max-width: 1199px) {
+      width: calc( 100% - ( 37.6rem + 3.2rem ) );
+    }
+  }
 
   > div {
     height: inherit;
@@ -359,8 +387,7 @@
 }
 
 .top-nav-mobile {
-  height: 4.7rem;
-  background-color: var(--color-salem);
+  background-color: var(--clinic-tertiary-color);
 
   .container {
     padding-left: 0;
@@ -386,6 +413,7 @@
     }
 
     .logo {
+      padding: .3rem 0;
       position: relative;
       height: 100%;
 
@@ -552,8 +580,12 @@
     > li {
       &.mega-menu-item {
         &:not(:last-child) {
-          @media (min-width: 1199px) {
+          @media (min-width: 1200px) {
             margin-right: 6rem;
+          }
+
+          @media (min-width: 992px) and (max-width: 1199px) {
+            margin-right: 3rem;
           }
         }
       }

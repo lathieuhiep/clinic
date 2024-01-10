@@ -246,7 +246,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
                     if ( $listFirst ) :
                         foreach ( $listFirst as $key => $item):
                     ?>
-                        <div class="repeater-item text-end elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <div class="repeater-item text-end-lg elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
                             <h4 class="title">
                                 <?php echo esc_html( $item['list_title'] ); ?>
                             </h4>

@@ -14,6 +14,14 @@
         color: #000;
         text-transform: uppercase;
 
+        @media (min-width: 768px) and (max-width: 991px) {
+          font-size: 2rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 2rem;
+        }
+
         &.underline {
           position: relative;
           padding-bottom: 1.6rem;
@@ -40,12 +48,21 @@
         @include flex-center();
         gap: 1.2rem;
 
+        @media (max-width: 375px) {
+          flex-direction: column;
+        }
+
         a {
           padding: 1.2rem 1.8rem;
           border-radius: 5rem;
           font-size: 1.6rem;
           font-weight: 700;
           text-transform: uppercase;
+
+          @media (max-width: 575px) {
+            padding: 1.2rem;
+            font-size: 1.4rem;
+          }
         }
 
         &__link {
@@ -56,6 +73,14 @@
         &__book {
           color: var(--color-white);
           background: linear-gradient(180deg, #F00 0%, #F77 100%);
+        }
+      }
+    }
+
+    &.style-1 {
+      @media (max-width: 767px) {
+        .item-thumbnail {
+          order: 2;
         }
       }
     }

@@ -176,6 +176,28 @@ if ( class_exists( 'CSF' ) ) {
                 'title'   => esc_html__( 'Link messenger', 'clinic' ),
                 'default' => 'https://m.me/dakhoaqtdanang',
             ),
+
+			array(
+				'id'     => 'opt_general_chat_zalo',
+				'type'   => 'fieldset',
+				'title'  => esc_html__('ZaLo', 'clinic'),
+				'fields' => array(
+					array(
+						'id'    => 'phone',
+						'type'  => 'text',
+						'title' => esc_html__( 'Số điện thoại', 'clinic' ),
+						'default' => '0827750966',
+					),
+
+					array(
+						'id'    => 'qr_code',
+						'type'  => 'text',
+						'title' => esc_html__( 'Mã QR', 'clinic' ),
+						'default' => '19hirfvi9y5ep',
+						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
+					),
+				),
+			),
 		)
 	) );
 

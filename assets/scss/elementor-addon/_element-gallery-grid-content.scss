@@ -1,9 +1,9 @@
 .element-gallery-grid-content {
   &__warp {
     display: grid;
+    grid-gap: 1rem 1.8rem;
 
     @media (min-width: 992px) {
-      grid-gap: 1.8rem;
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -14,7 +14,7 @@
 
       &__image {
         &:not(:nth-child(2)) {
-          height: 10.6rem;
+          height: 100%;
           overflow: hidden;
         }
 

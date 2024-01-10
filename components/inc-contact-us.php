@@ -5,7 +5,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
 $link_chat_messenger = clinic_get_opt_link_chat_messenger();
 ?>
 
-<div class="contact-us-group">
+<div class="contact-us-group d-none d-lg-block">
     <div class="container">
         <div class="grid-layout text-uppercase">
 	        <?php if ( $phone ) : ?>
@@ -104,7 +104,7 @@ $link_chat_messenger = clinic_get_opt_link_chat_messenger();
 <?php if ( $medical_appointment_form ) : ?>
 
 <!-- Modal medical appointment -->
-<div class="modal fade" id="modal-appointment-form" tabindex="-1" aria-hidden="true">
+<div class="modal fade modal-appointment-form" id="modal-appointment-form" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
