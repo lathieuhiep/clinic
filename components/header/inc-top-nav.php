@@ -34,7 +34,7 @@ $hotline_group = clinic_get_option('opt_general_hotline_group');
                     if ( $hotline_group ) :
                         foreach ( $hotline_group as $item ) :
                     ?>
-                        <a href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $item['phone'] ) ); ?>">
+                        <a class="animate-character" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $item['phone'] ) ); ?>">
                             <?php echo esc_html($item['phone']); ?>
                         </a>
                     <?php
