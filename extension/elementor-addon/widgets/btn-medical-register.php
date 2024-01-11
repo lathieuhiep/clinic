@@ -94,6 +94,28 @@ class Clinic_Elementor_Btn_Medical_Register extends Widget_Base
 		);
 
 		$this->add_control(
+			'image',
+			[
+				'label' => esc_html__( 'Image', 'clinic' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$this->add_control(
+			'image_mobile',
+			[
+				'label' => esc_html__( 'Image Mobile', 'clinic' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$this->add_control(
 			'text', [
 				'label' => esc_html__( 'Nôi dụng', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
@@ -120,6 +142,20 @@ class Clinic_Elementor_Btn_Medical_Register extends Widget_Base
     ?>
 		<div class="element-btn-medical-register">
             <div class="element-btn-medical-register__warp">
+	            <?php
+                if ( !empty( $settings['image'] ) && !empty( $settings['image']['id'] ) ) :
+	                echo wp_get_attachment_image( $settings['image']['id'], 'full', '', array(
+                            'class' => 'image-desktop'
+                    ) );
+                endif;
+
+	            if ( !empty( $settings['image_mobile'] ) && !empty( $settings['image_mobile']['id'] ) ) :
+		            echo wp_get_attachment_image( $settings['image_mobile']['id'], 'full', '', array(
+			            'class' => 'image-mobile'
+		            ) );
+	            endif;
+                ?>
+
 	            <?php if ( $medical_appointment_form ) : ?>
                     <a class="btn-action" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
 			            <?php echo esc_html( $settings['text'] ); ?>
