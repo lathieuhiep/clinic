@@ -9,6 +9,9 @@ const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
 const concatCss = require('gulp-concat-css')
 const rename = require("gulp-rename")
+const babel = require('gulp-babel');
+const webpack = require('webpack-stream')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const pathAssets = './assets'
 const pathNodeModule = './node_modules'
@@ -39,19 +42,72 @@ function buildStylesBootstrap() {
         .pipe(dest(`${pathAssets}/libs/bootstrap/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesBootstrap = buildStylesBootstrap;
 
 // Task build js bootstrap
 function buildLibsBootstrapJS() {
     return src([
-        `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`
-    ], {allowEmpty: true})
-        .pipe(uglify())
-        .pipe(rename( {suffix: '.min'} ))
+        `${pathNodeModule}/bootstrap/js/dist/modal.js`,
+        `${pathNodeModule}/bootstrap/js/dist/offcanvas.js`
+    ])
+        .pipe(babel())
+        .pipe(webpack({
+            mode: 'production',
+            output: {
+                filename: 'bootstrap.js'
+            },
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        use: {
+                            loader: 'babel-loader'
+                        }
+                    }
+                ]
+            },
+            optimization: {
+                minimize: true,
+                minimizer: [
+                    new TerserPlugin({
+                        terserOptions: {
+                            output: {
+                                comments: false,
+                            },
+                        },
+                        extractComments: false,
+                    }),
+                ],
+            },
+        }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(dest(`${pathAssets}/libs/bootstrap/`))
         .pipe(browserSync.stream());
 }
-exports.buildLibsBootstrapJS = buildLibsBootstrapJS
+
+/*
+Task build owl carousel
+* */
+function buildStylesOwlCarousel() {
+    return src(`${pathNodeModule}/owl.carousel/dist/assets/owl.carousel.css`)
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(dest(`${pathAssets}/libs/owl.carousel/`))
+        .pipe(browserSync.stream());
+}
+
+function buildJsOwlCarouse() {
+    return src([
+        `${pathNodeModule}/owl.carousel/dist/owl.carousel.js`
+    ], {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(dest(`${pathAssets}/libs/owl.carousel/`))
+        .pipe(browserSync.stream());
+}
 
 // Task build style
 function buildStylesTheme() {
@@ -69,7 +125,6 @@ function buildStylesTheme() {
         .pipe(dest(`${pathAssets}/css/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesTheme = buildStylesTheme;
 
 // Task build style elementor
 function buildStylesElementor() {
@@ -87,7 +142,6 @@ function buildStylesElementor() {
         .pipe(dest(`./extension/elementor-addon/css/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesElementor = buildStylesElementor;
 
 // Task build style custom post type
 function buildStylesCustomPostType() {
@@ -105,7 +159,6 @@ function buildStylesCustomPostType() {
         .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesCustomPostType = buildStylesCustomPostType;
 
 // buildJSTheme
 function buildJSTheme() {
@@ -118,7 +171,24 @@ function buildJSTheme() {
         .pipe(dest(`${pathAssets}/js/`))
         .pipe(browserSync.stream());
 }
-exports.buildJSTheme = buildJSTheme
+
+/*
+Task build project
+* */
+async function buildProject() {
+    await buildStylesBootstrap()
+    await buildLibsBootstrapJS()
+
+    await buildStylesOwlCarousel()
+    await buildJsOwlCarouse()
+
+    await buildStylesTheme()
+    await buildStylesElementor()
+    await buildStylesCustomPostType()
+
+    await buildJSTheme()
+}
+exports.buildProject = buildProject
 
 
 // Task watch
