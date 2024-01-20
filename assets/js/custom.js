@@ -1,17 +1,9 @@
-/**
- * Custom js v1.0.0
- * Copyright 2017-2020
- * Licensed under  ()
- */
-
 ( function( $ ) {
-
     "use strict";
 
     let timer_clear;
 
     $( document ).ready( function () {
-
         // handle click back to top
         $('#back-top').on( 'click', function (e) {
             e.preventDefault()
@@ -172,5 +164,4 @@
             })
         }
     }
-
 } )( jQuery );

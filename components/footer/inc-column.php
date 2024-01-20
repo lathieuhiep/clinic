@@ -12,7 +12,7 @@ if( is_active_sidebar( 'sidebar-footer-column-1' ) || is_active_sidebar( 'sideba
                     $j = $i +1;
                     $clinic_col = clinic_get_option( 'opt_footer_column_width_' .  $j, 3);
 
-                    if( is_active_sidebar( 'sidebar-footer-column-'.$j ) ):
+                    if( !empty($clinic_col) && is_active_sidebar( 'sidebar-footer-column-'.$j ) ):
                 ?>
                     <div class="col-12 col-sm-<?php echo esc_attr( $clinic_col['sm'] ); ?> col-md-<?php echo esc_attr( $clinic_col['md'] ); ?> col-lg-<?php echo esc_attr( $clinic_col['lg'] ); ?>">
                         <?php dynamic_sidebar( 'sidebar-footer-column-'.$j ); ?>
