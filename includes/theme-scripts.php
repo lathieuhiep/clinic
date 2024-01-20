@@ -74,4 +74,8 @@ function clinic_register_front_end(): void
 
 	// custom js
 	wp_enqueue_script( 'clinic-custom', get_theme_file_uri( '/assets/js/custom.min.js' ), array('jquery'), clinic_get_version_theme(), true );
+
+	if (is_singular('post')) {
+		wp_enqueue_script( 'single-post', get_theme_file_uri( '/assets/js/single-post.min.js' ), array('jquery'), clinic_get_version_theme(), true );
+	}
 }

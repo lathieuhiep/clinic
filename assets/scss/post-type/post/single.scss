@@ -26,6 +26,40 @@
         width: 100%;
       }
     }
+
+    .box-image-overlay {
+      position: relative;
+      margin-bottom: 1.2rem;
+
+      &:after {
+        position: absolute;
+        content: "Click xem ảnh";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        color: var(--color-white);
+        @include flex-center();
+        @include transition();
+      }
+
+      img {
+        position: relative;
+        filter: brightness(0.1);
+        @include transition();
+      }
+
+      &:hover {
+        &:after {
+          opacity: 0;
+          visibility: visible;
+        }
+
+        img {
+          filter: brightness(1);
+        }
+      }
+    }
   }
 
   &__image,

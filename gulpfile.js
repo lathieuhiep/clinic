@@ -19,7 +19,7 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/dakhoaquocte180tranphu",
+        proxy: "localhost/dakhoadanang180tranphu",
         open: false,
         cors: true,
         ghostMode: false
