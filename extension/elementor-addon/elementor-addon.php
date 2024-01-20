@@ -19,37 +19,37 @@ add_action( 'elementor/widgets/register', 'clinic_register_widget_elementor_addo
 function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
-	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
-	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
-	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content.php' );
-	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/specialist.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-line-under.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/appointment-consultation.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circle-box-image.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-slider.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/number-counter.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/work-time.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
+//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content.php' );
+//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/specialist.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-line-under.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/appointment-consultation.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circle-box-image.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-slider.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/number-counter.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/work-time.php' );
+//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 
 	// register add on
 	$widgets_manager->register( new \Clinic_Elementor_Addon_Slider() );
-	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );
-	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content() );
-	$widgets_manager->register( new \Clinic_Elementor_Specialist() );
-	$widgets_manager->register( new \Clinic_Elementor_Heading_Line_Under() );
-    $widgets_manager->register( new \Clinic_Elementor_Addon_Post_Grid() );
-    $widgets_manager->register( new \Clinic_Elementor_Appointment_Consultation() );
-    $widgets_manager->register( new \Clinic_Elementor_Circle_Box_Image() );
-    $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
-    $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
-    $widgets_manager->register( new \Clinic_Elementor_Image_Slider() );
-    $widgets_manager->register( new \Clinic_Elementor_Number_Counter() );
-    $widgets_manager->register( new \Clinic_Elementor_Work_Time() );
-    $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
+//	$widgets_manager->register( new \Clinic_Elementor_Addon_Contact_Form_7() );
+//	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+//	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content() );
+//	$widgets_manager->register( new \Clinic_Elementor_Specialist() );
+//	$widgets_manager->register( new \Clinic_Elementor_Heading_Line_Under() );
+//    $widgets_manager->register( new \Clinic_Elementor_Addon_Post_Grid() );
+//    $widgets_manager->register( new \Clinic_Elementor_Appointment_Consultation() );
+//    $widgets_manager->register( new \Clinic_Elementor_Circle_Box_Image() );
+//    $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
+//    $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
+//    $widgets_manager->register( new \Clinic_Elementor_Image_Slider() );
+//    $widgets_manager->register( new \Clinic_Elementor_Number_Counter() );
+//    $widgets_manager->register( new \Clinic_Elementor_Work_Time() );
+//    $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
 }
 
 // Register scripts
@@ -59,12 +59,12 @@ function clinic_elementor_scripts(): void {
 
 	if ( $clinic_check_elementor == 'builder' ) {
 		// style
-		wp_enqueue_style( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/css/lightslider.min.css' ), array(), '1.1.3' );
+		wp_enqueue_style( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
 
         wp_enqueue_style( 'clinic-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/elementor-addon.min.css' ), array(), clinic_get_version_theme() );
 
 		// script
-		wp_enqueue_script( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/js/lightslider.min.js' ), array( 'jquery' ), '1.1.3', true );
+		wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
 
 		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.js' ), array( 'jquery' ), '1.0.0', true );
 	}

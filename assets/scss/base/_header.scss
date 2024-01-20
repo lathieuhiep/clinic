@@ -1,7 +1,7 @@
 @import "../variables-site/variables";
 
 .global-header {
-  background-color: var(--color-white);
+  background-color: #F0F2EB;
   box-shadow: 0 0 1rem 0 rgba(0,0,0,0.5);
 
   &.active-sticky-nav {
@@ -34,16 +34,15 @@
     .phone {
       a {
         color: var(--color-white);
-        font-weight: 700;
-        background-color: var(--color-sunset-orange);
+        background-color: var(--color-salem);
 
         @media (min-width: 1400px) {
-          font-size: 1.8rem;
+          font-size: 2rem;
         }
 
         @media (min-width: 1200px) {
           padding: .6rem 1.6rem;
-          border-radius: 5rem;
+          border-radius: 1rem;
         }
 
         @media (min-width: 992px) and (max-width: 1399px) {
@@ -61,8 +60,26 @@
         }
 
         i {
+          font-size: 3rem;
+
           @media (min-width: 1200px) {
             margin-right: .5rem;
+          }
+        }
+
+        .box {
+          margin-left: 1.2rem;
+
+          span {
+            display: block;
+            text-align: center;
+            line-height: 1.2;
+          }
+
+          &__under {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--color-cadmium-yellow)
           }
         }
       }
@@ -208,7 +225,7 @@
           &:not(.current-menu-item, .mega-current-menu-item) {
             a {
               &:before {
-                background-image: url("assets/images/home-icon.png") !important;
+                background-image: url("../images/home-icon.png") !important;
               }
             }
           }
@@ -217,7 +234,7 @@
           &.mega-current-menu-item, {
             a {
               &:before {
-                background-image: url("assets/images/home-icon-active.png") !important;
+                background-image: url("../images/home-icon-active.png") !important;
               }
             }
           }

@@ -1,6 +1,5 @@
 <?php
 
-use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -101,7 +100,7 @@ class Clinic_Elementor_Addon_Slider extends Widget_Base {
     ?>
 
         <div class="element-slider">
-            <div class="element-slider__warp">
+            <div class="element-slider__warp owl-carousel owl-theme">
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];

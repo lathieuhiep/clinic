@@ -347,45 +347,96 @@ pre {
   }
 }
 
-#LRMINIBar {
-  bottom: 7rem !important;
-}
+/* owl carousel navigation */
+.owl-carousel {
+  .owl-nav {
+    margin: 0;
+    text-align: center;
 
-.lSSlideCustom {
-  .lSSlideOuter {
-    img {
-      width: 100%;
-    }
+    button {
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
 
-    .lSAction {
-      a {
-        opacity: 1;
-        background-image: none;
-        @include flex-center();
-
+      i {
         &:before {
-          position: absolute;
-          font-weight: 900;
-          font-family: $font-icon;
-          font-size: 2.4rem;
-          line-height: 100%;
-          color: var(--color-red);
+          color: var(--color-white);
+          @include transition();
         }
 
-        &.lSPrev {
+        &:hover {
           &:before {
-            content: "\f053";
+            color: #1a1a1a;
           }
         }
+      }
 
-        &.lSNext {
-          &:before {
-            content: "\f054";
-          }
+      &.owl-prev,
+      &.owl-next {
+        color: var(--font-body);
+        font-size: 20px;
+        line-height: normal;
+        @include transition();
+
+        &:hover {
+          color: $color-hover;
+        }
+      }
+
+      &.owl-prev {
+        left: 2rem;
+      }
+
+      &.owl-next {
+        right: 2rem;
+      }
+    }
+  }
+
+  .owl-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.6rem;
+    @include flex-center;
+
+    .owl-dot {
+      display: inline-block;
+      margin: 0 5px;
+
+      span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #000000;
+        border-radius: 50%;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &.active,
+      &:hover {
+        span {
+          background-color: $background-hover;
         }
       }
     }
   }
+}
+
+.custom-equal-height-owl {
+  .owl-stage {
+    display: flex;
+
+    .owl-item {
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+}
+
+#LRMINIBar {
+  bottom: 7rem !important;
 }
 
 .contact-us-mobile {

@@ -41,9 +41,14 @@ $hotline = clinic_get_opt_hotline();
 
         <?php if ( $hotline ) : ?>
             <div class="phone">
-                <a class="d-block" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($hotline)); ?>">
-                    <i class="fa-solid fa-phone-volume alo-circle-anim"></i>
-                    <span><?php echo esc_html( $hotline ); ?></span>
+                <a class="d-flex align-items-center" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($hotline)); ?>">
+                    <img class="icon-phone alo-circle-anim" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/call.png' ) ) ?>" alt="" width="32" height="32"/>
+
+                    <span class="box">
+                        <span class="box__top"><?php esc_html_e('Điện thoại tư vấn', 'clinic'); ?></span>
+
+                        <span class="box__under"><?php echo esc_html( $hotline ); ?></span>
+                    </span>
                 </a>
             </div>
         <?php endif; ?>
