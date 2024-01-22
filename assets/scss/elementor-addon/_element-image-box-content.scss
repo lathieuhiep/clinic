@@ -1,19 +1,10 @@
 .element-image-box-content {
-  padding: 1rem;
-  border-radius: 1rem;
-  overflow: hidden;
-  background-color: var(--color-cadmium-yellow);
-
   &__warp {
-    padding: 2.4rem 1.6rem;
     display: grid;
     grid-gap: 2rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    background-color: var(--color-cadmium-green);
 
     @media (min-width: 992px) {
-      grid-template-columns: 42.6rem 1fr;
+      grid-template-columns: 55rem 1fr;
     }
 
     @media (min-width: 768px) and (max-width: 991px) {
@@ -36,10 +27,12 @@
       }
 
       &__heading {
-        color: var(--color-white);
+        margin-bottom: 2rem;
+        text-align: center;
+        color: var(--color-salem);
 
         @media (min-width: 992px) {
-          font-size: 2.3rem;
+          font-size: 2.6rem;
         }
 
         @media (max-width: 991px) {
@@ -47,9 +40,30 @@
         }
       }
 
+      .sub-heading {
+        margin-bottom: 2rem;
+        font-size: 3.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .line {
+          position: relative;
+          height: .2rem;
+          flex: 0 0 7.6rem;
+          background-color: #2A9525;
+        }
+
+        .txt {
+          padding: 0 1.6rem;
+          text-align: center;
+          line-height: 3rem;
+          word-wrap: break-word;
+        }
+      }
+
       &__desc {
         font-size: 1.6rem;
-        color: var(--color-white);
       }
     }
   }

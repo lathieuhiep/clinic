@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Specialist extends Widget_Base
+class Clinic_Elementor_Category_List extends Widget_Base
 {
 
 	/**
@@ -23,7 +23,7 @@ class Clinic_Elementor_Specialist extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-specialist';
+		return 'clinic-category-list';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Clinic_Elementor_Specialist extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Specialist', 'clinic');
+		return esc_html__('Category List', 'clinic');
 	}
 
 	/**
@@ -159,9 +159,9 @@ class Clinic_Elementor_Specialist extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-specialist">
+		<div class="element-category-list">
 			<?php if ( $settings['list'] ) : ?>
-				<div class="element-specialist__grid">
+				<div class="element-category-list__warp">
 					<?php
 					foreach ( $settings['list'] as $item) :
 						$category_link = get_category_link( $item['list_category'] );
@@ -169,11 +169,15 @@ class Clinic_Elementor_Specialist extends Widget_Base
 						if ( $category_link ) :
 					?>
 					<div class="item">
-						<figure class="item__image">
+						<div class="item__image">
                             <a class="d-block" href="<?php echo esc_url( $category_link ); ?>">
                                 <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
                             </a>
-						</figure>
+						</div>
+
+                        <h4 class="item__title">
+                            <?php echo esc_html($item['list_title']); ?>
+                        </h4>
 					</div>
 					<?php
 						endif;
