@@ -186,21 +186,23 @@ class Clinic_Elementor_Appointment_Consultation extends Widget_Base
         <div class="element-appointment-consultation">
             <div class="element-appointment-consultation__warp">
                 <div class="thumbnail d-none d-lg-block">
-                    <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/tu-van-dat-hen.png' ) ) ?>" alt="" width="100" height="97" />
+                    <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/tu-van-dat-hen.png' ) ) ?>" alt="" width="251" height="209" />
                 </div>
 
-                <div class="heading">
-                    <h2 class="heading__txt m-0">
-                        <?php echo esc_html( $settings['heading'] ); ?>
-                    </h2>
-                </div>
+                <div class="box">
+                    <div class="heading">
+                        <h2 class="heading__txt m-0">
+                            <?php echo esc_html( $settings['heading'] ); ?>
+                        </h2>
+                    </div>
 
-                <div class="form">
-                    <?php
-                    if ( $settings['select_form'] ) {
-                        echo do_shortcode( '[contact-form-7 id="' . $settings['select_form'] . '" ]' );
-                    }
-                    ?>
+                    <div class="form">
+                        <?php
+                        if ( $settings['select_form'] ) {
+                            echo do_shortcode( '[contact-form-7 id="' . $settings['select_form'] . '" ]' );
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>

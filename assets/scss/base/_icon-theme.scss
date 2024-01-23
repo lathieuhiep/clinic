@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-square-check .path1:before {
+  content: "\e90b";
+  color: rgb(119, 178, 85);
+}
+.icon-square-check .path2:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
 .icon-phone:before {
   content: "\e90a";
 }
@@ -59,4 +68,7 @@
 }
 .icon-phone-circle:before {
   content: "\e909";
+}
+.icon-star-full:before {
+  content: "\e9d9";
 }

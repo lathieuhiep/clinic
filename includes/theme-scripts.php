@@ -38,6 +38,7 @@ function clinic_register_front_end(): void
 	wp_dequeue_style('storefront-gutenberg-blocks'); // disable storefront frontend block styles
 
 	/** Load css **/
+    $clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
 	// font google
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap', array(), null );
@@ -45,9 +46,9 @@ function clinic_register_front_end(): void
 	// bootstrap css
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.3.2' );
 
-    // light slider css
-    if ( is_singular('post') ) {
-        wp_enqueue_style( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/css/lightslider.min.css' ), array(), '1.1.3' );
+    // owl carousel css
+    if ( $clinic_check_elementor == 'builder' ) {
+        wp_enqueue_style( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
     }
 
 	// style theme
@@ -72,9 +73,9 @@ function clinic_register_front_end(): void
 	// bootstrap js
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.js' ), array('jquery'), '5.2.3', true );
 
-    // light slider js
-    if ( is_singular('post') ) {
-        wp_enqueue_script( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/js/lightslider.min.js' ), array( 'jquery' ), '1.1.3', true );
+    // owl carousel js
+    if ( $clinic_check_elementor == 'builder' ) {
+        wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
     }
 
 	// comment reply

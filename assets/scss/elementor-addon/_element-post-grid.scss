@@ -14,7 +14,8 @@
 
   .item-post {
     border-radius: .4rem;
-    border: 1px solid #222222;
+    border: 1px solid #777777;
+    @include transition();
 
     @media (min-width: 576px) {
       padding: 1.4rem 2rem;
@@ -57,6 +58,14 @@
 
     &__box {
       .title {
+        a {
+          color: var(--color-salem);
+
+          &:hover {
+            color: var(--color-hover);
+          }
+        }
+
         @media (min-width: 768px) {
           font-size: 1.8rem;
         }
@@ -67,6 +76,7 @@
       }
 
       .meta {
+        margin-bottom: 1.2rem;
         color: #adadad;
         font-size: 1.2rem;
 
@@ -80,6 +90,14 @@
           }
         }
       }
+
+      .desc {
+        font-size: 1.4rem;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 11px rgba(33,33,33,.2);
     }
   }
 

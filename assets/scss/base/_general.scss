@@ -349,6 +349,13 @@ pre {
 
 /* owl carousel navigation */
 .owl-carousel {
+  .owl-item {
+    img {
+      width: auto;
+      margin: 0 auto;
+    }
+  }
+
   .owl-nav {
     margin: 0;
     text-align: center;
@@ -395,10 +402,6 @@ pre {
   }
 
   .owl-dots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 1.6rem;
     @include flex-center;
 
     .owl-dot {

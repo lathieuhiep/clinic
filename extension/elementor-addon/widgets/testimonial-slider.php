@@ -102,6 +102,206 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
         $this->end_controls_section();
 
+        // Content additional options
+        $this->start_controls_section(
+            'additional_options_section',
+            [
+                'label' => esc_html__( 'Additional Options', 'basictheme' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'loop',
+            [
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label'         =>  esc_html__('Loop Slider?', 'basictheme'),
+                'label_off'     =>  esc_html__('No', 'basictheme'),
+                'label_on'      =>  esc_html__('Yes', 'basictheme'),
+                'return_value'  =>  'yes',
+                'default'       =>  'yes',
+            ]
+        );
+
+        $this->add_control(
+            'autoplay',
+            [
+                'label'         =>  esc_html__('Autoplay?', 'basictheme'),
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label_off'     =>  esc_html__('No', 'basictheme'),
+                'label_on'      =>  esc_html__('Yes', 'basictheme'),
+                'return_value'  =>  'yes',
+                'default'       =>  'no',
+            ]
+        );
+
+        $this->add_control(
+            'nav',
+            [
+                'label'         =>  esc_html__('Nav Slider', 'basictheme'),
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label_on'      =>  esc_html__('Yes', 'basictheme'),
+                'label_off'     =>  esc_html__('No', 'basictheme'),
+                'return_value'  =>  'yes',
+                'default'       =>  'yes',
+            ]
+        );
+
+        $this->add_control(
+            'dots',
+            [
+                'label'         =>  esc_html__('Dots Slider', 'basictheme'),
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label_on'      =>  esc_html__('Yes', 'basictheme'),
+                'label_off'     =>  esc_html__('No', 'basictheme'),
+                'return_value'  =>  'yes',
+                'default'       =>  'yes',
+            ]
+        );
+
+        $this->add_control(
+            'margin_item',
+            [
+                'label'     =>  esc_html__( 'Space Between Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  30,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'min_width_1200',
+            [
+                'label'     =>  esc_html__( 'Min Width 1200px', 'basictheme' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
+            ]
+        );
+
+        $this->add_control(
+            'item',
+            [
+                'label'     =>  esc_html__( 'Number of Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  3,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'min_width_992',
+            [
+                'label'     =>  esc_html__( 'Min Width 992px', 'basictheme' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
+            ]
+        );
+
+        $this->add_control(
+            'item_992',
+            [
+                'label'     =>  esc_html__( 'Number of Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'min_width_768',
+            [
+                'label'     =>  esc_html__( 'Min Width 768px', 'basictheme' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
+            ]
+        );
+
+        $this->add_control(
+            'item_768',
+            [
+                'label'     =>  esc_html__( 'Number of Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'min_width_568',
+            [
+                'label'     =>  esc_html__( 'Min Width 568px', 'basictheme' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
+            ]
+        );
+
+        $this->add_control(
+            'item_568',
+            [
+                'label'     =>  esc_html__( 'Number of Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'margin_item_568',
+            [
+                'label'     =>  esc_html__( 'Space Between Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  15,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'max_width_567',
+            [
+                'label'     =>  esc_html__( 'Max Width 567px', 'basictheme' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
+            ]
+        );
+
+        $this->add_control(
+            'item_567',
+            [
+                'label'     =>  esc_html__( 'Number of Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  1,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'margin_item_567',
+            [
+                'label'     =>  esc_html__( 'Space Between Item', 'basictheme' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  0,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->end_controls_section();
+
 	    // tab style name
 	    $this->start_controls_section(
 		    'style_name',
@@ -211,10 +411,41 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
+
+        $data_owl_options = [
+            'loop' => ('yes' === $settings['loop']),
+            'nav' => ('yes' === $settings['nav']),
+            'dots' => ('yes' === $settings['dots']),
+            'margin' => $settings['margin_item'],
+            'autoplay' => ('yes' === $settings['autoplay']),
+            'responsive' => [
+                '0' => array(
+                    'items' => $settings['item_567'],
+                    'margin' => $settings['margin_item_567']
+                ),
+
+                '576' => array(
+                    'items' => $settings['item_568'],
+                    'margin' => $settings['margin_item_568']
+                ),
+
+                '768' => array(
+                    'items' => $settings['item_768']
+                ),
+
+                '992' => array(
+                    'items' => $settings['item_992']
+                ),
+
+                '1200' => array(
+                    'items' => $settings['item']
+                ),
+            ],
+        ];
     ?>
 
-        <div class="element-testimonial-slider lSSlideCustom">
-            <div class="element-testimonial-slider__warp">
+        <div class="element-testimonial-slider">
+            <div class="element-testimonial-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $data_owl_options ) ; ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
@@ -246,11 +477,9 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                                 </p>
 
                                 <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
+                                    <?php for ($i = 0; $i < 5; $i++) : ?>
+                                        <i class="icon-star-full"></i>
+                                    <?php endfor; ?>
                                 </div>
                             </div>
                         </div>

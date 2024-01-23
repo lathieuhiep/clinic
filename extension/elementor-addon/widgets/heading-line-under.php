@@ -45,8 +45,8 @@ class Clinic_Elementor_Heading_Line_Under extends Widget_Base
 	 * @access public
 	 * @return string Widget icon.
 	 */
-	public function get_icon()
-	{
+	public function get_icon(): string
+    {
 		return 'eicon-heading';
 	}
 
@@ -153,6 +153,33 @@ class Clinic_Elementor_Heading_Line_Under extends Widget_Base
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .element-heading-line-under .txt:after' => 'background-color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'line_width',
+            [
+                'label' => esc_html__( 'Width', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-heading-line-under .txt:after' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

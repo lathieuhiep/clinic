@@ -6,7 +6,7 @@ use Elementor\Controls_Manager;
 
 if (!defined('ABSPATH')) exit;
 
-class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
+class Clinic_Elementor_Post_Grid extends Widget_Base
 {
     public function get_categories(): array {
         return array('my-theme');
@@ -255,6 +255,18 @@ class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
                                 <div class="meta">
                                     <span class="meta__author"><?php echo esc_html(get_the_author()) ?></span>
                                     <span class="meta__date"><?php echo esc_html( get_the_date() ); ?></span>
+                                </div>
+
+                                <div class="desc">
+                                    <p>
+                                        <?php
+                                        if (has_excerpt()) :
+                                            echo esc_html(wp_trim_words(get_the_excerpt(), 30, '...'));
+                                        else:
+                                            echo esc_html(wp_trim_words(get_the_content(), 30, '...'));
+                                        endif;
+                                        ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
