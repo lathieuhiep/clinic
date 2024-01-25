@@ -5,8 +5,8 @@ if ( !empty( $gallery ) ) :
     $gallery_ids = explode( ',', $gallery );
 ?>
 
-<div class="slider-main lSSlideCustom">
-    <div class="slider-main__warp">
+<div class="slider-main">
+    <div class="slider-main__warp owl-carousel owl-theme">
         <?php foreach ( $gallery_ids as $gallery_item_id ): ?>
             <div class="item">
                 <?php echo wp_get_attachment_image( $gallery_item_id, 'full' ); ?>

@@ -286,44 +286,6 @@ if ( class_exists( 'CSF' ) ) {
 				'title'   => esc_html__( 'Limit related post', 'clinic' ),
 				'default' => 6,
 			),
-
-            // Contact
-            array(
-                'id'     => 'opt_post_single_contact',
-                'type'   => 'fieldset',
-                'title'  => esc_html__( 'Thông tin liên hệ', 'clinic' ),
-                'fields' => array(
-                    array(
-                        'id'    => 'image',
-                        'type'  => 'media',
-                        'title' => esc_html__( 'Ảnh', 'clinic' ),
-                        'library' => 'image',
-                        'url'   => false
-                    ),
-
-                    array(
-                        'id'    => 'heading',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Tiêu đề', 'clinic' ),
-                    ),
-
-                    array(
-                        'id'       => 'content',
-                        'type'     => 'wp_editor',
-                        'title'    => esc_html__( 'Nội dung', 'clinic' ),
-                        'sanitize' => false
-                    ),
-
-                ),
-            ),
-
-            // note
-            array(
-                'id'     => 'opt_post_single_note',
-                'type'   => 'wp_editor',
-                'title'  => esc_html__( 'Lưu ý', 'clinic' ),
-                'sanitize' => false
-            ),
         )
 	) );
 

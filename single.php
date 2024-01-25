@@ -3,10 +3,7 @@ get_header();
 
 // get option theme
 $sidebar = clinic_get_option('opt_post_single_sidebar_position', 'right');
-$class_col_content = clinic_col_use_sidebar( $sidebar, 'sidebar-post' );
-
-// include slider main
-get_template_part( 'components/inc', 'slider' );
+$class_col_content = clinic_col_use_sidebar( $sidebar, 'sidebar-post', 8 );
 ?>
 
 <div class="site-container single-post-warp">
@@ -23,11 +20,11 @@ get_template_part( 'components/inc', 'slider' );
                 ?>
             </div>
 
-            <?php
-            if ( $sidebar !== 'hide' ) :
-	            get_sidebar('post');
-            endif;
-            ?>
+            <?php if ( $sidebar !== 'hide' && is_active_sidebar( 'sidebar-post') ) : ?>
+                <aside class="<?php echo esc_attr( clinic_col_sidebar(4) ); ?> site-sidebar order-1">
+                    <?php dynamic_sidebar( 'sidebar-post' ); ?>
+                </aside>
+            <?php endif; ?>
         </div>
     </div>
 </div>

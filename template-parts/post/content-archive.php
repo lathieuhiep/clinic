@@ -1,65 +1,81 @@
 <?php
-// include breadcrumbs
-get_template_part( 'components/inc', 'breadcrumbs' );
+// include slider
+get_template_part( 'components/inc', 'slider' );
 
 // option theme
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
 $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
+
+// get term
+$term = get_queried_object();
 ?>
 
 <div class="site-container archive-post-warp">
+    <?php get_template_part( 'components/inc', 'breadcrumbs' ); ?>
+
     <div class="container">
         <div class="row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
                 <?php if ( have_posts() ) : ?>
                     <div class="content-archive-post">
-		                <?php
-		                while ( have_posts() ) :
-			                the_post();
-                        ?>
-                            <div class="item">
-                                <div class="post-thumbnail">
-		                            <?php the_post_thumbnail('large'); ?>
-                                </div>
+                        <h1 class="title-cate">
+                            <span class="icon"><i class="icon-menu"></i></span>
 
-                                <div class="item__content">
-                                    <?php
-                                    if ( has_category() ) :
-                                        the_category();
-                                    endif;
-                                    ?>
+                            <span class="txt"><?php echo esc_html( $term->name ); ?></span>
+                        </h1>
 
-                                    <h2 class="post-title">
-                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-							                <?php if (is_sticky() && is_home()) : ?>
-                                                <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-							                <?php
-							                endif;
+                        <div class="grid">
+                            <?php
+                            while ( have_posts() ) :
+                                the_post();
+                            ?>
+                                <div class="item">
+                                    <div class="post-thumbnail">
+                                        <?php the_post_thumbnail('large'); ?>
+                                    </div>
 
-							                the_title();
-							                ?>
-                                        </a>
-                                    </h2>
+                                    <div class="item__content">
+                                        <h2 class="post-title">
+                                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                                <?php if (is_sticky() && is_home()) : ?>
+                                                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                                <?php
+                                                endif;
 
-                                    <div class="post-desc">
-                                        <p>
-							                <?php
-							                if (has_excerpt()) :
-								                echo esc_html(get_the_excerpt());
-							                else:
-								                echo wp_trim_words(get_the_content(), 50, '...');
-							                endif;
-							                ?>
+                                                the_title();
+                                                ?>
+                                            </a>
+                                        </h2>
+
+                                        <p class="post-date">
+                                            <?php echo esc_html( get_the_date() ); ?>
                                         </p>
 
-						                <?php clinic_link_page(); ?>
+                                        <div class="post-desc">
+                                            <p>
+                                                <?php
+                                                if (has_excerpt()) :
+                                                    echo esc_html(get_the_excerpt());
+                                                else:
+                                                    echo wp_trim_words(get_the_content(), 30, '...');
+                                                endif;
+                                                ?>
+                                            </p>
+
+                                            <?php clinic_link_page(); ?>
+                                        </div>
+
+                                        <a class="text-read-more" href="<?php the_permalink(); ?>">
+                                            <span><?php esc_html_e('Đọc tiếp', 'clinic'); ?></span>
+                                            <i class="icon-angle-right"></i>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-		                <?php
-		                endwhile;
-		                wp_reset_postdata();
-		                ?>
+                            <?php
+                            endwhile;
+                            wp_reset_postdata();
+                            ?>
+                        </div>
                     </div>
                 <?php
 	                clinic_pagination();

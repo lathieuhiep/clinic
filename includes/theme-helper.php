@@ -138,7 +138,7 @@ function clinic_paging_nav_query( $query ): void {
 }
 
 // Get col global
-function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
+function clinic_col_use_sidebar( $option_sidebar, $active_sidebar, $col = 9 ): string
 {
 	if ( $option_sidebar != 'hide' && is_active_sidebar( $active_sidebar ) ):
 
@@ -148,7 +148,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 			$class_position_sidebar = ' order-1';
 		endif;
 
-		$class_col_content = 'col-12 col-md-8' . $class_position_sidebar;
+		$class_col_content = 'col-12 col-md-8 col-lg-' . $col . $class_position_sidebar;
 	else:
 		$class_col_content = 'col-md-12';
 	endif;
@@ -156,9 +156,9 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 	return $class_col_content;
 }
 
-function clinic_col_sidebar(): string
+function clinic_col_sidebar($col = 3): string
 {
-	return 'col-12 col-md-4';
+	return 'col-12 col-md-4 col-lg-' . $col;
 }
 
 // Post Meta
@@ -168,7 +168,7 @@ function clinic_post_meta(): void {
 	<div class="post-meta">
         <div class="post-meta__item">
             <div class="icon">
-                <i class="fa-regular fa-circle-user"></i>
+                <i class="icon-calendar"></i>
             </div>
 
             <div class="content">
@@ -178,7 +178,7 @@ function clinic_post_meta(): void {
 
         <div class="post-meta__item">
             <div class="icon">
-                <i class="fa-solid fa-calendar"></i>
+                <i class="icon-user"></i>
             </div>
 
             <div class="content">

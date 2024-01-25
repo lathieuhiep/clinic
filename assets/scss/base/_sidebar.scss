@@ -32,6 +32,8 @@ section {
       @include reset-list;
 
       li {
+        text-align: left;
+
         &:not(:last-child) {
           margin-bottom: 10px;
         }
@@ -337,6 +339,8 @@ section {
   }
 
   .widget {
+    font-family: var(--font-seconds);
+
     .widget-title {
       margin: 0;
       padding: .9rem;
@@ -344,6 +348,7 @@ section {
       text-align: center;
       text-transform: uppercase;
       color: var(--color-white);
+      font-family: var(--font-seconds);
       background: linear-gradient(180deg, #3BB966 0%, #208B45 100%);
     }
 
@@ -424,6 +429,7 @@ section {
 
       .widget-warp {
         padding: 0;
+        border: none;
 
         > li {
           margin: 0;
@@ -432,6 +438,7 @@ section {
             padding: .8rem 2.4rem;
             font-size: 1.6rem;
             font-weight: 700;
+            text-transform: uppercase;
           }
 
           ~ li {
