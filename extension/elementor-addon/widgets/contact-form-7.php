@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
+class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 
 	public function get_categories(): array
     {

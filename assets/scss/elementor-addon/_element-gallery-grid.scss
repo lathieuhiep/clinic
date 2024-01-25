@@ -2,7 +2,7 @@
   &__warp {
     display: grid;
 
-    @media (min-width: 576px) {
+    @media (min-width: 480px) {
       grid-gap: 2rem;
       grid-template-columns: repeat(2, 1fr);
     }

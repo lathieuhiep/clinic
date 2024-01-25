@@ -334,40 +334,24 @@ if ( class_exists( 'CSF' ) ) {
         'icon'   => 'fab fa-hive',
         'fields' => array(
             array(
-                'id'      => 'opt_social_network',
-                'type'    => 'repeater',
-                'title'   => esc_html__( 'Social Network', 'clinic' ),
-                'fields'  => array(
-                    array(
-                        'id'      => 'icon',
-                        'type'    => 'icon',
-                        'title'   => esc_html__( 'Icon', 'clinic' ),
-                        'default' => 'fab fa-facebook-f'
-                    ),
+                'id'    => 'opt_social_network_facebook',
+                'type'  => 'text',
+                'title' => esc_html__('Facebook', 'clinic'),
+                'default' => '#'
+            ),
 
-                    array(
-                        'id'    => 'url',
-                        'type'  => 'text',
-                        'title' => esc_html__('URL', 'clinic'),
-                        'default' => '#'
-                    ),
-                ),
-                'default' => array(
-                    array(
-                        'icon' => 'fab fa-facebook-f',
-                        'url' => '#',
-                    ),
+            array(
+                'id'    => 'opt_social_network_youtube',
+                'type'  => 'text',
+                'title' => esc_html__('Youtube', 'clinic'),
+                'default' => '#'
+            ),
 
-                    array(
-                        'icon' => 'fab fa-twitter',
-                        'url' => '#',
-                    ),
-
-                    array(
-                        'icon' => 'fab fa-instagram',
-                        'url' => '#',
-                    ),
-                )
+            array(
+                'id'    => 'opt_social_network_zalo',
+                'type'  => 'text',
+                'title' => esc_html__('ZaLo', 'clinic'),
+                'default' => '#'
             ),
         )
     ) );

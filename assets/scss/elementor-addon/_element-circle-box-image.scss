@@ -40,11 +40,11 @@
           transform: skewX(-25deg);
         }
 
-        @media (min-width: 992px) {
+        @media (min-width: 1200px) {
           @include square(25rem, 50%);
         }
 
-        @media (min-width: 768px) and (max-width: 991px) {
+        @media (min-width: 768px) and (max-width: 1199px) {
           @include square(20rem, 50%);
         }
 
@@ -62,10 +62,15 @@
 
       &__title {
         margin: 0 0 2rem;
+        text-align: center;
         color: var(--color-cadmium-green);
 
-        @media (min-width: 768px) {
+        @media (min-width: 1200px) {
           font-size: 2.3rem;
+        }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+          font-size: 1.8rem;
         }
 
         @media (max-width: 767px) {

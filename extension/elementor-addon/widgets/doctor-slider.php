@@ -131,7 +131,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
         }
     ?>
         <div class="element-doctor-slider">
-            <div class="element-doctor-slider__warp owl-carousel owl-theme custom-equal-height-owl">
+            <div class="element-doctor-slider__warp owl-carousel owl-theme">
                 <?php foreach ( $settings['list'] as $item ) : ?>
                     <div class="item">
                         <div class="item__thumbnail">
@@ -154,7 +154,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                             </div>
 
                             <div class="action-box text-center">
-                                <a class="btn-booking text-center text-uppercase" <?php echo $this->get_render_attribute_string( 'website_link' ); ?>>
+                                <a class="btn-booking text-center text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
                                     <?php esc_html_e('ĐĂNG KÝ KHÁM', 'clinic'); ?>
                                 </a>
                             </div>

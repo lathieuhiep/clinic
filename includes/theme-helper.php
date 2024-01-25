@@ -259,18 +259,23 @@ function clinic_preg_replace_ony_number($string): string|null
 
 // Social Network
 function clinic_get_social_url(): void {
-    $opt_social_networks = clinic_get_option('opt_social_network', '');
+    $social_networks = [
+        'facebook' => 'facebook-f',
+        'youtube' => 'youtube',
+        'zalo' => 'zalo'
+    ];
 
-    if ( !empty( $opt_social_networks ) ) :
-        foreach ( $opt_social_networks as $item ) :
+    foreach ( $social_networks as $key => $item ) :
+        $social_url = clinic_get_option('opt_social_network_' . $key);
+
+        if ( !empty( $social_url ) ) :
     ?>
-        <div class="social-network-item">
-            <a href="<?php echo esc_url( $item['url'] ); ?>" target="_blank">
-                <i class="<?php echo $item['icon']; ?>"></i>
+        <div class="social-network-item <?php echo esc_attr($key); ?>">
+            <a href="<?php echo esc_url( $social_url ); ?>" target="_blank">
+                <i class="icon-<?php echo esc_attr($item); ?>"></i>
             </a>
         </div>
     <?php
-
-        endforeach;
-    endif;
+        endif;
+    endforeach;
 }

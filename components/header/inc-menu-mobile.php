@@ -5,7 +5,7 @@
         </h5>
 
         <button type="button" class="btn-close-canvas" data-bs-dismiss="offcanvas" aria-label="Close">
-            <i class="fa-solid fa-xmark"></i>
+            <i class="icon-close"></i>
         </button>
     </div>
 

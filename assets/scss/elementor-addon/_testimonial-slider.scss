@@ -20,10 +20,17 @@
     }
 
     &__warp {
-      padding: 5rem 5rem 0;
       display: grid;
       grid-gap: 2.4rem;
       grid-template-columns: 9rem 1fr;
+
+      @media (min-width: 992px) {
+        padding: 5rem 5rem 0;
+      }
+
+      @media (max-width: 991px) {
+        padding: 5rem 0 0;
+      }
 
       .image {
         @include square(9rem, 50%);

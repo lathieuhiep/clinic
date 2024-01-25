@@ -23,7 +23,7 @@ class Clinic_Elementor_Appointment_Consultation extends Widget_Base
      */
     public function get_name(): string
     {
-        return 'clinic-contact-us';
+        return 'clinic-appointment-consultation';
     }
 
     /**

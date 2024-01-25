@@ -33,15 +33,7 @@ class clinic_info_company_widget extends WP_Widget {
     ?>
         <div class="info-company-widget__warp">
             <div class="item">
-                <i class="fa-solid fa-location-dot"></i>
-
-                <p class="item__content">
-                    <?php echo esc_html( $instance['address'] ); ?>
-                </p>
-            </div>
-
-            <div class="item">
-                <i class="fa-solid fa-phone"></i>
+                <i class="icon-phone"></i>
 
                 <a class="item__content" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number($instance['hotline']) ); ?>">
                     <?php echo esc_html( $instance['hotline'] ); ?>
@@ -49,18 +41,26 @@ class clinic_info_company_widget extends WP_Widget {
             </div>
 
             <div class="item">
-                <i class="fa-solid fa-globe"></i>
+                <i class="icon-location"></i>
 
-                <a class="item__content" href="<?php echo esc_url( $instance['website'] ); ?>">
-                    <?php echo esc_html( $instance['website'] ); ?>
+                <p class="item__content">
+                    <?php echo esc_html( $instance['address'] ); ?>
+                </p>
+            </div>
+
+            <div class="item">
+                <i class="icon-envelope"></i>
+
+                <a class="item__content" href="mailto:<?php echo esc_attr( $instance['mail'] ); ?>">
+                    <?php echo esc_html( $instance['mail'] ); ?>
                 </a>
             </div>
 
             <div class="item">
-                <i class="fa-solid fa-envelope"></i>
+                <i class="icon-sphere"></i>
 
-                <a class="item__content" href="mailto:<?php echo esc_attr( $instance['mail'] ); ?>">
-                    <?php echo esc_html( $instance['mail'] ); ?>
+                <a class="item__content" href="<?php echo esc_url( $instance['website'] ); ?>">
+                    <?php echo esc_html( $instance['website'] ); ?>
                 </a>
             </div>
         </div>

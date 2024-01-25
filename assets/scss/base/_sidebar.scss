@@ -184,17 +184,17 @@ section {
           @include square(4rem);
         }
 
-        &:has(i.fa-facebook) {
+        &.facebook {
           background-color: #3b5998;
         }
 
-        &:has(i.fa-twitter) {
-          background-color: #55acee;
+        &.youtube {
+          background-color: #ff0000;
         }
 
-        &:has(i.fa-instagram) {
-          background: #f09433;
-          background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        &.zalo {
+          background: #0A68FE;
+          font-size: 3rem;
         }
 
         a {
@@ -264,11 +264,11 @@ section {
     .info-company-widget__warp {
       .item {
         display: grid;
-        grid-gap: 1.6rem;
+        grid-gap: 1.2rem;
         grid-template-columns: 2.4rem 1fr;
         align-items: center;
 
-        i {
+        strong {
           text-align: center;
           font-size: 2.4rem;
         }
@@ -290,6 +290,10 @@ section {
 
         ~ .item {
           margin-top: 1.2rem;
+        }
+
+        i {
+          font-size: 2.2rem;
         }
 
         &__content {

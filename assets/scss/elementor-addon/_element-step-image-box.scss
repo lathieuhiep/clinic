@@ -78,24 +78,21 @@
                 margin-top: 1rem;
               }
 
-              &:before,
-              &:after {
+              &:before {
                 position: absolute;
-                top: -0.3rem;
+                content: "\e90c";
+                top: .5rem;
                 left: 0;
                 font-family: 'icomoon', serif;
                 font-weight: normal;
                 width: 2.4rem;
-              }
-
-              &:before {
-                content: "\e90b";
-                color: #6FBA73;
-              }
-
-              &:after {
-                content: "\e90c";
+                height: 2.4rem;
+                line-height: 100%;
+                text-align: center;
                 color: var(--color-white);
+                font-size: 2rem;
+                background-color: #6FBA73;
+                border-radius: .3rem;
               }
             }
           }

@@ -318,7 +318,7 @@ pre {
 
 .chat-with-us {
   position: fixed;
-  right: 1.6rem;
+  right: 3rem;
   z-index: 99;
   display: grid;
   grid-row-gap: 1.2rem;
@@ -326,7 +326,7 @@ pre {
   align-items: center;
 
   @media (min-width: 992px) {
-    bottom: 8rem;
+    bottom: 10rem;
   }
 
   @media (max-width: 991px) {
@@ -335,14 +335,28 @@ pre {
 
   .link {
     text-align: center;
-    font-size: 1.8rem;
+  }
+
+  .icon {
+    margin: 0 auto;
+    color: var(--color-white);
+    @include square(3.8rem, 50%);
+  }
+
+  &__zalo {
+    @include square(4.3rem);
+    margin: 0 auto;
+  }
+
+  &__messenger {
+    font-size: 2.2rem;
+    line-height: 4.3rem;
+    background-color: #1877f2;
   }
 
   &__phone {
-    margin: 0 auto;
-    color: var(--color-white);
+    font-size: 1.8rem;
     line-height: 3.8rem;
-    @include square(3.8rem, 50%);
     background-color: var(--color-salem);
   }
 }

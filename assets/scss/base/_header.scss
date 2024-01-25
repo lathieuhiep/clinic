@@ -33,30 +33,17 @@
 
     .phone {
       a {
+        padding: .6rem 1.6rem;
         color: var(--color-white);
+        border-radius: 1rem;
         background-color: var(--color-cadmium-green);
 
         @media (min-width: 1400px) {
           font-size: 2rem;
         }
 
-        @media (min-width: 1200px) {
-          padding: .6rem 1.6rem;
-          border-radius: 1rem;
-        }
-
         @media (min-width: 992px) and (max-width: 1399px) {
           font-size: 1.6rem;
-        }
-
-        @media (min-width: 992px) and (max-width: 1199px) {
-          @include square(3.8rem, 50%);
-          text-align: center;
-          line-height: 3.8rem;
-
-          span {
-            display: none;
-          }
         }
 
         i {
@@ -90,6 +77,27 @@
     padding: .8rem 1.2rem;
     background-color: var(--color-white);
 
+    &__warp {
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+
+      .menu-offcanvas {
+        .btn {
+          padding: 0;
+          border: 0;
+          background-color: transparent;
+
+          i {
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: var(--color-salem);
+          }
+        }
+      }
+    }
+
     .wpcf7-form {
       display: grid;
       grid-gap: 1.2rem;
@@ -110,15 +118,35 @@
       .wpcf7-form-control {
         padding: .8rem 1.2rem;
         font-size: 1.5rem;
+        border: 1px solid #7A7A7A;
+        background-color: var(--color-white);
 
         &.wpcf7-submit {
           min-width: 8rem;
-          background-color: var(--color-salem);
+          font-size: 0;
+          height: 100%;
+          border: none;
+          background-color: #96234A;
         }
       }
 
       .wpcf7-response-output {
         margin: 0;
+      }
+
+      p {
+        &:has(.wpcf7-submit) {
+          &:before {
+            position: absolute;
+            content: "\e910";
+            top: 50%;
+            left: 50%;
+            color: var(--color-white);
+            font-size: 2.4rem;
+            font-family: icomoon, sans-serif;
+            transform: translate(-50%, -50%);
+          }
+        }
       }
     }
   }
@@ -156,12 +184,8 @@
             font-size: 1.5rem;
           }
 
-          @media (min-width: 1200px) and (max-width: 1399px) {
+          @media (min-width: 992px) and (max-width: 1399px) {
             font-size: 1.4rem;
-          }
-
-          @media (min-width: 992px) and (max-width: 1199px) {
-            font-size: 1.2rem;
           }
         }
       }
@@ -574,57 +598,14 @@
 }
 
 .top-nav-mobile {
-  padding: .6rem 0;
-  background-color: var(--color-salem);
-
-  .grid-warp {
-    display: grid;
-    grid-gap: 1.2rem;
-    align-items: center;
-
-    @media (min-width: 576px) and (max-width: 991px) {
-      grid-template-columns: 5rem 1fr 26rem;
-    }
-
-    @media (max-width: 575px) {
-      grid-template-columns: 3rem 15rem 1fr;
-    }
-
-    .hamburger {
-      height: inherit;
-      @include flex-center();
-
-      .btn {
-        padding: 0;
-        border: none;
-        font-size: 2.8rem;
-        color: var(--color-white);
-        background: transparent;
-      }
-    }
-
-    .logo {
-      img {
-        @media (min-width: 576px) and (max-width: 991px) {
-          max-width: 19rem;
-        }
-      }
-    }
-
-    .contact {
-      a {
-        @include square(3.8rem, 50%);
-        @include flex-center();
-        border: .3rem solid #5AE0DA ;
-        background-color: var(--color-white);
-      }
-    }
+  img {
+    width: 100%;
   }
 }
 
 .offcanvas-menu-mobile {
   background-color: #000000;
-  z-index: 9999999;
+  z-index: 9999999999;
 
   .offcanvas-header {
     margin-bottom: 1.5rem;
@@ -707,6 +688,7 @@
 }
 
 .alo-circle-anim {
+  display: inline-block;
   -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
   -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
   -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
