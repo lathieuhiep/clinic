@@ -10,11 +10,7 @@ $show_related = clinic_get_option('opt_post_single_related', '1');
 	<?php clinic_post_meta(); ?>
 
     <div class="single-post-content__detail">
-		<?php
-		the_content();
-
-		clinic_link_page();
-		?>
+		<?php the_content(); ?>
     </div>
 </div>
 
