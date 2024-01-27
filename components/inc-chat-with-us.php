@@ -6,7 +6,7 @@ $link_messenger = clinic_get_opt_link_chat_messenger()
 
 <div class="chat-with-us">
 	<?php
-	if ( $chat_zalo ) :
+	if ( !empty( $chat_zalo ) && !empty( $chat_zalo['phone'] )  && !empty( $chat_zalo['qr_code'] ) ) :
 		$zalo_phone = $chat_zalo['phone'];
 		$zalo_qr_code = $chat_zalo['qr_code'];
 		?>
