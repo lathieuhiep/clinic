@@ -35,9 +35,22 @@
 
   &__title {
     margin-bottom: 1.6rem;
-    line-height: 3rem;
+    line-height: 1.2;
     text-transform: uppercase;
     color: #FC0000;
+    text-align: start;
+
+    @media (min-width: 992px) {
+      font-size: 3.2rem;
+    }
+
+    @media (min-width: 576px) and (max-width: 991px) {
+      font-size: 2.6rem;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 2.4rem;
+    }
   }
 
   &__tax {
