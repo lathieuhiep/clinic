@@ -20,7 +20,7 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/phukhoa199",
+        proxy: "localhost/phukhoaquoctedanang",
         port: 3000,
         open: false,
         cors: true,
