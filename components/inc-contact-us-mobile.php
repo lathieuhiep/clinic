@@ -10,7 +10,6 @@ $link_messenger = clinic_get_opt_link_chat_messenger();
         <?php if ( $phone ) : ?>
         <div class="item">
             <a href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>">
-                <i class="icon-phone"></i>
                 <span class="txt"><?php echo esc_html($phone); ?></span>
             </a>
         </div>
@@ -19,8 +18,6 @@ $link_messenger = clinic_get_opt_link_chat_messenger();
         <?php if ( $link_messenger ) : ?>
             <div class="item">
                 <a href="<?php echo esc_url( $link_messenger ); ?>" target="_blank">
-                    <i class="icon-facebook-messenger"></i>
-
                     <span class="txt"><?php esc_html_e('Messenger', 'clinic'); ?></span>
                 </a>
             </div>
@@ -29,7 +26,6 @@ $link_messenger = clinic_get_opt_link_chat_messenger();
         <?php if ( $medical_appointment_form ) : ?>
             <div class="item">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                    <i class="icon-calendar"></i>
                     <span class="txt"><?php esc_html_e('Đặt lịch', 'clinic'); ?></span>
                 </a>
             </div>

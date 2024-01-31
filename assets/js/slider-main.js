@@ -19,6 +19,7 @@
               navSpeed: 800,
               dotsSpeed: 800,
               dragEndSpeed: 800,
+              autoHeight:true,
               navText: ['<i class="icon-angle-left" aria-hidden="true"></i>','<i class="icon-angle-right" aria-hidden="true"></i>'],
           })
       }
