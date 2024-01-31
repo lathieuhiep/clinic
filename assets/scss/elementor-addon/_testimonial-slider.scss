@@ -1,0 +1,53 @@
+.element-testimonial-slider {
+  .item {
+    &__desc {
+      position: relative;
+      padding: 1.2rem;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      border-radius: .6rem;
+      background-color: var(--color-white);
+      flex: 1;
+
+      &:after {
+        position: absolute;
+        content: "";
+        bottom: -2.2rem;
+        left: 10%;
+        border-top: 2.2rem solid var(--color-white);
+        border-right: 3rem solid transparent;
+      }
+    }
+
+    &__warp {
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: 9rem 1fr;
+
+      @media (min-width: 992px) {
+        padding: 5rem 5rem 0;
+      }
+
+      @media (max-width: 991px) {
+        padding: 5rem 0 0;
+      }
+
+      .image {
+        @include square(9rem, 50%);
+        overflow: hidden;
+        border: .3rem solid var(--color-white);
+      }
+
+      .name,
+      .info {
+        margin-bottom: .5rem;
+      }
+
+      .star {
+        i {
+          color: var(--color-cadmium-yellow);
+        }
+      }
+    }
+  }
+}

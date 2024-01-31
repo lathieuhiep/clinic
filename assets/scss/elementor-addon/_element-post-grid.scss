@@ -1,0 +1,116 @@
+.element-post-grid {
+  &__warp {
+    display: grid;
+    grid-gap: 2.4rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      grid-gap: 1.2rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .item-post {
+    border-radius: .4rem;
+    border: 1px solid #777777;
+    @include transition();
+
+    @media (min-width: 576px) {
+      padding: 1.4rem 2rem;
+    }
+
+    @media (max-width: 575px) {
+      padding: 1.4rem;
+    }
+
+    &__thumbnail {
+      margin-bottom: 2rem;
+
+      a {
+        display: block;
+        overflow: hidden;
+
+        @media (min-width: 992px) {
+          height: 25rem;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+          height: 15rem;
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+          height: 25rem;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__box {
+      .title {
+        a {
+          color: var(--color-salem);
+
+          &:hover {
+            color: var(--color-hover);
+          }
+        }
+
+        @media (min-width: 768px) {
+          font-size: 1.8rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 1.5rem;
+        }
+      }
+
+      .meta {
+        margin-bottom: 1.2rem;
+        color: #adadad;
+        font-size: 1.2rem;
+
+        span {
+          ~ span {
+            &:before {
+              content: "/";
+              margin-left: .3rem;
+              margin-right: .3rem;
+            }
+          }
+        }
+      }
+
+      .desc {
+        font-size: 1.4rem;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 11px rgba(33,33,33,.2);
+    }
+  }
+
+  .action-box {
+    margin-top: 3rem;
+
+    .btn-link-cate {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border-radius: 5rem;
+      min-width: 30.7rem;
+      color: var(--color-white);
+      text-transform: uppercase;
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--color-red);
+    }
+  }
+}

@@ -1,0 +1,85 @@
+.element-doctor-slider {
+  padding-right: 2px;
+
+  .item {
+    margin: 0 .2rem;
+    padding: 1rem;
+    border: 1px solid #BABABA;
+
+    &__thumbnail {
+      margin-bottom: 2rem;
+    }
+
+    &__content {
+      .title {
+        margin-bottom: 1.2rem;
+        line-height: 3rem;
+        color: #44893B;
+
+        @media (min-width: 1200px) {
+          font-size: 2.4rem;
+        }
+
+        @media (max-width: 1199px) {
+          font-size: 1.8rem;
+        }
+      }
+
+      .position {
+        font-weight: 700;
+        line-height: 2.4rem;
+
+        @media (min-width: 1200px) {
+          font-size: 1.8rem;
+        }
+
+        @media (max-width: 1199px) {
+          font-size: 1.6rem;
+        }
+      }
+
+      .desc {
+        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        letter-spacing: -0.05rem;
+      }
+
+      .action-box {
+        .btn-booking {
+          display: inline-block;
+          padding: .6rem 2.4rem;
+          font-weight: 700;
+          color: var(--color-white);
+          background-color: #25662E;
+
+          @media (min-width: 1200px) {
+            font-size: 2rem;
+          }
+
+          @media (max-width: 1199px) {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+
+  .owl-carousel {
+    .owl-dots {
+      margin-top: 3rem;
+
+      .owl-dot {
+        span {
+          background-color: rgba(0,0,0,0.3);
+        }
+
+        &.active,
+        &:hover {
+          span {
+            background-color: #000000;
+          }
+        }
+      }
+    }
+  }
+}
