@@ -218,18 +218,22 @@ function watchTask() {
         `${pathAssets}/scss/base/*.scss`,
         `${pathAssets}/scss/style-theme.scss`,
     ], buildStylesTheme)
+    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
+    watch([
+        './extension/elementor-addon/js/*.js',
+        '!./extension/elementor-addon/js/*.min.js'
+    ], buildJSTheme)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 
-    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 
     watch([
         './**/*.js',
