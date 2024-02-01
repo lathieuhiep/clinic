@@ -116,9 +116,6 @@ function buildStylesTheme() {
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/`))
-        .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -133,9 +130,7 @@ function buildStylesElementor() {
     return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`./extension/elementor-addon/css/`))
-        .pipe(sourcemaps.init())
+        .pipe(autoprefixer())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -160,13 +155,11 @@ function buildStylesCustomPostType() {
     return src(`${pathAssets}/scss/post-type/*/**.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/post-type/`))
-        .pipe(sourcemaps.init())
+        .pipe(autoprefixer())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
         .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(browserSync.stream());
@@ -208,18 +201,22 @@ exports.buildProject = buildProject
 function watchTask() {
     server()
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/bootstrap.scss`
     ], buildStylesBootstrap)
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/base/*.scss`,
         `${pathAssets}/scss/style-theme.scss`,
     ], buildStylesTheme)
+
     watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/elementor-addon/*.scss`
@@ -227,14 +224,15 @@ function watchTask() {
     watch([
         './extension/elementor-addon/js/*.js',
         '!./extension/elementor-addon/js/*.min.js'
-    ], buildJSTheme)
+    ], buildJSElementor)
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 
-
+    //
     watch([
         './**/*.js',
         './**/*.php',
