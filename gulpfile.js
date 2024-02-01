@@ -20,7 +20,7 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/phukhoa199",
+        proxy: "localhost/benhxahoi199",
         port: 3000,
         open: false,
         cors: true,
@@ -116,9 +116,6 @@ function buildStylesTheme() {
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/`))
-        .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -133,9 +130,6 @@ function buildStylesElementor() {
     return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`./extension/elementor-addon/css/`))
-        .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -160,9 +154,6 @@ function buildStylesCustomPostType() {
     return src(`${pathAssets}/scss/post-type/*/**.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/post-type/`))
-        .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
