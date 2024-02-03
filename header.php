@@ -17,5 +17,3 @@ endif;
 
 <!--Start Sticky Footer-->
 <div class="sticky-footer">
-
-

@@ -256,26 +256,3 @@ function clinic_preg_replace_ony_number($string): string|null
 
     return $number;
 }
-
-// Social Network
-function clinic_get_social_url(): void {
-    $social_networks = [
-        'facebook' => 'facebook-f',
-        'youtube' => 'youtube',
-        'zalo' => 'zalo'
-    ];
-
-    foreach ( $social_networks as $key => $item ) :
-        $social_url = clinic_get_option('opt_social_network_' . $key);
-
-        if ( !empty( $social_url ) ) :
-    ?>
-        <div class="social-network-item <?php echo esc_attr($key); ?>">
-            <a href="<?php echo esc_url( $social_url ); ?>" target="_blank">
-                <i class="icon-<?php echo esc_attr($item); ?>"></i>
-            </a>
-        </div>
-    <?php
-        endif;
-    endforeach;
-}

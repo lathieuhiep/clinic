@@ -19,10 +19,10 @@ $link_map = clinic_get_option('opt_general_link_map');
 	        <?php
             endif;
 
-            if ( $link_chat && $link_chat['url'] ) :
+            if ( $link_chat ) :
             ?>
                 <div class="item chat">
-                    <a class="item__content" href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
+                    <a class="item__content" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
                         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icon-chat-doctor.png' ) ) ?>" alt="chat" width="90" height="90">
 
                         <span><?php esc_html_e('Chat với bác sĩ', 'clinic'); ?></span>

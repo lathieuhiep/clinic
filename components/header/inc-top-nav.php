@@ -1,23 +1,57 @@
 <?php
-$logo = clinic_get_option( 'opt_general_logo' );
+$logo = clinic_get_opt_logo();
 $hotline = clinic_get_opt_hotline();
+$support = clinic_get_opt_link_chat_doctor();
+$link_map = clinic_get_opt_link_map();
+$medical_appointment_form = clinic_get_opt_medical_appointment();
 ?>
 
 <div class="top-nav d-none d-lg-block">
-    <div class="navbar-top-grid">
+    <div class="top-nav__grid container">
         <div class="logo">
             <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
                 <?php
                 if ( ! empty( $logo['id'] ) ) :
                     echo wp_get_attachment_image( $logo['id'], 'medium_large', '', ['class' => 'logo__default'] );
                 else :
-                ?>
+                    ?>
                     <img class="logo__default" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
                 <?php endif; ?>
             </a>
         </div>
 
-        <nav class="navbar-main">
+        <div class="contact">
+            <div class="contact__left text-start d-flex flex-column justify-content-center">
+                <a class="tel d-inline-block" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($hotline)); ?>">
+                    <?php esc_html_e('Hotline', 'clinic'); echo ': ' . esc_html( $hotline ); ?>
+                </a>
+
+                <p class="text">
+                    <i class="icon-hours-support"></i>
+                    <span><?php esc_html_e('Từ 8h-20h tất cả các ngày trong tuần', 'clinic'); ?></span>
+                </p>
+            </div>
+
+            <div class="contact__right">
+                <a href="<?php echo esc_url( $support ); ?>" target="_blank">
+                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-chat-group.png' ) ); ?>" alt="chat">
+                </a>
+
+                <a href="<?php echo esc_url( $link_map ); ?>" target="_blank">
+                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-map.png' ) ); ?>" alt="map">
+                </a>
+
+                <?php if ( $medical_appointment_form ) : ?>
+                    <a class="item__content" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-calendar-time.png' ) ); ?>" alt="calendar">
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar-main">
+        <div class="container h-100">
             <div id="primary-menu" class="navbar-main__menu collapse navbar-collapse d-lg-block">
                 <?php
                 if ( has_nav_menu( 'primary' ) ) :
@@ -37,20 +71,6 @@ $hotline = clinic_get_opt_hotline();
                     </ul>
                 <?php endif; ?>
             </div>
-        </nav>
-
-        <?php if ( $hotline ) : ?>
-            <div class="phone">
-                <a class="d-flex align-items-center" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($hotline)); ?>">
-                    <img class="icon-phone alo-circle-anim" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/call.png' ) ) ?>" alt="" width="32" height="32"/>
-
-                    <span class="box">
-                        <span class="box__top"><?php esc_html_e('Điện thoại tư vấn', 'clinic'); ?></span>
-
-                        <span class="box__under"><?php echo esc_html( $hotline ); ?></span>
-                    </span>
-                </a>
-            </div>
-        <?php endif; ?>
-    </div>
+        </div>
+    </nav>
 </div>

@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-hours-support:before {
+  content: "\e911";
+}
 .icon-send:before {
   content: "\e910";
 }

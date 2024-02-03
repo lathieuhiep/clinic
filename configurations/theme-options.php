@@ -33,37 +33,19 @@ if ( class_exists( 'CSF' ) ) {
 		'icon'  => 'fas fa-cog'
 	) );
 
-	// Global
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_general_section',
-		'title'  => esc_html__( 'Toàn cục', 'clinic' ),
-		'fields' => array(
-			// favicon
-			array(
-				'id'      => 'opt_general_favicon',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Favicon', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
-
-			// logo
-			array(
-				'id'      => 'opt_general_logo',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Logo', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
-
-			// logo
-			array(
-				'id'      => 'opt_general_logo_mobile',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Logo Mobile', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
+    // Global
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Toàn cục', 'clinic' ),
+        'fields' => array(
+            // favicon
+            array(
+                'id'      => 'opt_general_favicon',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Favicon', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
 
             // image contact mobile
             array(
@@ -74,38 +56,86 @@ if ( class_exists( 'CSF' ) ) {
                 'url'     => false
             ),
 
-			// show loading
-			array(
-				'id'         => 'opt_general_loading',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'Chờ tải trang', 'clinic' ),
-				'text_on'    => esc_html__( 'Có', 'clinic' ),
-				'text_off'   => esc_html__( 'Không', 'clinic' ),
-				'text_width' => 80,
-				'default'    => false
-			),
+            // show loading
+            array(
+                'id'         => 'opt_general_loading',
+                'type'       => 'switcher',
+                'title'      => esc_html__( 'Chờ tải trang', 'clinic' ),
+                'text_on'    => esc_html__( 'Có', 'clinic' ),
+                'text_off'   => esc_html__( 'Không', 'clinic' ),
+                'text_width' => 80,
+                'default'    => false
+            ),
 
-			array(
-				'id'         => 'opt_general_image_loading',
-				'type'       => 'media',
-				'title'      => esc_html__( 'Image Loading', 'clinic' ),
-				'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
-				'dependency' => array( 'opt_general_loading', '==', 'true' ),
-				'url'        => false
-			),
+            array(
+                'id'         => 'opt_general_image_loading',
+                'type'       => 'media',
+                'title'      => esc_html__( 'Image Loading', 'clinic' ),
+                'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
+                'dependency' => array( 'opt_general_loading', '==', 'true' ),
+                'url'        => false
+            ),
 
-			// show back to top
-			array(
-				'id'         => 'opt_general_back_to_top',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'Quay về đầu trang', 'clinic' ),
-				'text_on'    => esc_html__( 'Có', 'clinic' ),
-				'text_off'   => esc_html__( 'Không', 'clinic' ),
-				'text_width' => 80,
-				'default'    => true
-			),
-		)
-	) );
+            // show back to top
+            array(
+                'id'         => 'opt_general_back_to_top',
+                'type'       => 'switcher',
+                'title'      => esc_html__( 'Quay về đầu trang', 'clinic' ),
+                'text_on'    => esc_html__( 'Có', 'clinic' ),
+                'text_off'   => esc_html__( 'Không', 'clinic' ),
+                'text_width' => 80,
+                'default'    => true
+            ),
+        )
+    ) );
+
+    // Banner
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Banner Header', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'      => 'opt_general_banner_header_pc',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Banner PC', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
+            array(
+                'id'      => 'opt_general_banner_header_mobile',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Banner Mobile', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+        )
+    ) );
+
+    // Logo
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Logo', 'clinic' ),
+        'fields' => array(
+            // logo pc
+            array(
+                'id'      => 'opt_general_logo',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Logo', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
+            // logo mobile
+            array(
+                'id'      => 'opt_general_logo_mobile',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Logo Mobile', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+        )
+    ) );
 
 	// Contact
     CSF::createSection( $clinic_prefix, array(
@@ -116,7 +146,21 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_hotline_mobile',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Hotline', 'clinic' ),
-                'default' => '0888.888.115'
+                'default' => '0379.913.598'
+            ),
+
+            array(
+                'id'      => 'opt_general_chat_doctor',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Tư vấn', 'clinic' ),
+                'default' => 'https://tawk.to/chat/65bb1bba8d261e1b5f5a796c/1hlhe8l0m',
+            ),
+
+            array(
+                'id'    => 'opt_general_link_map',
+                'type'  => 'text',
+                'title' => esc_html__( 'Chỉ đường', 'clinic' ),
+                'default' => 'https://maps.app.goo.gl/nkgdwUu2feCaQ8yL9'
             ),
 
             array(
@@ -128,28 +172,11 @@ if ( class_exists( 'CSF' ) ) {
             ),
 
             array(
-                'id'      => 'opt_general_chat_doctor',
-                'type'    => 'link',
-                'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
-                'default' => array(
-                    'url'    => '#',
-                    'target' => '_blank'
-                ),
-            ),
-
-            array(
                 'id'      => 'opt_general_medical_appointment_form',
                 'type'    => 'select',
                 'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),
                 'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
                 'options' => clinic_get_form_cf7(),
-            ),
-
-            array(
-                'id'    => 'opt_general_link_map',
-                'type'  => 'text',
-                'title' => esc_html__( 'Chỉ đường', 'clinic' ),
-                'default' => 'https://www.google.com/maps/dir//180+Tr%E1%BA%A7n+Ph%C3%BA+Ph%C6%B0%E1%BB%9Bc+Ninh+H%E1%BA%A3i+Ch%C3%A2u+%C4%90%C3%A0+N%E1%BA%B5ng+550000/@16.0654672,108.2234849,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x31421832e656df21:0xa6ce7e8a4a6257c6'
             ),
         )
     ) );
@@ -306,13 +333,6 @@ if ( class_exists( 'CSF' ) ) {
                 'id'    => 'opt_social_network_youtube',
                 'type'  => 'text',
                 'title' => esc_html__('Youtube', 'clinic'),
-                'default' => '#'
-            ),
-
-            array(
-                'id'    => 'opt_social_network_zalo',
-                'type'  => 'text',
-                'title' => esc_html__('ZaLo', 'clinic'),
                 'default' => '#'
             ),
         )
