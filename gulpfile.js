@@ -41,7 +41,6 @@ function buildStylesBootstrap() {
         .pipe(dest(`${pathAssets}/libs/bootstrap/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesBootstrap = buildStylesBootstrap;
 
 // Task build js bootstrap
 function buildLibsBootstrapJS() {
@@ -53,7 +52,6 @@ function buildLibsBootstrapJS() {
         .pipe(dest(`${pathAssets}/libs/bootstrap/`))
         .pipe(browserSync.stream());
 }
-exports.buildLibsBootstrapJS = buildLibsBootstrapJS
 
 // Task build style
 function buildStyles() {
@@ -64,7 +62,6 @@ function buildStyles() {
         .pipe(dest('./'))
         .pipe(browserSync.stream());
 }
-exports.buildStyles = buildStyles;
 
 // Task build style elementor
 function buildStylesElementor() {
@@ -77,7 +74,17 @@ function buildStylesElementor() {
         .pipe(dest(`./extension/elementor-addon/css/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesElementor = buildStylesElementor;
+
+function buildJSElementor() {
+    return src([
+        `./extension/elementor-addon/js/*.js`,
+        `!./extension/elementor-addon/js/*.min.js`
+    ], {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(dest('./extension/elementor-addon/js/'))
+        .pipe(browserSync.stream());
+}
 
 // Task build style custom post type
 function buildStylesCustomPostType() {
@@ -90,7 +97,6 @@ function buildStylesCustomPostType() {
         .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(browserSync.stream());
 }
-exports.buildStylesCustomPostType = buildStylesCustomPostType;
 
 // buildJSTheme
 function buildJSTheme() {
@@ -103,36 +109,39 @@ function buildJSTheme() {
         .pipe(dest(`${pathAssets}/js/`))
         .pipe(browserSync.stream());
 }
-exports.buildJSTheme = buildJSTheme
-
 
 // Task watch
 function watchTask() {
     server()
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/bootstrap.scss`
     ], buildStylesBootstrap)
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/base/*.scss`,
         `${pathAssets}/scss/style.scss`,
     ], buildStyles)
 
+    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
+
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
 
+    //
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 
-    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
-
+    //
     watch([
         './**/*.php',
         './assets/images/*.{png,jpg,jpeg,gif}'
