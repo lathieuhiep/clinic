@@ -221,7 +221,7 @@ class Clinic_Elementor_Work_Time extends Widget_Base {
                             </div>
                         </div>
 
-                        <div class="item__desc fw-bold text-lg-center">
+                        <div class="item__desc fw-bold">
                             <?php echo esc_html( $item['list_description'] ); ?>
                         </div>
                     </div>

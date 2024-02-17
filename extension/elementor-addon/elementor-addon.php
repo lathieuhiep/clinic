@@ -28,6 +28,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/machines.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/work-time.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
@@ -36,7 +37,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/appointment-consultation.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/specialist.php' );
 //  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-slider.php' );
-//  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/work-time.php' );
 //  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circle-box-image.php' );
 
 	// register add on
@@ -50,6 +50,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Addon_Machines() );
     $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
+    $widgets_manager->register( new \Clinic_Elementor_Work_Time() );
     $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
     $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
@@ -59,7 +60,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //    $widgets_manager->register( new \Clinic_Elementor_Circle_Box_Image() );
 //    $widgets_manager->register( new \Clinic_Elementor_Appointment_Consultation() );
 //    $widgets_manager->register( new \Clinic_Elementor_Image_Slider() );
-//    $widgets_manager->register( new \Clinic_Elementor_Work_Time() );
 }
 
 // Register scripts

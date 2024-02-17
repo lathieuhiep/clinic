@@ -41,6 +41,19 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'style',
+            [
+                'label' => esc_html__( 'Style', 'clinic' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => '1',
+                'options' => [
+                    '1' => 'Style 1',
+                    '2' => 'Style 2',
+                ],
+            ]
+        );
+
         $repeater = new Repeater();
 
         $repeater->add_control(
@@ -66,7 +79,7 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
         $repeater->add_control(
             'list_number',
             [
-                'label' => esc_html__( 'Number', 'textdomain' ),
+                'label' => esc_html__( 'Number', 'clinic' ),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'step' => 1,
@@ -163,7 +176,7 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
         ?>
 
         <div class="element-number-counter">
-            <div class="element-number-counter__warp">
+            <div class="element-number-counter__warp style-<?php echo esc_attr( $settings['style'] ); ?>">
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
