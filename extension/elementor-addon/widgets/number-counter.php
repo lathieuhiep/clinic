@@ -25,6 +25,11 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
         return 'eicon-number-field';
     }
 
+    public function get_keywords(): array
+    {
+        return ['number', 'counter'];
+    }
+
     protected function register_controls(): void {
 
         // Content testimonial
@@ -165,7 +170,7 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
                 ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="image">
+                        <div class="image text-center">
                             <?php echo wp_get_attachment_image( $imageId, 'medium_large' ); ?>
                         </div>
 
@@ -175,9 +180,9 @@ class Clinic_Elementor_Number_Counter extends Widget_Base {
                                 <span class="plus">+</span>
                             </h4>
 
-                            <strong class="content__title">
+                            <p class="content__title">
                                 <?php echo esc_html( $item['list_title'] ) ?>
-                            </strong>
+                            </p>
                         </div>
                     </div>
 

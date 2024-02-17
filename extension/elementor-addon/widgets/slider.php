@@ -93,14 +93,80 @@ class Clinic_Elementor_Addon_Slider extends Widget_Base {
 
         $this->end_controls_section();
 
+        // options
+        $this->start_controls_section(
+            'option_section',
+            [
+                'label' => esc_html__( 'Options', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'loop',
+            [
+                'type' => Controls_Manager::SWITCHER,
+                'label' => esc_html__('Loop Slider?', 'clinic'),
+                'label_off' => esc_html__('No', 'clinic'),
+                'label_on' => esc_html__('Yes', 'clinic'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'autoplay',
+            [
+                'label' => esc_html__('Autoplay?', 'clinic'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_off' => esc_html__('No', 'clinic'),
+                'label_on' => esc_html__('Yes', 'clinic'),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
+
+        $this->add_control(
+            'show_nav',
+            [
+                'label' => esc_html__( 'Show Nav', 'clinic' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'clinic' ),
+                'label_off' => esc_html__( 'Hide', 'clinic' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_arrow',
+            [
+                'label' => esc_html__( 'Show Arrow', 'clinic' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'clinic' ),
+                'label_off' => esc_html__( 'Hide', 'clinic' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
+
     }
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
+        $owl_options = [
+            'items' => 1,
+            'loop' => ('yes' === $settings['loop']),
+            'autoplay' => ('yes' === $settings['autoplay']),
+            'nav' => ('yes' === $settings['show_nav']),
+            'dots' => ('yes' === $settings['show_arrow']),
+        ];
     ?>
 
         <div class="element-slider">
-            <div class="element-slider__warp owl-carousel owl-theme">
+            <div class="element-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];

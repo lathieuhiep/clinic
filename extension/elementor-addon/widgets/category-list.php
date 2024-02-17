@@ -146,6 +146,44 @@ class Clinic_Elementor_Category_List extends Widget_Base
 		);
 
 		$this->end_controls_section();
+
+        // tab style
+        $this->start_controls_section(
+            'style_section',
+            [
+                'label' => esc_html__( 'Style', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'image_height',
+            [
+                'label' => esc_html__( 'Image Height', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 80,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-category-list__warp .item__image' => 'min-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	/**

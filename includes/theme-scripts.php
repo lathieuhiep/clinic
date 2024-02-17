@@ -41,7 +41,7 @@ function clinic_register_front_end(): void
     $clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
 	// font google
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400;700&family=Roboto:wght@400;500;700&display=swap', array(), null );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap', array(), null );
 
 	// bootstrap css
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.3.2' );

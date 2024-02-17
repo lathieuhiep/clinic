@@ -1,0 +1,26 @@
+.element-gallery-grid-box {
+  &__warp {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    .item {
+      img {
+        width: 100%;
+      }
+    }
+
+    .box {
+      padding: 2.3rem 1rem;
+      background-color: var(--color-white);
+
+      .title {
+        font-size: 1.8rem;
+      }
+
+      .content {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

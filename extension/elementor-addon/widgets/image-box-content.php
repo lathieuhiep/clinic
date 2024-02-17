@@ -115,16 +115,6 @@ class Clinic_Elementor_Image_Box_Content extends Widget_Base
 			]
 		);
 
-        $this->add_control(
-            'sub_heading',
-            [
-                'label'       => esc_html__( 'Sub Heading', 'clinic' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Sub Heading', 'clinic' ),
-                'label_block' => true
-            ]
-        );
-
 		$this->add_control(
 			'desc',
 			[
@@ -161,47 +151,6 @@ class Clinic_Elementor_Image_Box_Content extends Widget_Base
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .element-image-box-content__warp .item-content__heading',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Tab style sub heading
-        $this->start_controls_section(
-            'style_sub_heading_section',
-            [
-                'label' => esc_html__( 'Sub Heading', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'sub_heading_color',
-            [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-image-box-content__warp .item-content .sub-heading .txt' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'sub_heading_typography',
-                'selector' => '{{WRAPPER}} .element-image-box-content__warp .item-content .sub-heading .txt',
-            ]
-        );
-
-        $this->add_control(
-            'sub_heading_line_color',
-            [
-                'label'     =>  esc_html__( 'Color Line', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-image-box-content__warp .item-content .sub-heading .line' => 'background-color: {{VALUE}}',
-                ],
             ]
         );
 
@@ -259,12 +208,6 @@ class Clinic_Elementor_Image_Box_Content extends Widget_Base
 					<h2 class="item-content__heading">
 						<?php echo esc_html($settings['heading']) ?>
 					</h2>
-
-                    <div class="sub-heading">
-                        <span class="line"></span>
-                        <span class="txt"><?php echo esc_html($settings['sub_heading']) ?></span>
-                        <span class="line"></span>
-                    </div>
 
 					<div class="item-content__desc">
 						<?php echo wpautop($settings['desc']); ?>

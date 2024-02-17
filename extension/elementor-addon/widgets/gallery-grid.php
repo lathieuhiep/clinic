@@ -102,6 +102,22 @@ class Clinic_Elementor_Gallery_Grid extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'column',
+            [
+                'label' => esc_html__( 'Column', 'clinic' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => '5',
+                'options' => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                ],
+            ]
+        );
+
 		$this->end_controls_section();
 	}
 
@@ -117,7 +133,7 @@ class Clinic_Elementor_Gallery_Grid extends Widget_Base
 		$settings = $this->get_settings_for_display();
     ?>
 		<div class="element-gallery-grid">
-			<div class="element-gallery-grid__warp">
+			<div class="element-gallery-grid__warp grid-col-<?php echo esc_attr($settings['column']); ?>">
 				<?php foreach ( $settings['gallery'] as $item ) : ?>
 					<div class="item">
                         <?php echo wp_get_attachment_image( $item['id'], 'full' ); ?>
