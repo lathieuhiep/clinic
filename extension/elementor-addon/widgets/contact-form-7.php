@@ -122,12 +122,60 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         );
 
         $this->add_control(
+            'width_form',
+            [
+                'label' => esc_html__( 'Width', 'textdomain' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} form.wpcf7-form' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'color_input',
+            [
+                'label' => esc_html__( 'Color input', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form span.wpcf7-form-control-wrap input, {{WRAPPER}} .element-contact-form-7 form.wpcf7-form span.wpcf7-form-control-wrap textarea' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
             'background_color_input',
             [
                 'label' => esc_html__( 'background input', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form span.wpcf7-form-control-wrap input, {{WRAPPER}} .element-contact-form-7 form.wpcf7-form span.wpcf7-form-control-wrap textarea' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'color_valid',
+            [
+                'label' => esc_html__( 'Color valid', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .wpcf7-not-valid-tip, {{WRAPPER}} form.wpcf7-form .wpcf7-response-output' => 'color: {{VALUE}}',
                 ],
             ]
         );

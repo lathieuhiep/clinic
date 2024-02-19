@@ -11,6 +11,8 @@
 
   form {
     &.wpcf7-form {
+      margin: 0 auto;
+
       span {
         &.wpcf7-form-control-wrap {
           input,
@@ -18,8 +20,7 @@
             padding: 1rem .8rem 1rem;
             font-size: 1.4rem;
             font-weight: 500;
-            color: #909090;
-            border: 1px solid #CCC;
+            color: #000000;
             background: #EAF1F1;
           }
         }
@@ -28,6 +29,11 @@
       .wpcf7-submit {
         border-radius: .5rem;
         background: var(--color-red);
+      }
+
+      .wpcf7-not-valid-tip,
+      .wpcf7-response-output {
+        font-size: 1.4rem;
       }
     }
   }

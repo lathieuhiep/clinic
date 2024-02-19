@@ -18,12 +18,6 @@ $term = get_queried_object();
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
                 <?php if ( have_posts() ) : ?>
                     <div class="content-archive-post">
-                        <h1 class="title-cate">
-                            <span class="icon"><i class="icon-menu"></i></span>
-
-                            <span class="txt"><?php echo esc_html( $term->name ); ?></span>
-                        </h1>
-
                         <div class="grid">
                             <?php
                             while ( have_posts() ) :

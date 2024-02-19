@@ -31,27 +31,17 @@ class clinic_open_hours_widget extends WP_Widget {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
     ?>
-        <div class="open-hours-widget">
-            <div class="open-hours-widget__warp text-center">
-                <div class="item">
-                    <h3 class="item__title">
-			            <?php esc_html_e('Giờ mở cửa phòng khám: ', 'clinic'); echo esc_html($instance['open_hours']); ?>
-                    </h3>
+        <div class="warp">
+            <div class="time">
+                <span class="time__box"><?php echo esc_html($instance['open_hours']); ?></span>
+                <span class="character">&#58;</span>
+                <span class="time__box"><?php echo esc_html($instance['open_minute']); ?></span>
+            </div>
 
-                    <p class="item__note">
-			            <?php echo esc_html($instance['note']); ?>
-                    </p>
-                </div>
-
-                <div class="item">
-                    <h3 class="item__title">
-			            <?php esc_html_e('Giờ bác sĩ tư vấn: ', 'clinic'); echo esc_html($instance['consulting_doctor']); ?>
-                    </h3>
-
-                    <p class="item__note">
-			            <?php echo esc_html($instance['note']); ?>
-                    </p>
-                </div>
+            <div class="time">
+                <span class="time__box"><?php echo esc_html($instance['closed_hours']); ?></span>
+                <span class="character">&#58;</span>
+                <span class="time__box"><?php echo esc_html($instance['closed_minute']); ?></span>
             </div>
         </div>
     <?php
@@ -67,9 +57,10 @@ class clinic_open_hours_widget extends WP_Widget {
 	function form( $instance ) {
 		$defaults = array(
             'title' => '',
-            'open_hours' => '7h30 - 20h',
-            'consulting_doctor' => '24h',
-            'note' => esc_html__('(Các ngày trong tuần kể cả t7, chủ nhật, lễ tết)', 'clinic'),
+            'open_hours' => '08',
+            'open_minute' => '00',
+            'closed_hours' => '20',
+            'closed_minute' => '00',
         );
 
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
@@ -88,23 +79,19 @@ class clinic_open_hours_widget extends WP_Widget {
 				<?php esc_html_e( 'Giờ mở cửa phòng khám:', 'clinic' ); ?>
             </label>
 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'open_hours' ); ?>" name="<?php echo $this->get_field_name( 'open_hours' ); ?>" value="<?php echo $instance['open_hours']; ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id( 'open_hours' ); ?>" name="<?php echo $this->get_field_name( 'open_hours' ); ?>" value="<?php echo $instance['open_hours']; ?>" style="margin-bottom: 12px" />
+
+            <input class="widefat" id="<?php echo $this->get_field_id( 'open_minute' ); ?>" name="<?php echo $this->get_field_name( 'open_minute' ); ?>" value="<?php echo $instance['open_minute']; ?>" />
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id( 'consulting_doctor' ); ?>">
-				<?php esc_html_e( 'Giờ bác sĩ tư vấn', 'clinic' ); ?>
+            <label for="<?php echo $this->get_field_id( 'closed_hours' ); ?>">
+                <?php esc_html_e( 'Giờ đóng cửa phòng khám:', 'clinic' ); ?>
             </label>
 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'consulting_doctor' ); ?>" name="<?php echo $this->get_field_name( 'consulting_doctor' ); ?>" value="<?php echo $instance['consulting_doctor']; ?>" />
-        </p>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'closed_hours' ); ?>" name="<?php echo $this->get_field_name( 'closed_hours' ); ?>" value="<?php echo $instance['closed_hours']; ?>" style="margin-bottom: 12px" />
 
-        <p>
-            <label for="<?php echo $this->get_field_id( 'note' ); ?>">
-				<?php esc_html_e( 'Lưu ý:', 'clinic' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'note' ); ?>" name="<?php echo $this->get_field_name( 'note' ); ?>" value="<?php echo $instance['note']; ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id( 'closed_minute' ); ?>" name="<?php echo $this->get_field_name( 'closed_minute' ); ?>" value="<?php echo $instance['closed_minute']; ?>" />
         </p>
 	<?php
 
@@ -123,8 +110,9 @@ class clinic_open_hours_widget extends WP_Widget {
 
         $instance['title'] = strip_tags( $new_instance['title'] );
         $instance['open_hours'] = strip_tags( $new_instance['open_hours'] );
-        $instance['consulting_doctor'] = strip_tags( $new_instance['consulting_doctor'] );
-        $instance['note'] = strip_tags( $new_instance['note'] );
+        $instance['open_minute'] = strip_tags( $new_instance['open_minute'] );
+        $instance['closed_hours'] = strip_tags( $new_instance['closed_hours'] );
+        $instance['closed_minute'] = strip_tags( $new_instance['closed_minute'] );
 
         return $instance;
     }

@@ -138,7 +138,7 @@ function clinic_paging_nav_query( $query ): void {
 }
 
 // Get col global
-function clinic_col_use_sidebar( $option_sidebar, $active_sidebar, $col = 9 ): string
+function clinic_col_use_sidebar( $option_sidebar, $active_sidebar, $col = 8 ): string
 {
 	if ( $option_sidebar != 'hide' && is_active_sidebar( $active_sidebar ) ):
 
@@ -156,7 +156,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar, $col = 9 ): s
 	return $class_col_content;
 }
 
-function clinic_col_sidebar($col = 3): string
+function clinic_col_sidebar($col = 4): string
 {
 	return 'col-12 col-md-4 col-lg-' . $col;
 }

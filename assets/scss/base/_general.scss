@@ -194,19 +194,15 @@ pre {
 
 /* Breadcrumbs */
 .breadcrumbs {
-  padding: 1.5rem 0 3rem;
+  margin-bottom: 3rem;
+  padding: 1.6rem 0;
   font-size: 1.5rem;
   color: #0a0a0a;
   font-family: var(--font-seconds);
-
-  .breadcrumbs-col {
-    padding: .8rem 0 .6rem 2.2rem;
-    background-color: #F3F3F3;
-  }
+  background-color: #F3F3F3;
 
   a {
     color: #D13434;
-    font-weight: 500;
   }
 }
 
@@ -426,6 +422,7 @@ pre {
   }
 
   .owl-dots {
+    margin-top: 5rem;
     @include flex-center;
 
     .owl-dot {
@@ -436,14 +433,14 @@ pre {
         display: block;
         @include square(.8rem);
         border-radius: 50%;
-        background-color: #000000;
+        background-color: #98AE99;
         @include transition(all 0.2s ease-in-out);
       }
 
       &.active,
       &:hover {
         span {
-          background-color: $background-hover;
+          background-color: #2F931A;
         }
       }
     }
@@ -589,5 +586,12 @@ pre {
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+
+// modal appointment form
+.modal-appointment-form {
+  .modal-content {
+    border: 0;
   }
 }

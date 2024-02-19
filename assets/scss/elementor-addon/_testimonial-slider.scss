@@ -1,4 +1,25 @@
 .element-testimonial-slider {
+  &__warp {
+    .owl-nav {
+      button {
+        &.owl-prev {
+          left: -2.4rem;
+        }
+
+        &.owl-next {
+          right: -2.4rem;
+        }
+      }
+    }
+
+    &.custom-equal-height-owl {
+      .item {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
   .item {
     &__desc {
       position: relative;
@@ -25,7 +46,7 @@
       grid-template-columns: 9rem 1fr;
 
       @media (min-width: 992px) {
-        padding: 5rem 5rem 0;
+        padding: 5rem 0 0;
       }
 
       @media (max-width: 991px) {
@@ -41,12 +62,6 @@
       .name,
       .info {
         margin-bottom: .5rem;
-      }
-
-      .star {
-        i {
-          color: var(--color-cadmium-yellow);
-        }
       }
     }
   }

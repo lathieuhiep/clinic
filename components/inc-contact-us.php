@@ -60,7 +60,7 @@ $link_map = clinic_get_option('opt_general_link_map');
 <?php if ( $medical_appointment_form ) : ?>
 
 <!-- Modal medical appointment -->
-<div class="modal fade" id="modal-appointment-form" tabindex="-1" aria-hidden="true">
+<div class="modal fade modal-appointment-form" id="modal-appointment-form" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

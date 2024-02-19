@@ -445,7 +445,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
     ?>
 
         <div class="element-testimonial-slider">
-            <div class="element-testimonial-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $data_owl_options ) ; ?>'>
+            <div class="element-testimonial-slider__warp owl-carousel owl-theme custom-equal-height-owl" data-owl-options='<?php echo wp_json_encode( $data_owl_options ) ; ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
@@ -475,12 +475,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                                 <p class="info">
                                     <?php echo esc_html( $item['list_info'] ); ?>
                                 </p>
-
-                                <div class="star">
-                                    <?php for ($i = 0; $i < 5; $i++) : ?>
-                                        <i class="icon-star-full"></i>
-                                    <?php endfor; ?>
-                                </div>
                             </div>
                         </div>
                     </div>

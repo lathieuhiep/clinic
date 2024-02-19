@@ -15,20 +15,11 @@
 
   .item-post {
     border-radius: .4rem;
-    border: 1px solid #777777;
+    border: 1px solid #dddddd;
+    overflow: hidden;
     @include transition();
 
-    @media (min-width: 576px) {
-      padding: 1.4rem 2rem;
-    }
-
-    @media (max-width: 575px) {
-      padding: 1.4rem;
-    }
-
     &__thumbnail {
-      margin-bottom: 2rem;
-
       a {
         display: block;
         overflow: hidden;
@@ -54,6 +45,8 @@
     }
 
     &__box {
+      padding: 2rem 1.2rem;
+
       .title {
         a {
           color: var(--color-salem);
