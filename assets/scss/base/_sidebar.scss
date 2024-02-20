@@ -556,6 +556,82 @@ section {
         }
       }
     }
+
+    &.doctor-slider-widget {
+      padding: 1rem 1rem 2rem;
+      border: 1.2rem solid var(--color-brunswick-green);
+
+      .item {
+        font-style: italic;
+
+        &__thumbnail {
+          margin-bottom: 2rem;
+          border: .5rem;
+          overflow: hidden;
+        }
+
+        &__body {
+          font-size: 1.6rem;
+
+          .title {
+            margin-bottom: 0;
+            font-size: inherit;
+            color: #154c9e;
+          }
+
+          .position {
+            margin: 0;
+            font-weight: 700;
+          }
+
+          .desc {
+            position: relative;
+            margin-top: 1.4rem;
+            padding-top: 1.2rem;
+
+            &:before {
+              position: absolute;
+              content: "";
+              top: -0.5rem;
+              left: 50%;
+              width: 60%;
+              height: .1rem;
+              border-top: .1rem dashed #000000;
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+
+      .owl-carousel {
+        .owl-nav {
+          i {
+            &:before {
+              color: var(--color-brunswick-green);
+              @include transition();
+            }
+
+            &:hover {
+              &:before {
+                color: #000000;
+              }
+            }
+          }
+
+          .owl-prev {
+            left: 1rem;
+          }
+
+          .owl-next {
+            right: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__inner {
+    left: auto !important;
   }
 }
 

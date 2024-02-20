@@ -88,6 +88,8 @@ function clinic_register_front_end(): void
 
     // slider main js
     if ( clinic_is_blog() || is_singular('post') ) {
-        wp_enqueue_script( 'slider-main', get_theme_file_uri( '/assets/js/slider-main.min.js' ), array('jquery'), clinic_get_version_theme(), true );
+        wp_enqueue_script( 'jquery.sticky-sidebar', get_theme_file_uri( '/assets/libs/sticky-sidebar/jquery.sticky-sidebar.min.js' ), array('jquery'), '3.3.1', true );
+
+        wp_enqueue_script( 'post', get_theme_file_uri( '/assets/js/post.min.js' ), array('jquery'), clinic_get_version_theme(), true );
     }
 }

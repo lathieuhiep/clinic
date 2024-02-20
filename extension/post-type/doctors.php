@@ -9,7 +9,6 @@ add_action('init', 'clinic_create_doctor', 10);
 
 function clinic_create_doctor(): void
 {
-
     /* Start post type template */
     $labels = array(
         'name' => _x('Đội ngũ bác sĩ', 'post type general name', 'clinic'),

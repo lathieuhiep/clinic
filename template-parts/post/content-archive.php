@@ -1,6 +1,7 @@
 <?php
 // include slider
 get_template_part( 'components/inc', 'slider' );
+get_template_part( 'components/inc', 'breadcrumbs' );
 
 // option theme
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
@@ -11,10 +12,8 @@ $term = get_queried_object();
 ?>
 
 <div class="site-container archive-post-warp">
-    <?php get_template_part( 'components/inc', 'breadcrumbs' ); ?>
-
     <div class="container">
-        <div class="row">
+        <div class="row post-row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
                 <?php if ( have_posts() ) : ?>
                     <div class="content-archive-post">
