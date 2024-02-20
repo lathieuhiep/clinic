@@ -1,8 +1,6 @@
 <?php
 
 use Elementor\Group_Control_Typography;
-use Elementor\Repeater;
-use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -27,96 +25,52 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
     }
 
     protected function register_controls(): void {
-
         // Content section
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Content', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $repeater = new Repeater();
-
-        $repeater->add_control(
-            'list_title', [
-                'label' => esc_html__( 'Title', 'clinic' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'List Title' , 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_image', [
-                'label' => esc_html__( 'Image', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'list_position', [
-                'label' => esc_html__( 'Chứ vụ', 'clinic' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Cố vấn chuyên môn' , 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_content', [
-                'label' => esc_html__( 'Content', 'clinic' ),
-                'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__( 'List Content' , 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
-        $this->add_control(
-            'list',
-            [
-                'label' => esc_html__( 'Danh sách bác sĩ', 'clinic' ),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'list_title' => esc_html__( 'Title #1', 'clinic' ),
-                    ],
-                    [
-                        'list_title' => esc_html__( 'Title #2', 'clinic' ),
-                    ],
-                ],
-                'title_field' => '{{{ list_title }}}',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Content section
-        $this->start_controls_section(
-            'action_section',
-            [
-                'label' => esc_html__( 'Action', 'clinic' ),
+                'label' => esc_html__( 'Query', 'clinic' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
-            'website_link',
+            'limit',
             [
-                'label' => esc_html__( 'Link', 'clinic' ),
-                'type' => Controls_Manager::URL,
-                'options' => [ 'url', 'is_external', 'nofollow' ],
-                'default' => [
-                    'url' => '',
-                    'is_external' => true,
-                    'nofollow' => true,
+                'label'     =>  esc_html__( 'Number of Posts', 'clinic' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  12,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'order_by',
+            [
+                'label'     =>  esc_html__( 'Order By', 'clinic' ),
+                'type'      =>  Controls_Manager::SELECT,
+                'default'   =>  'id',
+                'options'   =>  [
+                    'id'    =>  esc_html__( 'ID', 'clinic' ),
+                    'title' =>  esc_html__( 'Title', 'clinic' ),
+                    'date'  =>  esc_html__( 'Date', 'clinic' ),
+                    'rand'  =>  esc_html__( 'Random', 'clinic' ),
                 ],
-                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'order',
+            [
+                'label'     =>  esc_html__( 'Order', 'clinic' ),
+                'type'      =>  Controls_Manager::SELECT,
+                'default'   =>  'DESC',
+                'options'   =>  [
+                    'ASC'   =>  esc_html__( 'Ascending', 'clinic' ),
+                    'DESC'  =>  esc_html__( 'Descending', 'clinic' ),
+                ],
             ]
         );
 
@@ -126,43 +80,53 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 
-        if ( ! empty( $settings['website_link']['url'] ) ) {
-            $this->add_link_attributes( 'website_link', $settings['website_link'] );
-        }
+        $limit_post     =   $settings['limit'];
+        $order_by_post  =   $settings['order_by'];
+        $order_post     =   $settings['order'];
+
+        // Query
+        $args = array(
+            'post_type'           => 'clinic_doctor',
+            'posts_per_page'      => $limit_post,
+            'orderby'             => $order_by_post,
+            'order'               => $order_post,
+            'ignore_sticky_posts' => 1,
+        );
+
+        $query = new WP_Query( $args );
+
+        if ( $query->have_posts() ) :
     ?>
         <div class="element-doctor-slider">
-            <div class="element-doctor-slider__warp owl-carousel owl-theme">
-                <?php foreach ( $settings['list'] as $item ) : ?>
-                    <div class="item">
-                        <div class="item__thumbnail">
-                            <div class="image-box m-auto">
-                                <?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large' ); ?>
-                            </div>
-                        </div>
+           <div class="element-doctor-slider__warp owl-carousel owl-theme">
+               <?php
+               while ( $query->have_posts() ) :
+                   $query->the_post();
+               ?>
 
-                        <div class="item__content">
-                            <p class="position text-center text-uppercase">
-                                <?php echo esc_html( $item['list_position'] ); ?>
-                            </p>
+                   <div class="item">
+                       <div class="item__thumbnail">
+                           <?php the_post_thumbnail('large'); ?>
+                       </div>
 
-                            <h3 class="title text-center text-uppercase">
-                                <?php echo esc_html( $item['list_title'] ); ?>
-                            </h3>
+                       <div class="item__body text-center">
+                           <h3 class="title">
+                               <?php the_title(); ?>
+                           </h3>
 
-                            <div class="desc text-center">
-                                <?php echo wpautop( $item['list_content'] ); ?>
-                            </div>
+                           <p class="position">
+                               <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true) ); ?>
+                           </p>
+                       </div>
+                   </div>
 
-                            <div class="action-box text-center">
-                                <a class="btn-booking text-center text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('ĐĂNG KÝ KHÁM', 'clinic'); ?>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+               <?php
+               endwhile;
+               wp_reset_postdata();
+               ?>
+           </div>
         </div>
-        <?php
+    <?php
+        endif;
     }
 }

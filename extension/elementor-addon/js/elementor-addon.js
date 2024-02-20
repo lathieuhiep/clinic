@@ -38,20 +38,22 @@
                 const thisSlider = $(this)
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions({
+                    autoHeight: true,
+                    margin: 12,
                     responsive:{
                         0:{
                             items: 1
                         },
-                        576:{
+                        376:{
                             items: 2,
                             margin: 12
                         },
-                        992:{
+                        576:{
                             items: 3,
                             margin: 12
                         },
-                        1200: {
-                            margin: 24,
+                        768: {
+                            items: 4
                         }
                     }
                 }))

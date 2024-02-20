@@ -15,18 +15,30 @@
       padding-bottom: .8rem;
       display: grid;
       grid-gap: 2.4rem;
-      grid-template-columns: 45.5rem 1fr;
       align-items: center;
+
+      @media (min-width: 1200px) {
+        grid-template-columns: 45.5rem 1fr;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        grid-template-columns: 35rem 1fr;
+      }
 
       .contact {
         min-height: 10.4rem;
         background-image: url("../images/bg-contact-header.png");
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
         display: grid;
         grid-gap: 1.8rem;
         grid-template-columns: max-content 1fr;
         align-items: center;
+
+        @media (min-width: 992px) and (max-width: 1080px) {
+          background-size: contain;
+        }
 
         > div {
           height: 100%;
@@ -107,7 +119,7 @@
               }
 
               @media (min-width: 992px) and (max-width: 1399px) {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
               }
             }
           }
@@ -195,16 +207,6 @@
                     }
                   }
                 }
-              }
-            }
-          }
-        }
-
-        @media (min-width: 992px) and (max-width: 1200px) {
-          ul {
-            li {
-              a {
-                padding: 0 7px;
               }
             }
           }
