@@ -467,7 +467,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 		                        <?php endif; ?>
                             </div>
 
-                            <div class="content">
+                            <div class="content text-start">
                                 <h4 class="name">
                                     <?php echo esc_html( $item['list_title'] ); ?>
                                 </h4>

@@ -422,7 +422,7 @@ pre {
   }
 
   .owl-dots {
-    margin-top: 5rem;
+    margin-top: 3rem;
     @include flex-center;
 
     .owl-dot {
@@ -474,45 +474,29 @@ pre {
 }
 
 .contact-us-mobile {
+  padding: 0 1.2rem;
   position: sticky;
-  bottom: 0;
+  bottom: 1rem;
+  z-index: 9999;
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: #1c8786;
+  .item {
+    position: absolute;
+    top: 0;
+    height: 100%;
 
-    .item {
-      padding: 1.2rem 0;
+    &.phone {
+      left: 0;
+      width: 54.2%;
+    }
 
-      ~ .item {
-        border-left: 1px solid var(--color-white);
-      }
+    &.chat {
+      left: 54.2%;
+      width: 17%;
+    }
 
-      a {
-        display: grid;
-        grid-row-gap: 1rem;
-        text-align: center;
-        color: var(--color-white);
-
-        i {
-          font-size: 2.4rem;
-        }
-
-        .txt {
-          font-size: 1.6rem;
-          font-weight: 500;
-          line-height: 2rem;
-          -webkit-animation: flicker 700ms infinite;
-          -moz-animation: flicker 700ms infinite;
-          -o-animation: flicker 700ms infinite;
-          animation: flicker 700ms infinite;
-        }
-      }
-
-      img {
-        width: 100%;
-      }
+    &.zalo {
+      left: 71.2%;
+      width: 26%;
     }
   }
 }

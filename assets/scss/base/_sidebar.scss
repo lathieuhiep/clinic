@@ -279,13 +279,20 @@ section {
     .widget-title {
       margin: 0 0 2.4rem;
       padding: .9rem;
-      font-size: 2.5rem;
       text-align: center;
       text-transform: uppercase;
       color: var(--color-white);
       border-top-left-radius: 2.5rem;
       border-top-right-radius: 2.5rem;
       background: linear-gradient(180deg, #3BB966 0%, #208B45 100%);
+
+      @media (min-width: 992px) {
+        font-size: 2.5rem;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        font-size: 1.7rem;
+      }
     }
 
     &.widget_media_image {
@@ -295,17 +302,20 @@ section {
       .widget-title {
         margin-bottom: 1.6rem;
       }
-
-      img {
-
-      }
     }
 
     &.appointment-form-widget {
-      padding: 2.4rem 2rem;
       position: relative;
       border-radius: .5rem;
       background: linear-gradient(180deg, #3BB966 0%, #208B45 100%);
+
+      @media (min-width: 992px) {
+        padding: 2.4rem 2rem;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        padding: 2.4rem 1.2rem;
+      }
 
       .widget-title {
         margin-bottom: 2rem;
@@ -483,9 +493,16 @@ section {
 
         .title {
           margin-bottom: .6rem;
-          font-size: 1.5rem;
           overflow: hidden;
           line-height: 2rem;
+
+          @media (min-width: 992px) {
+            font-size: 1.5rem;
+          }
+
+          @media (min-width: 768px) and (max-width: 991px) {
+            font-size: 1.4rem;
+          }
         }
 
         .date {
@@ -496,8 +513,15 @@ section {
     }
 
     &.open-hours-widget {
-      padding: 3rem 1rem;
       background: #17AA2B;
+
+      @media (min-width: 992px) {
+        padding: 3rem 1rem;
+      }
+
+      @media (min-width: 768px) and (max-width: 992px) {
+        padding: 1.5rem;
+      }
 
       .widget-title {
         padding: 0;
@@ -529,10 +553,19 @@ section {
               bottom: 0;
               width: 2rem;
               color: #fff;
-              font-size: 7rem;
+
               display: flex;
               align-items: center;
               justify-content: center;
+
+              @media (min-width: 992px) {
+                font-size: 7rem;
+              }
+
+              @media (min-width: 768px) and (max-width: 992px) {
+                font-size: 5rem;
+                transform: translateY(-1px);
+              }
             }
           }
 
@@ -548,10 +581,18 @@ section {
           &__box {
             padding: 0 .5rem;
             text-align: center;
-            font-size: 4rem;
+
             font-weight: 700;
             border-radius: .6rem;
             background-color: var(--color-white);
+
+            @media (min-width: 992px) {
+              font-size: 4rem;
+            }
+
+            @media (min-width: 768px) and (max-width: 992px) {
+              font-size: 2rem;
+            }
           }
         }
       }
@@ -632,6 +673,7 @@ section {
 
   &__inner {
     left: auto !important;
+
   }
 }
 

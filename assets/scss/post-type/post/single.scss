@@ -3,6 +3,12 @@
 .single-post-warp {
   padding-top: 2.3rem;
   padding-bottom: 2.7rem;
+
+  .site-sidebar {
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
 }
 
 .single-post-content {
@@ -45,7 +51,7 @@
         }
 
         @media (max-width: 991px) {
-          font-size: 1.8rem;
+          font-size: 1.8rem !important;
         }
 
         &:before {
@@ -122,8 +128,15 @@
   &__title {
     margin-bottom: 2rem;
     color: var(--color-red);
-    font-size: 3.2rem;
     line-height: 3.6rem;
+
+    @media (min-width: 992px) {
+      font-size: 3.2rem;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 2.6rem;
+    }
   }
 
   &__tax {
@@ -300,8 +313,9 @@
 }
 
 .related-posts {
+  margin-bottom: 3rem;
+
   &__heading {
-    margin-top: 2rem;
     margin-bottom: 2rem;
     font-size: 2rem;
     color: var(--color-red);
@@ -310,26 +324,44 @@
   .list-post {
     display: grid;
     grid-gap: 2.4rem;
-    grid-template-columns: repeat(3, 1fr);
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 479px) and (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .item {
       border-radius: .5rem;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
 
       &__thumbnail {
-        height: 22rem;
         overflow: hidden;
+
+        @media (min-width: 479px) {
+          height: 22rem;
+        }
 
         img {
           width: 100%;
-          height: 100%;
-          object-fit: cover;
+
+          @media (min-width: 479px) {
+            height: 100%;
+            object-fit: cover;
+          }
         }
       }
 
       &__content {
-        padding: 1.5rem 1.5rem .6rem 1.5rem;
+        padding: 1.5rem;
         background-color: #F6F6F6;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
 
         .title {
           font-size: 1.8rem;
@@ -352,6 +384,7 @@
         .link {
           display: flex;
           align-items: center;
+          flex: 1;
           font-size: 1.5rem;
           color: var(--color-brunswick-green);
           font-weight: 500;
