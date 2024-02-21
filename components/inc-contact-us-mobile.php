@@ -15,11 +15,7 @@ $chat_zalo = clinic_get_opt_chat_zalo();
         <a class="item chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank"></a>
     <?php endif; ?>
 
-    <?php
-    if ( $chat_zalo ) :
-        $zalo_phone = $chat_zalo['phone'];
-        $zalo_qr_code = $chat_zalo['qr_code'];
-        ?>
-        <a class="item zalo chat-with-us__zalo" href="#" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
+    <?php if ( $chat_zalo ): ?>
+        <a class="item zalo chat-with-us__zalo" href="<?php echo esc_url($chat_zalo); ?>" target="_blank"></a>
     <?php endif; ?>
 </div>
