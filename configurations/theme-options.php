@@ -75,17 +75,6 @@ if ( class_exists( 'CSF' ) ) {
                 'dependency' => array( 'opt_general_loading', '==', 'true' ),
                 'url'        => false
             ),
-
-            // show back to top
-            array(
-                'id'         => 'opt_general_back_to_top',
-                'type'       => 'switcher',
-                'title'      => esc_html__( 'Quay về đầu trang', 'clinic' ),
-                'text_on'    => esc_html__( 'Có', 'clinic' ),
-                'text_off'   => esc_html__( 'Không', 'clinic' ),
-                'text_width' => 80,
-                'default'    => true
-            ),
         )
     ) );
 
@@ -117,20 +106,10 @@ if ( class_exists( 'CSF' ) ) {
         'parent' => 'opt_general_section',
         'title'  => esc_html__( 'Logo', 'clinic' ),
         'fields' => array(
-            // logo pc
             array(
                 'id'      => 'opt_general_logo',
                 'type'    => 'media',
                 'title'   => esc_html__( 'Logo', 'clinic' ),
-                'library' => 'image',
-                'url'     => false
-            ),
-
-            // logo mobile
-            array(
-                'id'      => 'opt_general_logo_mobile',
-                'type'    => 'media',
-                'title'   => esc_html__( 'Logo Mobile', 'clinic' ),
                 'library' => 'image',
                 'url'     => false
             ),
@@ -143,24 +122,31 @@ if ( class_exists( 'CSF' ) ) {
         'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
         'fields' => array(
             array(
-                'id'      => 'opt_general_hotline_mobile',
+                'id'      => 'opt_general_hotline',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Hotline', 'clinic' ),
-                'default' => '0379.913.598'
+                'default' => '037.6767.167'
             ),
 
             array(
                 'id'      => 'opt_general_chat_doctor',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Tư vấn', 'clinic' ),
-                'default' => 'https://tawk.to/chat/65bb1bba8d261e1b5f5a796c/1hlhe8l0m',
+                'default' => 'https://tawk.to/chat/643f9c8a31ebfa0fe7f92cdd/1guc7mvin',
             ),
 
             array(
                 'id'    => 'opt_general_link_map',
                 'type'  => 'text',
                 'title' => esc_html__( 'Chỉ đường', 'clinic' ),
-                'default' => 'https://maps.app.goo.gl/nkgdwUu2feCaQ8yL9'
+                'default' => 'https://maps.app.goo.gl/H7D5tuS4n8jBVKN8A'
+            ),
+
+            array(
+                'id'    => 'opt_general_address',
+                'type'  => 'text',
+                'title' => esc_html__( 'Địa chỉ', 'clinic' ),
+                'default' => esc_html__('180 Đ. Trần Phú, Phước Ninh, Hải Châu, Đà Nẵng', 'clinic')
             ),
 
             array(

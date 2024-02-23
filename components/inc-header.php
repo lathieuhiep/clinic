@@ -10,12 +10,13 @@ if ( !empty( $banner_header ) && !empty( $banner_header['pc']['id'] ) ) :
     <?php echo wp_get_attachment_image($banner_header['mobile']['id'], 'full', '', array( "class" => "d-lg-none w-100" )); ?>
 </div>
 
-<?php endif; ?>
+<?php
+endif;
+
+get_template_part('components/header/inc','top-nav');
+?>
+
 
 <header class="global-header <?php echo esc_attr( $sticky_menu == '1' ? 'active-sticky-nav' : '' ); ?>">
-    <?php
-    get_template_part('components/header/inc','top-nav');
-
-    get_template_part('components/header/inc','contact-mobile');
-    ?>
+    <?php get_template_part('components/header/inc','contact-mobile'); ?>
 </header>

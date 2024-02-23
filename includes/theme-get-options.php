@@ -19,7 +19,7 @@ function clinic_get_opt_logo()
 // get hotline theme option general
 function clinic_get_opt_hotline()
 {
-    return clinic_get_option('opt_general_hotline_mobile');
+    return clinic_get_option('opt_general_hotline');
 }
 
 // get map
