@@ -1,15 +1,4 @@
 <?php
-// banner header
-function clinic_get_opt_banner_header(): array
-{
-    $banner = [];
-
-    $banner['pc'] = clinic_get_option('opt_general_banner_header_pc');
-    $banner['mobile'] = clinic_get_option('opt_general_banner_header_mobile');
-
-    return $banner;
-}
-
 // logo
 function clinic_get_opt_logo()
 {
