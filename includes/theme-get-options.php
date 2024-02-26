@@ -11,6 +11,25 @@ function clinic_get_opt_hotline()
     return clinic_get_option('opt_general_hotline');
 }
 
+// get hotline theme option general
+function clinic_get_opt_address()
+{
+    return clinic_get_option('opt_general_address');
+}
+
+// get slider theme option general
+function clinic_get_general_slider(): array
+{
+    $gallery = clinic_get_option('opt_general_slider');
+    $gallery_ids = [];
+
+    if ( !empty( $gallery ) ) {
+        $gallery_ids = explode( ',', $gallery );
+    }
+
+    return $gallery_ids;
+}
+
 // get map
 function clinic_get_opt_link_map()
 {

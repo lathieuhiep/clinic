@@ -18,13 +18,15 @@
     // element slider
     const elementSlider = ($scope, $) => {
         const slider = $scope.find('.element-slider__warp')
-        const options = slider.data('owl-options')
 
         if (slider.length) {
             slider.each(function () {
                 const thisSlider = $(this)
 
-                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+                thisSlider.owlCarousel(owlCarouselElementorOptions({
+                    items: 1,
+                    nav: true
+                }))
             })
         }
     }
