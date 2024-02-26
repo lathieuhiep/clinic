@@ -104,17 +104,17 @@
 
       li {
         position: relative;
-        padding-left: 1.6em;
+        padding-left: 1.2em;
 
         &:before {
           position: absolute;
-          content: "\f00c";
-          top: 0;
+          content: "";
+          top: .8rem;
           left: 0;
-          font-size: 1.6rem;
-          font-weight: 900;
-          font-family: $font-icon;
-          color: var(--color-salem);
+          width: .6rem;
+          height: .6rem;
+          border-radius: 50%;
+          background-color: #000;
         }
       }
     }
