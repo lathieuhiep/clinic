@@ -433,7 +433,7 @@ pre {
         display: block;
         @include square(.8rem);
         border-radius: 50%;
-        background-color: #98AE99;
+        background-color: #000;
         @include transition(all 0.2s ease-in-out);
       }
 
