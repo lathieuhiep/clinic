@@ -30,3 +30,5 @@ function clinic_shortcode_contactus() {
 	ob_end_clean();
 	return $content;
 }
+
+// short code
