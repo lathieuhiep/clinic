@@ -15,4 +15,16 @@ function clinic_meta_boxes_doctor(): void {
 		'type' => 'text',
 		'name' => esc_html__( 'Chức vụ', 'clinic' )
 	) );
+
+    $cmb->add_field( array(
+        'name' => esc_html__('Chuyên khoa', 'clinic'),
+        'id' => 'clinic_cmb_doctor_specialist',
+        'type' => 'textarea'
+    ) );
+
+    $cmb->add_field( array(
+        'name' => esc_html__('Tiểu sử', 'clinic'),
+        'id' => 'clinic_cmb_doctor_story',
+        'type' => 'textarea'
+    ) );
 }

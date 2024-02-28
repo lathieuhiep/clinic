@@ -1,13 +1,32 @@
 .element-doctor-slider {
   .item {
+    padding: 2rem 1.2rem;
+    overflow: hidden;
+    border-radius: 1.6rem;
+    box-shadow: 0 0 14px rgba(0,0,0,.06);
+    background-color: var(--color-cadmium-green);
+    flex: 1;
+
     &__thumbnail {
-      margin-bottom: 2rem;
+      margin: 0 auto 3rem;
+      overflow: hidden;
+      @include square(15rem, 50%);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &__body {
+      color: var(--color-white);
+
       .title {
+        color: var(--color-white);
+
         @media (min-width: 576px) {
-          font-size: 1.8rem;
+          font-size: 1.7rem;
         }
 
         @media (max-width: 575px) {
@@ -16,8 +35,8 @@
       }
 
       .position {
-        font-size: 1.5rem;
-        line-height: 1.2;
+        font-size: 1.4rem;
+        line-height: 1.5;
       }
     }
   }
