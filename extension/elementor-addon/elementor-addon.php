@@ -1,7 +1,4 @@
 <?php
-// Register Category Elementor Addon
-use Elementor\Plugin;
-
 // create category
 add_action( 'elementor/elements/categories_registered', 'clinic_add_elementor_widget_categories' );
 function clinic_add_elementor_widget_categories( $elements_manager ): void {
@@ -72,10 +69,107 @@ function clinic_elementor_scripts(): void {
 	$clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
 	if ( $clinic_check_elementor == 'builder' ) {
+        $clinic_addon_elementor_url = admin_url( 'admin-ajax.php' );
+        $clinic_addon_elementor_ajax = array( 'url' => $clinic_addon_elementor_url );
+
 		// style
         wp_enqueue_style( 'clinic-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/elementor-addon.min.css' ), array(), clinic_get_version_theme() );
 
 		// script
-		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.js' ), array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
+        wp_localize_script( 'clinic-elementor-script', 'clinic_elementor_detail_doctor', $clinic_addon_elementor_ajax );
 	}
+}
+
+// call ajax doctor single
+add_action( 'wp_ajax_nopriv_clinic_get_detail_doctor', 'clinic_get_detail_doctor' );
+add_action( 'wp_ajax_clinic_get_detail_doctor', 'clinic_get_detail_doctor' );
+
+function clinic_get_detail_doctor()
+{
+    $id = $_POST['id'];
+
+    $args = array(
+        'post_type' => 'clinic_doctor',
+        'post__in' => array( $id )
+    );
+
+    $query = new WP_Query( $args );
+?>
+    <!-- Modal -->
+    <div class="modal fade modal-doctor-slider" id="modal-doctor-slider" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <?php
+                if ( $query->have_posts() ) :
+                    while ( $query->have_posts() ) : $query->the_post();
+                        $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
+                        $story = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_story', true);
+                ?>
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5">
+                            <?php the_title(); ?>
+                        </h2>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="list">
+                            <div class="list__header">
+                                <div class="list__thumbnail">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-doctor.png' ) ) ?>" alt="">
+                                </div>
+
+                                <p class="txt">
+                                    <?php esc_html_e('Giới thiệu', 'clinic'); ?>
+                                </p>
+                            </div>
+
+                            <div class="list__content">
+                                <?php the_content(); ?>
+                            </div>
+                        </div>
+
+                        <div class="list">
+                            <div class="list__header">
+                                <div class="list__thumbnail">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-doctor-suitcase.png' ) ) ?>" alt="">
+                                </div>
+
+                                <p class="txt">
+                                    <?php esc_html_e('Chuyên khoa', 'clinic'); ?>
+                                </p>
+                            </div>
+
+                            <div class="list__content">
+                                <?php echo wpautop($specialist); ?>
+                            </div>
+                        </div>
+
+                        <div class="list">
+                            <div class="list__header">
+                                <div class="list__thumbnail">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-ear-piece.png' ) ) ?>" alt="">
+                                </div>
+
+                                <p class="txt">
+                                    <?php esc_html_e('Khám và điều trị các bệnh ', 'clinic'); ?>
+                                </p>
+                            </div>
+
+                            <div class="list__content">
+                                <?php echo wpautop($story); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                    endwhile; wp_reset_postdata();
+                endif;
+                ?>
+            </div>
+        </div>
+    </div>
+<?php
+    wp_die();
 }

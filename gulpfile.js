@@ -47,6 +47,7 @@ function buildStylesBootstrap() {
 // Task build js bootstrap
 function buildLibsBootstrapJS() {
     return src([
+        `${pathNodeModule}/bootstrap/js/dist/popover.js`,
         `${pathNodeModule}/bootstrap/js/dist/modal.js`,
         `${pathNodeModule}/bootstrap/js/dist/offcanvas.js`
     ])
@@ -214,6 +215,10 @@ function watchTask() {
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
+
+    watch([`./extension/elementor-addon/js/*.js`,
+        `!./extension/elementor-addon/js/*.min.js`
+    ], buildJSElementor)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,

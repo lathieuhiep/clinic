@@ -39,5 +39,36 @@
         line-height: 1.5;
       }
     }
+
+    &__action {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        display: inline-block;
+        padding: 1.2rem 1.5rem .8rem;
+        font-size: 1.4rem;
+        line-height: 1.2;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: .7rem;
+
+        &.link-chat {
+          background-color: var(--color-white);
+        }
+
+        &.view-detail-doctor {
+          color: var(--color-white);
+          background-color: var(--color-sunset-orange);
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
   }
 }

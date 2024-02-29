@@ -63,6 +63,43 @@
         }
     }
 
+    const elementDoctorDetail = ($scope, $) => {
+        const detailDoctor = $scope.find('.view-detail-doctor')
+
+        detailDoctor.on('click', function (e) {
+            e.preventDefault();
+
+            const id = $(this).data('id')
+            const parentDoctorSlider = $(this).closest('.element-doctor-slider')
+
+            $.ajax({
+                url: clinic_elementor_detail_doctor.url,
+                type: 'POST',
+                data: ({
+                    action: 'clinic_get_detail_doctor',
+                    id: id
+                }),
+
+                success: function (data) {
+                    if (data) {
+                        parentDoctorSlider.find('.element-doctor-slider__modal').empty().append(data)
+                    }
+                },
+
+                complete: function(){
+                    const modalDoctorSlider = parentDoctorSlider.find('#modal-doctor-slider')
+                    const myModal = new bootstrap.Modal(modalDoctorSlider, {
+                        keyboard: false
+                    })
+
+                    console.log(modalDoctorSlider)
+                },
+            })
+
+            return false
+        })
+    }
+
     // element testimonial slider
     const elementTestimonialSlider = ($scope, $) => {
         const slider = $scope.find('.element-testimonial-slider__warp')
@@ -145,6 +182,7 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorDetail);
 
         /* Element testimonial slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', elementTestimonialSlider);

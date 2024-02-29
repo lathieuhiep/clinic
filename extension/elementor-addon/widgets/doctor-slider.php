@@ -80,9 +80,10 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 
-        $limit_post     =   $settings['limit'];
-        $order_by_post  =   $settings['order_by'];
-        $order_post     =   $settings['order'];
+        $link_chat = clinic_get_opt_link_chat_doctor();
+        $limit_post = $settings['limit'];
+        $order_by_post = $settings['order_by'];
+        $order_post = $settings['order'];
 
         // Query
         $args = array(
@@ -118,6 +119,18 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                <?php echo esc_html( get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true) ); ?>
                            </p>
                        </div>
+
+                       <div class="item__action">
+                           <?php if ( !empty($link_chat) ) : ?>
+                               <a class="link-chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                   <?php esc_html_e('Tư vấn', 'clinic'); ?>
+                               </a>
+                           <?php endif; ?>
+
+                           <a class="view-detail-doctor" href="#" data-id="<?php echo esc_attr( get_the_ID() ); ?>">
+                               <?php esc_html_e('Xem thêm', 'clinic'); ?>
+                           </a>
+                       </div>
                    </div>
 
                <?php
@@ -125,6 +138,8 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                wp_reset_postdata();
                ?>
            </div>
+
+            <div class="element-doctor-slider__modal"></div>
         </div>
     <?php
         endif;
