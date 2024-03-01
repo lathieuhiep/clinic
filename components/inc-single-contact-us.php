@@ -17,7 +17,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
 		<span class="item__txt"><?php echo esc_html($phone); ?></span>
 	</a>
 
-	<a class="item chat" href="<?php echo esc_url( $link_chat['url'] ); ?>" target="<?php echo esc_attr($link_chat['target']) ?>">
+	<a class="item chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
         <svg width="70" height="64" viewBox="0 0 70 64" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="70" height="64" fill="url(#pattern1)"/>
             <defs>

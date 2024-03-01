@@ -473,45 +473,28 @@ pre {
 }
 
 .contact-us-mobile {
+  padding: 0 1.2rem;
   position: sticky;
   bottom: 0;
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: #1c8786;
+  .item {
+    position: absolute;
+    top: 0;
+    height: 100%;
 
-    .item {
-      padding: 1.2rem 0;
+    &.chat-with-us__zalo {
+      left: 0;
+      width: 22.5%;
+    }
 
-      ~ .item {
-        border-left: 1px solid var(--color-white);
-      }
+    &.phone {
+      left: 22.5%;
+      width: 55%;
+    }
 
-      a {
-        display: grid;
-        grid-row-gap: 1rem;
-        text-align: center;
-        color: var(--color-white);
-
-        i {
-          font-size: 2.4rem;
-        }
-
-        .txt {
-          font-size: 1.6rem;
-          font-weight: 500;
-          line-height: 2rem;
-          -webkit-animation: flicker 700ms infinite;
-          -moz-animation: flicker 700ms infinite;
-          -o-animation: flicker 700ms infinite;
-          animation: flicker 700ms infinite;
-        }
-      }
-
-      img {
-        width: 100%;
-      }
+    &.chat {
+      left: 77.5%;
+      width: 22.5%;
     }
   }
 }

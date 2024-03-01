@@ -1,38 +1,25 @@
 <?php
 $phone = clinic_get_opt_hotline();
-$medical_appointment_form = clinic_get_opt_medical_appointment();
 $link_chat = clinic_get_opt_link_chat_doctor();
-$link_messenger = clinic_get_opt_link_chat_messenger();
+$chat_zalo = clinic_get_opt_chat_zalo();
 ?>
 
 <div class="contact-us-mobile d-lg-none">
-    <div class="contact-us-mobile__grid">
-        <?php if ( $phone ) : ?>
-        <div class="item">
-            <a href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>">
-                <i class="icon-phone"></i>
-                <span class="txt"><?php echo esc_html($phone); ?></span>
-            </a>
-        </div>
-        <?php endif; ?>
+    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/footer-contact-us.gif' ) ) ?>" alt="">
 
-        <?php if ( $link_messenger ) : ?>
-            <div class="item">
-                <a href="<?php echo esc_url( $link_messenger ); ?>" target="_blank">
-                    <i class="icon-facebook-messenger"></i>
+    <?php
+    if ( $chat_zalo ) :
+        $zalo_phone = $chat_zalo['phone'];
+        $zalo_qr_code = $chat_zalo['qr_code'];
+    ?>
+        <a class="item chat-with-us__zalo" href="#" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
+    <?php endif; ?>
 
-                    <span class="txt"><?php esc_html_e('Messenger', 'clinic'); ?></span>
-                </a>
-            </div>
-        <?php endif; ?>
+    <?php if ( $phone ) : ?>
+        <a class="item phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>"></a>
+    <?php endif; ?>
 
-        <?php if ( $medical_appointment_form ) : ?>
-            <div class="item">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                    <i class="icon-calendar"></i>
-                    <span class="txt"><?php esc_html_e('Đặt lịch', 'clinic'); ?></span>
-                </a>
-            </div>
-        <?php endif; ?>
-    </div>
+    <?php if ( $link_chat ) : ?>
+        <a class="item chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank"></a>
+    <?php endif; ?>
 </div>
