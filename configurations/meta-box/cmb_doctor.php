@@ -42,11 +42,4 @@ function clinic_meta_boxes_doctor(): void {
 		'type' => 'text',
 		'name' => esc_html__( 'Chuyên khoa', 'clinic' )
 	) );
-
-	$cmb->add_field( array(
-		'id' => 'clinic_cmb_doctor_content',
-		'type' => 'textarea',
-		'name' => esc_html__( 'Mô tả', 'clinic' ),
-		'desc' => esc_html__('Enter để xuống dòng tạo danh sách', 'clinic')
-	) );
 }

@@ -105,79 +105,43 @@ class Clinic_Elementor_About extends Widget_Base
 			]
 		);
 
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'list_section',
+		$this->add_control(
+			'heading',
 			[
-				'label' => esc_html__( 'List', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$repeater = new Repeater();
-
-		$repeater->add_control(
-			'list_title', [
-				'label' => esc_html__( 'Title', 'clinic' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Title #1' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'type' => Controls_Manager::TEXTAREA,
-				'rows' => 8,
-				'default' => esc_html__( 'List Content' , 'clinic' ),
-				'label_block' => true,
+				'label'       => esc_html__( 'Heading', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Heading', 'clinic' ),
+				'label_block' => true
 			]
 		);
 
 		$this->add_control(
-			'list',
+			'desc',
 			[
-				'label' => esc_html__( 'List', 'clinic' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_title' => __( 'Title #1', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #2', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #3', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #4', 'clinic' ),
-					],
-				],
-				'title_field' => '{{{ list_title }}}',
+				'label'     =>  esc_html__( 'Description', 'clinic' ),
+				'type'      =>  Controls_Manager::WYSIWYG,
+				'default'   =>  esc_html__( 'Default description', 'clinic' ),
 			]
 		);
 
 		$this->end_controls_section();
 
-		// style title
+		// style heading
 		$this->start_controls_section(
-			'style_title_section',
+			'style_heading_section',
 			[
-				'label' => esc_html__( 'Title', 'clinic' ),
+				'label' => esc_html__( 'Heading', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'list_title_color',
+			'heading_color',
 			[
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-about__warp .list-group .list-title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about__warp .item .heading' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -185,29 +149,29 @@ class Clinic_Elementor_About extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'list_title_typography',
-				'selector' => '{{WRAPPER}} .element-about__warp .list-group .list-title',
+				'name' => 'heading_typography',
+				'selector' => '{{WRAPPER}} .element-about__warp .item .heading',
 			]
 		);
 
 		$this->end_controls_section();
 
-		// style list
+		// style desc
 		$this->start_controls_section(
-			'style_content_section',
+			'style_desc_section',
 			[
-				'label' => esc_html__( 'Content', 'clinic' ),
+				'label' => esc_html__( 'Description', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'list_content_color',
+			'desc_color',
 			[
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-about__warp .list-group .list-content' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about__warp .item .desc' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -215,8 +179,8 @@ class Clinic_Elementor_About extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'list_content_typography',
-				'selector' => '{{WRAPPER}} .element-about__warp .list-group .list-content',
+				'name' => 'desc_typography',
+				'selector' => '{{WRAPPER}} .element-about__warp .item .desc',
 			]
 		);
 
@@ -234,40 +198,31 @@ class Clinic_Elementor_About extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 
-		$medical_appointment_form = clinic_get_opt_medical_appointment();
+		$hotline = clinic_get_opt_hotline();
 		?>
 		<div class="element-about">
 			<div class="element-about__warp">
-                <div class="item item__thumbnail">
-	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+                <div class="item item-left">
+	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
                 </div>
 
-                <div class="item item__list">
-                    <div class="list-group">
-                        <?php
-                        $number_list = 1;
-                        foreach ( $settings['list'] as $item ) :
-                        ?>
-                            <div class="repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                                <h4 class="list-title f-family-body">
-                                    <span class="number"><?php echo esc_html($number_list); ?></span>&#46;
-                                    <span class="text"><?php echo esc_html( $item['list_title'] ); ?></span>
-                                </h4>
+                <div class="item item-right">
+                    <h3 class="heading">
+                        <?php echo esc_html( $settings['heading'] ); ?>
+                    </h3>
 
-                                <p class="list-content">
-                                    <?php echo esc_html( $item['list_content'] ); ?>
-                                </p>
-                            </div>
-                        <?php $number_list++; endforeach; ?>
+                    <div class="desc">
+	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
 
-                    <?php if ( $medical_appointment_form ) : ?>
-                        <div class="action-box text-center">
-                            <a class="booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-			                    <?php esc_html_e('Đặt lịch ngay', 'clinic'); ?>
+                    <div class="action">
+	                    <?php if ( $hotline ) : ?>
+                            <a class="hotline" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number($hotline) ); ?>">
+			                    <i class="icon-phone-circle"></i>
+                                <span><?php esc_html_e('TÔI CẦN TƯ VẤN', 'clinic'); ?></span>
                             </a>
-                        </div>
-                    <?php endif; ?>
+	                    <?php endif; ?>
+                    </div>
                 </div>
 			</div>
 		</div>

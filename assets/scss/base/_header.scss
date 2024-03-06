@@ -163,6 +163,19 @@
       li {
         position: relative;
 
+        &.icon {
+          color: var(--color-white);
+
+          &:before {
+            font-size: 2.4rem;
+          }
+
+          a {
+            margin-left: .5rem;
+            font-family: $heading-font-family;
+          }
+        }
+
         a {
           text-shadow: none;
           display: block;

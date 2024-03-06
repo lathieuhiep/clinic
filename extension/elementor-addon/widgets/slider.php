@@ -64,11 +64,15 @@ class Clinic_Elementor_Slider extends Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
         $gallery_ids = clinic_get_general_slider();
+
+	    $owl_options = [
+		    'items' => 1
+	    ];
     ?>
 
         <div class="element-slider">
             <?php if ( !empty( $gallery_ids ) ) : ?>
-                <div class="element-slider__warp owl-carousel owl-theme">
+                <div class="element-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                     <?php foreach ( $gallery_ids as $gallery_item_id ): ?>
                         <div class="item">
                             <?php echo wp_get_attachment_image( $gallery_item_id, 'full' ); ?>

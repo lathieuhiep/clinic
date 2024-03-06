@@ -2,11 +2,7 @@
   &__grid {
     display: grid;
 
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(5, 1fr);
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: 768px) {
       grid-template-columns: repeat(4, 1fr);
     }
 
@@ -22,20 +18,10 @@
       position: relative;
       padding: 3rem 1.2rem;
       border: 1px solid #BDD7EB;
-      background-color: #F2F8FF;
+      background-color: #F2FFFA;
       @include transition();
 
-      @media (min-width: 992px) {
-        &:nth-child(n+2):not(:nth-child(5n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+6) {
-          border-top: transparent;
-        }
-      }
-
-      @media (min-width: 768px) and (max-width: 991px) {
+      @media (min-width: 768px) {
         &:nth-child(n+2):not(:nth-child(4n+1)) {
           border-left: transparent;
         }
@@ -107,7 +93,7 @@
 
       &__title {
         font-size: 1.8rem;
-        color: var(--body-color);
+        color: #132432;
         font-family: var(--heading-font-family);
         @include transition();
 
@@ -121,6 +107,7 @@
       }
 
       &:hover {
+        border-color: var(--clinic-tertiary-color);
         background-color: var(--clinic-tertiary-color);
 
         .item__image {

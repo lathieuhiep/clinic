@@ -143,6 +143,17 @@ function buildStylesElementor() {
         .pipe(browserSync.stream());
 }
 
+function buildJSElementor() {
+    return src([
+        './extension/elementor-addon/js/*.js',
+        '!./extension/elementor-addon/js/*.min.js'
+    ], {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(dest('./extension/elementor-addon/js/'))
+        .pipe(browserSync.stream());
+}
+
 // Task build style custom post type
 function buildStylesCustomPostType() {
     return src(`${pathAssets}/scss/post-type/*/**.scss`)
@@ -183,10 +194,12 @@ async function buildProject() {
     await buildJsOwlCarouse()
 
     await buildStylesTheme()
-    await buildStylesElementor()
+    await buildJSTheme()
+
     await buildStylesCustomPostType()
 
-    await buildJSTheme()
+    await buildStylesElementor()
+    await buildJSElementor()
 }
 exports.buildProject = buildProject
 
@@ -217,6 +230,11 @@ function watchTask() {
     ], buildStylesCustomPostType)
 
     watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
+
+    watch([
+        './extension/elementor-addon/js/*.js',
+        '!./extension/elementor-addon/js/*.min.js'
+    ], buildJSElementor)
 
     watch([
         './*.php',

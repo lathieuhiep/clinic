@@ -97,21 +97,21 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$repeater = new Repeater();
 
 		$repeater->add_control(
+			'list_title', [
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => esc_html__( 'List Title' , 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
 			'list_image', [
 				'label' => esc_html__( 'Image', 'clinic' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
-			]
-		);
-
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'type' => Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'List Title' , 'clinic' ),
-				'label_block' => true,
 			]
 		);
 
@@ -156,7 +156,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                        </div>
 
                         <div class="item__content">
-                            <?php echo wpautop( $item['list_content'] ); ?>
+                            <?php echo wpautop( $item['list_title'] ); ?>
                         </div>
                     </div>
 	            <?php endforeach; ?>
