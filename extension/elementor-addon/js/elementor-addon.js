@@ -143,6 +143,20 @@
         }
     }
 
+    // element package slider
+    const elementPackageSlider = ($scope, $) => {
+        const slider = $scope.find('.element-package-slider__warp')
+        const options = slider.data('owl-options')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -152,5 +166,8 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
+
+        /* Element doctor slider */
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-package-slider.default', elementPackageSlider);
     });
 })(jQuery);

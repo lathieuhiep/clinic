@@ -22,6 +22,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
 
 //  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-content.php' );
 
@@ -47,6 +48,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_About() );
 	$widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
 	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
+	$widgets_manager->register( new \Clinic_Elementor_Package_Slider() );
 
 //  $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Content() );
 
