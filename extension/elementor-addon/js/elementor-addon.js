@@ -18,11 +18,11 @@
     // element slider
     const elementSlider = ($scope, $) => {
         const slider = $scope.find('.element-slider__warp')
-        const options = slider.data('owl-options')
 
         if (slider.length) {
             slider.each(function () {
                 const thisSlider = $(this)
+                const options = slider.data('owl-options')
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))
             })
@@ -35,23 +35,10 @@
 
         if (slider.length) {
             slider.each(function () {
-                slider.owlCarousel({
-                    loop: false,
-                    margin: 50,
-                    dotsSpeed: 800,
-                    dragEndSpeed: 800,
-                    responsive:{
-                        0:{
-                            items: 1
-                        },
-                        576:{
-                            items: 2
-                        },
-                        992:{
-                            items: 3
-                        }
-                    }
-                })
+                const thisSlider = $(this)
+                const options = slider.data('owl-options')
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
             })
         }
     }

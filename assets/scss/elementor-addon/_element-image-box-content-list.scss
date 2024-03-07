@@ -3,7 +3,7 @@
     display: grid;
 
     @media (min-width: 992px) {
-      grid-gap: 3.2rem;
+      grid-gap: 2.8rem;
     }
 
     @media (max-width: 991px) {
@@ -15,12 +15,12 @@
     }
 
     .item {
-      padding: 1.5rem 2.1rem;
-      border-radius: 1rem;
+      padding: 1.5rem 2.1rem 2.8rem;
       background-color: var(--color-white);
+      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 
       &__thumbnail {
-        margin-bottom: 1.4rem;
+        margin-bottom: 1.6rem;
 
         img {
           width: 100%;
@@ -29,22 +29,17 @@
 
       &__content {
         .title {
-          margin: 0;
-
-          border-radius: 5rem;
+          margin-bottom: 1.5rem;
           font-family: var(--body-font-family);
           font-weight: 900;
+          color: #FF0303;
           text-align: center;
-          color: var(--clinic-secondary-color);
-          background: linear-gradient(180deg, #FE6F01 0%, #F5371A 100%);
 
           @media (min-width: 992px) {
-            padding: 1.6rem 2rem;
             font-size: 2.4rem;
           }
 
           @media (max-width: 991px) {
-            padding: .8rem 1.6rem;
             font-size: 1.6rem;
           }
         }
@@ -52,7 +47,40 @@
         .desc {
           margin-top: 1.2rem;
           font-size: 1.6rem;
+          line-height: 1.5;
         }
+      }
+    }
+  }
+
+  .action {
+    margin-top: 3rem;
+    gap: 2.8rem;
+
+    a {
+      padding: 0 2.3rem;
+      display: inline-flex;
+      align-items: center;
+      min-height: 4.7rem;
+      font-size: 2rem;
+      font-weight: 700;
+      border-radius: .5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+
+      i {
+        margin-right: 1.5rem;
+        font-size: 2.6rem;
+      }
+
+      &.btn-booking {
+        color: #fff;
+        background-color: #FF0000;
+      }
+
+      &.btn-hotline {
+        color: #078450;
+        background-color: #FFE500;
       }
     }
   }

@@ -1,6 +1,7 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -110,7 +111,7 @@ class Clinic_Elementor_Package_Slider extends Widget_Base
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Tên gói khám', 'clinic' ),
+				'label' => esc_html__( 'Tên gói', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'List Title' , 'clinic' ),
 				'label_block' => true,
@@ -118,13 +119,24 @@ class Clinic_Elementor_Package_Slider extends Widget_Base
 		);
 
 		$repeater->add_control(
-			'list_image_price',
+			'list_price',
 			[
-				'label' => esc_html__( 'Ảnh giá gói khám', 'clinic' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
+				'label' => esc_html__( 'Giá (.000đ)', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
+				'min' => 1,
+				'step' => 1,
+				'default' => esc_html__( '188' , 'clinic' ),
+			]
+		);
+
+        $repeater->add_control(
+			'list_promotional_price',
+			[
+				'label' => esc_html__( 'Giá khuyến mãi (.000đ)', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
+				'min' => 0,
+				'step' => 1,
+				'default' => '',
 			]
 		);
 
@@ -157,6 +169,24 @@ class Clinic_Elementor_Package_Slider extends Widget_Base
 			]
 		);
 
+		$this->end_controls_section();
+
+		// style price
+		$this->start_controls_section(
+			'style_price_section',
+			[
+				'label' => esc_html__( 'Price', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'price_typography',
+				'selector' => '{{WRAPPER}} .element-package-slider__warp .item__content .linear-gradient',
+			]
+		);
 
 		$this->end_controls_section();
 	}
@@ -174,7 +204,8 @@ class Clinic_Elementor_Package_Slider extends Widget_Base
 		$medical_appointment_form = clinic_get_opt_medical_appointment();
 
 		$owl_options = [
-			'items' => 1
+			'items' => 1,
+			'autoHeight' => true
 		];
 	?>
 		<div class="element-package-slider">
@@ -182,7 +213,11 @@ class Clinic_Elementor_Package_Slider extends Widget_Base
 				<?php
 				foreach ( $settings['list'] as $item ) :
 					$imageId = $item['list_image']['id'];
-					$imagePriceId = $item['list_image_price']['id'];
+                    $price = $item['list_price'];
+
+                    if ( $item['list_promotional_price'] ) {
+	                    $price = $item['list_promotional_price'];
+                    }
 				?>
 
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
@@ -199,14 +234,29 @@ class Clinic_Elementor_Package_Slider extends Widget_Base
 								<?php echo esc_html( $item['list_title'] ); ?>
 							</h3>
 
-							<div class="price">
-								<?php
-								if ( $imagePriceId ) :
-									echo wp_get_attachment_image( $imagePriceId, 'full' );
-								endif;
-								?>
+							<div class="price d-flex align-items-end">
+                                <div class="price__current d-flex align-items-end">
+                                    <p class="number linear-gradient" data-text="<?php echo esc_html( $price ); ?>">
+                                        <?php echo esc_html( $price ); ?>
+                                    </p>
 
-								<span class="txt"><?php esc_html_e('Chỉ với', 'clinic'); ?></span>
+                                    <p class="txt">
+                                        <span class="unit linear-gradient" data-text=".000đ">.000đ</span>
+                                        <span class="only"><?php esc_html_e('Chỉ với', 'clinic'); ?></span>
+                                    </p>
+                                </div>
+
+                                <?php if ( $item['list_promotional_price'] ) : ?>
+                                    <div class="price__old">
+                                        <p class="txt">
+                                            <?php esc_html_e('Giá gốc', 'clinic'); ?>
+                                        </p>
+
+                                        <p class="number">
+                                            <?php echo esc_html( $item['list_price'] ); ?><span>.000đ</span>
+                                        </p>
+                                    </div>
+                                <?php endif; ?>
 							</div>
 
 							<div class="desc">

@@ -16,46 +16,16 @@
       display: flex;
       flex-direction: column;
 
-      &__step {
-        margin-bottom: 1.6rem;
-
-        .txt {
-          display: inline-block;
-          position: relative;
-          min-width: 10rem;
-          background-color: var(--clinic-tertiary-color);
-          transform: skew(-20deg);
-
-          span {
-            position: relative;
-            display: inline-block;
-            color: var(--color-white);
-            font-size: 1.6rem;
-            font-weight: 500;
-            font-style: italic;
-            transform: skew(20deg);
-
-            &:after {
-              position: absolute;
-              content: "";
-              bottom: -0.5rem;
-              left: 50%;
-              border-left: 1rem solid transparent;
-              border-right: 1rem solid transparent;
-              border-top: .5rem solid var(--clinic-tertiary-color);;
-              transform: translateX(-50%);
-            }
-          }
-        }
-      }
-
       &__box {
-        border: 1px solid #B6B6B6;
-        background-color: #F8F8FA;
         flex: 1;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: .2rem solid #42DE42;
+        background-color: #078450;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 
         .thumbnail {
-          height: 20rem;
+          height: 21.2rem;
 
           img {
             width: 100%;
@@ -65,20 +35,24 @@
         }
 
         .content {
-          @media (min-width: 992px) {
-            padding: 1.8rem 3rem;
-          }
-
-          @media (max-width: 991px) {
-            padding: 1.8rem 1.2rem;
-          }
+          padding: 2.1rem 2.4rem 1rem;
 
           .title {
-            color: var(--color-salem);
+            font-family: var(--body-font-family);
+            font-weight: 900;
+            color: #FFE500;
+
+            @media (min-width: 768px) {
+              font-size: 2rem;
+            }
 
             @media (max-width: 767px) {
               font-size: 1.4rem;
             }
+          }
+
+          .desc {
+            color: #ffffff;
           }
         }
       }

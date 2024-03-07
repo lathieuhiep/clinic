@@ -8,7 +8,7 @@ use Elementor\Controls_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
+class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
     public function get_categories(): array {
         return array( 'my-theme' );
     }
@@ -124,10 +124,23 @@ class Clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
+
+	    $owl_options = [
+            'responsive' => [
+                '0' => [
+                    'items' => '1',
+                    'margin' => 12,
+                ],
+                '576' => [
+	                'items' => '2',
+	                'margin' => 50,
+                ]
+            ]
+	    ];
     ?>
 
         <div class="element-testimonial-slider">
-            <div class="element-testimonial-slider__warp owl-carousel owl-theme">
+            <div class="element-testimonial-slider__warp owl-carousel owl-theme custom-equal-height-owl" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
@@ -147,6 +160,10 @@ class Clinic_Elementor_Addon_Testimonial_Slider extends Widget_Base {
                         <div class="desc">
                             <?php echo wp_kses_post( $item['list_description'] ) ?>
                         </div>
+
+                        <p class="name text-center">
+	                        <?php echo esc_html( $item['list_title'] ); ?>
+                        </p>
                     </div>
 
                 <?php endforeach; ?>

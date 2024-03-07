@@ -1,0 +1,30 @@
+.element-advise {
+  &__warp {
+    display: grid;
+    grid-gap: 2.4rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .item {
+      padding: 3.6rem 3.2rem 2.6rem;
+      text-align: center;
+      background-color: var(--color-white);
+      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+
+      &__thumbnail {
+        margin-bottom: 2.2rem;
+      }
+
+      &__content {
+        font-size: 1.5rem;
+        line-height: 1.5;
+
+        a {
+          color: #FF0000;
+        }
+      }
+    }
+  }
+}

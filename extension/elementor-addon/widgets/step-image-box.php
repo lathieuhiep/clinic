@@ -163,12 +163,6 @@ class Clinic_Elementor_Step_Image_Box extends Widget_Base
                 foreach ( $settings['list'] as $item ) :
                 ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="item__step text-center">
-                            <p class="txt">
-                                <span><?php esc_html_e('Bước', 'clinic'); echo ' '. esc_html($step); ?></span>
-                            </p>
-                        </div>
-
                         <div class="item__box">
                             <div class="thumbnail">
 		                        <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
