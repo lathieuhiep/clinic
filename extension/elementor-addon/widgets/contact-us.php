@@ -94,16 +94,6 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'heading',
-			[
-				'label'       => esc_html__( 'Heading', 'clinic' ),
-				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Heading', 'clinic' ),
-				'label_block' => true
-			]
-		);
-
 		$repeater = new Repeater();
 
 		$repeater->add_control(
@@ -201,10 +191,6 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		?>
 		<div class="element-contact-us">
-            <h2 class="element-contact-us__title text-center">
-                <?php echo esc_html($settings['heading']) ?>
-            </h2>
-
             <?php if ( $settings['contact_list'] ) : ?>
 
             <div class="element-contact-us__list">

@@ -31,7 +31,6 @@ section {
     .widget-title {
       font-size: 1.5rem;
       line-height: 2.2rem;
-      font-weight: 900;
       font-family: var(--body-font-family);
     }
 
@@ -314,45 +313,43 @@ section {
 
     &.widget_media_image {
       text-align: center;
-      padding-bottom: 1.6rem;
 
       .widget-title {
-        margin-bottom: 1.6rem;
+        margin-bottom: 0;
       }
 
       img {
-
+        display: inline-block;
+        padding: 1rem;
       }
     }
 
     &.appointment-form-widget {
-      position: relative;
-      padding-top: .9rem;
-      border-radius: .5rem;
-      border: transparent;
-      background: linear-gradient(180deg, #3BB966 0%, #208B45 100%);
+      border: none;
 
-      &:before {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        right: 0;
-        height: .9rem;
-        background-color: #E70012;
-      }
+      .image-title {
+        padding: 0;
 
-      .widget-title {
-        padding-bottom: 0;
-        background: transparent;
+        ~ .widget-warp {
+          margin-top: -2rem;
+        }
       }
 
       .widget-warp {
-        padding: 1rem .8rem;
-        border-radius: 0 0 .5rem .5rem;
+        padding: 0;
+        border: 1px solid #078450;
+
+        .widget-title {
+          padding: 2.4rem 1.6rem 1.4rem;
+          color: #FF0000;
+          background: #ECECEC;
+          border-bottom: 1px solid #078450;
+        }
       }
 
       .wpcf7-form {
+        padding: 1.8rem 2rem;
+
         p {
           ~ p {
             margin-top: 1.1rem;
@@ -369,6 +366,8 @@ section {
             color: #909090;
             font-size: 1.4rem;
             font-family: var(--heading-font-family);
+            border: 1px solid #CDCDCD;
+            border-radius: 2rem;
             background-color: var(--color-white);
           }
 
@@ -385,7 +384,7 @@ section {
           line-height: 1.6rem;
           text-transform: uppercase;
           border: none;
-          border-radius: .5rem;
+          border-radius: 2rem;
           background: linear-gradient(180deg, #FF0008 0%, #941115 100%);
         }
       }

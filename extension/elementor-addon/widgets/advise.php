@@ -95,6 +95,19 @@ class Clinic_Elementor_Advise extends Widget_Base
 			]
 		);
 
+		$this->add_control(
+			'style',
+			[
+				'label' => esc_html__('Kiểu', 'clinic'),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => [
+					'1' => esc_html__('Kiểu 1', 'clinic'),
+					'2' => esc_html__('Kiểu 2', 'clinic'),
+				],
+			]
+		);
+
 		$repeater = new Repeater();
 
 		$repeater->add_control(
@@ -161,7 +174,7 @@ class Clinic_Elementor_Advise extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-advise">
+		<div class="element-advise style-<?php echo esc_attr( $settings['style'] ); ?>">
 			<?php if ( $settings['list'] ) : ?>
 				<div class="element-advise__warp">
 					<?php foreach ($settings['list'] as $item): ?>

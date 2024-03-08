@@ -40,3 +40,15 @@ function clinic_image_overlay_shortcode ($args): false|string {
 	ob_end_clean();
 	return $content;
 }
+
+// short code contact us
+add_shortcode('single_contact_us' , 'clinic_shortcode_contactus');
+function clinic_shortcode_contactus(): bool|string {
+	ob_start();
+
+	get_template_part( 'components/inc','post-contact-us' );
+
+	$content = ob_get_contents();
+	ob_end_clean();
+	return $content;
+}

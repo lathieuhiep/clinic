@@ -37,6 +37,19 @@ class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 		);
 
 		$this->add_control(
+			'style',
+			[
+				'label' => esc_html__('Kiểu', 'clinic'),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => [
+					'1' => esc_html__('Kiểu 1', 'clinic'),
+					'2' => esc_html__('Kiểu 2', 'clinic'),
+				],
+			]
+		);
+
+		$this->add_control(
 			'heading',
 			[
 				'label'       => esc_html__( 'Heading', 'clinic' ),
@@ -66,9 +79,9 @@ class Clinic_Elementor_Addon_Contact_Form_7 extends Widget_Base {
 		if ( ! empty( $settings['contact_form_list'] ) ) :
 			?>
 
-            <div class="element-contact-form-7">
+            <div class="element-contact-form-7 style-<?php echo esc_attr( $settings['style'] ); ?>">
                 <?php if ( $settings['heading'] ) : ?>
-                    <h3 class="element-contact-form-7__heading text-center">
+                    <h3 class="heading text-center">
 		                <?php echo esc_html( $settings['heading'] ); ?>
                     </h3>
                 <?php endif; ?>

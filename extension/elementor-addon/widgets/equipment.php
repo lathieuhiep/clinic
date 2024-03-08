@@ -123,6 +123,16 @@ class Clinic_Elementor_Equipment extends Widget_Base
 			]
 		);
 
+		$repeater->add_control(
+			'list_background_color', [
+				'label' => esc_html__( 'Background Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}}.item' => 'background-color: {{VALUE}}'
+				],
+			]
+		);
+
 		$this->add_control(
 			'list',
 			[

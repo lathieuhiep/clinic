@@ -1,11 +1,4 @@
 .element-contact-us {
-  &__title {
-    margin-bottom: 1.8rem;
-    font-size: 1.8rem;
-    font-weight: 900;
-    font-family: var(--body-font-family);
-  }
-
   &__list {
     display: grid;
     grid-gap: 2.8rem;
@@ -34,8 +27,8 @@
 
       .box {
         position: relative;
+        min-height: 20.5rem;
         padding: 1.2rem;
-        min-height: 16.1rem;
         @include flex-center();
         flex-direction: column;
       }
