@@ -57,7 +57,7 @@
         flex: 1;
       }
 
-      @media (max-width: 991px) {
+      @media (max-width: 767px) {
         margin-top: 1.8rem;
       }
 
@@ -107,7 +107,7 @@
             font-size: 2rem;
           }
 
-          @media (max-width: 991px) {
+          @media (max-width: 767px) {
             text-align: center;
           }
 
@@ -119,11 +119,11 @@
             height: .3rem;
             background-color: #208B45;
 
-            @media (min-width: 992px) {
+            @media (min-width: 768px) {
               left: 0;
             }
 
-            @media (max-width: 991px) {
+            @media (max-width: 767px) {
               left: 50%;
               transform: translateX(-50%);
             }

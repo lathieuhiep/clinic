@@ -214,6 +214,9 @@
         }
 
         .sub-menu-toggle {
+          margin-left: .6rem;
+          color: var(--color-white);
+
           &:after {
             @include transition();
           }
@@ -301,8 +304,7 @@
           .sub-menu {
             display: block !important;
             min-width: 160px;
-            border-top: 1px solid $color-hover;
-            background-color: $border-color;
+            background-color: var(--clinic-tertiary-color);
             position: absolute;
             top: 120%;
             left: 0;
@@ -318,6 +320,11 @@
               a {
                 white-space: nowrap;
                 flex: 1;
+                color: var(--color-white);
+
+                &:hover {
+                  color: var(--clinic-secondary-color);
+                }
               }
 
               .sub-menu {
