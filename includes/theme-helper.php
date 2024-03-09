@@ -148,7 +148,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 			$class_position_sidebar = ' order-1';
 		endif;
 
-		$class_col_content = 'col-12 col-md-9' . $class_position_sidebar;
+		$class_col_content = 'col-12 col-md-8 col-lg-9' . $class_position_sidebar;
 	else:
 		$class_col_content = 'col-md-12';
 	endif;
@@ -158,7 +158,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 
 function clinic_col_sidebar(): string
 {
-	return 'col-12 col-md-3';
+	return 'col-12 col-md-4 col-lg-3';
 }
 
 // Post Meta

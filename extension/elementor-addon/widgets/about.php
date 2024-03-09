@@ -203,11 +203,15 @@ class Clinic_Elementor_About extends Widget_Base
 		<div class="element-about">
 			<div class="element-about__warp">
                 <div class="item item-left">
+                    <h3 class="heading d-md-none text-center">
+		                <?php echo esc_html( $settings['heading'] ); ?>
+                    </h3>
+
 	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
                 </div>
 
                 <div class="item item-right">
-                    <h3 class="heading">
+                    <h3 class="heading d-none d-md-block">
                         <?php echo esc_html( $settings['heading'] ); ?>
                     </h3>
 

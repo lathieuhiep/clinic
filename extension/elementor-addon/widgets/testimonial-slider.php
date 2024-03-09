@@ -131,7 +131,15 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                     'items' => '1',
                     'margin' => 12,
                 ],
-                '576' => [
+                '768' => [
+	                'items' => '2',
+	                'margin' => 12,
+                ],
+                '992' => [
+	                'items' => '2',
+	                'margin' => 24,
+                ],
+                '1200' => [
 	                'items' => '2',
 	                'margin' => 50,
                 ]

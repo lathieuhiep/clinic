@@ -19,10 +19,18 @@
 
       .item {
         font-family: var(--heading-font-family);
-        font-size: 1.4rem;
+        text-align: initial;
         display: grid;
         grid-column-gap: .8rem;
         grid-template-columns: 2rem 1fr;
+
+        @media (min-width: 1200px) {
+          font-size: 1.4rem;
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+          font-size: 1.3rem;
+        }
 
         i {
           font-size: 2rem;
@@ -116,7 +124,15 @@
   &__grid {
     display: grid;
     grid-gap: 2rem;
-    grid-template-columns: 37.6rem 1fr;
+    height: inherit;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 37.6rem 1fr;
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      grid-template-columns: 32rem 1fr;
+    }
 
     .logo {
       padding: .6rem 0;
@@ -144,7 +160,17 @@
         height: inherit;
 
         ~ li {
-          margin-left: 8rem;
+          @media (min-width: 1366px) {
+            margin-left: 8rem;
+          }
+
+          @media (min-width: 1200px) and (max-width: 1365px) {
+            margin-left: 4rem;
+          }
+
+          @media (min-width: 992px) and (max-width: 1199px) {
+            margin-left: 2rem;
+          }
         }
 
         > a {
@@ -739,6 +765,103 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.offcanvas-menu-mobile {
+  background-color: #000000;
+  z-index: 9999999999;
+
+  .offcanvas-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-white);
+
+    .btn-close {
+      color: #fff;
+      opacity: 1;
+    }
+  }
+
+  .offcanvas-title, a {
+    color: var(--color-white);
+  }
+
+  .btn-close-canvas {
+    border: none;
+    background-color: transparent;
+
+    i {
+      color: var(--color-white);
+    }
+  }
+
+  .offcanvas-body {
+    padding-left: 0;
+    padding-right: 0;
+
+    > ul {
+      > li {
+        padding-left: 1.2rem;
+        padding-right: 3.6rem;
+
+        ~ li {
+          margin-top: 1rem;
+          padding-top: 1rem;
+          border-top: 1px solid #111111;
+        }
+      }
+    }
+
+    ul {
+      li {
+        position: relative;
+        color: var(--color-white);
+
+        &.icon {
+          &:before {
+            display: none;
+          }
+        }
+
+        a {
+          display: inline-block;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          font-family: var(--body-font-family);
+
+          + .sub-menu-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            @include square(2.4rem);
+            @include flex-center();
+
+            i {
+              font-size: 1.4rem;
+              color: var(--color-white);
+              @include transition();
+            }
+
+            &.active {
+              i {
+                transform: rotate(180deg);
+              }
+            }
+          }
+        }
+
+        ul {
+          margin-top: .6rem;
+          display: none;
+
+          li {
+            ~ li {
+              margin-top: .8rem;
             }
           }
         }

@@ -3,13 +3,23 @@
     .item {
       display: grid;
 
-      @media (min-width: 992px) {
+      @media (min-width: 1200px) {
         grid-column-gap: 3rem;
         grid-template-columns: 61.6rem 1fr;
       }
 
+      @media (min-width: 768px) and (max-width: 1199px) {
+        grid-column-gap: 2.4rem;
+        grid-template-columns: 40rem 1fr;
+      }
+
       &__thumbnail {
         text-align: center;
+        
+        @media (max-width: 767px) {
+          max-width: 36.9rem;
+          margin: 0 auto;
+        }
 
         img {
           display: inline-block;
@@ -18,8 +28,18 @@
       }
 
       &__content {
+        @media (max-width: 767px) {
+          text-align: center;
+        }
+
         .title {
-          font-size: 2.9rem;
+          @media (min-width: 992px) {
+            font-size: 2.9rem;
+          }
+
+          @media (max-width: 991px) {
+            font-size: 1.8rem;
+          }
         }
 
         .linear-gradient {
@@ -46,6 +66,19 @@
           font-weight: 700;
           line-height: 1;
 
+          @media (max-width: 991px) {
+            justify-content: center;
+            flex-direction: column;
+          }
+
+          @media (min-width: 768px) and (max-width: 992px) {
+            align-items: flex-start !important;
+          }
+
+          @media (max-width: 767px) {
+            align-items: center !important;
+          }
+
           p {
             margin: 0;
             line-height: inherit;
@@ -58,15 +91,34 @@
 
           &__current {
             .number {
-              font-size: 10rem;
+              @media (min-width: 992px) {
+                font-size: 10rem;
+              }
+
+              @media (max-width: 991px) {
+                font-size: 6rem;
+              }
             }
 
             .txt {
               position: relative;
-              transform: translateY(-1.2rem);
+
+              @media (min-width: 992px) {
+                transform: translateY(-1.2rem);
+              }
+
+              @media (max-width: 991px) {
+                transform: translateY(-0.7rem);
+              }
 
               .unit {
-                font-size: 5rem;
+                @media (min-width: 992px) {
+                  font-size: 5rem;
+                }
+
+                @media (max-width: 991px) {
+                  font-size: 3rem;
+                }
               }
 
               .only {
@@ -80,10 +132,18 @@
           }
 
           &__old {
-            padding-left: 2rem;
             font-size: 2.5rem;
             font-style: italic;
             transform: translateY(-1.2rem);
+
+            @media (min-width: 576px) {
+              padding-left: 2rem;
+
+            }
+
+            @media (max-width: 991px) {
+              margin-top: 2rem;
+            }
 
             .txt {
               margin-bottom: .6rem;
@@ -92,8 +152,41 @@
         }
 
         .desc {
-          font-size: 2.5rem;
           font-weight: 500;
+
+          @media (min-width: 992px) {
+            font-size: 2.5rem;
+          }
+
+          @media (max-width: 991px) {
+            margin-top: 2rem;
+            font-size: 2rem;
+          }
+
+          ul {
+            padding: 0;
+            list-style: none;
+
+            @media (max-width: 991px) {
+              display: inline-flex;
+              flex-direction: column;
+              text-align: initial;
+            }
+
+            li {
+              position: relative;
+              padding-left: 1.6rem;
+
+              &:before {
+                position: absolute;
+                content: "";
+                top: 1.7rem;
+                left: 0;
+                @include square(.6rem, 50%);
+                background-color: #000;
+              }
+            }
+          }
         }
 
         .action-box {

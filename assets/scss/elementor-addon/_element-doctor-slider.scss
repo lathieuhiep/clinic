@@ -1,26 +1,48 @@
 .element-doctor-slider {
   &__warp {
     .item {
-      padding: 7.5rem 0;
       position: relative;
 
+      @media (min-width: 1200px) {
+        padding: 7.5rem 0;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        padding: 5rem 0;
+        display: grid;
+        grid-gap: 2.4rem;
+        grid-template-columns: 30rem 1fr;
+      }
+
       &__thumbnail {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 50.3rem;
-        z-index: 1;
-        transform: translateY(-50%);
+        @media (min-width: 1200px) {
+          width: 50.3rem;
+        }
+
+        @media (min-width: 1200px) {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          z-index: 1;
+          transform: translateY(-50%);
+        }
+
+        @media (max-width: 991px) {
+          max-width: 36.6rem;
+          margin: 0 auto 2rem;
+        }
       }
 
       &__body {
-        position: relative;
-        margin: 0 .5rem 0 auto;
-        padding: 2.5rem 8rem 4rem 14.7rem;
-        max-width: 81.1rem;
-        border-radius: 14.25rem;
-        background-color: var(--color-white);
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+        @media (min-width: 1200px) {
+          position: relative;
+          margin: 0 .5rem 0 auto;
+          padding: 2.5rem 8rem 4rem 14.7rem;
+          max-width: 81.1rem;
+          border-radius: 14.25rem;
+          background-color: var(--color-white);
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+        }
 
         .title {
           margin-bottom: 1rem;
@@ -64,9 +86,20 @@
         }
 
         .action-box {
-          position: absolute;
-          right: 7rem;
-          bottom: -3.6rem;
+          @media (min-width: 1200px) {
+            position: absolute;
+            right: 7rem;
+            bottom: -3.6rem;
+          }
+
+          @media (max-width: 1199px) {
+            margin-top: 1.6rem;
+            text-align: center;
+          }
+
+          a {
+            display: inline-block;
+          }
         }
       }
     }
@@ -76,6 +109,10 @@
 .element-doctor-avatar {
   width: 45rem;
   margin: 0 auto;
+
+  @media (max-width: 991px) {
+    display: none;
+  }
 
   .item {
     width: 10rem;

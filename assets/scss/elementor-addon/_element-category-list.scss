@@ -92,12 +92,15 @@
       }
 
       &__title {
-        font-size: 1.8rem;
         color: #132432;
         font-family: var(--heading-font-family);
         @include transition();
 
-        @media (min-width: 576px) and (max-width: 767px) {
+        @media (min-width: 992px) {
+          font-size: 1.8rem;
+        }
+
+        @media (min-width: 576px) and (max-width: 991px) {
           font-size: 1.5rem;
         }
 
