@@ -52,25 +52,29 @@ class clinic_info_company_widget extends WP_Widget {
                 </div>
             </div>
 
-            <div class="item">
-                <div class="item__icon">
-                    <i class="icon-square-facebook"></i>
-                </div>
+            <?php if ( $instance['facebook'] ) : ?>
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-square-facebook"></i>
+                    </div>
 
-                <div class="item__content">
-                    <?php echo esc_html( $instance['facebook'] ); ?>
+                    <div class="item__content">
+			            <?php echo esc_html( $instance['facebook'] ); ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <div class="item">
-                <div class="item__icon">
-                    <i class="icon-envelope"></i>
-                </div>
+		    <?php if ( $instance['mail'] ) : ?>
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-envelope"></i>
+                    </div>
 
-                <div class="item__content">
-                    <?php echo esc_html( $instance['mail'] ); ?>
+                    <div class="item__content">
+                        <?php echo esc_html( $instance['mail'] ); ?>
+                    </div>
                 </div>
-            </div>
+		    <?php endif; ?>
         </div>
     <?php
 
