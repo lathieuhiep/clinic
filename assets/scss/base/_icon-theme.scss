@@ -24,6 +24,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-globe:before {
+  content: "\e914";
+}
+.icon-search:before {
+  content: "\e913";
+  color: #4c505b;
+}
 .icon-sort-down:before {
   content: "\e912";
 }

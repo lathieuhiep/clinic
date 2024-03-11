@@ -98,8 +98,8 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'type' => Controls_Manager::TEXTAREA,
+				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'List Title' , 'clinic' ),
 				'label_block' => true,
 			]
@@ -114,6 +114,15 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 				],
 			]
 		);
+
+        $repeater->add_control(
+            'list_content', [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::WYSIWYG,
+                'default' => esc_html__( 'Nội dung' , 'clinic' ),
+                'show_label' => false,
+            ]
+        );
 
 		$this->add_control(
 			'list',
@@ -150,13 +159,17 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		<div class="element-gallery-grid-box">
             <div class="element-gallery-grid-box__warp">
 	            <?php foreach ( $settings['list'] as $item ) : ?>
-                    <div class="item text-center">
+                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 			           <div class="item__thumbnail">
 				           <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
                        </div>
 
+                        <h3 class="item__title text-center text-uppercase">
+                            <?php echo esc_html( $item['list_title'] ); ?>
+                        </h3>
+
                         <div class="item__content">
-                            <?php echo wpautop( $item['list_title'] ); ?>
+                            <?php echo wpautop( $item['list_content'] ); ?>
                         </div>
                     </div>
 	            <?php endforeach; ?>

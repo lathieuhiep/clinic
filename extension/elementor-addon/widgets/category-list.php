@@ -106,17 +106,6 @@ class Clinic_Elementor_Category_List extends Widget_Base
 			]
 		);
 
-        $repeater->start_controls_tabs(
-            'style_tabs'
-        );
-
-        $repeater->start_controls_tab(
-            'style_normal_tab',
-            [
-                'label' => esc_html__( 'Normal', 'textdomain' ),
-            ]
-        );
-
         $repeater->add_control(
             'list_image',
             [
@@ -127,30 +116,6 @@ class Clinic_Elementor_Category_List extends Widget_Base
                 ],
             ]
         );
-
-        $repeater->end_controls_tab();
-
-        $repeater->start_controls_tab(
-            'style_hover_tab',
-            [
-                'label' => esc_html__( 'Hover', 'textdomain' ),
-            ]
-        );
-
-        $repeater->add_control(
-            'list_image_hover',
-            [
-                'label' => esc_html__( 'Image', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $repeater->end_controls_tab();
-
-        $repeater->end_controls_tabs();
 
 		$repeater->add_control(
 			'list_category',

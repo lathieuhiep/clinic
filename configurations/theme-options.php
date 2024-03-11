@@ -105,9 +105,23 @@ if ( class_exists( 'CSF' ) ) {
 		'fields' => array(
             array(
                 'id'      => 'opt_general_address',
-                'type'    => 'text',
+                'type'    => 'fieldset',
                 'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
-                'default' => esc_html__('180 Đường Trần Phú, Phước Ninh, Hải Châu, Đà Nẵng', 'clinic')
+                'fields' => array(
+                    array(
+                        'id'    => 'street',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Địa chỉ cụ thể', 'clinic' ),
+                        'default' => '180 Đường Trần Phú',
+                    ),
+
+                    array(
+                        'id'    => 'district',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã', 'clinic' ),
+                        'default' => 'Phước Ninh, Hải Châu, Đà Nẵng',
+                    ),
+                ),
             ),
 
 			array(
@@ -115,29 +129,6 @@ if ( class_exists( 'CSF' ) ) {
 				'type'    => 'text',
 				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
 				'default' => '7:30 - 20:00'
-			),
-
-			array(
-				'id'     => 'opt_general_hotline_group',
-				'type'   => 'repeater',
-				'title'  => esc_html__( 'Hotline Group', 'clinic' ),
-				'fields' => array(
-					array(
-						'id'    => 'phone',
-						'type'  => 'text',
-						'title' => esc_html__( 'Điện thoại', 'clinic' ),
-					),
-				),
-
-				'default' => array(
-					array(
-						'phone' => '0888.888.115',
-					),
-
-					array(
-						'phone' => '024.888.11115',
-					)
-				)
 			),
 
 			array(
