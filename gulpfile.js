@@ -47,7 +47,8 @@ function buildStylesBootstrap() {
 function buildLibsBootstrapJS() {
     return src([
         `${pathNodeModule}/bootstrap/js/dist/modal.js`,
-        `${pathNodeModule}/bootstrap/js/dist/offcanvas.js`
+        `${pathNodeModule}/bootstrap/js/dist/offcanvas.js`,
+        `${pathNodeModule}/bootstrap/js/dist/tab.js`,
     ])
         .pipe(babel())
         .pipe(webpack({

@@ -61,7 +61,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'text', 'list', 'about'];
+		return ['image', 'text'];
 	}
 
 	/**
@@ -87,19 +87,17 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	protected function register_controls(): void
 	{
 		$this->start_controls_section(
-			'list_section',
+			'image_section',
 			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
+				'label' => esc_html__( 'Image', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$repeater = new Repeater();
-
-		$repeater->add_control(
-			'list_image',
+		$this->add_control(
+			'image',
 			[
-				'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
+				'label' => esc_html__( 'Choose Image', 'textdomain' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -107,63 +105,43 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			]
 		);
 
-		$repeater->add_control(
-			'list_title', [
-				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Title #1' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'type' => Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'List Content' , 'clinic' ),
-				'label_block' => true,
+		$this->add_control(
+			'heading',
+			[
+				'label'       => esc_html__( 'Heading', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Heading', 'clinic' ),
+				'label_block' => true
 			]
 		);
 
 		$this->add_control(
-			'list',
+			'desc',
 			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_title' => __( 'Title #1', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #2', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #3', 'clinic' ),
-					],
-				],
-				'title_field' => '{{{ list_title }}}',
+				'label'     =>  esc_html__( 'Description', 'clinic' ),
+				'type'      =>  Controls_Manager::WYSIWYG,
+				'default'   =>  esc_html__( 'Default description', 'clinic' ),
 			]
 		);
 
 		$this->end_controls_section();
 
-		// style stt
+		// style heading
 		$this->start_controls_section(
-			'style_stt_section',
+			'style_heading_section',
 			[
-				'label' => esc_html__( 'Số thự tự', 'clinic' ),
+				'label' => esc_html__( 'Heading', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'list_stt_color',
+			'heading_color',
 			[
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-about-us .item__content .stt' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about-us__warp .item .heading' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -171,29 +149,29 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'list_stt_typography',
-				'selector' => '{{WRAPPER}} .element-about-us .item__content .stt',
+				'name' => 'heading_typography',
+				'selector' => '{{WRAPPER}} .element-about-us__warp .item .heading',
 			]
 		);
 
 		$this->end_controls_section();
 
-		// style title
+		// style desc
 		$this->start_controls_section(
-			'style_title_section',
+			'style_desc_section',
 			[
-				'label' => esc_html__( 'Title', 'clinic' ),
+				'label' => esc_html__( 'Description', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'list_title_color',
+			'desc_color',
 			[
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-about-us .item__content .box .title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about-us__warp .item .desc' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -201,38 +179,8 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'list_title_typography',
-				'selector' => '{{WRAPPER}} .element-about-us .item__content .box .title',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style content
-		$this->start_controls_section(
-			'style_content_section',
-			[
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'list_content_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-about-us .item__content .box .desc' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_content_typography',
-				'selector' => '{{WRAPPER}} .element-about-us .item__content .box .desc',
+				'name' => 'desc_typography',
+				'selector' => '{{WRAPPER}} .element-about-us__warp .item .desc',
 			]
 		);
 
@@ -249,45 +197,30 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-	?>
+
+		$hotline = clinic_get_opt_hotline();
+		?>
 		<div class="element-about-us">
 			<div class="element-about-us__warp">
-				<?php
-				$stt = 1;
-				foreach ( $settings['list'] as $item ) :
-				?>
-					<div class="item d-flex elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'full' ); ?>
-						</div>
+                <div class="item item-left">
+                    <h3 class="heading d-md-none text-center">
+		                <?php echo esc_html( $settings['heading'] ); ?>
+                    </h3>
 
-						<div class="item__content">
-							<p class="stt">
-								<?php echo esc_html( $this->addZeroBeforeNumber($stt) ); ?>
-							</p>
+	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
+                </div>
 
-                            <div class="box">
-                                <h3 class="title">
-	                                <?php echo esc_html( $item['list_title'] ); ?>
-                                </h3>
+                <div class="item item-right">
+                    <h3 class="heading d-none d-md-block">
+                        <?php echo esc_html( $settings['heading'] ); ?>
+                    </h3>
 
-                                <div class="desc text-justify">
-                                    <?php echo wpautop( $item['list_content'] ) ?>
-                                </div>
-                            </div>
-						</div>
-					</div>
-				<?php $stt++; endforeach; ?>
+                    <div class="desc text-justify">
+	                    <?php echo wpautop( $settings['desc'] ); ?>
+                    </div>
+                </div>
 			</div>
 		</div>
 		<?php
-	}
-
-	protected function addZeroBeforeNumber(int $number): int|string {
-		if ( $number < 10 ) {
-			return '0' . $number;
-		}
-
-		return $number;
 	}
 }

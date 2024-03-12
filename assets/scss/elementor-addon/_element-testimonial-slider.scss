@@ -1,23 +1,26 @@
 .element-testimonial-slider {
   .item {
     position: relative;
-    margin-top: 7.5rem;
-    margin-bottom: 1rem;
-    padding: 9.6rem 2.4rem 2.6rem;
+    margin-top: 6rem;
+    margin-bottom: 4.5rem;
+    padding: 1.2rem 2.4rem 8rem;
     border-radius: 2rem;
     background-color: #fff;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
     display: flex;
     flex-direction: column;
+    @include transition();
 
     .thumbnail {
       position: absolute;
-      top: -7.5rem;
+      bottom: -6rem;
       left: 50%;
       z-index: 2;
       margin: 0 auto 2.1rem;
-      @include square(15rem, 50%);
+      @include square(9rem, 50%);
+      border: .3rem solid var(--color-cadmium-green);
       transform: translateX(-50%);
+      @include transition();
 
       img {
         width: 100%;
@@ -27,16 +30,50 @@
     }
 
     .desc {
-      margin-bottom: 2.1rem;
       font-size: 1.6rem;
       text-align: justify;
       flex: 1;
+      @include transition();
     }
 
     .name {
+      margin-bottom: .4rem;
       font-weight: 700;
       font-size: 2rem;
-      color: #FF0000;
+      color: #014B3A;
+      @include transition();
+    }
+
+    .info {
+      font-size: 2rem;
+      @include transition();
+    }
+  }
+
+  .owl-carousel {
+    .owl-item {
+      @include transition();
+
+      &.center {
+        transform: scale(1.12) translateY(-3rem);
+        z-index: 2;
+
+        .item {
+          background-color: #31B770;
+
+          .name {
+            color: #FFE600;
+          }
+
+          .info, .desc {
+            color: var(--color-white);
+          }
+
+          .thumbnail {
+            border-color: var(--color-white);
+          }
+        }
+      }
     }
   }
 }

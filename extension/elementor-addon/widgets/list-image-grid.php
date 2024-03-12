@@ -1,7 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -10,7 +9,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
+class Clinic_Elementor_List_Image_Grid extends Widget_Base
 {
 
 	/**
@@ -23,7 +22,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-image-box-content-list';
+		return 'clinic-list-image-grid';
 	}
 
 	/**
@@ -36,7 +35,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Image Box Content List', 'clinic');
+		return esc_html__('Danh sách hình ảnh', 'clinic');
 	}
 
 	/**
@@ -62,7 +61,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'list', 'box', 'content' ];
+		return ['image', 'grid', 'gallery', 'box' ];
 	}
 
 	/**
@@ -96,7 +95,7 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 		);
 
 		$repeater = new Repeater();
-        
+
 		$repeater->add_control(
 			'list_title', [
 				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
@@ -108,20 +107,11 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 
 		$repeater->add_control(
 			'list_image', [
-				'label' => esc_html__( 'Ảnh', 'clinic' ),
+				'label' => esc_html__( 'Image', 'clinic' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
-			]
-		);
-        
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'type' => Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Nội dung' , 'clinic' ),
-				'label_block' => true,
 			]
 		);
 
@@ -144,66 +134,6 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-		// style title
-		$this->start_controls_section(
-			'style_title_section',
-			[
-				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'title_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-image-box-content-list__grid .item__content .title' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .element-image-box-content-list__grid .item__content .title',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style content
-		$this->start_controls_section(
-			'style_content_section',
-			[
-				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'content_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-image-box-content-list__grid .item__content .desc' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'content_typography',
-				'selector' => '{{WRAPPER}} .element-image-box-content-list__grid .item__content .desc',
-			]
-		);
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -216,36 +146,21 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-		$medical_appointment_form = clinic_get_opt_medical_appointment();
-    ?>
-		<div class="element-image-box-content-list text-justify">
-			<div class="element-image-box-content-list__grid">
+		?>
+		<div class="element-list-image-grid">
+			<div class="element-list-image-grid__warp">
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 						<div class="item__thumbnail">
 							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
 						</div>
 
-						<div class="item__content">
-							<h3 class="title text-uppercase">
-								<?php echo esc_html( $item['list_title'] ); ?>
-							</h3>
-
-							<div class="desc">
-								<?php echo wpautop( $item['list_content'] ); ?>
-							</div>
-						</div>
+						<h3 class="item__title text-center text-uppercase">
+							<?php echo esc_html( $item['list_title'] ); ?>
+						</h3>
 					</div>
 				<?php endforeach; ?>
 			</div>
-
-			<?php if ( $medical_appointment_form ) : ?>
-                <div class="action text-center">
-                    <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                        <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-booking-now.png' ) ) ?>" alt="">
-                    </a>
-                </div>
-			<?php endif; ?>
 		</div>
 		<?php
 	}

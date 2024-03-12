@@ -101,7 +101,10 @@
                     thisSlider.find(".owl-item").eq(0).addClass("current");
                 }).owlCarousel(owlCarouselElementorOptions({
                     loop: false,
-                    items: 4
+                    items: 5,
+                    nav: true,
+                    dots: false,
+                    margin: 16
                 })).on('changed.owl.carousel', function (el) {
                     if (syncedSecondary) {
                         const number = el.item.index;

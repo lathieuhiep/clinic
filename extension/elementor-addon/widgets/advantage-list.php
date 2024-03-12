@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Safety_Principles extends Widget_Base
+class Clinic_Elementor_Advantage_List extends Widget_Base
 {
 
 	/**
@@ -23,7 +23,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-safety-principles';
+		return 'clinic-advantage-list';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Quy trình khám chữa', 'clinic');
+		return esc_html__('Ưu điểm', 'clinic');
 	}
 
 	/**
@@ -112,7 +112,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		$this->start_controls_section(
 			'list_section',
 			[
-				'label' => esc_html__( 'Danh sách quy tắc', 'clinic' ),
+				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -129,21 +129,21 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		);
 
 		$repeater->add_control(
+			'list_image', [
+				'label' => esc_html__( 'Image', 'clinic' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$repeater->add_control(
 			'list_content', [
 				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => esc_html__( 'Nội dung' , 'clinic' ),
 				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'list_number_color', [
-				'label' => esc_html__( 'Number Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-safety-principles__warp .item-group {{CURRENT_ITEM}} .number' => 'color: {{VALUE}}'
-				],
 			]
 		);
 
@@ -178,66 +178,6 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-		// style title
-		$this->start_controls_section(
-			'style_title_section',
-			[
-				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'list_title_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-safety-principles__warp .item-group .title' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_title_typography',
-				'selector' => '{{WRAPPER}} .element-safety-principles__warp .item-group .title',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style number
-		$this->start_controls_section(
-			'style_number_section',
-			[
-				'label' => esc_html__( 'Số', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'list_number_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-safety-principles__warp .item-group .number' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_number_typography',
-				'selector' => '{{WRAPPER}} .element-safety-principles__warp .item-group .number',
-			]
-		);
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -250,23 +190,39 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
+		$medical_appointment_form = clinic_get_opt_medical_appointment();
+		$link_chat = clinic_get_opt_link_chat_doctor();
 		$list = $settings['list'];
 
 		$listFirst = $listLast = [];
-        if ( !empty( $list ) ) {
-            $size = ceil(count($list) / 2);
-	        $listChuck = array_chunk($list, $size, true);
+		if ( !empty( $list ) ) {
+			$size = ceil(count($list) / 2);
+			$listChuck = array_chunk($list, $size, true);
 
-	        $listFirst = $listChuck[0];
-	        $listLast = $listChuck[1] ?? [];
-        }
-	?>
-		<div class="element-safety-principles">
-			<div class="element-safety-principles__warp">
-                <?php $this->listContent($listFirst, 'item-left'); ?>
+			$listFirst = $listChuck[0];
+			$listLast = $listChuck[1] ?? [];
+		}
+		?>
+		<div class="element-advantage-list">
+			<div class="element-advantage-list__warp">
+				<?php $this->listContent($listFirst, 'item-left'); ?>
 
 				<div class="item item-thumbnail">
 					<?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+
+					<div class="action-box">
+						<?php if ( $link_chat ) : ?>
+							<a class="btn-link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+								<?php esc_html_e('TƯ VẤN ONLINE', 'clinic'); ?>
+							</a>
+						<?php endif; ?>
+
+						<?php if ( $medical_appointment_form ) : ?>
+							<a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+								<?php esc_html_e('ĐẶT LỊCH HẸN', 'clinic'); ?>
+							</a>
+						<?php endif; ?>
+					</div>
 				</div>
 
 				<?php $this->listContent($listLast, 'item-right'); ?>
@@ -275,41 +231,27 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		<?php
 	}
 
-    protected function listContent($list, $class): void {
-    ?>
-        <div class="item item-group <?php echo esc_attr( $class ); ?>">
-		    <?php
-		    if ( $list ) :
-			    foreach ( $list as $key => $item):
-            ?>
-                <div class="repeater-item text-end-lg elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                    <div class="top-box">
-                        <h4 class="title text-uppercase">
-		                    <?php echo esc_html( $item['list_title'] ); ?>
-                        </h4>
+	protected function listContent($list, $class): void {
+		?>
+		<div class="item item-group <?php echo esc_attr( $class ); ?>">
+			<?php
+			if ( $list ) :
+				foreach ( $list as $item):
+					?>
+					<div class="repeater-item text-end-lg elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+						<div class="thumbnail">
+							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'full' ); ?>
+						</div>
 
-                        <strong class="number">
-		                    <?php echo esc_html( $this->addZeroBeforeNumber($key + 1) ); ?>
-                        </strong>
-                    </div>
-
-                    <div class="content-box text-justify">
-                        <?php echo wpautop( $item['list_content'] ); ?>
-                    </div>
-                </div>
-            <?php
-			    endforeach;
-		    endif;
-		    ?>
-        </div>
-    <?php
-    }
-
-	protected function addZeroBeforeNumber(int $number): int|string {
-		if ( $number < 10 ) {
-			return '0' . $number;
-		}
-
-		return $number;
+						<div class="content-box text-justify">
+							<?php echo wpautop( $item['list_content'] ); ?>
+						</div>
+					</div>
+				<?php
+				endforeach;
+			endif;
+			?>
+		</div>
+		<?php
 	}
 }

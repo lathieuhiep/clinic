@@ -80,6 +80,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 	protected function render(): void {
 		$settings = $this->get_settings_for_display();
 		$medical_appointment_form = clinic_get_opt_medical_appointment();
+		$link_chat = clinic_get_opt_link_chat_doctor();
 
 		$owl_options = [
 			'items' => 1,
@@ -110,11 +111,9 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 					while ( $query->have_posts() ) :
 						$query->the_post();
 
-                    $avatar = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_avatar_id', true);
+                    $avatars[] = get_post_thumbnail_id();
                     $position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
                     $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
-
-                    $avatars[] = $avatar;
                     ?>
 
                     <div class="item">
@@ -123,25 +122,31 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                         </div>
 
                         <div class="item__body">
-                            <h3 class="title text-uppercase text-center">
+                            <h3 class="title text-uppercase">
                                 <?php echo esc_html( $position ) . ' '; the_title(); ?>
                             </h3>
 
-                            <p class="position text-uppercase text-center">
+                            <h4 class="position">
                                 <?php echo esc_html( $specialist ); ?>
-                            </p>
+                            </h4>
 
                             <div class="content">
                                 <?php the_content(); ?>
                             </div>
 
-	                        <?php if ( $medical_appointment_form ) : ?>
-                                <div class="action-box">
+                            <div class="action-box">
+                                <?php if ( $medical_appointment_form ) : ?>
                                     <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
                                         <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
                                     </a>
-                                </div>
-	                        <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php if ( $link_chat ) : ?>
+                                    <a class="action-box__link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                        <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-bs-tu-van.png' ) ) ?>" alt="">
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
 
@@ -156,7 +161,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                         <div class="element-doctor-avatar__slider owl-carousel owl-theme">
 	                        <?php foreach ($avatars as $avatar) : ?>
                                 <div class="item">
-	                                <?php echo wp_get_attachment_image( $avatar, 'full' ); ?>
+	                                <?php echo wp_get_attachment_image( $avatar, 'large' ); ?>
                                 </div>
 	                        <?php endforeach; ?>
                         </div>

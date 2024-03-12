@@ -51,12 +51,21 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
         $repeater->add_control(
             'list_title', [
-                'label' => esc_html__( 'Name', 'clinic' ),
+                'label' => esc_html__( 'Tên', 'clinic' ),
                 'type' => Controls_Manager::TEXT,
                 'default' => esc_html__( 'Anh L.T.D' , 'clinic' ),
                 'label_block' => true,
             ]
         );
+
+	    $repeater->add_control(
+		    'list_info', [
+			    'label' => esc_html__( 'Thông tin', 'clinic' ),
+			    'type' => Controls_Manager::TEXT,
+			    'default' => esc_html__( '36 tuổi - Thanh Khê, Đà Nẵng' , 'clinic' ),
+			    'label_block' => true,
+		    ]
+	    );
 
         $repeater->add_control(
             'list_description',
@@ -126,22 +135,21 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
 	    $owl_options = [
+            'dots' => true,
+		    'margin' => 12,
+            'center' => true,
             'responsive' => [
                 '0' => [
-                    'items' => '1',
-                    'margin' => 12,
+                    'items' => '1'
                 ],
                 '768' => [
-	                'items' => '2',
-	                'margin' => 12,
+	                'items' => '2'
                 ],
                 '992' => [
-	                'items' => '2',
-	                'margin' => 24,
+	                'items' => '2'
                 ],
                 '1200' => [
-	                'items' => '2',
-	                'margin' => 50,
+	                'items' => '3'
                 ]
             ]
 	    ];
@@ -155,6 +163,18 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <p class="name">
+		                    <?php echo esc_html( $item['list_title'] ); ?>
+                        </p>
+
+                        <p class="info fst-italic">
+		                    <?php echo wp_kses_post( $item['list_info'] ) ?>
+                        </p>
+
+                        <div class="desc text-justify">
+		                    <?php echo wp_kses_post( $item['list_description'] ) ?>
+                        </div>
+
                         <div class="thumbnail">
                             <?php
                             if ( $imageId ) :
@@ -164,14 +184,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                                 <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
                             <?php endif; ?>
                         </div>
-
-                        <div class="desc">
-                            <?php echo wp_kses_post( $item['list_description'] ) ?>
-                        </div>
-
-                        <p class="name text-center">
-	                        <?php echo esc_html( $item['list_title'] ); ?>
-                        </p>
                     </div>
 
                 <?php endforeach; ?>
