@@ -34,6 +34,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advantage-tabs.php' );
 
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
@@ -64,6 +65,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
 	$widgets_manager->register( new \Clinic_Elementor_Addon_Post_Grid() );
 	$widgets_manager->register( new \Clinic_Elementor_About_Us() );
+	$widgets_manager->register( new \Clinic_Elementor_Advantage_Tabs() );
 
 
 

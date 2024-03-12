@@ -29,8 +29,10 @@ $hotline = clinic_get_opt_hotline();
                     </div>
 
                     <div class="item__content">
-                        <strong class="text-uppercase"><?php echo esc_html( $address['street'] ); ?></strong>
-                        <p><?php echo esc_html( $address['district'] ); ?></p>
+                        <?php if ( !empty( $address ) ) : ?>
+                            <strong class="text-uppercase"><?php echo esc_html( $address['street'] ); ?></strong>
+                            <p><?php echo esc_html( $address['district'] ); ?></p>
+                        <?php endif; ?>
                     </div>
                 </div>
 

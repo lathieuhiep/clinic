@@ -1,0 +1,79 @@
+.element-advantage-tabs {
+  .nav {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-gap: 1.1rem;
+    grid-template-columns: repeat(6, 1fr);
+
+    .nav-item {
+      .nav-link {
+        padding: 2rem 1.5rem;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+        font-family: var(--heading-font-family);
+        text-transform: uppercase;
+        border-radius: 1rem;
+        background-color: var(--color-white);
+        @include transition();
+
+        &:hover {
+          color: var(--color-salem);
+        }
+
+        &.active {
+          color: var(--color-white);
+          background-color: var(--color-salem);
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    .grid {
+      padding: 2.6rem 2.8rem;
+      display: grid;
+      grid-gap: 2.4rem 4.2rem;
+      grid-template-columns: 47.7rem 1fr;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
+      background-color: var(--color-white);
+
+      img {
+        width: 100%;
+        border-radius: 1rem;
+      }
+
+      .title {
+        margin-bottom: 2rem;
+        font-size: 2.9rem;
+        color: #020202;
+      }
+
+      .content {
+        line-height: 1.5;
+
+        p {
+          margin: 0;
+
+          + p {
+            margin-top: .6rem;
+          }
+        }
+      }
+
+      .action-box {
+        margin-top: 1rem;
+
+        a {
+          display: inline-block;
+
+          ~ a {
+            margin-left: .6rem;
+          }
+        }
+      }
+    }
+  }
+}
