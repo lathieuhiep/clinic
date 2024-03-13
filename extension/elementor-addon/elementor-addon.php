@@ -35,21 +35,19 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advantage-tabs.php' );
-
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-text-editor.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/principles.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-box-grid.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure-list.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/compare-appointments.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advise.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
-
-
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/commitment.php' );
-
-
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/quality.php' );
-
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/equipment.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
-
 
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
@@ -66,21 +64,19 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Addon_Post_Grid() );
 	$widgets_manager->register( new \Clinic_Elementor_About_Us() );
 	$widgets_manager->register( new \Clinic_Elementor_Advantage_Tabs() );
-
-
+	$widgets_manager->register( new \Clinic_Elementor_Grid_Text_Editor() );
+	$widgets_manager->register( new \Clinic_Elementor_Principles() );
+	$widgets_manager->register( new \Clinic_Elementor_List_Box_Grid() );
+	$widgets_manager->register( new \Clinic_Elementor_Procedure_List() );
+	$widgets_manager->register( new \Clinic_Elementor_Compare_Appointments() );
+	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Package_Slider() );
 //	$widgets_manager->register( new \Clinic_Elementor_Advise() );
 //	$widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
-
-
 //	$widgets_manager->register( new \Clinic_Elementor_Commitment() );
-
-
 //	$widgets_manager->register( new \Clinic_Elementor_Quality() );
-
 //	$widgets_manager->register( new \Clinic_Elementor_Equipment() );
-//	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 }
 
 // Register scripts
@@ -99,4 +95,12 @@ function clinic_elementor_scripts(): void {
 
 		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
 	}
+}
+
+function addZeroBeforeNumber(int $number): int|string {
+	if ( $number < 10 ) {
+		return '0' . $number;
+	}
+
+	return $number;
 }

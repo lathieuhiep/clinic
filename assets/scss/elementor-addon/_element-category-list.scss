@@ -1,12 +1,21 @@
 .element-category-list {
   &__grid {
-    padding: 2rem 3rem;
     display: grid;
-    grid-gap: 1.8rem 2.4rem;
     background-color: #E7F4ED;
 
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
+      padding: 2rem 3rem;
+      grid-gap: 1.8rem 2.4rem;
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 991px) {
+      padding: 1.6rem;
+      grid-gap: 1.6rem;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     @media (min-width: 576px) and (max-width: 767px) {

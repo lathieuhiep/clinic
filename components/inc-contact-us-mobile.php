@@ -20,6 +20,6 @@ $chat_zalo = clinic_get_opt_chat_zalo();
 		$zalo_phone = $chat_zalo['phone'];
 		$zalo_qr_code = $chat_zalo['qr_code'];
 		?>
-        <a class="item chat-with-us__zalo" href="#" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
+        <a class="item chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
 	<?php endif; ?>
 </div>

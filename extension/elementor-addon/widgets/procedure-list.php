@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Category_List extends Widget_Base
+class Clinic_Elementor_Procedure_List extends Widget_Base
 {
 
 	/**
@@ -23,7 +23,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-category-list';
+		return 'clinic-procedure-list';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Category List', 'clinic');
+		return esc_html__('Quy trình', 'clinic');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-post-list';
+		return 'eicon-gallery-grid';
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['list', 'category' ];
+		return ['image', 'grid', 'gallery', 'box' ];
 	}
 
 	/**
@@ -99,31 +99,29 @@ class Clinic_Elementor_Category_List extends Widget_Base
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Title', 'clinic' ),
+				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'List Title' , 'clinic' ),
 				'label_block' => true,
 			]
 		);
 
-        $repeater->add_control(
-            'list_image',
-            [
-                'label' => esc_html__( 'Image', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
+		$repeater->add_control(
+			'list_image', [
+				'label' => esc_html__( 'Image', 'clinic' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
 
 		$repeater->add_control(
-			'list_category',
-			[
-				'label' => esc_html__( 'Danh mục', 'clinic' ),
-				'type' => Controls_Manager::SELECT2,
-				'label_block' => true,
-				'options' => clinic_check_get_cat('category'),
+			'list_content', [
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'Nội dung' , 'clinic' ),
+				'show_label' => false,
 			]
 		);
 
@@ -147,43 +145,23 @@ class Clinic_Elementor_Category_List extends Widget_Base
 
 		$this->end_controls_section();
 
-		// style content
+		// style desc
 		$this->start_controls_section(
-			'content_style',
+			'style_item_section',
 			[
-				'label' => esc_html__('Title', 'clinic'),
+				'label' => esc_html__( 'Hộp', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'title_color',
+			'item_background_color',
 			[
-				'label' => esc_html__('Color', 'clinic'),
+				'label' => esc_html__( 'Background Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-specialist__grid .item .item__title' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .element-procedure-list__warp .item' => 'background-color: {{VALUE}}',
 				],
-			]
-		);
-
-		$this->add_control(
-			'title_color_hover',
-			[
-				'label' => esc_html__('Color Hover', 'clinic'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-specialist__grid .item:hover .item__title' => 'color: {{VALUE}};'
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'title_typography',
-				'label' => esc_html__( 'Typography', 'clinic' ),
-				'selector' => '{{WRAPPER}} .element-specialist__grid .item .item__title',
 			]
 		);
 
@@ -201,34 +179,32 @@ class Clinic_Elementor_Category_List extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="element-category-list">
-			<?php if ( $settings['list'] ) : ?>
-				<div class="element-category-list__grid">
-					<?php
-					foreach ( $settings['list'] as $item) :
-						$category_link = get_category_link( $item['list_category'] );
+		<div class="element-procedure-list">
+			<div class="element-procedure-list__warp">
+				<?php foreach ( $settings['list'] as $key => $item ) : ?>
+					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <div class="item__line"></div>
 
-						if ( $category_link ) :
-					?>
-					<div class="item">
-						<a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
-
-						<div class="item__image">
-							<?php
-                            echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large');
-                            ?>
+						<div class="item__stt">
+							<span class="number f-family-heading fw-bold"><?php echo esc_html( addZeroBeforeNumber( $key + 1 ) ); ?></span>
 						</div>
 
-						<h4 class="item__title m-0 text-uppercase text-center">
-							<?php echo esc_html( $item['list_title'] ) ?>
-						</h4>
+						<div class="item__thumbnail text-center">
+							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+						</div>
+
+						<div class="item__content text-justify">
+							<h3 class="title text-uppercase text-center">
+								<?php echo esc_html( $item['list_title'] ); ?>
+							</h3>
+
+							<div class="desc">
+								<?php echo wpautop( $item['list_content'] ); ?>
+							</div>
+						</div>
 					</div>
-					<?php
-						endif;
-					endforeach;
-					?>
-				</div>
-			<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
 		<?php
 	}

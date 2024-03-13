@@ -1,14 +1,28 @@
 .element-advantage-list {
   &__warp {
     display: grid;
-    grid-gap: 2.4rem 8.6rem;
-    align-items: center;
 
     @media (min-width: 1200px) {
+      grid-gap: 2.4rem 8.6rem;
+    }
+
+    @media (max-width: 1199px) {
+      grid-gap: 2.4rem;
+    }
+
+    @media (min-width: 992px) {
       grid-template-columns: 1fr 36.6rem 1fr;
     }
 
+    @media (min-width: 768px) and (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .item-group {
+      @media (max-width: 991px) {
+        order: 1;
+      }
+
       .repeater-item {
         padding: 2.8rem 2.4rem;
         border-radius: 1rem;
@@ -26,7 +40,25 @@
         .content-box {
           font-size: 1.8rem;
           font-weight: 500;
+
+          @media (max-width: 991px) {
+            font-size: 1.5rem;
+          }
         }
+      }
+    }
+
+    .item-thumbnail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      @media (max-width: 991px) {
+        order: 2;
+      }
+      @media (min-width: 576px) and (max-width: 991px) {
+        grid-column: 1 / span 2;
       }
     }
 

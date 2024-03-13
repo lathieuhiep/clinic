@@ -289,7 +289,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
                         </h4>
 
                         <strong class="number">
-		                    <?php echo esc_html( $this->addZeroBeforeNumber($key + 1) ); ?>
+		                    <?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?>
                         </strong>
                     </div>
 
@@ -304,12 +304,4 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
         </div>
     <?php
     }
-
-	protected function addZeroBeforeNumber(int $number): int|string {
-		if ( $number < 10 ) {
-			return '0' . $number;
-		}
-
-		return $number;
-	}
 }

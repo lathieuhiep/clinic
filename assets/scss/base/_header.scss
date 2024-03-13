@@ -12,8 +12,16 @@
 
     .grid-layout {
       display: grid;
-      grid-column-gap: 6rem;
-      grid-template-columns: 37.6rem 1fr;
+
+      @media (min-width: 1200px) {
+        grid-column-gap: 6rem;
+        grid-template-columns: 37.6rem 1fr;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        grid-column-gap: 3rem;
+        grid-template-columns: 30rem 1fr;
+      }
     }
 
     .info {
@@ -52,8 +60,15 @@
 
         &__content {
           strong, .phone {
-            font-size: 1.8rem;
             color: #119246;
+
+            @media (min-width: 1200px) {
+              font-size: 1.8rem;
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+              font-size: 1.5rem;
+            }
           }
         }
 
@@ -119,14 +134,25 @@
 
   .grid-layout {
     display: grid;
-    grid-gap: 3.4rem;
-    grid-template-columns: 1fr 36.9rem;
+
+    @media (min-width: 1200px) {
+      grid-gap: 3.4rem;
+      grid-template-columns: 1fr 36.9rem;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      grid-gap: 2.4rem;
+      grid-template-columns: 1fr 30rem;
+    }
   }
 
   .primary-menu {
-    padding-left: 5rem;
     position: relative;
     height: inherit;
+
+    @media (min-width: 1200px) {
+      padding-left: 5rem;
+    }
 
     > ul {
       > li {

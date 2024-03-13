@@ -1,0 +1,33 @@
+.element-list-box-grid {
+  &__warp {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    .item {
+      padding: 5rem 4.2rem;
+      display: grid;
+      grid-gap: 2.7rem;
+      grid-template-columns: 8rem 1fr;
+      border-radius: .5rem;
+      background-color: #EEEEEE;
+
+      &__thumbnail {
+        padding-top: 5rem;
+      }
+
+      &__content {
+        .title {
+          margin-bottom: 2rem;
+          font-size: 2.3rem;
+          color: #000000;
+          line-height: 1.1;
+        }
+
+        .desc {
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,28 @@
 .element-company-info {
   &__warp {
     display: grid;
-    grid-gap: 2.4rem;
-    grid-template-columns: repeat(2, 1fr);
+
+    @media (min-width: 992px) {
+      grid-gap: 2.4rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 991px) {
+      grid-gap: 2.4rem;
+    }
 
     .item-gallery {
       display: grid;
-      grid-gap: .8rem 2rem;
-      grid-template-columns: repeat(4, 1fr);
+
+      @media (min-width: 576px) {
+        grid-gap: .8rem 2rem;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (max-width: 575px) {
+        grid-gap: 1.2rem;
+        grid-template-columns: repeat(3, 1fr);
+      }
 
       .thumbnail {
         border-radius: .5rem;
@@ -20,13 +35,22 @@
         }
 
         &:not(:nth-child(2)) {
-          height: 10.6rem;
+          @media (min-width: 576px) {
+            height: 10.6rem;
+          }
         }
 
         &:nth-child(2) {
-          grid-column: 2 / span 3;
-          grid-row: 1 / span 3;
-          height: 33.4rem;
+          @media (min-width: 576px) {
+            grid-column: 2 / span 3;
+            grid-row: 1 / span 3;
+            height: 33.4rem;
+          }
+
+          @media (max-width: 575px) {
+            grid-column: 1 / span 3;
+            grid-row: 2 / span 3;
+          }
         }
       }
     }
@@ -34,7 +58,10 @@
     .item-info {
       display: grid;
       grid-gap: 2.6rem;
-      grid-template-columns: repeat(2, 1fr);
+
+      @media (min-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
       .info-box {
         border-radius: .5rem;
@@ -47,10 +74,17 @@
         .title {
           margin: 0;
           padding: 1.7rem 1.2rem 1.6rem;
-          font-size: 2rem;
           font-weight: 500;
           color: var(--color-white);
           background-color: #4195AE;
+
+          @media (min-width: 1200px) {
+            font-size: 2rem;
+          }
+
+          @media (max-width: 1199px) {
+            font-size: 1.5rem;
+          }
         }
 
         .desc {
@@ -94,6 +128,7 @@
         }
 
         .note {
+          padding: 4rem 1.2rem;
           display: flex;
           align-items: center;
           justify-content: center;
