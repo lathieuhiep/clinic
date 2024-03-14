@@ -11,8 +11,12 @@
       display: grid;
       grid-gap: 2rem;
 
-      @media (min-width: 576px) {
+      @media (min-width: 768px) {
         grid-template-columns: 27.5rem 1fr;
+      }
+
+      @media (max-width: 767px) {
+        grid-template-columns: 20rem 1fr;
       }
 
       &__box {

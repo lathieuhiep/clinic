@@ -55,22 +55,24 @@
       @include transition();
 
       &.center {
-        transform: scale(1.12) translateY(-3rem);
-        z-index: 2;
+        @media (min-width: 992px) {
+          transform: scale(1.12) translateY(-3rem);
+          z-index: 2;
 
-        .item {
-          background-color: #31B770;
+          .item {
+            background-color: #31B770;
 
-          .name {
-            color: #FFE600;
-          }
+            .name {
+              color: #FFE600;
+            }
 
-          .info, .desc {
-            color: var(--color-white);
-          }
+            .info, .desc {
+              color: var(--color-white);
+            }
 
-          .thumbnail {
-            border-color: var(--color-white);
+            .thumbnail {
+              border-color: var(--color-white);
+            }
           }
         }
       }

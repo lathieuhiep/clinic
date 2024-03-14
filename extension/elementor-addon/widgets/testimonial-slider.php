@@ -142,13 +142,10 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 '0' => [
                     'items' => '1'
                 ],
-                '768' => [
+                '576' => [
 	                'items' => '2'
                 ],
                 '992' => [
-	                'items' => '2'
-                ],
-                '1200' => [
 	                'items' => '3'
                 ]
             ]

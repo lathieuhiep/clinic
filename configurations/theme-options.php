@@ -56,7 +56,7 @@ if ( class_exists( 'CSF' ) ) {
 				'url'     => false
 			),
 
-			// logo
+			// logo mobile
 			array(
 				'id'      => 'opt_general_logo_mobile',
 				'type'    => 'media',
@@ -177,14 +177,14 @@ if ( class_exists( 'CSF' ) ) {
 						'id'    => 'phone',
 						'type'  => 'text',
 						'title' => esc_html__( 'Số điện thoại', 'clinic' ),
-						'default' => '0827750966',
+						'default' => '0888888115',
 					),
 
 					array(
 						'id'    => 'qr_code',
 						'type'  => 'text',
 						'title' => esc_html__( 'Mã QR', 'clinic' ),
-						'default' => '19hirfvi9y5ep',
+						'default' => 'i44981jfbz1g',
 						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
 					),
 				),
@@ -204,6 +204,36 @@ if ( class_exists( 'CSF' ) ) {
             ),
         )
     ) );
+
+	// Popup
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_general_section',
+		'title'  => esc_html__( 'Popup liên hệ', 'clinic' ),
+		'fields' => array(
+			array(
+				'id'       => 'opt_general_popup_show',
+				'type'     => 'switcher',
+				'title'    => esc_html__('Hiện thị popup liên hệ', 'clinic'),
+				'text_on'  => esc_html__('Hiện', 'clinic'),
+				'text_off' => esc_html__('Ẩn', 'clinic'),
+			),
+
+			array(
+				'id'      => 'opt_general_popup_cf',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Form liên hệ', 'clinic' ),
+				'options' => clinic_get_form_cf7(),
+			),
+
+			array(
+				'id'      => 'opt_general_popup_time',
+				'type'    => 'number',
+				'title'   => esc_html__('Hiện thị sau', 'clinic'),
+				'default' => 5000,
+			),
+
+		)
+	) );
 
 	//
 	// Create a section menu

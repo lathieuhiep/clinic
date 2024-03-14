@@ -35,6 +35,9 @@
     $( window ).on( "load", function() {
         // handle remove loading page after loaded successfully
         handleRemoveLoadingPage()
+
+        // show popup contact
+        handleShowPopupContact()
     })
 
     // scroll event
@@ -171,6 +174,22 @@
 
                 window.open(link, '_parent');
             })
+        }
+    }
+
+    // handle show popup contact
+    const handleShowPopupContact = () => {
+        const popupModalContact = $('#popup-modal-contact')
+
+        if ( popupModalContact.length ) {
+            const time = parseInt( popupModalContact.data('time') ?? 5000  )
+            const modal = new bootstrap.Modal(document.getElementById('popup-modal-contact'), {
+                keyboard: false
+            })
+
+            setTimeout(function () {
+                modal.show(popupModalContact)
+            }, time)
         }
     }
 } )( jQuery );

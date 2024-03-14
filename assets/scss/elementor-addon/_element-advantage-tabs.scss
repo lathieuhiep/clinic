@@ -3,19 +3,40 @@
     margin-bottom: 2rem;
     display: grid;
     grid-gap: 1.1rem;
-    grid-template-columns: repeat(6, 1fr);
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (min-width: 640px) and (max-width: 991px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 376px) and (max-width: 639px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .nav-item {
       .nav-link {
-        padding: 2rem 1.5rem;
         text-align: center;
-        font-size: 1.6rem;
         font-weight: 700;
         font-family: var(--heading-font-family);
         text-transform: uppercase;
+        width: 100%;
+        height: 100%;
         border-radius: 1rem;
         background-color: var(--color-white);
         @include transition();
+
+        @media (min-width: 1200px) {
+          padding: 2rem 1.5rem;
+          font-size: 1.6rem;
+        }
+
+        @media (max-width: 1199px) {
+          padding: 1.2rem;
+          font-size: 1.4rem;
+        }
 
         &:hover {
           color: var(--color-salem);
@@ -31,14 +52,26 @@
 
   .tab-content {
     .grid {
-      padding: 2.6rem 2.8rem;
       display: grid;
-      grid-gap: 2.4rem 4.2rem;
-      grid-template-columns: 47.7rem 1fr;
       overflow: hidden;
       border-radius: 1rem;
       box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
       background-color: var(--color-white);
+
+      @media (min-width: 1200px) {
+        padding: 2.6rem 2.8rem;
+        grid-gap: 2.4rem 4.2rem;
+        grid-template-columns: 47.7rem 1fr;
+      }
+
+      @media (max-width: 1199px) {
+        padding: 1.2rem;
+        grid-gap: 2.4rem;
+      }
+
+      @media (min-width: 640px) and (max-width: 1199px) {
+        grid-template-columns: 25rem 1fr;
+      }
 
       img {
         width: 100%;
@@ -47,8 +80,16 @@
 
       .title {
         margin-bottom: 2rem;
-        font-size: 2.9rem;
         color: #020202;
+
+        @media (min-width: 1200px) {
+          font-size: 2.9rem;
+        }
+
+        @media (max-width: 1199px) {
+          margin-bottom: 1.2rem;
+          font-size: 2rem;
+        }
       }
 
       .content {

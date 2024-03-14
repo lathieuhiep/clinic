@@ -25,6 +25,10 @@ if ( !is_404() ) :
 	get_template_part('components/header/inc','menu-mobile');
 	get_template_part('components/inc','chat-with-us');
 	get_template_part('components/inc','contact-us-mobile');
+
+    if ( is_front_page() || is_singular('post') ) {
+	    get_template_part('components/inc','popup-contact');
+    }
 endif;
 
 wp_footer();
