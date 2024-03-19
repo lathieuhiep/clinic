@@ -30,6 +30,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/space-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/instruct.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
 
@@ -64,6 +65,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Space_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
+    $widgets_manager->register( new \Clinic_Elementor_Instruct() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
 

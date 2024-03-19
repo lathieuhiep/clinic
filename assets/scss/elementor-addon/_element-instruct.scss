@@ -1,0 +1,34 @@
+.element-instruct {
+  &__warp {
+    display: grid;
+    grid-gap: 2.4rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 376px) and (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      &__thumbnail {
+        margin-bottom: 1.6rem;
+
+        .box {
+          margin: 0 auto;
+          @include square(13.2rem, 50%);
+          border: .8rem solid #FEECCC;
+          background-color: #D7A444;
+        }
+      }
+
+      &__content {
+        .title {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

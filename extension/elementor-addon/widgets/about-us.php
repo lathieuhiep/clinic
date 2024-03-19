@@ -102,6 +102,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'options' => [
                     'style-1' => esc_html__('Kiểu 1', 'clinic'),
                     'style-2' => esc_html__('Kiểu 2', 'clinic'),
+                    'style-3' => esc_html__('Kiểu 3', 'clinic'),
                 ],
             ]
         );
@@ -136,7 +137,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                     'url' => Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'style_layout' => 'style-2',
+                    'style_layout!' => 'style-1',
                 ]
             ]
         );
@@ -239,7 +240,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <?php echo nl2br( $settings['heading'] ); ?>
                     </h3>
 
-                    <?php if ( $settings['style_layout'] == 'style-2' && $settings['heading_image'] ) : ?>
+                    <?php if ( $settings['style_layout'] != 'style-1' && $settings['heading_image'] ) : ?>
                     <div class="heading-image-line">
                         <?php echo wp_get_attachment_image( $settings['heading_image']['id'], 'full' ); ?>
                     </div>

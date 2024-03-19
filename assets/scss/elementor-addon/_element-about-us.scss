@@ -127,5 +127,40 @@
         }
       }
     }
+
+    &.style-3 {
+      grid-gap: 2.4rem 4rem;
+
+      @media (min-width: 1200px) {
+        grid-template-columns: 52.1rem 1fr;
+      }
+
+      .heading-image-line {
+        margin-bottom: 4rem;
+      }
+
+      .thumbnail-box {
+        padding-bottom: 1rem;
+        padding-right: 1.4rem;
+        position: relative;
+
+        &:before {
+          position: absolute;
+          content: "";
+          top: 2.3rem;
+          right: 0;
+          bottom: 0;
+          left: 2.7rem;
+          border: .2rem dotted var(--theme-tertiary-color);
+          border-top-right-radius: 3rem;
+          border-bottom-left-radius: 3rem;
+          background-color: #FEF6F1;
+        }
+
+        img {
+          position: relative;
+        }
+      }
+    }
   }
 }
