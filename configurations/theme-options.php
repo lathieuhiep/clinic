@@ -104,39 +104,25 @@ if ( class_exists( 'CSF' ) ) {
 		'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
 		'fields' => array(
             array(
-                'id'      => 'opt_general_address',
-                'type'    => 'fieldset',
-                'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
-                'fields' => array(
-                    array(
-                        'id'    => 'street',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Địa chỉ cụ thể', 'clinic' ),
-                        'default' => '180 Đường Trần Phú',
-                    ),
-
-                    array(
-                        'id'    => 'district',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã', 'clinic' ),
-                        'default' => 'Phước Ninh, Hải Châu, Đà Nẵng',
-                    ),
-                ),
+                'id'      => 'opt_general_hotline',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Hotline', 'clinic' ),
+                'default' => '0888.888.115 '
             ),
 
-			array(
-				'id'      => 'opt_general_working_time',
-				'type'    => 'text',
-				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-				'default' => '7:30 - 20:00'
-			),
+            array(
+                'id'      => 'opt_general_working_time',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
+                'default' => '7h30-20h'
+            ),
 
-			array(
-				'id'      => 'opt_general_hotline',
-				'type'    => 'text',
-				'title'   => esc_html__( 'Hotline', 'clinic' ),
-				'default' => '0888.888.115'
-			),
+            array(
+                'id'      => 'opt_general_address',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
+                'default' => esc_html__('115 Yên lãng - đống đa', 'clinic')
+            ),
 
 			array(
 				'id'      => 'opt_general_cf',
@@ -165,7 +151,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_chat_messenger',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => 'https://m.me/dakhoaqtdanang',
+                'default' => '#',
             ),
 
 			array(

@@ -113,7 +113,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
                     $avatars[] = get_post_thumbnail_id();
                     $position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
-                    $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
                     ?>
 
                     <div class="item">
@@ -125,10 +124,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                             <h3 class="title text-uppercase">
                                 <?php echo esc_html( $position ) . ' '; the_title(); ?>
                             </h3>
-
-                            <h4 class="position">
-                                <?php echo esc_html( $specialist ); ?>
-                            </h4>
 
                             <div class="content">
                                 <?php the_content(); ?>
