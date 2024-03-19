@@ -1,5 +1,4 @@
 .element-contact-form-7 {
-
   border-radius: .5rem;
 
   &__heading {
@@ -27,46 +26,68 @@
   }
 
   &.style-1 {
-    padding: 2rem 1.8rem 1.6rem;
-    border-radius: 0;
-    background-color: #078450;
+    display: grid;
+    grid-gap: 2.4rem 3.7rem;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 52.4rem 1fr;
+    }
 
     .heading {
-      color: #FFE500;
-      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0D0D0D;
+      font-size: 2.5rem;
+    }
+
+    .item-form {
+      padding: 2.9rem 3.2rem 2.2rem;
+      border: 1px solid #000;
+      border-radius: 1rem;
+      background-color: #ECBB5E;
     }
 
     form {
       &.wpcf7-form {
+        p {
+          + p {
+            margin-top: 1.5rem;
+          }
+        }
+
         span {
           &.wpcf7-form-control-wrap {
             input,
             textarea {
-              min-height: 4.8rem;
-              font-size: 1.4rem;
-              color: #5E5E5E;
-              box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+              min-height: 6.6rem;
+              font-size: 2rem;
+              color: #5D5959;
+              background-color: var(--color-white);
 
               &::placeholder {
-                color: #5E5E5E;
+                color: #5D5959;
                 opacity: 1;
               }
 
               &::-ms-input-placeholder {
-                color: #5E5E5E;
+                color: #5D5959;
               }
+            }
+
+            textarea {
+              height: 13.9rem;
             }
           }
         }
 
         .wpcf7-submit {
+          padding: .6rem 8.1rem;
           text-transform: uppercase;
           font-family: $heading-font-family;
           font-weight: 700;
-          min-height: 4rem;
-          font-size: 1.7rem;
-          border-radius: .5rem;
-          background: linear-gradient(180deg,#FF0000 0,#851313 100%);
+          min-height: 5.6rem;
+          font-size: 2rem;
+          border-radius: 5rem;
+          background: #8F0707;
         }
 
         .wpcf7-not-valid-tip {

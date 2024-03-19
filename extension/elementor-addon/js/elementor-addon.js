@@ -103,7 +103,7 @@
                     loop: false,
                     items: 5,
                     nav: true,
-                    dots: false,
+                    dots: true,
                     margin: 16
                 })).on('changed.owl.carousel', function (el) {
                     if (syncedSecondary) {
@@ -147,6 +147,20 @@
         }
     }
 
+    // element space slider
+    const elementSpaceSlider = ($scope, $) => {
+        const slider = $scope.find('.element-space-slider__warp')
+        const options = slider.data('owl-options')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -159,5 +173,8 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-package-slider.default', elementPackageSlider);
+
+        /* Element space slider */
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-space-slider.default', elementSpaceSlider);
     });
 })(jQuery);

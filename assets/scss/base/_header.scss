@@ -213,7 +213,7 @@
 
           &:hover {
             background-color: transparent;
-            color: var(--clinic-secondary-color);
+            color: var(--theme-secondary-color);
           }
         }
 
@@ -229,7 +229,7 @@
         &.current-menu-item,
         &.current-menu-parent {
           > a {
-            color: var(--clinic-secondary-color);
+            color: var(--theme-secondary-color);
           }
         }
 
@@ -331,7 +331,7 @@
                 color: var(--color-white);
 
                 &:hover {
-                  color: var(--clinic-secondary-color);
+                  color: var(--theme-secondary-color);
                 }
               }
 
@@ -489,7 +489,7 @@
 }
 
 .top-nav-mobile {
-  background-color: var(--clinic-tertiary-color);
+  background-color: var(--theme-tertiary-color);
 
   .container {
     padding-left: 0;

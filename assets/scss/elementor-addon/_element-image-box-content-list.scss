@@ -1,14 +1,10 @@
 .element-image-box-content-list {
   &__grid {
     display: grid;
+    grid-gap: 1.6rem;
 
     @media (min-width: 992px) {
-      grid-gap: 2.8rem;
       grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: 991px) {
-      grid-gap: 2.4rem;
     }
 
     @media (min-width: 768px) and (max-width: 991px) {
@@ -20,34 +16,36 @@
     }
 
     .item {
-      &__thumbnail {
-        margin-bottom: 3.7rem;
-        box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
+      padding: 3rem 2.5rem;
+      border-radius: 1rem;
+      border: .2rem solid #900706;
+      box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
+      background-color: #FBF5D5;
 
-        img {
-          width: 100%;
-        }
+      &__thumbnail {
+        margin: 0 auto 1.7rem;
+        @include square(11.9rem, 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: .1rem solid #8E0606;
       }
 
       &__content {
         .title {
-          margin-bottom: 2rem;
-          color: #FFE600;
+          margin-bottom: 1.7rem;
+          color: #8E0606;
+          font-size: 2rem;
           text-align: center;
+          line-height: 1.2;
+          font-weight: 900;
         }
 
         .desc {
-          margin-top: .6rem;
           font-size: 1.6rem;
           line-height: 1.5;
-          font-weight: 500;
-          text-align: center;
         }
       }
     }
-  }
-
-  .action {
-    margin-top: 3.3rem;
   }
 }

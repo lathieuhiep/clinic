@@ -17,8 +17,8 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
-  --clinic-secondary-color: #{$secondary-color};
-  --clinic-tertiary-color: #{$tertiary-color};
+  --theme-secondary-color: #{$secondary-color};
+  --theme-tertiary-color: #{$tertiary-color};
   --color-white: #{$color-white};
   --color-salem: #{$color-salem};
   --color-cadmium-yellow: #{$color-cadmium-yellow};
@@ -340,7 +340,7 @@ pre {
   }
 
   .owl-dots {
-    margin-top: 1.8rem;
+    margin-top: 2rem;
     @include flex-center;
 
     .owl-dot {
@@ -359,7 +359,7 @@ pre {
       &.active,
       &:hover {
         span {
-          background-color: var(--color-salem);
+          background-color: var(--heading-color);
         }
       }
     }

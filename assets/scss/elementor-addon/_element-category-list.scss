@@ -1,17 +1,10 @@
 .element-category-list {
   &__grid {
     display: grid;
-    background-color: #E7F4ED;
+    grid-gap: 1.6rem 1rem;
 
     @media (min-width: 992px) {
-      padding: 2rem 3rem;
-      grid-gap: 1.8rem 2.4rem;
       grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: 991px) {
-      padding: 1.6rem;
-      grid-gap: 1.6rem;
     }
 
     @media (min-width: 768px) and (max-width: 991px) {
@@ -28,9 +21,14 @@
 
     .item {
       position: relative;
-      padding: 1rem 1.6rem;
+      padding: 1.6rem 2.4rem;
+      border: .2rem solid #8F0707;
       border-radius: .5rem;
-      background-color: #fff;
+      background-color: #FEF6F1;
+      display: grid;
+      grid-gap: 1.2rem;
+      grid-template-columns: 6rem 1fr;
+      align-items: center;
       @include transition();
 
       &__link {
@@ -42,40 +40,11 @@
         z-index: 2;
       }
 
-      &__image {
-        position: relative;
-        margin: 0 auto 1.5rem;
-        @include square(8rem);
-        overflow: hidden;
-        @include flex-center-vert();
-
-        @media (max-width: 575px) {
-          width: 7.2rem;
-          height: 6.2rem;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          @include transition();
-
-          &.image-change {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            opacity: 0;
-            visibility: hidden;
-          }
-        }
-      }
+      &__image {}
 
       &__title {
-        color: #132432;
-        font-family: var(--heading-font-family);
-        font-size: 1.5rem;
+        color: var(--theme-tertiary-color);
+        font-size: 2rem;
         @include transition();
       }
     }

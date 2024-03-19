@@ -219,7 +219,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
                             ?>
 						</div>
 
-						<h4 class="item__title m-0 text-uppercase text-center">
+						<h4 class="item__title m-0 text-uppercase">
 							<?php echo esc_html( $item['list_title'] ) ?>
 						</h4>
 					</div>

@@ -1,6 +1,5 @@
 <?php
 
-use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -122,8 +121,12 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
                         <div class="item__body">
                             <h3 class="title text-uppercase">
-                                <?php echo esc_html( $position ) . ' '; the_title(); ?>
+                                <?php the_title(); ?>
                             </h3>
+
+                            <p class="position f-family-heading fw-bold">
+                                <?php echo esc_html( $position ) . ' '; ?>
+                            </p>
 
                             <div class="content">
                                 <?php the_content(); ?>

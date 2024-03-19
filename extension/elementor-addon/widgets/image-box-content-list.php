@@ -216,36 +216,27 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-		$medical_appointment_form = clinic_get_opt_medical_appointment();
     ?>
-		<div class="element-image-box-content-list text-justify">
+		<div class="element-image-box-content-list">
 			<div class="element-image-box-content-list__grid">
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'full' ); ?>
 						</div>
 
 						<div class="item__content">
-							<h3 class="title text-uppercase">
+							<h3 class="title f-family-body text-uppercase">
 								<?php echo esc_html( $item['list_title'] ); ?>
 							</h3>
 
-							<div class="desc">
+							<div class="desc text-justify">
 								<?php echo wpautop( $item['list_content'] ); ?>
 							</div>
 						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>
-
-			<?php if ( $medical_appointment_form ) : ?>
-                <div class="action text-center">
-                    <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                        <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-booking-now.png' ) ) ?>" alt="">
-                    </a>
-                </div>
-			<?php endif; ?>
 		</div>
 		<?php
 	}

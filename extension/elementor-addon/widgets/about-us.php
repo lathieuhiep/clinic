@@ -2,7 +2,6 @@
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -87,17 +86,30 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	protected function register_controls(): void
 	{
 		$this->start_controls_section(
-			'image_section',
+			'content_section',
 			[
-				'label' => esc_html__( 'Image', 'clinic' ),
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
+        $this->add_control(
+            'style_layout',
+            [
+                'label' => esc_html__('Kiểu', 'clinic'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'style-1',
+                'options' => [
+                    'style-1' => esc_html__('Kiểu 1', 'clinic'),
+                    'style-2' => esc_html__('Kiểu 2', 'clinic'),
+                ],
+            ]
+        );
+
 		$this->add_control(
 			'image',
 			[
-				'label' => esc_html__( 'Choose Image', 'textdomain' ),
+				'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -108,17 +120,31 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_control(
 			'heading',
 			[
-				'label'       => esc_html__( 'Heading', 'clinic' ),
-				'type'        => Controls_Manager::TEXT,
+				'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
+				'type'        => Controls_Manager::TEXTAREA,
 				'default'     => esc_html__( 'Heading', 'clinic' ),
 				'label_block' => true
 			]
 		);
 
+        $this->add_control(
+            'heading_image',
+            [
+                'label' => esc_html__( 'Chọn ảnh dưới tiêu đề', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'style_layout' => 'style-2',
+                ]
+            ]
+        );
+
 		$this->add_control(
 			'desc',
 			[
-				'label'     =>  esc_html__( 'Description', 'clinic' ),
+				'label'     =>  esc_html__( 'Nội dung', 'clinic' ),
 				'type'      =>  Controls_Manager::WYSIWYG,
 				'default'   =>  esc_html__( 'Default description', 'clinic' ),
 			]
@@ -130,7 +156,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->start_controls_section(
 			'style_heading_section',
 			[
-				'label' => esc_html__( 'Heading', 'clinic' ),
+				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -138,7 +164,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_control(
 			'heading_color',
 			[
-				'label' => esc_html__( 'Color', 'clinic' ),
+				'label' => esc_html__( 'Màu', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .element-about-us__warp .item .heading' => 'color: {{VALUE}}',
@@ -160,7 +186,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->start_controls_section(
 			'style_desc_section',
 			[
-				'label' => esc_html__( 'Description', 'clinic' ),
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -168,7 +194,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_control(
 			'desc_color',
 			[
-				'label' => esc_html__( 'Color', 'clinic' ),
+				'label' => esc_html__( 'Màu', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .element-about-us__warp .item .desc' => 'color: {{VALUE}}',
@@ -198,26 +224,38 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 
-		$hotline = clinic_get_opt_hotline();
+        $medical_appointment_form = clinic_get_opt_medical_appointment();
 		?>
 		<div class="element-about-us">
-			<div class="element-about-us__warp">
+			<div class="element-about-us__warp <?php echo esc_attr( $settings['style_layout'] ); ?>">
                 <div class="item item-left">
-                    <h3 class="heading d-md-none text-center">
-		                <?php echo esc_html( $settings['heading'] ); ?>
-                    </h3>
-
-	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
+	                <div class="thumbnail-box">
+                        <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
+                    </div>
                 </div>
 
                 <div class="item item-right">
-                    <h3 class="heading d-none d-md-block">
-                        <?php echo esc_html( $settings['heading'] ); ?>
+                    <h3 class="heading">
+                        <?php echo nl2br( $settings['heading'] ); ?>
                     </h3>
+
+                    <?php if ( $settings['style_layout'] == 'style-2' && $settings['heading_image'] ) : ?>
+                    <div class="heading-image-line">
+                        <?php echo wp_get_attachment_image( $settings['heading_image']['id'], 'full' ); ?>
+                    </div>
+                    <?php endif; ?>
 
                     <div class="desc text-justify">
 	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
+
+                    <?php if ( $settings['style_layout'] == 'style-1' && $medical_appointment_form ) : ?>
+                        <div class="action-box">
+                            <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
 			</div>
 		</div>

@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -37,23 +38,37 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		);
 
 		$this->add_control(
-			'style',
+			'style_layout',
 			[
 				'label' => esc_html__('Kiểu', 'clinic'),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
 				'options' => [
-					'1' => esc_html__('Kiểu 1', 'clinic'),
-					'2' => esc_html__('Kiểu 2', 'clinic'),
+					'style-1' => esc_html__('Kiểu 1 (Có ảnh)', 'clinic'),
+					'style-2' => esc_html__('Kiểu 2', 'clinic'),
 				],
 			]
 		);
+
+        $this->add_control(
+            'image',
+            [
+                'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'style_layout' => 'style-1',
+                ]
+            ]
+        );
 
 		$this->add_control(
 			'heading',
 			[
 				'label'       => esc_html__( 'Heading', 'clinic' ),
-				'type'        => Controls_Manager::TEXT,
+				'type'        => Controls_Manager::TEXTAREA,
 				'default'     => esc_html__( 'Heading', 'clinic' ),
 				'label_block' => true
 			]
@@ -77,20 +92,28 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['contact_form_list'] ) ) :
-			?>
+    ?>
+        <div class="element-contact-form-7 <?php echo esc_attr( $settings['style_layout'] ); ?>">
+            <?php if ( $settings['style_layout'] && $settings['image'] ) : ?>
+                <div class="item item-thumbnail">
+                    <div class="thumbnail-box">
+                        <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
 
-            <div class="element-contact-form-7 style-<?php echo esc_attr( $settings['style'] ); ?>">
+            <div class="item item-form">
                 <?php if ( $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
-		                <?php echo esc_html( $settings['heading'] ); ?>
+                        <?php echo nl2br( $settings['heading'] ); ?>
                     </h3>
                 <?php endif; ?>
 
 
-				<?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
+                <?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
             </div>
-
-		<?php
+        </div>
+    <?php
 		endif;
 	}
 

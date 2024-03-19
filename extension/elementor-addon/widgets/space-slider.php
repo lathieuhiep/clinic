@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_List_Image_Grid extends Widget_Base
+class Clinic_Elementor_Space_Slider extends Widget_Base
 {
 
 	/**
@@ -22,7 +22,7 @@ class Clinic_Elementor_List_Image_Grid extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-list-image-grid';
+		return 'clinic-space-slider';
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Clinic_Elementor_List_Image_Grid extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Danh sách hình ảnh', 'clinic');
+		return esc_html__('Không gian phòng khám', 'clinic');
 	}
 
 	/**
@@ -146,18 +146,37 @@ class Clinic_Elementor_List_Image_Grid extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
+
+        $owl_options = [
+            'dots' => true,
+            'margin' => 20,
+            'responsive' => [
+                '0' => [
+                    'items' => '1'
+                ],
+                '576' => [
+                    'items' => '2'
+                ],
+                '992' => [
+                    'items' => '3'
+                ],
+                '1200' => [
+                    'items' => '4'
+                ]
+            ]
+        ];
 		?>
-		<div class="element-list-image-grid">
-			<div class="element-list-image-grid__warp">
+		<div class="element-space-slider">
+			<div class="element-space-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <h3 class="item__title text-center text-uppercase">
+                            <?php echo esc_html( $item['list_title'] ); ?>
+                        </h3>
+
 						<div class="item__thumbnail">
 							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
 						</div>
-
-						<h3 class="item__title text-center text-uppercase">
-							<?php echo esc_html( $item['list_title'] ); ?>
-						</h3>
 					</div>
 				<?php endforeach; ?>
 			</div>
