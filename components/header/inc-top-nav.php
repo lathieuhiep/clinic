@@ -1,65 +1,42 @@
 <?php
-$logo = clinic_get_option( 'opt_general_logo' );
+$hotline_group = clinic_get_opt_hotline_list();
 $address =clinic_get_opt_general_address();
-$working_time = clinic_get_option('opt_general_working_time');
-$hotline = clinic_get_opt_hotline();
 ?>
 
 <div class="top-nav d-none d-lg-block">
     <div class="container">
-        <div class="grid-layout">
-            <div class="logo">
-                <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
+        <div class="info d-flex align-items-center justify-content-between">
+            <div class="item">
+                <div class="item__icon">
+                    <i class="icon-phone-circle"></i>
+                </div>
+
+                <div class="item__content phone">
+                    <span><?php esc_html_e('Hotline:', 'clinic'); ?></span>
+
                     <?php
-                    if ( ! empty( $logo['id'] ) ) :
-                        echo wp_get_attachment_image( $logo['id'], 'full' );
-                    else :
-                        ?>
-
-                        <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
-
-                    <?php endif; ?>
-                </a>
+                    if ( $hotline_group ) :
+                        foreach ( $hotline_group as $item ) :
+                    ?>
+                        <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $item['phone'] ) ); ?>">
+                            <?php echo esc_html($item['phone']); ?>
+                        </a>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </div>
             </div>
 
-            <div class="info">
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-phone-circle"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <p><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
-
-                        <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
-                            <?php echo esc_html( $hotline ); ?>
-                        </a>
-                    </div>
+            <div class="item address">
+                <div class="item__icon">
+                    <i class="icon-location-dot"></i>
                 </div>
 
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-clock"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <p><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
-                        <strong><?php echo esc_html( $working_time ); ?></strong>
-                    </div>
-                </div>
-
-                <div class="item address">
-                    <div class="item__icon">
-                        <i class="icon-location"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <?php if ( !empty( $address ) ) : ?>
-                            <p><?php esc_html_e( 'Địa chỉ', 'clinic' ); ?></p>
-
-                            <strong class="text-uppercase"><?php echo esc_html( $address ); ?></strong>
-                        <?php endif; ?>
-                    </div>
+                <div class="item__content">
+                    <?php if ( !empty( $address ) ) : ?>
+                        <strong><?php echo esc_html( $address ); ?></strong>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -1,4 +1,10 @@
 <?php
+// get hotline list theme option general
+function clinic_get_opt_hotline_list()
+{
+    return clinic_get_option('opt_general_hotline_list');
+}
+
 // get hotline theme option general
 function clinic_get_opt_hotline()
 {

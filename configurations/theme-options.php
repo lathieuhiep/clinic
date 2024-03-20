@@ -104,6 +104,29 @@ if ( class_exists( 'CSF' ) ) {
 		'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
 		'fields' => array(
             array(
+                'id'     => 'opt_general_hotline_list',
+                'type'   => 'repeater',
+                'title'  => esc_html__( 'Hotline list', 'clinic' ),
+                'fields' => array(
+                    array(
+                        'id'    => 'phone',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Điện thoại', 'clinic' ),
+                    ),
+                ),
+
+                'default' => array(
+                    array(
+                        'phone' => '0888.888.115',
+                    ),
+
+                    array(
+                        'phone' => '024.888.11115',
+                    )
+                )
+            ),
+
+            array(
                 'id'      => 'opt_general_hotline',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Hotline', 'clinic' ),
@@ -111,17 +134,10 @@ if ( class_exists( 'CSF' ) ) {
             ),
 
             array(
-                'id'      => 'opt_general_working_time',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-                'default' => '7h30-20h'
-            ),
-
-            array(
                 'id'      => 'opt_general_address',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
-                'default' => esc_html__('115 Yên lãng - đống đa', 'clinic')
+                'default' => esc_html__('180 Đường Trần Phú, Phước Ninh, Hải Châu, Đà Nẵng', 'clinic')
             ),
 
 			array(
