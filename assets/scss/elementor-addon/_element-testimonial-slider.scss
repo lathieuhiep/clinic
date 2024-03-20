@@ -1,80 +1,34 @@
 .element-testimonial-slider {
-  .item {
-    position: relative;
-    margin-top: 6rem;
-    margin-bottom: 4.5rem;
-    padding: 1.2rem 2.4rem 8rem;
-    border-radius: 2rem;
-    background-color: #fff;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-    @include transition();
+  &__warp {
+    .item {
+      margin-bottom: .8rem;
+      padding: 3.6em 2.6rem 2.6rem;
+      border-radius: 1rem;
+      box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
+      background: #FFFFFF;
 
-    .thumbnail {
-      position: absolute;
-      bottom: -6rem;
-      left: 50%;
-      z-index: 2;
-      margin: 0 auto 2.1rem;
-      @include square(9rem, 50%);
-      border: .3rem solid var(--color-cadmium-green);
-      transform: translateX(-50%);
-      @include transition();
+      .top {
+        margin-bottom: 2.5rem;
+        display: grid;
+        grid-gap: 3rem;
+        grid-template-columns: 12.4rem 1fr;
+      }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      .info {
+        font-size: 2rem;
+        font-weight: 500;
+        font-style: italic;
+
+        p {
+          margin-bottom: 0;
+          line-height: 1.5;
+        }
       }
     }
 
-    .desc {
-      font-size: 1.6rem;
-      text-align: justify;
-      flex: 1;
-      @include transition();
-    }
-
-    .name {
-      margin-bottom: .4rem;
-      font-weight: 700;
-      font-size: 2rem;
-      color: #014B3A;
-      @include transition();
-    }
-
-    .info {
-      font-size: 2rem;
-      @include transition();
-    }
-  }
-
-  .owl-carousel {
-    .owl-item {
-      @include transition();
-
-      &.center {
-        @media (min-width: 992px) {
-          transform: scale(1.12) translateY(-3rem);
-          z-index: 2;
-
-          .item {
-            background-color: #31B770;
-
-            .name {
-              color: #FFE600;
-            }
-
-            .info, .desc {
-              color: var(--color-white);
-            }
-
-            .thumbnail {
-              border-color: var(--color-white);
-            }
-          }
-        }
+    &.owl-carousel {
+      .owl-item {
+        padding: 0 .2rem;
       }
     }
   }

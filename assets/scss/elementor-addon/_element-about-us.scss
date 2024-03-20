@@ -124,6 +124,9 @@
 
         img {
           position: relative;
+          overflow: hidden;
+          border-top-left-radius: 3rem;
+          border-bottom-right-radius: 3rem;
         }
       }
     }
@@ -159,6 +162,39 @@
 
         img {
           position: relative;
+          overflow: hidden;
+          border-top-right-radius: 3rem;
+          border-bottom-left-radius: 3rem;
+        }
+      }
+
+      .desc {
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          li {
+            position: relative;
+            padding-left: 3rem;
+            font-size: 1.8rem;
+
+            ~ li {
+              margin-top: 1rem;
+            }
+
+            &:before {
+              position: absolute;
+              content: "";
+              top: .3rem;
+              left: 0;
+              @include square(2.4rem);
+              background-image: url("../images/star.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+          }
         }
       }
     }

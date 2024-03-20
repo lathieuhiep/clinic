@@ -6,7 +6,7 @@ use Elementor\Controls_Manager;
 
 if (!defined('ABSPATH')) exit;
 
-class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
+class Clinic_Elementor_Post_Grid extends Widget_Base
 {
     public function get_categories(): array {
         return array('my-theme');
@@ -78,7 +78,7 @@ class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
             [
                 'label' => esc_html__('Order', 'clinic'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'ASC',
+                'default' => 'DESC',
                 'options' => [
                     'ASC' => esc_html__('Ascending', 'clinic'),
                     'DESC' => esc_html__('Descending', 'clinic'),

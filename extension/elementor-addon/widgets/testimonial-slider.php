@@ -136,17 +136,14 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
 	    $owl_options = [
             'dots' => true,
-		    'margin' => 12,
-            'center' => true,
             'responsive' => [
                 '0' => [
-                    'items' => '1'
+                    'items' => '1',
+                    'margin' => 12,
                 ],
                 '576' => [
-	                'items' => '2'
-                ],
-                '992' => [
-	                'items' => '3'
+	                'items' => '2',
+                    'margin' => 35,
                 ]
             ]
 	    ];
@@ -160,26 +157,30 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <p class="name">
-		                    <?php echo esc_html( $item['list_title'] ); ?>
-                        </p>
+                        <div class="top">
+                            <div class="thumbnail">
+                                <?php
+                                if ( $imageId ) :
+                                    echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
+                                else:
+                                    ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
+                                <?php endif; ?>
+                            </div>
 
-                        <p class="info fst-italic">
-		                    <?php echo wp_kses_post( $item['list_info'] ) ?>
-                        </p>
+                            <div class="info d-flex justify-content-end flex-column">
+                                <p class="info__name">
+                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                </p>
 
-                        <div class="desc text-justify">
-		                    <?php echo wp_kses_post( $item['list_description'] ) ?>
+                                <p class="info__content">
+                                    <?php echo wp_kses_post( $item['list_info'] ) ?>
+                                </p>
+                            </div>
                         </div>
 
-                        <div class="thumbnail">
-                            <?php
-                            if ( $imageId ) :
-                                echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                            else:
-                            ?>
-                                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                            <?php endif; ?>
+                        <div class="comment text-justify">
+		                    <?php echo wp_kses_post( $item['list_description'] ) ?>
                         </div>
                     </div>
 

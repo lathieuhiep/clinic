@@ -142,4 +142,39 @@
       }
     }
   }
+
+  &.style-3 {
+    .wpcf7-form {
+      max-width: 61.7rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 10.3rem;
+
+      p {
+        margin: 0;
+
+        + p {
+          .wpcf7-form-control {
+            border-left-width: 0;
+          }
+        }
+      }
+
+      .wpcf7-form-control {
+        display: block;
+        width: 100%;
+        min-height: 5.8rem;
+        border: .2rem solid var(--heading-color);
+
+        &:not(.wpcf7-submit) {
+          border-radius: 5rem 0 0 5rem;
+        }
+      }
+
+      .wpcf7-submit {
+        border-radius: 0 5rem 5rem 0;
+        background: var(--heading-color);
+      }
+    }
+  }
 }
