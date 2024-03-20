@@ -210,7 +210,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 
 						if ( $category_link ) :
 					?>
-					<div class="item">
+					<div class="item text-center">
 						<a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
 
 						<div class="item__image">

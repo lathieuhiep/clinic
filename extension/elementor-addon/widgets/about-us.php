@@ -93,20 +93,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			]
 		);
 
-        $this->add_control(
-            'style_layout',
-            [
-                'label' => esc_html__('Kiểu', 'clinic'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'style-1',
-                'options' => [
-                    'style-1' => esc_html__('Kiểu 1', 'clinic'),
-                    'style-2' => esc_html__('Kiểu 2', 'clinic'),
-                    'style-3' => esc_html__('Kiểu 3', 'clinic'),
-                ],
-            ]
-        );
-
 		$this->add_control(
 			'image',
 			[
@@ -127,20 +113,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 				'label_block' => true
 			]
 		);
-
-        $this->add_control(
-            'heading_image',
-            [
-                'label' => esc_html__( 'Chọn ảnh dưới tiêu đề', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-                'condition' => [
-                    'style_layout!' => 'style-1',
-                ]
-            ]
-        );
 
 		$this->add_control(
 			'desc',
@@ -228,7 +200,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
         $medical_appointment_form = clinic_get_opt_medical_appointment();
 		?>
 		<div class="element-about-us">
-			<div class="element-about-us__warp <?php echo esc_attr( $settings['style_layout'] ); ?>">
+			<div class="element-about-us__warp">
                 <div class="item item-left">
 	                <div class="thumbnail-box">
                         <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
@@ -240,17 +212,11 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <?php echo nl2br( $settings['heading'] ); ?>
                     </h3>
 
-                    <?php if ( $settings['style_layout'] != 'style-1' && $settings['heading_image'] ) : ?>
-                    <div class="heading-image-line">
-                        <?php echo wp_get_attachment_image( $settings['heading_image']['id'], 'full' ); ?>
-                    </div>
-                    <?php endif; ?>
-
                     <div class="desc text-justify">
 	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
 
-                    <?php if ( $settings['style_layout'] == 'style-1' && $medical_appointment_form ) : ?>
+                    <?php if ( $medical_appointment_form ) : ?>
                         <div class="action-box">
                             <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
                                 <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
