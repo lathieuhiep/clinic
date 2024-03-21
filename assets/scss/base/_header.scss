@@ -68,6 +68,48 @@
       }
     }
   }
+
+  .contact-mobile {
+    padding: .8rem 1.2rem;
+    background-color: var(--color-white);
+
+    .wpcf7-form {
+      display: grid;
+      grid-gap: 1.2rem;
+      grid-template-columns: 1fr auto;
+
+      p {
+        margin: 0;
+      }
+
+      .wpcf7-form-control-wrap {
+        height: 100%;
+
+        .wpcf7-not-valid-tip {
+          font-size: 1.5rem;
+        }
+      }
+
+      .wpcf7-form-control {
+        padding: .8rem 1.2rem;
+        font-size: 1.2rem;
+        color: rgba(0, 0, 0, 0.30);
+        background-color: #E6E6E6;
+
+        &.wpcf7-submit {
+          min-width: 8rem;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: var(--color-white);
+          background-color: #FE5B58;
+        }
+      }
+
+      .wpcf7-response-output {
+        margin: 0;
+      }
+    }
+  }
 }
 
 .navbar-main {
@@ -87,7 +129,14 @@
     .logo {
       display: grid;
       grid-gap: 1.4rem;
-      grid-template-columns: 7.5rem 1fr;
+
+      @media (min-width: 1200px) {
+        grid-template-columns: 7.5rem 1fr;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        grid-template-columns: 5rem 1fr;
+      }
 
       &__text {
         padding-top: 1.2rem;
@@ -104,11 +153,19 @@
           font-size: 2rem;
           color: #FFF400;
           line-height: 1.1;
+
+          @media (min-width: 992px) and (max-width: 1199px) {
+            font-size: 1.6rem;
+          }
         }
 
         .position {
           color: #ffffff;
           line-height: 1.2;
+
+          @media (min-width: 992px) and (max-width: 1199px) {
+            font-size: 1.4rem;
+          }
         }
       }
     }
@@ -134,7 +191,7 @@
           }
 
           @media (min-width: 992px) and (max-width: 1199px) {
-            margin-left: 2rem;
+            margin-left: 1rem;
           }
         }
 

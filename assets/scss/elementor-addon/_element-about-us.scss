@@ -1,53 +1,105 @@
 .element-about-us {
   &__warp {
     display: grid;
-    grid-gap: 2.4rem;
 
-    @media (min-width: 1200px) {
-      grid-template-columns: 58rem 1fr;
-    }
+    &.style-1 {
+      grid-gap: 2.4rem;
 
-    @media (min-width: 768px) and (max-width: 1199px) {
-      grid-template-columns: 40rem 1fr;
-    }
+      @media (min-width: 1200px) {
+        grid-template-columns: 58rem 1fr;
+      }
 
-    .item {
-      @media (max-width: 767px) {
-        ~ .item {
-          margin-top: 2rem;
+      @media (min-width: 768px) and (max-width: 1199px) {
+        grid-template-columns: 40rem 1fr;
+      }
+
+      .item {
+        @media (max-width: 767px) {
+          ~ .item {
+            margin-top: 2rem;
+          }
         }
+
+        .heading {
+          position: relative;
+          margin-bottom: 1rem;
+          line-height: 1.4;
+          color: var(--heading-color);
+
+          @media (min-width: 992px) {
+            font-size: 2.5rem;
+          }
+
+          @media (max-width: 991px) {
+            font-size: 2rem;
+          }
+        }
+
+        .desc {
+          line-height: 1.5;
+
+          @media (min-width: 768px) and (max-width: 1199px) {
+            font-size: 1.5rem;
+          }
+        }
+
+        .action-box {
+          margin-top: 1.8rem;
+        }
+
+        &.item-left {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &.style-2 {
+      grid-gap: 1.2rem;
+      
+      @media (min-width: 992px) {
+        grid-template-columns: 1fr 49.2rem;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .heading {
-        position: relative;
-        margin-bottom: 1rem;
-        line-height: 1.4;
-        color: var(--heading-color);
-
-        @media (min-width: 992px) {
-          font-size: 2.5rem;
-        }
-
-        @media (max-width: 991px) {
-          font-size: 2rem;
-        }
+        margin-bottom: 1.6rem;
+        font-size: 2.5rem;
+        color: #FFE600;
       }
 
-      .desc {
-        line-height: 1.5;
+      .thumbnail-box {
+        height: 100%;
 
-        @media (min-width: 768px) and (max-width: 1199px) {
-          font-size: 1.5rem;
-        }
-      }
-
-      .action-box {
-        margin-top: 1.8rem;
-      }
-
-      &.item-left {
         img {
           width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .item-left {
+        order: 2;
+      }
+
+      .item-right {
+        padding: 1rem;
+        order: 1;
+        border-radius: .5rem;
+        background: linear-gradient(180deg, #0C8D42 0%, #31A360 100%);
+
+        .content-box {
+          padding: 2rem;
+          border-radius: .5rem;
+          border: .2rem solid var(--color-white);
+
+          .desc {
+            color: var(--color-white);
+          }
         }
       }
     }

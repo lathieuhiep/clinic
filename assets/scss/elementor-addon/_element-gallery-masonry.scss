@@ -1,0 +1,39 @@
+.element-gallery-masonry {
+  &__grid {
+    margin-left: -.6rem;
+    margin-right: -.6rem;
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .grid-item {
+      margin-bottom: 1.2rem;
+      padding-left: .6rem;
+      padding-right: .6rem;
+      float: left;
+
+      @media (min-width: 992px) {
+        width: 25%;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        width: 33.33333333%;
+      }
+
+      @media (min-width: 376px) and (max-width: 767px) {
+        width: 50%;
+      }
+
+      @media (max-width: 375px) {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

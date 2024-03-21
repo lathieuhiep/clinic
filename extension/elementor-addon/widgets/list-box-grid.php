@@ -94,13 +94,26 @@ class Clinic_Elementor_List_Box_Grid extends Widget_Base
 			]
 		);
 
+		$this->add_control(
+			'style_layout',
+			[
+				'label' => esc_html__('Kiểu', 'clinic'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'style-1',
+				'options' => [
+					'style-1' => esc_html__('Kiểu 1 ( không có tiêu đề )', 'clinic'),
+					'style-2' => esc_html__('Kiểu 2', 'clinic'),
+				],
+			]
+		);
+
 		$repeater = new Repeater();
 
 		$repeater->add_control(
 			'list_title', [
 				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'clinic' ),
+				'default' => esc_html__( 'Title #' , 'clinic' ),
 				'label_block' => true,
 			]
 		);
@@ -157,7 +170,7 @@ class Clinic_Elementor_List_Box_Grid extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		?>
 		<div class="element-list-box-grid">
-			<div class="element-list-box-grid__warp">
+			<div class="element-list-box-grid__warp <?php echo esc_attr( $settings['style_layout'] ); ?>">
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 						<div class="item__thumbnail">
@@ -165,9 +178,11 @@ class Clinic_Elementor_List_Box_Grid extends Widget_Base
 						</div>
 
 						<div class="item__content">
-							<h3 class="title">
-								<?php echo esc_html( $item['list_title'] ); ?>
-							</h3>
+                            <?php if ( $settings['style_layout'] == 'style-2' ) : ?>
+                                <h3 class="title">
+		                            <?php echo esc_html( $item['list_title'] ); ?>
+                                </h3>
+                            <?php endif; ?>
 
 							<div class="desc">
 								<?php echo wpautop( $item['list_content'] ); ?>

@@ -95,6 +95,20 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 			]
 		);
 
+		$this->add_control(
+			'style_layout',
+			[
+				'label' => esc_html__('Kiểu', 'clinic'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'style-1',
+				'options' => [
+					'style-1' => esc_html__('Kiểu 1', 'clinic'),
+					'style-2' => esc_html__('Kiểu 2', 'clinic'),
+					'style-3' => esc_html__('Kiểu 3 (Không title)', 'clinic'),
+				],
+			]
+		);
+
 		$repeater = new Repeater();
         
 		$repeater->add_control(
@@ -115,13 +129,13 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 				],
 			]
 		);
-        
+
 		$repeater->add_control(
 			'list_content', [
 				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'type' => Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Nội dung' , 'clinic' ),
-				'label_block' => true,
+				'default' => '',
+				'show_label' => false,
 			]
 		);
 
@@ -174,36 +188,6 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-		// style content
-		$this->start_controls_section(
-			'style_content_section',
-			[
-				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'content_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-image-box-content-list__grid .item__content .desc' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'content_typography',
-				'selector' => '{{WRAPPER}} .element-image-box-content-list__grid .item__content .desc',
-			]
-		);
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -216,27 +200,39 @@ class Clinic_Elementor_Image_Box_Content_List extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
+
+		$link_chat = clinic_get_opt_link_chat_doctor();
     ?>
 		<div class="element-image-box-content-list">
-			<div class="element-image-box-content-list__grid">
+			<div class="element-image-box-content-list__grid <?php echo esc_attr( $settings['style_layout'] ); ?>">
 				<?php foreach ( $settings['list'] as $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail">
+						<div class="thumbnail">
 							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'full' ); ?>
 						</div>
 
-						<div class="item__content">
-							<h3 class="title f-family-body text-uppercase">
-								<?php echo esc_html( $item['list_title'] ); ?>
-							</h3>
+                        <?php if ( $settings['style_layout'] != 'style-3' ) : ?>
+                            <h3 class="title f-family-body">
+		                        <?php echo esc_html( $item['list_title'] ); ?>
+                            </h3>
+                        <?php endif; ?>
 
-							<div class="desc text-justify">
-								<?php echo wpautop( $item['list_content'] ); ?>
-							</div>
-						</div>
+                        <?php if ( $item['list_content'] ) : ?>
+                            <div class="desc">
+		                        <?php echo wpautop( $item['list_content'] ) ?>
+                            </div>
+                        <?php endif; ?>
 					</div>
 				<?php endforeach; ?>
 			</div>
+
+			<?php if (  $settings['style_layout'] == 'style-2' && $link_chat ) : ?>
+                <div class="action-box text-center mt-5">
+                    <a class="action-box__link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                        <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-booking-now.png' ) ) ?>" alt="">
+                    </a>
+                </div>
+			<?php endif; ?>
 		</div>
 		<?php
 	}

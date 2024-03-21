@@ -241,7 +241,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
                             <div class="item__thumbnail">
                                 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                     <?php
-                                    if (has_post_thumbnail()) :
+                                    if ( has_post_thumbnail() ) :
                                         the_post_thumbnail('large');
                                     else:
                                         ?>

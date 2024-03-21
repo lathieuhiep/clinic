@@ -125,6 +125,16 @@ class Clinic_Elementor_Procedure_List extends Widget_Base
 			]
 		);
 
+		$repeater->add_control(
+			'list_number_color', [
+				'label' => esc_html__( 'Number Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-procedure-list__warp {{CURRENT_ITEM}}.item .item__content .stt' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
 		$this->add_control(
 			'list',
 			[
@@ -145,23 +155,91 @@ class Clinic_Elementor_Procedure_List extends Widget_Base
 
 		$this->end_controls_section();
 
-		// style desc
+		// style title
 		$this->start_controls_section(
-			'style_item_section',
+			'title_style_section',
 			[
-				'label' => esc_html__( 'Hộp', 'clinic' ),
+				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'item_background_color',
+			'title_color',
 			[
-				'label' => esc_html__( 'Background Color', 'clinic' ),
+				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-procedure-list__warp .item' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .element-procedure-list__warp .item__content .title' => 'color: {{VALUE}}',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .element-procedure-list__warp .item__content .title',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// style desc
+		$this->start_controls_section(
+			'desc_style_section',
+			[
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'desc_color',
+			[
+				'label' => esc_html__( 'Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-procedure-list__warp .item__content .desc' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'desc_typography',
+				'selector' => '{{WRAPPER}} .element-procedure-list__warp .item__content .desc',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// style number
+		$this->start_controls_section(
+			'number_style_section',
+			[
+				'label' => esc_html__( 'Số thứ tự', 'clinic' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'number_color',
+			[
+				'label' => esc_html__( 'Color', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-procedure-list__warp .item__content .stt' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'number_typography',
+				'selector' => '{{WRAPPER}} .element-procedure-list__warp .item__content .stt',
 			]
 		);
 
@@ -178,17 +256,13 @@ class Clinic_Elementor_Procedure_List extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
+		$link_chat = clinic_get_opt_link_chat_doctor();
+
 		?>
 		<div class="element-procedure-list">
 			<div class="element-procedure-list__warp">
 				<?php foreach ( $settings['list'] as $key => $item ) : ?>
 					<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="item__line"></div>
-
-						<div class="item__stt">
-							<span class="number f-family-heading fw-bold"><?php echo esc_html( addZeroBeforeNumber( $key + 1 ) ); ?></span>
-						</div>
-
 						<div class="item__thumbnail text-center">
 							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
 						</div>
@@ -201,10 +275,22 @@ class Clinic_Elementor_Procedure_List extends Widget_Base
 							<div class="desc">
 								<?php echo wpautop( $item['list_content'] ); ?>
 							</div>
+
+                            <div class="stt text-end">
+	                            <?php echo esc_html( addZeroBeforeNumber( $key + 1 ) ); ?>
+                            </div>
 						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>
+
+            <?php if ( $link_chat ) : ?>
+                <div class="action-box text-center mt-5">
+                    <a class="action-box__link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                        <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-booking-now.png' ) ) ?>" alt="">
+                    </a>
+                </div>
+            <?php endif; ?>
 		</div>
 		<?php
 	}

@@ -161,6 +161,29 @@
         }
     }
 
+    // element gallery masonry
+    const elementGalleryMasonry = ($scope, $) => {
+        const gallery = $scope.find('.element-gallery-masonry__grid')
+
+        if ( gallery.length ) {
+            gallery.each(function () {
+                const thisGallery = $(this)
+
+                const grid = thisGallery.masonry({
+                    itemSelector: '.grid-item',
+                    columnWidth: '.grid-item',
+                    percentPosition: true,
+                    stagger: 30
+                });
+
+                // layout Masonry after each image loads
+                grid.find('[loading="lazy"]').on('load', function() {
+                    thisGallery.masonry('layout');
+                })
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -176,5 +199,8 @@
 
         /* Element space slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-space-slider.default', elementSpaceSlider);
+
+        // element gallery masonry
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-gallery-masonry.default', elementGalleryMasonry);
     });
 })(jQuery);

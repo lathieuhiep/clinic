@@ -44,26 +44,11 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'style-1',
 				'options' => [
-					'style-1' => esc_html__('Kiểu 1 (Có ảnh)', 'clinic'),
+					'style-1' => esc_html__('Kiểu 1', 'clinic'),
 					'style-2' => esc_html__('Kiểu 2', 'clinic'),
-                    'style-3' => esc_html__('Kiểu 3', 'clinic'),
 				],
 			]
 		);
-
-        $this->add_control(
-            'image',
-            [
-                'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-                'condition' => [
-                    'style_layout' => 'style-1',
-                ]
-            ]
-        );
 
 		$this->add_control(
 			'heading',
@@ -73,7 +58,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 				'default'     => esc_html__( 'Heading', 'clinic' ),
 				'label_block' => true,
                 'condition' => [
-                    'style_layout!' => 'style-3',
+                    'style_layout!' => 'style-1',
                 ]
 			]
 		);
@@ -98,16 +83,8 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		if ( ! empty( $settings['contact_form_list'] ) ) :
     ?>
         <div class="element-contact-form-7 <?php echo esc_attr( $settings['style_layout'] ); ?>">
-            <?php if ( $settings['style_layout'] == 'style-1' && $settings['image'] ) : ?>
-                <div class="item item-thumbnail">
-                    <div class="thumbnail-box">
-                        <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
             <div class="item item-form">
-                <?php if ( $settings['style_layout'] != 'style-3' && $settings['heading'] ) : ?>
+                <?php if ( $settings['style_layout'] != 'style-1' && $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
                         <?php echo nl2br( $settings['heading'] ); ?>
                     </h3>

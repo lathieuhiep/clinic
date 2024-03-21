@@ -94,6 +94,19 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		);
 
 		$this->add_control(
+			'style_layout',
+			[
+				'label' => esc_html__('Kiểu', 'clinic'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'style-1',
+				'options' => [
+					'style-1' => esc_html__('Kiểu 1', 'clinic'),
+					'style-2' => esc_html__('Kiểu 2', 'clinic'),
+				],
+			]
+		);
+
+		$this->add_control(
 			'image',
 			[
 				'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
@@ -200,7 +213,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
         $medical_appointment_form = clinic_get_opt_medical_appointment();
 		?>
 		<div class="element-about-us">
-			<div class="element-about-us__warp">
+			<div class="element-about-us__warp <?php echo esc_attr( $settings['style_layout'] ); ?>">
                 <div class="item item-left">
 	                <div class="thumbnail-box">
                         <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
@@ -208,21 +221,23 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 </div>
 
                 <div class="item item-right">
-                    <h3 class="heading">
-                        <?php echo nl2br( $settings['heading'] ); ?>
-                    </h3>
+                    <div class="content-box">
+                        <h3 class="heading">
+		                    <?php echo nl2br( $settings['heading'] ); ?>
+                        </h3>
 
-                    <div class="desc text-justify">
-	                    <?php echo wpautop( $settings['desc'] ); ?>
-                    </div>
-
-                    <?php if ( $medical_appointment_form ) : ?>
-                        <div class="action-box">
-                            <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
-                            </a>
+                        <div class="desc text-justify">
+		                    <?php echo wpautop( $settings['desc'] ); ?>
                         </div>
-                    <?php endif; ?>
+
+	                    <?php if ( $settings['style_layout'] == 'style-1' && $medical_appointment_form ) : ?>
+                            <div class="action-box">
+                                <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
+                                </a>
+                            </div>
+	                    <?php endif; ?>
+                    </div>
                 </div>
 			</div>
 		</div>
