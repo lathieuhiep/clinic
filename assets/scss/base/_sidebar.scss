@@ -286,14 +286,15 @@ section {
   }
 }
 
-.site-sidebar {
+.site-sidebar,
+.elementor-widget-sidebar {
   @media (max-width: 767px) {
     margin-top: 3rem;
   }
 
   .widget {
     border-radius: .5rem;
-    border: 1px solid var(--heading-color);
+    border: 1px solid var(--theme-tertiary-color);
     background: #FFF;
     overflow: hidden;
 
