@@ -133,20 +133,6 @@
         }
     }
 
-    // element package slider
-    const elementPackageSlider = ($scope, $) => {
-        const slider = $scope.find('.element-package-slider__warp')
-        const options = slider.data('owl-options')
-
-        if (slider.length) {
-            slider.each(function () {
-                const thisSlider = $(this)
-
-                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
-            })
-        }
-    }
-
     // element space slider
     const elementSpaceSlider = ($scope, $) => {
         const slider = $scope.find('.element-space-slider__warp')
@@ -170,9 +156,6 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
-
-        /* Element doctor slider */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-package-slider.default', elementPackageSlider);
 
         /* Element space slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-space-slider.default', elementSpaceSlider);

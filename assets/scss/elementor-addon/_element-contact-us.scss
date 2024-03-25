@@ -34,11 +34,11 @@
       }
 
       &__icon {
-        @include square(4.6rem);
+        @include square(6.3rem);
         margin-bottom: 2rem;
 
         svg {
-          @include square(4.6rem);
+          @include square(6.3rem);
         }
       }
 

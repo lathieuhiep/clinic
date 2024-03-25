@@ -39,27 +39,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/compare-appointments.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/safety-principles.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advantage-list.php' );
-
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advantage-tabs.php' );
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-box-grid.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure-list.php' );
-
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advise.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/commitment.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/quality.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/equipment.php' );
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_About_Us() );
@@ -78,29 +57,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
     $widgets_manager->register( new \Clinic_Elementor_Compare_Appointments() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Safety_Principles() );
-
-//	$widgets_manager->register( new \Clinic_Elementor_Advantage_List() );
-
-
-
-
-
-//	$widgets_manager->register( new \Clinic_Elementor_Advantage_Tabs() );
-
-
-//	$widgets_manager->register( new \Clinic_Elementor_List_Box_Grid() );
-//	$widgets_manager->register( new \Clinic_Elementor_Procedure_List() );
-
-
-
-//	$widgets_manager->register( new \Clinic_Elementor_Package_Slider() );
-//	$widgets_manager->register( new \Clinic_Elementor_Advise() );
-
-//	$widgets_manager->register( new \Clinic_Elementor_Commitment() );
-//	$widgets_manager->register( new \Clinic_Elementor_Quality() );
-//	$widgets_manager->register( new \Clinic_Elementor_Equipment() );
 }
 
 // Register scripts
