@@ -69,7 +69,8 @@ form {
       border: none;
       cursor: pointer;
       text-transform: uppercase;
-      background: var(--color-sunset-orange);
+      border-radius: .6rem;
+      background: var(--heading-color);
     }
 
     .wpcf7-spinner {

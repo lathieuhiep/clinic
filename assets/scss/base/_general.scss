@@ -199,7 +199,7 @@ pre {
 /* Breadcrumbs */
 .breadcrumbs {
   padding: 1.5rem 0;
-  background-color: #D5ECDE;
+  background-color: #FBF5D5;
 }
 
 /* Pagination */
@@ -270,8 +270,8 @@ pre {
 
     span.current,
     a:hover {
-      background: #60AD80;
-      border-color: #60AD80;
+      background: var(--heading-color);
+      border-color: var(--heading-color);
       color: #ffffff;
     }
   }

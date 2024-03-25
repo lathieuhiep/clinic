@@ -105,11 +105,11 @@
 
   &.style-2 {
     padding: 2.6rem 3rem;
-    border: 1px solid #208B45;
+    border: 1px solid var(--theme-tertiary-color);
 
     .heading {
       font-size: 2rem;
-      color: #208B45;
+      color: var(--theme-tertiary-color);
     }
 
     form {
@@ -175,6 +175,70 @@
         border-radius: 0 5rem 5rem 0;
         background: var(--heading-color);
       }
+    }
+  }
+
+  &.style-4 {
+    box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
+    background-color: #ffffff;
+
+    .heading {
+      margin: 0;
+      padding: 1.6rem;
+      font-size: 2.5rem;
+      color: var(--color-sunset-orange);
+      text-transform: uppercase;
+      border-bottom: .4rem solid #DC9631;
+    }
+
+    .sub-heading {
+      margin: 0;
+      padding: 1.6rem;
+      font-size: 2rem;
+      text-align: center;
+      color: #7D4510;
+      text-transform: uppercase;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .wpcf7-form {
+      padding: 0 3rem;
+
+      .wpcf7-form-control-wrap {
+        input, textarea {
+          font-size: 2rem;
+          border-color: #7D4510;
+          border-radius: 1rem;
+          background-color: var(--color-white);
+        }
+
+        input {
+          min-height: 6.4rem;
+        }
+
+        textarea {
+          height: 6.4rem;
+        }
+      }
+
+      .wpcf7-submit {
+        width: 100%;
+        min-height: 7.7rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000000;
+        border-radius: 1rem;
+        background-image: linear-gradient(90deg, #FDC731, #D99132);
+      }
+    }
+
+    .note {
+      margin-top: 1rem;
+      padding: 1.6rem;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.4;
     }
   }
 }

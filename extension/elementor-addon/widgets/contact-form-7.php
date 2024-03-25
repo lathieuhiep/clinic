@@ -47,6 +47,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 					'style-1' => esc_html__('Kiểu 1 (Có ảnh)', 'clinic'),
 					'style-2' => esc_html__('Kiểu 2', 'clinic'),
                     'style-3' => esc_html__('Kiểu 3', 'clinic'),
+                    'style-4' => esc_html__('Kiểu 4', 'clinic'),
 				],
 			]
 		);
@@ -68,15 +69,28 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		$this->add_control(
 			'heading',
 			[
-				'label'       => esc_html__( 'Heading', 'clinic' ),
+				'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
 				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => esc_html__( 'Heading', 'clinic' ),
+				'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
 				'label_block' => true,
                 'condition' => [
                     'style_layout!' => 'style-3',
                 ]
 			]
 		);
+
+        $this->add_control(
+            'sub_heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề phụ', 'clinic' ),
+                'type'        => Controls_Manager::TEXTAREA,
+                'default'     => esc_html__( 'Tiêu đề phụ', 'clinic' ),
+                'label_block' => true,
+                'condition' => [
+                    'style_layout' => 'style-4',
+                ]
+            ]
+        );
 
 		$this->add_control(
 			'contact_form_list',
@@ -88,6 +102,19 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 				'default'     => '0',
 			]
 		);
+
+        $this->add_control(
+            'note',
+            [
+                'label'       => esc_html__( 'Lưu ý', 'clinic' ),
+                'type'        => Controls_Manager::TEXTAREA,
+                'default'     => esc_html__( 'Lưu ý', 'clinic' ),
+                'label_block' => true,
+                'condition' => [
+                    'style_layout' => 'style-4',
+                ]
+            ]
+        );
 
 		$this->end_controls_section();
 	}
@@ -113,8 +140,20 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                     </h3>
                 <?php endif; ?>
 
+                <?php if ( $settings['style_layout'] == 'style-4' && $settings['sub_heading'] ) : ?>
+                    <p class="sub-heading">
+                        <?php echo nl2br( $settings['sub_heading'] ); ?>
+                    </p>
+                <?php endif; ?>
+
 
                 <?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
+
+                <?php if ( $settings['style_layout'] == 'style-4' && $settings['note'] ) : ?>
+                    <p class="note">
+                        <?php echo nl2br( $settings['note'] ); ?>
+                    </p>
+                <?php endif; ?>
             </div>
         </div>
     <?php

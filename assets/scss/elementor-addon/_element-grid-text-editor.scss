@@ -14,17 +14,17 @@
     .item {
       overflow: hidden;
       border-radius: .5rem;
-      background-color: var(--color-salem);
+      background-color: rgba(125,69,16,.9);
 
       .title {
-        padding: 3.5rem 2rem;
+        padding: 2rem;
         font-size: 2rem;
         color: #FFE600;
         border-bottom: 1px solid var(--color-white);
       }
 
       .content {
-        padding: 2.8rem 2rem 2.4rem;
+        padding: 2.4rem;
         color: var(--color-white);
         line-height: 1.5;
       }

@@ -107,9 +107,9 @@
       }
 
       .wpcf7-form-control {
-        padding: .8rem 1.2rem;
+        padding: 1.2rem;
         font-size: 1.2rem;
-        color: rgba(0, 0, 0, 0.30);
+        color: #000000;
         background-color: #E6E6E6;
 
         &.wpcf7-submit {
@@ -117,7 +117,7 @@
           font-size: 1.2rem;
           font-weight: 500;
           color: var(--color-white);
-          background-color: #FE5B58;
+          background-color: var(--theme-tertiary-color);
         }
       }
 

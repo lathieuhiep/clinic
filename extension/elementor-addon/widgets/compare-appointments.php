@@ -1,8 +1,10 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Utils;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -35,7 +37,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('So sánh đặt hẹn', 'clinic');
+		return esc_html__('Lợi ích đặt hẹn', 'clinic');
 	}
 
 	/**
@@ -85,19 +87,19 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
 	 */
 	protected function register_controls(): void
 	{
-		// appointment section
+		// content section
 		$this->start_controls_section(
-			'content_appointment_section',
+			'content_section',
 			[
-				'label' => esc_html__( 'Hẹn trước', 'clinic' ),
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$repeater_appointment = new Repeater();
+		$repeater = new Repeater();
 
-		$repeater_appointment->add_control(
-			'list_appointment_title', [
+        $repeater->add_control(
+			'list_title', [
 				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'List Title' , 'clinic' ),
@@ -106,64 +108,165 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
 		);
 
 		$this->add_control(
-			'list_appointment',
+			'list',
 			[
 				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater_appointment->get_controls(),
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_appointment_title' => esc_html__( 'Title #1', 'clinic' ),
+						'list_title' => esc_html__( 'Title #1', 'clinic' ),
 					],
 					[
-						'list_appointment_title' => esc_html__( 'Title #2', 'clinic' ),
+						'list_title' => esc_html__( 'Title #2', 'clinic' ),
 					],
 				],
-				'title_field' => '{{{ list_appointment_title }}}',
+				'title_field' => '{{{ list_title }}}',
 			]
 		);
 
 		$this->end_controls_section();
 
-		// no appointment section
-		$this->start_controls_section(
-			'content_no_appointment_section',
-			[
-				'label' => esc_html__( 'Không hẹn trước', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
+        // list style section
+        $this->start_controls_section(
+            'list_style_section',
+            [
+                'label' => esc_html__( 'Danh sách', 'smartcity' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
-		$repeater_no_appointment = new Repeater();
+        $this->add_control(
+            'list_padding',
+            [
+                'label' => esc_html__( 'Padding', 'textdomain' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-compare-appointments__warp .list-box .item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 
-		$repeater_no_appointment->add_control(
-			'list_no_appointment_title', [
-				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'List Title' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'list_background',
+                'types' => [ 'classic', 'gradient' ],
+                'selector' => '{{WRAPPER}} .element-compare-appointments__warp .list-box .item',
+            ]
+        );
 
-		$this->add_control(
-			'list_no_appointment',
-			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater_no_appointment->get_controls(),
-				'default' => [
-					[
-						'list_no_appointment_title' => esc_html__( 'Title #1', 'clinic' ),
-					],
-					[
-						'list_no_appointment_title' => esc_html__( 'Title #2', 'clinic' ),
-					],
-				],
-				'title_field' => '{{{ list_no_appointment_title }}}',
-			]
-		);
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'list_border',
+                'selector' => '{{WRAPPER}} .element-compare-appointments__warp .list-box .item',
+            ]
+        );
 
-		$this->end_controls_section();
+        $this->add_control(
+            'list_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'textdomain' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-compare-appointments__warp .list-box .item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // number style section
+        $this->start_controls_section(
+            'number_style_section',
+            [
+                'label' => esc_html__( 'Number', 'smartcity' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'number_color',
+            [
+                'label'     =>  esc_html__( 'Màu sắc', 'smartcity' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .number' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'number_typography',
+                'label' => esc_html__( 'Typography', 'smartcity' ),
+                'selector' => '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .number',
+            ]
+        );
+
+        $this->add_control(
+            'number_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'smartcity' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .number' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // title style section
+        $this->start_controls_section(
+            'title_style_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'smartcity' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label'     =>  esc_html__( 'Màu sắc', 'smartcity' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'label' => esc_html__( 'Typography', 'smartcity' ),
+                'selector' => '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .title',
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	/**
@@ -179,57 +282,24 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
 	?>
 		<div class="element-compare-appointments">
 			<div class="element-compare-appointments__warp">
-				<div class="list-box list-appointment">
-					<div class="list-box__txt">
-						<span class="text-uppercase"><?php esc_html_e('Hẹn trước', 'clinic'); ?></span>
-					</div>
+                <h3 class="heading text-uppercase">
+                    <span class="icon icon-check"></span>
+                    <span class="txt"><?php esc_html_e('Hẹn lịch khám online', 'clinic'); ?></span>
+                </h3>
 
-					<div class="list-box__group">
-						<?php foreach ( $settings['list_appointment'] as $key => $item ) : ?>
-							<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-								<div class="item__left">
-									<p class="number">
-										<?php echo esc_html( addZeroBeforeNumber( $key + 1 ) ); ?>
-									</p>
-								</div>
+                <div class="list-box">
+                    <?php foreach ( $settings['list'] as $key => $item ) : ?>
+                        <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                            <p class="number">
+                                <?php echo esc_html( addZeroBeforeNumber( $key + 1 ) ); ?>
+                            </p>
 
-								<div class="item__right">
-									<h3 class="title">
-										<?php echo esc_html( $item['list_appointment_title'] ); ?>
-									</h3>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-
-				<div class="list-box middle">
-					<span class="txt text-uppercase"><?php esc_html_e('Với'); ?></span>
-				</div>
-
-				<div class="list-box list-no-appointment">
-					<div class="list-box__txt">
-						<span class="text-uppercase"><?php esc_html_e('không hẹn trước', 'clinic'); ?></span>
-					</div>
-
-					<div class="list-box__group">
-						<?php foreach ( $settings['list_no_appointment'] as $key => $item ) : ?>
-							<div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-								<div class="item__left">
-									<p class="number">
-										<?php echo esc_html( addZeroBeforeNumber( $key + 1 ) ); ?>
-									</p>
-								</div>
-
-								<div class="item__right">
-									<h3 class="title">
-										<?php echo esc_html( $item['list_no_appointment_title'] ); ?>
-									</h3>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
+                            <h3 class="title">
+                                <?php echo esc_html( $item['list_title'] ); ?>
+                            </h3>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
 			</div>
 		</div>
 	<?php

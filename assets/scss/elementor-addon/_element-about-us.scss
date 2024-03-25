@@ -2,6 +2,12 @@
   &__warp {
     display: grid;
 
+    .thumbnail-box {
+      img {
+        width: 100%;
+      }
+    }
+
     &.style-1 {
       border-radius: 1rem;
       background-color: var(--theme-tertiary-color);
@@ -138,8 +144,16 @@
         grid-template-columns: 52.1rem 1fr;
       }
 
+      @media (min-width: 768px) and ( max-width: 1199px ) {
+        grid-template-columns: 40rem 1fr;
+      }
+
+      .heading {
+        margin-bottom: .6rem;
+      }
+
       .heading-image-line {
-        margin-bottom: 4rem;
+        margin-bottom: 1rem;
       }
 
       .thumbnail-box {

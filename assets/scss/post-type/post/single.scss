@@ -114,13 +114,26 @@
 }
 
 .single-contact-us {
+  position: relative;
   padding: 1.2rem 1.6rem;
   background-image: url("../../../images/bk-support-single.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(126,69,16,.8);
+  }
+
   .grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-gap: 2.4rem 4rem;
     align-items: center;
@@ -164,14 +177,7 @@
     .list-support {
       display: grid;
       align-items: center;
-
-      @media (min-width: 1200px) {
-        grid-gap: 2.4rem 3.5rem;
-      }
-
-      @media (min-width: 376px) and (max-width: 1199px) {
-        grid-gap: 1.2rem;
-      }
+      grid-gap: 2.4rem 3.5rem;
 
       @media (min-width: 376px) {
         grid-template-columns: repeat(2, 1fr);
