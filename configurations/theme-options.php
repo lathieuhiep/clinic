@@ -105,23 +105,9 @@ if ( class_exists( 'CSF' ) ) {
 		'fields' => array(
             array(
                 'id'      => 'opt_general_address',
-                'type'    => 'fieldset',
+                'type'    => 'text',
                 'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
-                'fields' => array(
-                    array(
-                        'id'    => 'street',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Địa chỉ cụ thể', 'clinic' ),
-                        'default' => '180 Đường Trần Phú',
-                    ),
-
-                    array(
-                        'id'    => 'district',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã', 'clinic' ),
-                        'default' => 'Phước Ninh, Hải Châu, Đà Nẵng',
-                    ),
-                ),
+                'default' => esc_html__( '180 Trần phú - Phước Ninh', 'clinic' )
             ),
 
 			array(
@@ -165,7 +151,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_chat_messenger',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => 'https://m.me/dakhoaqtdanang',
+                'default' => '',
             ),
 
 			array(

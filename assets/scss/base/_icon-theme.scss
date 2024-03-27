@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-phone-light:before {
+  content: "\e915";
+}
 .icon-globe:before {
   content: "\e914";
 }
