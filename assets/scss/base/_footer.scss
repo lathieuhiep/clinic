@@ -1,43 +1,31 @@
 .global-footer {
-  section {
-    &.widget {
-      margin-bottom: 2.3rem;
-
-      .textwidget {
-        iframe {
-          min-height: 38rem;
-        }
-      }
-
-      .info-company-widget {
-        color: var(--color-white);
-      }
-
-      .open-hours-widget {
-        @media (min-width: 992px) {
-          padding: 0 3rem;
-        }
-
-        &__warp {
-          border-color: var(--color-white);
-        }
-
-        .item {
-          &__note {
-            color: var(--color-white);
-          }
-        }
-      }
-    }
-  }
+  padding: 2rem 0 4rem;
+  background-color: rgb(173, 28, 33, 0.9);
+  background-image: url("../images/bk-footer.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &__column {
-    padding: 4rem 0 2rem;
-    background-color: rgba(125, 69, 16, 0.9);
-    background-image: url("../images/bk-footer.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    margin-top: 2.6rem;
+  }
+
+  .widget {
+    color: var(--color-white);
+
+    a {
+      color: inherit;
+    }
+
+    .widget-title {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      color: inherit;
+      font-size: 2.5rem;
+      font-family: var(--font-fm-quaternary);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--color-white);
+    }
   }
 }
 

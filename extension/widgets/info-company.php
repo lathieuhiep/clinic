@@ -36,6 +36,8 @@ class clinic_info_company_widget extends WP_Widget {
                 <div class="item">
                     <div class="item__icon">
                         <i class="icon-house-light"></i>
+
+                        <strong><?php esc_html_e( 'Địa chỉ', 'clinic' ); ?></strong>
                     </div>
 
                     <div class="item__content">
@@ -44,39 +46,16 @@ class clinic_info_company_widget extends WP_Widget {
                 </div>
             <?php endif; ?>
 
-            <?php if ( $instance['hotline'] ) : ?>
+            <?php if ( $instance['working_time'] ) : ?>
                 <div class="item">
                     <div class="item__icon">
-                        <i class="icon-phone-circle"></i>
+                        <i class="icon-clock"></i>
+
+                        <strong><?php esc_html_e( 'Thời gian làm việc', 'clinic' ); ?></strong>
                     </div>
 
                     <div class="item__content">
-			            <?php echo esc_html( $instance['hotline'] ); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-            <?php if ( $instance['facebook'] ) : ?>
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-square-facebook"></i>
-                    </div>
-
-                    <div class="item__content">
-			            <?php echo esc_html( $instance['facebook'] ); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-
-            <?php if ( $instance['mail'] ) : ?>
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-envelope"></i>
-                    </div>
-
-                    <div class="item__content">
-			            <?php echo esc_html( $instance['mail'] ); ?>
+			            <?php echo esc_html( $instance['working_time'] ); ?>
                     </div>
                 </div>
             <?php endif; ?>
@@ -93,11 +72,9 @@ class clinic_info_company_widget extends WP_Widget {
      */
 	function form( $instance ) {
 		$defaults = array(
-            'title' => '',
-            'address' => '',
-            'hotline' => '',
-            'facebook' => '',
-            'mail' => '',
+            'title' => esc_html__('thông tin liên hệ:', 'clinic'),
+            'address' => esc_html__('115 Yên Lãng, Thịnh Quang, Đống Đa, Hà Nội', 'clinic'),
+            'working_time' => esc_html__('Phòng khám làm việc 7h30  đến 20h mỗi ngày', 'clinic'),
         );
 
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
@@ -120,27 +97,11 @@ class clinic_info_company_widget extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id( 'hotline' ); ?>">
-				<?php esc_html_e( 'Hotline:', 'clinic' ); ?>
+            <label for="<?php echo $this->get_field_id( 'working_time' ); ?>">
+				<?php esc_html_e( 'Thời gian làm việc:', 'clinic' ); ?>
             </label>
 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'hotline' ); ?>" name="<?php echo $this->get_field_name( 'hotline' ); ?>" value="<?php echo $instance['hotline']; ?>" />
-        </p>
-
-        <p>
-            <label for="<?php echo $this->get_field_id( 'facebook' ); ?>">
-				<?php esc_html_e( 'Facebook:', 'clinic' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'facebook' ); ?>" name="<?php echo $this->get_field_name( 'facebook' ); ?>" value="<?php echo $instance['facebook']; ?>" />
-        </p>
-
-        <p>
-            <label for="<?php echo $this->get_field_id( 'mail' ); ?>">
-				<?php esc_html_e( 'Mail:', 'clinic' ); ?>
-            </label>
-
-            <input class="widefat" id="<?php echo $this->get_field_id( 'mail' ); ?>" name="<?php echo $this->get_field_name( 'mail' ); ?>" value="<?php echo $instance['mail']; ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id( 'working_time' ); ?>" name="<?php echo $this->get_field_name( 'working_time' ); ?>" value="<?php echo $instance['working_time']; ?>" />
         </p>
 	<?php
 
@@ -159,9 +120,7 @@ class clinic_info_company_widget extends WP_Widget {
 
         $instance['title'] = strip_tags( $new_instance['title'] );
         $instance['address'] = strip_tags( $new_instance['address'] );
-        $instance['hotline'] = strip_tags( $new_instance['hotline'] );
-        $instance['facebook'] = strip_tags( $new_instance['facebook'] );
-        $instance['mail'] = strip_tags( $new_instance['mail'] );
+        $instance['working_time'] = strip_tags( $new_instance['working_time'] );
 
         return $instance;
     }

@@ -19,7 +19,13 @@ if ( !is_404() ) :
     get_template_part('components/inc','contact-us');
 ?>
     <footer class="global-footer">
-        <?php get_template_part( 'components/footer/inc','column' ); ?>
+        <div class="global-footer__warp">
+            <?php
+            get_template_part( 'components/footer/inc','logo' );
+
+            get_template_part( 'components/footer/inc','column' );
+            ?>
+        </div>
     </footer>
 <?php
 	get_template_part('components/header/inc','menu-mobile');

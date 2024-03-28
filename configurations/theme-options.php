@@ -65,6 +65,15 @@ if ( class_exists( 'CSF' ) ) {
 				'url'     => false
 			),
 
+            // logo footer
+			array(
+				'id'      => 'opt_general_logo_footer',
+				'type'    => 'media',
+				'title'   => esc_html__( 'Logo Footer', 'clinic' ),
+				'library' => 'image',
+				'url'     => false
+			),
+
 			// show loading
 			array(
 				'id'         => 'opt_general_loading',
