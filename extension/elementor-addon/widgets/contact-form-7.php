@@ -8,7 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
-
 	public function get_categories(): array {
 		return array( 'my-theme' );
 	}
@@ -41,10 +40,10 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 			[
 				'label' => esc_html__('Kiểu', 'clinic'),
 				'type' => Controls_Manager::SELECT,
-				'default' => '1',
+				'default' => 'style-1',
 				'options' => [
-					'1' => esc_html__('Kiểu 1', 'clinic'),
-					'2' => esc_html__('Kiểu 2', 'clinic'),
+					'style-1' => esc_html__('Kiểu 1', 'clinic'),
+					'style-2' => esc_html__('Kiểu 2', 'clinic'),
 				],
 			]
 		);
@@ -79,7 +78,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		if ( ! empty( $settings['contact_form_list'] ) ) :
 			?>
 
-            <div class="element-contact-form-7 style-<?php echo esc_attr( $settings['style'] ); ?>">
+            <div class="element-contact-form-7 <?php echo esc_attr( $settings['style'] ); ?>">
                 <?php if ( $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
 		                <?php echo esc_html( $settings['heading'] ); ?>

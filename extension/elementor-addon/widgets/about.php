@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Safety_Principles extends Widget_Base
+class Clinic_Elementor_About extends Widget_Base
 {
 
 	/**
@@ -23,7 +23,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-safety-principles';
+		return 'clinic-about';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	 */
 	public function get_title(): string
 	{
-		return esc_html__('Nguyên tắc khám chữa', 'clinic');
+		return esc_html__('About', 'clinic');
 	}
 
 	/**
@@ -61,7 +61,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'text', 'list'];
+		return ['image', 'text'];
 	}
 
 	/**
@@ -86,7 +86,6 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	 */
 	protected function register_controls(): void
 	{
-		// image
 		$this->start_controls_section(
 			'image_section',
 			[
@@ -98,7 +97,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		$this->add_control(
 			'image',
 			[
-				'label' => esc_html__( 'Image', 'textdomain' ),
+				'label' => esc_html__( 'Choose Image', 'textdomain' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -108,11 +107,10 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 
 		$this->end_controls_section();
 
-		// list
 		$this->start_controls_section(
 			'list_section',
 			[
-				'label' => esc_html__( 'Danh sách quy tắc', 'clinic' ),
+				'label' => esc_html__( 'List', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -121,9 +119,19 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+				'label' => esc_html__( 'Title', 'clinic' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Tiêu đề' , 'clinic' ),
+				'default' => esc_html__( 'Title #1' , 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'list_content', [
+				'label' => esc_html__( 'Content', 'clinic' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'rows' => 8,
+				'default' => esc_html__( 'List Content' , 'clinic' ),
 				'label_block' => true,
 			]
 		);
@@ -136,19 +144,16 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => __( 'Tiêu đề #1', 'clinic' ),
+						'list_title' => __( 'Title #1', 'clinic' ),
 					],
 					[
-						'list_title' => __( 'Tiêu đề #2', 'clinic' ),
+						'list_title' => __( 'Title #2', 'clinic' ),
 					],
 					[
-						'list_title' => __( 'Tiêu đề #3', 'clinic' ),
+						'list_title' => __( 'Title #3', 'clinic' ),
 					],
 					[
-						'list_title' => __( 'Tiêu đề #4', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Tiêu đề #5', 'clinic' ),
+						'list_title' => __( 'Title #4', 'clinic' ),
 					],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -161,7 +166,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		$this->start_controls_section(
 			'style_title_section',
 			[
-				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+				'label' => esc_html__( 'Title', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -172,7 +177,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-safety-principles__warp .item-group .title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about__warp .list-group .list-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -181,28 +186,28 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'list_title_typography',
-				'selector' => '{{WRAPPER}} .element-safety-principles__warp .item-group .title',
+				'selector' => '{{WRAPPER}} .element-about__warp .list-group .list-title',
 			]
 		);
 
 		$this->end_controls_section();
 
-		// style number
+		// style list
 		$this->start_controls_section(
-			'style_number_section',
+			'style_content_section',
 			[
-				'label' => esc_html__( 'Số', 'clinic' ),
+				'label' => esc_html__( 'Content', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'list_number_color',
+			'list_content_color',
 			[
 				'label' => esc_html__( 'Color', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-safety-principles__warp .item-group .number' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about__warp .list-group .list-content' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -210,8 +215,8 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'list_number_typography',
-				'selector' => '{{WRAPPER}} .element-safety-principles__warp .item-group .number',
+				'name' => 'list_content_typography',
+				'selector' => '{{WRAPPER}} .element-about__warp .list-group .list-content',
 			]
 		);
 
@@ -228,64 +233,44 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-		$list = $settings['list'];
 
-		$listFirst = $listLast = [];
-		if ( !empty( $list ) ) {
-			$size = ceil(count($list) / 2);
-			$listChuck = array_chunk($list, $size, true);
-
-			$listFirst = $listChuck[0];
-			$listLast = $listChuck[1] ?? [];
-		}
+		$medical_appointment_form = clinic_get_opt_medical_appointment();
 		?>
-        <div class="element-safety-principles">
-            <div class="element-safety-principles__warp">
-                <div class="item item-group item-left">
-					<?php
-					if ( $listFirst ) :
-						foreach ( $listFirst as $key => $item):
-							?>
-                            <div class="repeater-item text-end-lg elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                                <h4 class="title">
-									<?php echo esc_html( $item['list_title'] ); ?>
-                                </h4>
-
-                                <strong class="number">
-									<?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?>
-                                </strong>
-                            </div>
-						<?php
-						endforeach;
-					endif;
-					?>
+		<div class="element-about">
+			<div class="element-about__warp">
+                <div class="item item__thumbnail">
+	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
                 </div>
 
-                <div class="item item-thumbnail">
-					<?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
-                </div>
-
-                <div class="item item-group item-right">
-					<?php
-					if ( $listLast ) :
-						foreach ( $listLast as $key => $item):
-							?>
+                <div class="item item__list">
+                    <div class="list-group">
+                        <?php
+                        $number_list = 1;
+                        foreach ( $settings['list'] as $item ) :
+                        ?>
                             <div class="repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                                <strong class="number">
-									<?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?>
-                                </strong>
-
-                                <h4 class="title">
-									<?php echo esc_html( $item['list_title'] ); ?>
+                                <h4 class="list-title f-family-body">
+                                    <span class="number"><?php echo esc_html($number_list); ?></span>&#46;
+                                    <span class="text"><?php echo esc_html( $item['list_title'] ); ?></span>
                                 </h4>
+
+                                <p class="list-content">
+                                    <?php echo esc_html( $item['list_content'] ); ?>
+                                </p>
                             </div>
-						<?php
-						endforeach;
-					endif;
-					?>
+                        <?php $number_list++; endforeach; ?>
+                    </div>
+
+                    <?php if ( $medical_appointment_form ) : ?>
+                        <div class="action-box text-center">
+                            <a class="booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+			                    <?php esc_html_e('Đặt lịch ngay', 'clinic'); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            </div>
-        </div>
+			</div>
+		</div>
 		<?php
 	}
 }

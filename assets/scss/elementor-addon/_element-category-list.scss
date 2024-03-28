@@ -1,21 +1,13 @@
 .element-category-list {
   &__grid {
     display: grid;
-    background-color: #E7F4ED;
 
     @media (min-width: 992px) {
-      padding: 2rem 3rem;
-      grid-gap: 1.8rem 2.4rem;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: 991px) {
-      padding: 1.6rem;
-      grid-gap: 1.6rem;
+      grid-template-columns: repeat(5, 1fr);
     }
 
     @media (min-width: 768px) and (max-width: 991px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
     @media (min-width: 576px) and (max-width: 767px) {
@@ -28,10 +20,50 @@
 
     .item {
       position: relative;
-      padding: 1rem 1.6rem;
-      border-radius: .5rem;
-      background-color: #fff;
+      padding: 3rem 1.2rem;
+      border: 1px solid #BDD7EB;
+      background-color: #F2F8FF;
       @include transition();
+
+      @media (min-width: 992px) {
+        &:nth-child(n+2):not(:nth-child(5n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+6) {
+          border-top: transparent;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        &:nth-child(n+2):not(:nth-child(4n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+5) {
+          border-top: transparent;
+        }
+      }
+
+      @media (min-width: 576px) and (max-width: 767px) {
+        &:nth-child(n+2):not(:nth-child(3n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+4) {
+          border-top: transparent;
+        }
+      }
+
+      @media (max-width: 575px) {
+        &:nth-child(n+2):not(:nth-child(2n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+3) {
+          border-top: transparent;
+        }
+      }
 
       &__link {
         position: absolute;
@@ -45,7 +77,8 @@
       &__image {
         position: relative;
         margin: 0 auto 1.5rem;
-        @include square(8rem);
+        width: 10rem;
+        height: 8rem;
         overflow: hidden;
         @include flex-center-vert();
 
@@ -73,10 +106,38 @@
       }
 
       &__title {
-        color: #132432;
+        font-size: 1.8rem;
+        color: var(--body-color);
         font-family: var(--heading-font-family);
-        font-size: 1.5rem;
         @include transition();
+
+        @media (min-width: 576px) and (max-width: 767px) {
+          font-size: 1.5rem;
+        }
+
+        @media (max-width: 575px) {
+          font-size: 1.4rem;
+        }
+      }
+
+      &:hover {
+        background-color: var(--clinic-theme-secondary-color);
+
+        .item__image {
+          .image-main {
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          .image-change {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        .item__title {
+          color: var(--color-white);
+        }
       }
     }
   }

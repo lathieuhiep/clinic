@@ -200,7 +200,7 @@
 
           &:hover {
             background-color: transparent;
-            color: var(--clinic-theme-secondary-color);
+            color: var(--color-cadmium-yellow);
           }
         }
 
@@ -216,7 +216,7 @@
         &.current-menu-item,
         &.current-menu-parent {
           > a {
-            color: var(--clinic-theme-secondary-color);
+            color: var(--color-cadmium-yellow);
           }
         }
 
@@ -295,7 +295,7 @@
           .sub-menu {
             display: block !important;
             min-width: 160px;
-            background-color: var(--clinic-theme-tertiary-color);
+            background-color: var(--clinic-theme-secondary-color);
             position: absolute;
             top: 120%;
             left: 0;
@@ -314,7 +314,7 @@
                 color: var(--color-white);
 
                 &:hover {
-                  color: var(--clinic-theme-secondary-color);
+                  color: var(--color-cadmium-yellow);
                 }
               }
 

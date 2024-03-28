@@ -36,7 +36,20 @@
         if (slider.length) {
             slider.each(function () {
                 const thisSlider = $(this)
-                const options = slider.data('owl-options')
+                const options = {
+                    margin: 50,
+                    responsive:{
+                        0:{
+                            items: 1
+                        },
+                        576:{
+                            items: 2
+                        },
+                        992:{
+                            items: 3
+                        }
+                    }
+                }
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))
             })
@@ -59,34 +72,34 @@
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))
                     .on('changed.owl.carousel', function (el) {
-                    //if you set loop to false, you have to restore this next line
-                    //var current = el.item.index;
+                        //if you set loop to false, you have to restore this next line
+                        //var current = el.item.index;
 
-                    //if you disable loop you have to comment this block
-                    const count = el.item.count - 1;
-                    let current = Math.round(el.item.index - (el.item.count / 2) - .5);
+                        //if you disable loop you have to comment this block
+                        const count = el.item.count - 1;
+                        let current = Math.round(el.item.index - (el.item.count / 2) - .5);
 
-                    if (current < 0) {
-                        current = count;
-                    }
-                    if (current > count) {
-                        current = 0;
-                    }
+                        if (current < 0) {
+                            current = count;
+                        }
+                        if (current > count) {
+                            current = 0;
+                        }
 
-                    //end block
+                        //end block
 
-                    sync2.find(".owl-item").removeClass("current").eq(current).addClass("current")
-                    const onscreen = sync2.find('.owl-item.active').length - 1;
-                    const start = sync2.find('.owl-item.active').first().index();
-                    const end = sync2.find('.owl-item.active').last().index();
+                        sync2.find(".owl-item").removeClass("current").eq(current).addClass("current")
+                        const onscreen = sync2.find('.owl-item.active').length - 1;
+                        const start = sync2.find('.owl-item.active').first().index();
+                        const end = sync2.find('.owl-item.active').last().index();
 
-                    if (current > end) {
-                        sync2.data('owl.carousel').to(current, 100, true);
-                    }
-                    if (current < start) {
-                        sync2.data('owl.carousel').to(current - onscreen, 100, true);
-                    }
-                });
+                        if (current > end) {
+                            sync2.data('owl.carousel').to(current, 100, true);
+                        }
+                        if (current < start) {
+                            sync2.data('owl.carousel').to(current - onscreen, 100, true);
+                        }
+                    });
             })
         }
 
@@ -96,15 +109,12 @@
                 const thisSlider = $(this)
                 const parent = thisSlider.closest('.element-doctor-slider')
                 const sync1 = parent.find('.element-doctor-slider__warp')
-                
+
                 thisSlider.on('initialized.owl.carousel', function() {
                     thisSlider.find(".owl-item").eq(0).addClass("current");
                 }).owlCarousel(owlCarouselElementorOptions({
                     loop: false,
-                    items: 5,
-                    nav: true,
-                    dots: false,
-                    margin: 16
+                    items: 4
                 })).on('changed.owl.carousel', function (el) {
                     if (syncedSecondary) {
                         const number = el.item.index;
