@@ -40,29 +40,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/btn-medical-register.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/company-info.php' );
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advantage-list.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-image-grid.php' );
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advantage-tabs.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-text-editor.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/principles.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-box-grid.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure-list.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/compare-appointments.php' );
-
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advise.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/quality.php' );
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
 	$widgets_manager->register( new \Clinic_Elementor_Category_List() );
@@ -82,29 +59,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Equipment() );
 	$widgets_manager->register( new \Clinic_Elementor_Btn_Medical_Register() );
 	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Company_Info() );
-
-
-//	$widgets_manager->register( new \Clinic_Elementor_Advantage_List() );
-
-//	$widgets_manager->register( new \Clinic_Elementor_List_Image_Grid() );
-
-
-//	$widgets_manager->register( new \Clinic_Elementor_About_Us() );
-//	$widgets_manager->register( new \Clinic_Elementor_Advantage_Tabs() );
-//	$widgets_manager->register( new \Clinic_Elementor_Grid_Text_Editor() );
-//	$widgets_manager->register( new \Clinic_Elementor_Principles() );
-//	$widgets_manager->register( new \Clinic_Elementor_List_Box_Grid() );
-//	$widgets_manager->register( new \Clinic_Elementor_Procedure_List() );
-//	$widgets_manager->register( new \Clinic_Elementor_Compare_Appointments() );
-
-
-//	$widgets_manager->register( new \Clinic_Elementor_Package_Slider() );
-//	$widgets_manager->register( new \Clinic_Elementor_Advise() );
-//	$widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
-
-//	$widgets_manager->register( new \Clinic_Elementor_Quality() );
 }
 
 // Register scripts
