@@ -131,7 +131,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_chat_doctor',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
-                'default' => 'https://tawk.to/chat/643f9c8a31ebfa0fe7f92cdd/1guc7mvin',
+                'default' => 'https://tawk.to/chat/64214d5c31ebfa0fe7f4db27/1gsh1ccll',
             ),
 
             array(
