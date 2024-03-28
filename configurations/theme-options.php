@@ -107,7 +107,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_hotline',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Hotline', 'clinic' ),
-                'default' => '0888.888.115 '
+                'default' => '0345.801.115'
             ),
 
             array(
@@ -151,7 +151,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_chat_messenger',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => '#',
+                'default' => '',
             ),
 
 			array(
@@ -163,14 +163,14 @@ if ( class_exists( 'CSF' ) ) {
 						'id'    => 'phone',
 						'type'  => 'text',
 						'title' => esc_html__( 'Số điện thoại', 'clinic' ),
-						'default' => '0888888115',
+						'default' => '0345801115',
 					),
 
 					array(
 						'id'    => 'qr_code',
 						'type'  => 'text',
 						'title' => esc_html__( 'Mã QR', 'clinic' ),
-						'default' => 'i44981jfbz1g',
+						'default' => '1673ul1owhehs',
 						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
 					),
 				),
